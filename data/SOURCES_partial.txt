@@ -1,0 +1,32 @@
+Provenance of downloaded files (retrieved 2026-08-12)
+
+ntu/taiwan_ranks.csv
+  https://github.com/jlehtoma/taiwan_rank.git @ 1780134 (2017-10-17)
+  path in repo: data/taiwan_ranks.csv
+  NTU Ranking (Performance Ranking of Scientific Papers), top 100 per year, 2007-2017.
+
+webometrics/webometrics_rankings_2025-07.csv
+webometrics/Webometrics_2025-07_source.pdf
+  https://github.com/singularityhacker/webometrics-rankings.git @ d82cca8 (2025-12-02)
+  Extracted by repo author from the official Webometrics July 2025 PDF (included).
+  Single edition (2025.2.0) only, no historical years.
+
+natureindex/institution-2025.csv
+  https://github.com/Jyotirmoyp/Nature_index_ranking.git @ da4f840 (2026-02-21)
+  Nature Index institutional table, 2025 edition only.
+
+scimago/scimago_top500_secondary-scrape.json
+  https://github.com/sharmadhiraj/free-json-datasets.git @ 8e768b6 (2026-01-29)
+  path in repo: docs/education-knowledge/research_and_innovation_rankings.json
+  SECONDARY third-party scrape, top 500 institutions only, no indicator scores,
+  edition year not stated by source (file timestamp 2025-12-17). NOT the official
+  SCImago Institutions Rankings download. Treat as low-confidence provenance.
+
+NOT OBTAINED: URAP, Round University Ranking (RUR), Reuters Most Innovative
+Universities. See the task report for the hosts and repositories tried.
+
+Egress note: this sandbox's gateway returns 403 to CONNECT for all primary
+ranking-source hosts (www.scimagoir.com, urapcenter.org, nturanking.csti.tw,
+roundranking.com, www.webometrics.info) and for all general data repositories
+(zenodo.org, figshare.com, osf.io, data.world, kaggle.com, huggingface.co,
+archive.org, gitlab.com). Only github.com and pypi.org are reachable.

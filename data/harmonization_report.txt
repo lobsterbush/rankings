@@ -1,0 +1,115 @@
+8638 distinct normalized names; 69.0% carry a country
+blocks after exact token-key match: 8305
+blocks after transliteration-variant pass: 8293 (12 merged)
+after fuzzy pass: 8293 blocks (0 attached, 0 rejected by the edition-collision check)
+after subset pass: 7813 blocks (480 attached, 269 rejected)
+after disjoint-footprint nesting pass: 7590 blocks (223 attached)
+after collision split: 7601 entities (11 splits)
+curated merges: 46 applied, 0 refused by the collision check, 3 names not found
+   NOT FOUND: University of Colorado Anschutz Medical Campus | University of Colorado, Anschutz Medical Campus
+   NOT FOUND: Universidad Catlica de la Santsima Concepcin | Universidad Católica de la Santísima Concepción
+   NOT FOUND: Universidad de las Fuerzas Armadas ESPE (Ex Espe) | Universidad de las Fuerzas Armadas – ESPE
+dropping 67 observations from 18 university-system aggregates (e.g. (1) University of California System, BRIN Learning Management System, Children's National Health System)
+
+7537 institutions / 77784 observations
+duplicate (institution, system, edition) cells: 46  (0.059%) -- should be ~0
+institutions by number of ranking systems that ever list them:
+   >=  1:  7537
+   >=  2:  3196
+   >=  3:  2396
+   >=  4:  1903
+   >=  5:  1529
+   >=  6:  1205
+   >=  7:   961
+   >=  8:   693
+   >=  9:   325
+   >= 10:   169
+
+Largest entities (obs should not exceed the max possible ~120 editions):
+                                      obs  variants  systems
+inst_id inst_name                                           
+U06512  University of Oxford          115         2       12
+U06059  University of Cambridge       115         2       12
+U05149  The University of Manchester  114         4       12
+U02219  Imperial College London       113         5       12
+U06852  University of Zurich          113         5       12
+U06939  Universität Heidelberg        113        11       12
+U05907  University College London     112         8       12
+U05143  The University of Edinburgh   111         3       11
+U03724  New York University           111         6       11
+U06738  University of Toronto         111         3       11
+U07131  Vanderbilt University         111         3       11
+U02989  Leiden University             111         3       12
+U01290  Duke University               111         2       11
+U01137  Cornell University            111         2       11
+U04839  Stanford University           111         2       11
+
+Spot checks (each probe should split into the right number of real entities):
+  -- Harvard: 5 entities; top 5:
+                                                                obs  sys
+inst_id inst_name                                                       
+U01901  Harvard University                                      111   11
+U01903  Harvard-MIT Division of Health Sciences and Tecnology    12    1
+U01899  Harvard Medical School                                    8    1
+U01900  Harvard Pilgrim Health Care                               1    1
+U01902  Harvard-MIT Division of Health Sciences and Technology    1    1
+  -- Tokyo: 19 entities; top 5:
+                                                        obs  sys
+inst_id inst_name                                               
+U05162  The University of Tokyo                         111   11
+U05213  Tokyo Institute of Technology                    74   10
+U05216  Tokyo Medical and Dental University (TMDU)       55    6
+U05220  Tokyo University of Agriculture and Technology   50    8
+U05218  Tokyo Metropolitan University                    50    8
+  -- Oxford: 5 entities; top 5:
+                                                     obs  sys
+inst_id inst_name                                            
+U06512  University of Oxford                         115   12
+U03947  Oxford Brookes University                     32    6
+U03271  Miami University--Oxford                       1    1
+U03948  Oxford Health NHS Foundation Trust             1    1
+U03949  Oxford University Hospitals NHS Trust (OUH)    1    1
+  -- Michigan: 9 entities; top 5:
+                                           obs  sys
+inst_id inst_name                                  
+U06402  University of Michigan-Ann Arbor   107   10
+U03274  Michigan State University           89   10
+U03275  Michigan Technological University   36    8
+U07269  Western Michigan University         17    6
+U00844  Central Michigan University         12    6
+  -- Florida: 16 entities; top 5:
+                                          obs  sys
+inst_id inst_name                                 
+U06173  University of Florida             108   11
+U06667  University of South Florida        70    9
+U01547  Florida State University           61    9
+U06076  University of Central Florida      51    8
+U01545  Florida International University   43    8
+  -- California: 43 entities; top 5:
+                                            obs  sys
+inst_id inst_name                                   
+U00746  California Institute of Technology  111   11
+U06673  University of Southern California   111   11
+U06051  University of California, Irvine    107   10
+U06049  University of California, Berkeley  107   10
+U06050  University of California, Davis     107   10
+  -- Zurich: 5 entities; top 5:
+                                                                                                        obs  sys
+inst_id inst_name                                                                                               
+U06852  University of Zurich                                                                            113   12
+U01321  ETH Zurich                                                                                      109   10
+U07486  Zurich University of Applied Sciences (ZHAW)                                                     10    4
+U04924  Swiss Federal Institute of Technology Zurich (ETH Zurich)                                         5    1
+U01369  Eidgenössische Technische Hochschule ETH Zürich / Swiss Federal Institute of Technology Zurich    1    1
+  -- Seoul: 5 entities; top 5:
+                                                             obs  sys
+inst_id inst_name                                                    
+U04528  Seoul National University                            110   11
+U06634  University of Seoul                                   35    7
+U04529  Seoul National University of Science and Technology   27    7
+U01416  Eulji University (Seoul Health College) / 을지대학교        1    1
+U04530  Seoul Women's University / 서울여자대학교                     1    1
+  -- Tsinghua: 1 entities; top 5:
+                             obs  sys
+inst_id inst_name                    
+U05274  Tsinghua University  104   11

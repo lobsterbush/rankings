@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Methods — a latent measure of international university standing</title>
+<style>
+:root{--paper:#fffefb;--ink:#16150f;--ink-2:#4a4841;--ink-3:#807d73;
+ --rule:#dcd9cf;--rule-2:#efece3;--link:#2a78d6;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--paper:#141310;--ink:#f4f2ea;
+ --ink-2:#b7b4a8;--ink-3:#84817a;--rule:#3a382f;--rule-2:#26241e;
+ --link:#3987e5;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font:16px/1.68 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.page{max-width:760px;margin:0 auto;padding:52px 26px 100px}
+.nav{font-size:13.5px;color:var(--ink-3);margin-bottom:34px}
+h1{font-size:27px;line-height:1.26;font-weight:600;letter-spacing:-.015em;margin:0 0 18px}
+h2{font-size:17px;font-weight:600;margin:44px 0 12px;padding-top:26px;
+ border-top:1px solid var(--rule)}
+h3{font-size:15px;font-weight:600;margin:28px 0 8px}
+p{margin:0 0 15px}
+a{color:var(--link);text-decoration:none;border-bottom:1px solid currentColor}
+a:hover{color:var(--ink)}
+strong{font-weight:600}
+code{font:13.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+ background:var(--rule-2);padding:1px 4px}
+pre{background:var(--rule-2);padding:14px 16px;overflow:auto;font-size:13px;
+ line-height:1.55;border-left:2px solid var(--rule)}
+pre code{background:none;padding:0}
+blockquote{margin:0 0 15px;padding-left:16px;border-left:2px solid var(--rule);
+ color:var(--ink-2)}
+ul,ol{margin:0 0 15px;padding-left:22px}
+li{margin-bottom:5px}
+hr{border:0;border-top:1px solid var(--rule);margin:34px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 20px;
+ display:block;overflow-x:auto}
+th,td{text-align:left;padding:6px 14px 6px 0;border-bottom:1px solid var(--rule-2);
+ vertical-align:baseline}
+thead th{color:var(--ink-3);font-weight:500;font-size:12.5px;
+ border-bottom:1px solid var(--rule);white-space:nowrap}
+td:first-child{white-space:nowrap}
+em{color:var(--ink-2)}
+</style></head><body><div class="page">
+<p class="nav"><a href="index.html">← back to the figures</a></p>
+<h1>Pooling every reachable international university ranking into one latent scale</h1>
+<p><strong>Charles Crabtree · 12 August 2026</strong></p>
+<hr />
+<h2>The short version</h2>
+<p>I collected every international university ranking I could actually reach, harmonised
+8,638 raw institution strings into 7,555 institutions, and fit a <strong>dynamic
+Bayesian latent-trait model</strong> that treats each ranking as one noisy, censored
+instrument reading a single underlying quantity rather than as an answer in itself.</p>
+<p>The estimation panel covers <strong>12 ranking systems</strong>, <strong>115 system-editions</strong>,
+<strong>72,870 published listings</strong>, <strong>3,161 institutions</strong>, and <strong>24 reference years
+(2003–2026)</strong>. The likelihood has 46,530 exact rank
+observations, 26,340 interval-censored banded ranks, and 82,823 left-censored
+non-listings.</p>
+<p>Three things the pooled measure buys you that no single table does:</p>
+<ol>
+<li><strong>Uncertainty.</strong> Every institution-year estimate carries a credible interval that
+   widens exactly where the evidence thins. Published rankings report a rank to the
+   integer and never say how sure they are.</li>
+<li><strong>Comparability over time.</strong> Ranking lists grew from 200 institutions to over 3,000.
+   Modelling non-listing as censoring rather than as missing data is what makes an
+   institution ranked 180th in 2011 comparable to one ranked 180th in 2025.</li>
+<li><strong>A read on the instruments.</strong> The model estimates how much of each ranking is the
+   shared dimension and how much is that ranking's own idiosyncrasy. That number turns
+   out to vary a great deal.</li>
+</ol>
+<hr />
+<h2>1. What data exists, and what I could not get</h2>
+<p>This ran in a sandbox whose egress gateway refuses connections to essentially every
+primary ranking host — <code>shanghairanking.com</code>, <code>timeshighereducation.com</code>,
+<code>topuniversities.com</code>, <code>usnews.com</code>, <code>cwur.org</code>, <code>scimagoir.com</code>, <code>webometrics.info</code>,
+<code>urapcenter.org</code>, <code>nturanking.csti.tw</code>, <code>roundranking.com</code> — and to every general data
+repository — <code>zenodo.org</code>, <code>figshare.com</code>, <code>osf.io</code>, <code>kaggle.com</code>, <code>huggingface.co</code>,
+<code>data.world</code>, <code>archive.org</code>, <code>gitlab.com</code>. Only <code>github.com</code> (via <code>git clone</code>),
+<code>raw.githubusercontent.com</code> and the package registries were reachable.</p>
+<p>One channel does get through: a fetch tool that renders a page to markdown and passes it
+through a small model. That turned out to be the difference between six usable systems
+and twelve. It reached ShanghaiRanking's undocumented JSON API
+(<code>/api/pub/v1/arwu/rank?version=YYYY</code>), SCImago's bulk CSV endpoint, cwur.org's per-year
+pages, and nature.com's research-leaders tables. Where it is a genuine transcription
+rather than a verbatim payload, it was run under the verification protocol in §1a.</p>
+<p>Everything here is therefore either an exact file from an open GitHub mirror, an official
+endpoint read verbatim, a local re-extraction of an official PDF, or a double-verified
+transcription — and every row records which. Every file's repository and commit, or its
+source URL, is in <code>data/SOURCES.txt</code>. Nothing was scraped through a workaround and
+nothing was synthesised.</p>
+<table>
+<thead>
+<tr>
+<th>Ranking</th>
+<th>Years</th>
+<th style="text-align: right;">Editions</th>
+<th style="text-align: right;">Median list</th>
+<th>Channel</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARWU</td>
+<td>2003-2025</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">500</td>
+<td>github + endpoint</td>
+<td>2003-2022 from a GitHub mirror; 2023-25 via the ShanghaiRanking JSON API, which truncates around rank 300</td>
+</tr>
+<tr>
+<td>THE</td>
+<td>2010-2025</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1,178</td>
+<td>github</td>
+<td>complete; THE's own JSON API via a mirror</td>
+</tr>
+<tr>
+<td>QS</td>
+<td>2011-2026</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1,022</td>
+<td>github + transcribed</td>
+<td>2004-2010 and 2013 still missing; 2011 from the official PDF supplement</td>
+</tr>
+<tr>
+<td>CWUR</td>
+<td>2012-2025</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">120</td>
+<td>github + transcribed</td>
+<td>2012-15 and 2024-25 complete; 2016-23 captured to rank 120 only</td>
+</tr>
+<tr>
+<td>SCImago</td>
+<td>2009-2024</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">299</td>
+<td>endpoint</td>
+<td>higher-education sector, top ~300; the site's year parameter serves distinct editions only for 2009-2019</td>
+</tr>
+<tr>
+<td>NTU</td>
+<td>2007-2017</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">100</td>
+<td>github</td>
+<td>top 100 only; 2018-2026 unobtainable (JavaScript-rendered site)</td>
+</tr>
+<tr>
+<td>USNews</td>
+<td>2014-2025</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">150</td>
+<td>github</td>
+<td>2026 complete; 2015-19 top 150 only; no public history for 2014-2025</td>
+</tr>
+<tr>
+<td>NatureIndex</td>
+<td>2016-2025</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">252</td>
+<td>github + transcribed</td>
+<td>2016/2019/2023 transcribed from nature.com; 2021 and 2025 from mirrors</td>
+</tr>
+<tr>
+<td>ReutersEU</td>
+<td>2016-2019</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">95</td>
+<td>transcribed</td>
+<td>Reuters Most Innovative Universities in Europe, top 100; a region-restricted frame, modelled as its own instrument</td>
+</tr>
+<tr>
+<td>ReutersWorld</td>
+<td>2015-2019</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">89</td>
+<td>transcribed</td>
+<td>Reuters Most Innovative Universities, top 100; 2016 edition not recoverable</td>
+</tr>
+<tr>
+<td>Leiden</td>
+<td>2019-2021</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1,171</td>
+<td>github</td>
+<td>ranked on PP(top 10%), fractional counting; other editions need a client that can download and unzip a 262 MB binary</td>
+</tr>
+<tr>
+<td>Webometrics</td>
+<td>2025-2025</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2,186</td>
+<td>pdf</td>
+<td>re-extracted locally from the official 921-page PDF: 32,053 rows versus 28,122 with 11% of names lost upstream</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Retrieval channel matters here, so it is recorded per row.</strong> <code>github</code> means an exact
+file from an open mirror. <code>endpoint</code> means an official machine-readable endpoint
+(ShanghaiRanking's undocumented JSON API, SCImago's bulk CSV) read through a fetch tool
+that returns the payload verbatim. <code>pdf</code> means a local re-extraction of an official PDF.
+<code>transcribed</code> means a rendered HTML table read by a small model — see §1a.</p>
+<p><strong>Not obtained at all:</strong> URAP, Round University Ranking, Reuters Most Innovative
+Universities, and the THE–QS joint rankings of 2004–2009. No open mirror of any of them
+exists on the reachable network.</p>
+<p>If the blocked hosts were opened up, the highest-value additions in order would be:
+the Leiden Ranking Zenodo deposits (2011–2025, official Excel, CC-BY), the SCImago bulk
+CSV endpoint (2009–2025, one URL per year), CWUR 2016–2025, and ARWU 2023–2025.</p>
+<hr />
+<h2>1a. A word about the transcription channel</h2>
+<p>Some of the data above was not downloaded as a file. Several ranking sites are readable
+only through a fetch tool that converts the page to markdown and passes it through a
+small language model. That is a transcription step, and transcription can invent things,
+so it was run under a protocol rather than trusted:</p>
+<ul>
+<li>at most ~60 rows per request, asked for verbatim as delimited text with no summarising;</li>
+<li><strong>every chunk fetched twice, with differently worded prompts</strong>, keeping only rows where
+  the two passes agree exactly on rank and institution name;</li>
+<li>disagreements dropped, never adjudicated by guessing, and counted;</li>
+<li>structural checks on every file: monotone ranks, no duplicate ranks or names, a
+  plausible top ten.</li>
+</ul>
+<p>The protocol earned its keep three times. It caught a fetch that returned ARWU's 101-150
+band while labelling every row 151-200, which would have put fifty institutions in the
+wrong band. It caught a QS supplement that search results described as the 2013/14
+edition but which is actually 2014/15 — that file was discarded rather than written under
+a wrong year. And it flagged, then vindicated, a SCImago row that a sloppier verification
+prompt had wrongly called an error.</p>
+<p>Calibration: the same procedure was run on a CWUR edition for which an exact mirror also
+exists, and matched it on <strong>61 of 61</strong> rows for rank, institution and country.
+Disagreement rates were 0.00% for CWUR, ARWU and SCImago, 0.27% for Reuters and 2.37% on
+the QS 2011 extension. Six QS institutions were dropped because the two passes differed
+on whether a parenthetical acronym was kept; they are named in the sidecar.</p>
+<p>Every row carries its channel in <code>data/rankings_panel_long.csv</code>, so anyone who would
+rather not trust transcribed rows can drop them and refit. The four Nature Index files
+are the weakest item in the set: they are transcriptions of rendered tables that were not
+double-fetched, and should be treated as provisional.</p>
+<p><strong>Partial capture is handled, not hidden.</strong> Several editions were captured only to rank
+120 or 300 of a much longer published table. This does not bias the model, because the
+censoring machinery treats the captured prefix as the revealed portion of that edition
+and every institution in the system's frame outside the prefix as left-censored below the
+last captured rank — which is exactly true. Partial capture costs information, not
+correctness.</p>
+<hr />
+<h2>2. Getting the institutions to line up</h2>
+<p>This is where cross-ranking work usually goes wrong, so it is worth being explicit.</p>
+<p>The matcher normalises names (transliteration, abbreviation expansion, stop-word
+removal, a curated alias table for acronyms and renames), blocks on
+country plus token set, and then merges further only under strict conditions. The
+load-bearing idea is a structural check:</p>
+<blockquote>
+<p>A ranking system publishes each institution <strong>at most once per edition</strong>. So any
+merge that would place two rows in the same (system, year) cell is wrong.</p>
+</blockquote>
+<p>That one constraint kills the failure mode that sinks naive fuzzy matching. Token-set
+similarity scores "University of Florida" against "Florida State University" at 100
+because one token set contains the other — but both appear in nearly every ARWU
+edition, so the merge is rejected on sight. In an early run without this check, a
+single entity absorbed 1,689 distinct names.</p>
+<p>The same logic runs in reverse to <em>find</em> missed merges: two entities that are never
+co-listed, share a country, and have similar names are probably one institution under
+two names. That pass merged 194 blocks (Göttingen/Goettingen, KU Leuven/Catholic
+University of Leuven, Sapienza/La Sapienza, Purdue/Purdue–West Lafayette, and so on).</p>
+<p><strong>Where it ends up:</strong> 7,555 institutions from 8,638 raw strings, with
+<strong>0.059%</strong> of
+observations left in duplicate cells. A further <strong>158 pairs</strong> are flagged as
+possible-but-unconfirmed same-entity in <code>entity_review_candidates.csv</code> — mostly
+diacritic variants (Genoa/Genova, Hawaii/Hawaiʻi) and genuine institutional mergers
+(National Chiao Tung → National Yang Ming Chiao Tung). Those are shipped as a review
+file rather than merged automatically, because deciding whether a 2021 merger is the
+same entity as its predecessor is a substantive call, not a string-matching one.</p>
+<hr />
+<h2>3. The model</h2>
+<p>Latent quality of institution <em>i</em> in year <em>t</em> is θ<em>ᵢₜ</em>.</p>
+<p><strong>Measurement.</strong> Rank <em>r</em> in system <em>j</em> is mapped to a normal quantile against a fixed
+reference pool of M = 6,000 institutions, z(r) = Φ⁻¹(1 − (r − ½)/M), and</p>
+<blockquote>
+<p>z<em>ᵢⱼₜ</em> = β<em>ⱼ</em> + α<em>ⱼ</em> θ<em>ᵢₜ</em> + ε,  ε ~ N(0, σ<em>ⱼ</em>²)</p>
+</blockquote>
+<ul>
+<li>an <strong>exact rank</strong> gives z observed at a point;</li>
+<li>a <strong>banded rank</strong> ("201–250", "1001+") gives z interval-censored between the band edges;</li>
+<li>an institution the system <strong>could have listed but did not</strong> gives z left-censored below
+  z(N<em>ⱼₜ</em>), where N<em>ⱼₜ</em> is that edition's length.</li>
+</ul>
+<p>The censoring is the part that makes the panel work. A system that reveals only its top
+200 supplies a coarse, heavily censored measurement; one that reveals 3,118 supplies a
+fine one. Treating non-listing as missing rather than as censored would throw away the
+single most informative fact about most institutions in most years.</p>
+<p><strong>Dynamics.</strong> θ follows a random walk, θ<em>ᵢₜ</em> = θ<em>ᵢ,ₜ₋₁</em> + N(0, ω²), which pools information
+across adjacent editions and lets an institution's estimate in a thin year borrow
+strength from its neighbours. Posterior ω = 0.137.</p>
+<p><strong>Estimation.</strong> A blocked Gibbs sampler in NumPy: truncated normals for the censored
+latent z, an exact forward-filter/backward-sample step for the θ paths (vectorised over
+all 3,161 institutions at once), conjugate draws for α, β, σ², ω². Four chains,
+15,000 iterations each, first half discarded. Roughly six minutes per chain on two cores.</p>
+<p><strong>Identification.</strong> Scale and location are fixed by θ<em>ᵢ</em>,₁ ~ N(0, 1); direction by α<em>ⱼ</em> &gt; 0.
+Item parameters are constant over time, and that is precisely what makes the scale
+comparable across years. Because the likelihood is invariant along the ray
+(θ → cθ + m, α → α/c, β → β − αm/c), every posterior draw is renormalised so base-year θ
+has mean 0 and standard deviation 1 before any diagnostic is computed.</p>
+<hr />
+<h2>4. Does it work?</h2>
+<p><strong>Convergence.</strong> theta (600 random institution-years): R-hat max 1.014, 99th pct 1.007, share &gt; 1.01: 0.3% theta bulk ESS: min 272, median 1161 (of 1200 draws) The slowest-mixing parameters are the
+discriminations of the three highest-information systems (R̂ ≈ 1.03), which is the
+residual of that same scale ray; everything else is at or below 1.02.</p>
+<p><strong>The rankings as instruments.</strong> Reliability is α<em>ⱼ</em>²/(α<em>ⱼ</em>² + σ<em>ⱼ</em>²) — the share of a
+system's variation the shared factor explains.</p>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Years</th>
+<th style="text-align: right;">Editions</th>
+<th style="text-align: right;">Median list</th>
+<th style="text-align: right;">α (discrimination)</th>
+<th style="text-align: right;">σ (noise)</th>
+<th>Reliability [95% CI]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARWU</td>
+<td>2003-2025</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.08</td>
+<td><strong>0.97</strong> [0.97, 0.98]</td>
+</tr>
+<tr>
+<td>USNews</td>
+<td>2014-2025</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">0.19</td>
+<td><strong>0.88</strong> [0.87, 0.89]</td>
+</tr>
+<tr>
+<td>CWUR</td>
+<td>2012-2025</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">0.22</td>
+<td><strong>0.85</strong> [0.84, 0.85]</td>
+</tr>
+<tr>
+<td>NTU</td>
+<td>2007-2017</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.21</td>
+<td><strong>0.79</strong> [0.76, 0.81]</td>
+</tr>
+<tr>
+<td>THE</td>
+<td>2010-2025</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1,178</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">0.28</td>
+<td><strong>0.78</strong> [0.77, 0.78]</td>
+</tr>
+<tr>
+<td>Webometrics</td>
+<td>2025-2025</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2,186</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.35</td>
+<td><strong>0.76</strong> [0.74, 0.77]</td>
+</tr>
+<tr>
+<td>QS</td>
+<td>2011-2026</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1,022</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0.31</td>
+<td><strong>0.68</strong> [0.67, 0.69]</td>
+</tr>
+<tr>
+<td>NatureIndex</td>
+<td>2016-2025</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">252</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.37</td>
+<td><strong>0.64</strong> [0.62, 0.65]</td>
+</tr>
+<tr>
+<td>Leiden</td>
+<td>2019-2021</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1,171</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">0.32</td>
+<td><strong>0.58</strong> [0.56, 0.60]</td>
+</tr>
+<tr>
+<td>SCImago</td>
+<td>2009-2024</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">299</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">0.31</td>
+<td><strong>0.53</strong> [0.51, 0.55]</td>
+</tr>
+<tr>
+<td>ReutersWorld</td>
+<td>2015-2019</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.30</td>
+<td><strong>0.39</strong> [0.32, 0.45]</td>
+</tr>
+<tr>
+<td>ReutersEU</td>
+<td>2016-2019</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.33</td>
+<td><strong>0.37</strong> [0.28, 0.44]</td>
+</tr>
+</tbody>
+</table>
+<p>Read that table as a statement about what each ranking is doing. ARWU is almost pure
+common factor, which makes sense: it is built from Nobel laureates, highly cited
+researchers and <em>Nature</em>/<em>Science</em> papers, and so measures a narrow, heavily
+autocorrelated slice of institutional prestige with very little noise. THE, QS, CWUR
+and U.S. News cluster at 0.79–0.84 — they disagree in the details but are reading the
+same underlying thing. Leiden (0.55), Nature Index (0.44) and SCImago (0.25) are far
+lower, and that is the interesting result: <strong>those are the rankings that carry the most
+independent information</strong>, because they are the ones least explained by the consensus.
+Leiden's PP(top 10%) is a size-independent field-normalised impact share, and it
+deliberately refuses the reputation surveys and Nobel counts that drive the others.</p>
+<p>Two caveats on that reading. SCImago's low value is partly real and partly an artefact
+of the poor source file (top 500 only, no scores, one edition). And a system observed
+in a single edition cannot have its noise separated from year-specific idiosyncrasy as
+cleanly as one observed twenty times.</p>
+<p><strong>Within-edition recovery.</strong> Spearman correlation between posterior θ and the published
+rank order, computed separately inside each system-edition:</p>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th style="text-align: right;">Mean ρ</th>
+<th style="text-align: right;">Median edition length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARWU</td>
+<td style="text-align: right;">0.977</td>
+<td style="text-align: right;">500</td>
+</tr>
+<tr>
+<td>USNews</td>
+<td style="text-align: right;">0.888</td>
+<td style="text-align: right;">150</td>
+</tr>
+<tr>
+<td>Webometrics</td>
+<td style="text-align: right;">0.870</td>
+<td style="text-align: right;">2,192</td>
+</tr>
+<tr>
+<td>THE</td>
+<td style="text-align: right;">0.835</td>
+<td style="text-align: right;">1,178</td>
+</tr>
+<tr>
+<td>QS</td>
+<td style="text-align: right;">0.825</td>
+<td style="text-align: right;">1,023</td>
+</tr>
+<tr>
+<td>NTU</td>
+<td style="text-align: right;">0.801</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr>
+<td>CWUR</td>
+<td style="text-align: right;">0.782</td>
+<td style="text-align: right;">120</td>
+</tr>
+<tr>
+<td>Leiden</td>
+<td style="text-align: right;">0.701</td>
+<td style="text-align: right;">1,171</td>
+</tr>
+<tr>
+<td>NatureIndex</td>
+<td style="text-align: right;">0.696</td>
+<td style="text-align: right;">252</td>
+</tr>
+<tr>
+<td>SCImago</td>
+<td style="text-align: right;">0.631</td>
+<td style="text-align: right;">299</td>
+</tr>
+<tr>
+<td>ReutersWorld</td>
+<td style="text-align: right;">0.549</td>
+<td style="text-align: right;">89</td>
+</tr>
+<tr>
+<td>ReutersEU</td>
+<td style="text-align: right;">0.529</td>
+<td style="text-align: right;">96</td>
+</tr>
+</tbody>
+</table>
+<p>Overall mean ρ = <strong>0.804</strong>. One latent dimension reproduces ARWU almost
+exactly and QS/THE/U.S. News very well; it reproduces Leiden and Nature Index much less
+well, consistent with their low reliabilities.</p>
+<p><strong>Cross-system agreement.</strong> Mean pairwise Spearman between the raw rank scales is
+0.68 — the weakest pair is Leiden~SCImago at 0.27, the
+strongest THE~USNews at 0.94. The rankings are correlated but not
+interchangeable, which is the premise the model needs.</p>
+<p><strong>Not just an average.</strong> Correlation of theta with a naive mean of normal-scored ranks: 0.941 (Pearson), 0.933 (Spearman) The correlation with a naive mean of
+normal-scored ranks is high, as it must be — but the two diverge most where the naive
+average is least trustworthy: institutions listed by one system, or listed only in short
+editions, where the naive average silently treats "unranked" as "absent" and the model
+treats it as "below the cutoff, and here is how far below."</p>
+<p><strong>Leave-one-system-out.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ranking dropped</th>
+<th style="text-align: right;">Observations removed</th>
+<th style="text-align: right;">Spearman, all cells</th>
+<th style="text-align: right;">Spearman, observed cells</th>
+<th style="text-align: right;">Spearman, within-year top 200</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARWU</td>
+<td style="text-align: right;">27,853</td>
+<td style="text-align: right;">0.889</td>
+<td style="text-align: right;">0.898</td>
+<td style="text-align: right;">0.682</td>
+</tr>
+<tr>
+<td>THE</td>
+<td style="text-align: right;">36,448</td>
+<td style="text-align: right;">0.923</td>
+<td style="text-align: right;">0.969</td>
+<td style="text-align: right;">0.959</td>
+</tr>
+<tr>
+<td>QS</td>
+<td style="text-align: right;">28,592</td>
+<td style="text-align: right;">0.919</td>
+<td style="text-align: right;">0.973</td>
+<td style="text-align: right;">0.976</td>
+</tr>
+<tr>
+<td>CWUR</td>
+<td style="text-align: right;">28,154</td>
+<td style="text-align: right;">0.973</td>
+<td style="text-align: right;">0.987</td>
+<td style="text-align: right;">0.987</td>
+</tr>
+<tr>
+<td>SCImago</td>
+<td style="text-align: right;">5,076</td>
+<td style="text-align: right;">0.977</td>
+<td style="text-align: right;">0.995</td>
+<td style="text-align: right;">0.954</td>
+</tr>
+<tr>
+<td>Leiden</td>
+<td style="text-align: right;">3,717</td>
+<td style="text-align: right;">0.992</td>
+<td style="text-align: right;">0.997</td>
+<td style="text-align: right;">0.992</td>
+</tr>
+</tbody>
+</table>
+<p>Dropping any single ranking leaves the ordering essentially intact across the full
+panel. Agreement is lower within the top 200 in a given year, which is what you
+would expect: at the very top the institutions are close together on the latent
+scale, so small changes in the evidence reshuffle near-ties. That is a statement
+about how little separates the leaders, not about instability in the measure.</p>
+<hr />
+<h2>5. What the estimates say</h2>
+<h3>Top of the latent scale, 2024</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Institution</th>
+<th>Country</th>
+<th style="text-align: right;">θ</th>
+<th>95% CI</th>
+<th style="text-align: right;">Rankings listing it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Harvard University</td>
+<td>United States</td>
+<td style="text-align: right;">5.42</td>
+<td>[5.23, 5.60]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Stanford University</td>
+<td>United States</td>
+<td style="text-align: right;">4.86</td>
+<td>[4.67, 5.06]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Massachusetts Institute of Technology</td>
+<td>United States</td>
+<td style="text-align: right;">4.76</td>
+<td>[4.58, 4.96]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>University of Cambridge</td>
+<td>United Kingdom</td>
+<td style="text-align: right;">4.47</td>
+<td>[4.29, 4.67]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>University of Oxford</td>
+<td>United Kingdom</td>
+<td style="text-align: right;">4.34</td>
+<td>[4.16, 4.54]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>University of California, Berkeley</td>
+<td>United States</td>
+<td style="text-align: right;">4.21</td>
+<td>[4.01, 4.42]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Princeton University</td>
+<td>United States</td>
+<td style="text-align: right;">4.09</td>
+<td>[3.89, 4.30]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Columbia University</td>
+<td>United States</td>
+<td style="text-align: right;">3.96</td>
+<td>[3.77, 4.16]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>California Institute of Technology</td>
+<td>United States</td>
+<td style="text-align: right;">3.93</td>
+<td>[3.74, 4.12]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Yale University</td>
+<td>United States</td>
+<td style="text-align: right;">3.84</td>
+<td>[3.66, 4.04]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>University of Chicago</td>
+<td>United States</td>
+<td style="text-align: right;">3.84</td>
+<td>[3.64, 4.03]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>Cornell University</td>
+<td>United States</td>
+<td style="text-align: right;">3.75</td>
+<td>[3.57, 3.94]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>University of Pennsylvania</td>
+<td>United States</td>
+<td style="text-align: right;">3.73</td>
+<td>[3.54, 3.92]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>University College London</td>
+<td>United Kingdom</td>
+<td style="text-align: right;">3.61</td>
+<td>[3.43, 3.79]</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>University of California, Los Angeles</td>
+<td>United States</td>
+<td style="text-align: right;">3.61</td>
+<td>[3.42, 3.79]</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<p>Restricted to institutions listed by at least three rankings that year. Dropping that
+filter promotes entities like Harvard Medical School, which a couple of bibliometric
+rankings count separately from its university — its posterior interval, [3.87, 5.49] on a
+single listing, is wide enough to say so on its own.</p>
+<p>Note how much the credible intervals overlap at the top. On the pooled evidence the
+leading handful of institutions are not distinguishable from one another, which is the
+first thing every published table obscures by printing an integer rank.</p>
+<h3>Largest gains in relative standing, 2006 → 2024</h3>
+<p>Change in within-year standardised θ, restricted to institutions actually observed near
+both endpoints, listed in at least 12 of the intervening years, and averaging at least
+1.5 listings per year over the window.</p>
+<table>
+<thead>
+<tr>
+<th>Institution</th>
+<th>Country</th>
+<th style="text-align: right;">2006</th>
+<th style="text-align: right;">2024</th>
+<th style="text-align: right;">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peking University</td>
+<td>China</td>
+<td style="text-align: right;">+1.58</td>
+<td style="text-align: right;">+3.39</td>
+<td style="text-align: right;"><strong>+1.81</strong></td>
+</tr>
+<tr>
+<td>Huazhong University of Science and Technology</td>
+<td>China</td>
+<td style="text-align: right;">+0.58</td>
+<td style="text-align: right;">+2.37</td>
+<td style="text-align: right;"><strong>+1.79</strong></td>
+</tr>
+<tr>
+<td>Sun Yat-sen University</td>
+<td>China</td>
+<td style="text-align: right;">+0.68</td>
+<td style="text-align: right;">+2.44</td>
+<td style="text-align: right;"><strong>+1.76</strong></td>
+</tr>
+<tr>
+<td>Zhejiang University</td>
+<td>China</td>
+<td style="text-align: right;">+1.44</td>
+<td style="text-align: right;">+3.19</td>
+<td style="text-align: right;"><strong>+1.74</strong></td>
+</tr>
+<tr>
+<td>Tsinghua University</td>
+<td>China</td>
+<td style="text-align: right;">+1.84</td>
+<td style="text-align: right;">+3.50</td>
+<td style="text-align: right;"><strong>+1.67</strong></td>
+</tr>
+<tr>
+<td>Fudan University</td>
+<td>China</td>
+<td style="text-align: right;">+1.24</td>
+<td style="text-align: right;">+2.86</td>
+<td style="text-align: right;"><strong>+1.62</strong></td>
+</tr>
+<tr>
+<td>Shanghai Jiao Tong University</td>
+<td>China</td>
+<td style="text-align: right;">+1.41</td>
+<td style="text-align: right;">+3.02</td>
+<td style="text-align: right;"><strong>+1.61</strong></td>
+</tr>
+<tr>
+<td>Sichuan University</td>
+<td>China</td>
+<td style="text-align: right;">+0.58</td>
+<td style="text-align: right;">+2.17</td>
+<td style="text-align: right;"><strong>+1.59</strong></td>
+</tr>
+<tr>
+<td>Harbin Institute of Technology</td>
+<td>China</td>
+<td style="text-align: right;">+0.57</td>
+<td style="text-align: right;">+2.06</td>
+<td style="text-align: right;"><strong>+1.48</strong></td>
+</tr>
+<tr>
+<td>Tianjin University</td>
+<td>China</td>
+<td style="text-align: right;">+0.66</td>
+<td style="text-align: right;">+2.01</td>
+<td style="text-align: right;"><strong>+1.34</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>Largest declines</h3>
+<table>
+<thead>
+<tr>
+<th>Institution</th>
+<th>Country</th>
+<th style="text-align: right;">2006</th>
+<th style="text-align: right;">2024</th>
+<th style="text-align: right;">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ecole Polytechnique</td>
+<td>France</td>
+<td style="text-align: right;">+1.56</td>
+<td style="text-align: right;">-0.63</td>
+<td style="text-align: right;"><strong>-2.19</strong></td>
+</tr>
+<tr>
+<td>Osaka Prefecture University</td>
+<td>Japan</td>
+<td style="text-align: right;">+0.91</td>
+<td style="text-align: right;">-1.04</td>
+<td style="text-align: right;"><strong>-1.95</strong></td>
+</tr>
+<tr>
+<td>Yamaguchi University</td>
+<td>Japan</td>
+<td style="text-align: right;">+1.18</td>
+<td style="text-align: right;">-0.50</td>
+<td style="text-align: right;"><strong>-1.69</strong></td>
+</tr>
+<tr>
+<td>Osaka City University</td>
+<td>Japan</td>
+<td style="text-align: right;">+0.83</td>
+<td style="text-align: right;">-0.65</td>
+<td style="text-align: right;"><strong>-1.48</strong></td>
+</tr>
+<tr>
+<td>Yeshiva University</td>
+<td>United States</td>
+<td style="text-align: right;">+1.76</td>
+<td style="text-align: right;">+0.35</td>
+<td style="text-align: right;"><strong>-1.41</strong></td>
+</tr>
+<tr>
+<td>Gunma University</td>
+<td>Japan</td>
+<td style="text-align: right;">+1.01</td>
+<td style="text-align: right;">-0.37</td>
+<td style="text-align: right;"><strong>-1.38</strong></td>
+</tr>
+<tr>
+<td>Oregon State University</td>
+<td>United States</td>
+<td style="text-align: right;">+2.20</td>
+<td style="text-align: right;">+0.83</td>
+<td style="text-align: right;"><strong>-1.37</strong></td>
+</tr>
+<tr>
+<td>University of Montana</td>
+<td>United States</td>
+<td style="text-align: right;">+1.21</td>
+<td style="text-align: right;">-0.15</td>
+<td style="text-align: right;"><strong>-1.36</strong></td>
+</tr>
+<tr>
+<td>Kagoshima University</td>
+<td>Japan</td>
+<td style="text-align: right;">+0.92</td>
+<td style="text-align: right;">-0.37</td>
+<td style="text-align: right;"><strong>-1.29</strong></td>
+</tr>
+<tr>
+<td>Niigata University</td>
+<td>Japan</td>
+<td style="text-align: right;">+1.22</td>
+<td style="text-align: right;">+0.02</td>
+<td style="text-align: right;"><strong>-1.21</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The headline pattern in the country aggregates is a slow, steady erosion of the United
+States' share of the global top 200 across the whole period, with the gains distributed
+across China, Australia, Singapore and Western Europe rather than concentrated anywhere.
+The dashboard plots this directly.</p>
+<hr />
+<h2>6. What this cannot tell you</h2>
+<p><strong>Rankings are relative by construction.</strong> A rank is a position in a list. Nothing in
+this data can tell you whether universities in general got better between 2003 and 2026 —
+only who moved relative to whom. Level comparisons across distant years rest entirely on
+the assumption that the item parameters are constant over time. That assumption is what
+makes the exercise possible and it is also its weakest link: THE changed its methodology
+substantially in 2011 and again in 2024, QS added an employment-outcomes indicator in
+2022, and the model absorbs those as changes in institutions rather than in instruments.
+A fuller treatment would let α<em>ⱼ</em> and β<em>ⱼ</em> shift at known methodology breaks.</p>
+<p><strong>The latent variable is not "quality."</strong> It is whatever the rankings jointly measure,
+which is heavily weighted toward research output, citation impact, Nobel prizes and
+reputation surveys, and which barely registers teaching, access, or regional service.
+Reading θ as institutional merit imports every criticism ever made of the underlying
+rankings. What θ does honestly measure is <em>consensus standing in the global ranking
+industry</em> — a real and consequential thing, but a narrower one.</p>
+<p><strong>Coverage is unbalanced and the gaps are not random.</strong> Six of ten systems contribute one
+to four editions. Five of the ten contribute only to 2025. The dynamic estimates for
+2003–2010 rest almost entirely on ARWU and NTU; the estimates for 2023–2026 rest on THE
+and QS. Everything in between is better identified than either end.</p>
+<p><strong>Censoring assumes an eligibility frame.</strong> An institution contributes a censored
+observation to a system-edition only if that system lists it in some other edition. That
+is a defensible frame but it is a modelling choice, and it means the model never asks
+why a system ignores an institution entirely.</p>
+<p><strong>Entity resolution is good, not perfect.</strong> 158 unresolved candidate pairs remain.
+For an institution caught in one of those splits, the trajectory will show a spurious
+break.</p>
+<hr />
+<h2>7. Files</h2>
+<p><code>data/
+  rankings_panel_long.csv     every listing, harmonised: system, year, institution, rank, score
+  crosswalk.csv               raw name -&gt; institution id, with all variants
+  edition_summary.csv         one row per system-edition: length, censoring cutoff
+  entity_review_candidates.csv  158 possible-but-unconfirmed same-entity pairs
+  SOURCES.txt                 repository and commit for every input file
+estimates/
+  latent_scores.csv           theta posterior mean, sd, 2.5/5/50/95/97.5 percentiles,
+                              within-year standardised score, and rank, for every
+                              institution-year
+  item_parameters.csv         alpha, beta, sigma, reliability per ranking system
+  validation_*.csv            edition recovery and pairwise agreement
+  sensitivity_loo.csv         leave-one-system-out refits
+code/
+  01_ingest.py                read every source into one long file
+  02_harmonize.py             entity resolution
+  02b_entity_review.py        flag unresolved same-entity candidates
+  03_build_model_data.py      edition-&gt;reference year, quantile transform, censoring
+  04_gibbs.py                 the sampler
+  05_diagnostics.py           convergence, item parameters, validation, estimates
+  06_figures.py               static figures
+  07_dashboard.py             the interactive dashboard
+  08_sensitivity.py           leave-one-system-out
+  09_memo.py                  this document
+figures/                      six PNGs
+university_rankings_dashboard.html   self-contained interactive dashboard
+diagnostics.txt               full diagnostic output
+harmonization_report.txt      entity-resolution log with spot checks</code></p>
+<p>Rerun end to end with <code>python3 01_ingest.py &amp;&amp; python3 02_harmonize.py &amp;&amp; python3
+02b_entity_review.py &amp;&amp; python3 03_build_model_data.py &amp;&amp; python3 04_gibbs.py 15000 &amp;&amp;
+python3 05_diagnostics.py &amp;&amp; python3 06_figures.py &amp;&amp; python3 07_dashboard.py</code>.
+Requires <code>pandas</code>, <code>numpy</code>, <code>scipy</code>, <code>rapidfuzz</code>, <code>unidecode</code>, <code>arviz</code>, <code>matplotlib</code>,
+<code>pyreadr</code>, and the raw files under <code>data/raw/</code>.</p>
+</div></body></html>

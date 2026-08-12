@@ -1,0 +1,709 @@
+Provenance of every input file (retrieved 12 August 2026).
+All sources are open GitHub mirrors; primary ranking sites and general data
+repositories were unreachable from this environment. See METHODS_MEMO.md §1.
+
+leiden/CWTS-Leiden-Ranking-Open-Edition                  https://github.com/CWTSLeiden/CWTS-Leiden-Ranking-Open-Edition.git  @dfbd277 (2025-10-29)
+leiden/LeidenRanking                                     https://github.com/fsbmat-ufv/LeidenRanking.git  @7d25a08 (2021-07-07)
+uni-ranks                                                https://github.com/d2ski/uni-ranks.git  @9f506ed (2021-11-02)
+
+=== SECOND WAVE: per-file source URLs and collection notes ===
+
+--- arwu/arwu_2023_webfetch.source.txt
+ARWU / ShanghaiRanking edition 2023
+Source URL: https://www.shanghairanking.com/api/pub/v1/arwu/rank?version=2023
+(public JSON API; discovered via https://github.com/ChalmersLibrary/ShanghaiRankingListsToCSV)
+Method: Channel B WebFetch transcription of the JSON payload.
+Every chunk fetched TWICE with differently-worded prompts; only rows where both agreed
+exactly on rank_display + institution were kept.
+
+Rows: 231 total = 100 exact-rank + 131 banded.
+Disagreement rate on this pass: 0.00% (0/167).
+
+COLUMNS
+  rank_display  the ranking field copied VERBATIM from the API ("57" or "101-150")
+  rank_low/high band edges parsed from rank_display (equal to each other when not a band)
+  is_band       1 if the source gave a band rather than an exact rank
+  total_score   published only for exact ranks; empty/null for banded institutions
+
+IMPORTANT ON BANDS
+ARWU publishes exact ranks only to 100; below that institutions are grouped into bands and
+listed ALPHABETICALLY within each band, with no per-institution rank or score. Band membership
+here was established two ways and both agree:
+  (a) the alphabetical sequence restarts at each band boundary in the raw payload, and
+  (b) targeted single-institution lookups on the boundary names were run twice with different
+      wording and returned the same band string.
+No band label was inferred from position alone.
+
+TRANSCRIPTION FAULT FOUND AND WORKED AROUND
+Asking the fetch model for 'elements whose ranking is exactly "151-200"' made it return the
+101-150 band as well and stamp the requested label onto every row. Positional requests
+("elements 151-200 of the array") failed the same way. Only explicit-exclusion prompts
+("output the 151-200 band, exclude everything in 101-150") returned clean bands. Any future
+pass over this API should use the exclusion phrasing and verify boundary names.
+
+COVERAGE LIMIT
+WebFetch truncates this payload partway through the 201-300 band, so the file stops there.
+Ranks beyond ~300 (bands 301-400 ... 901-1000) are NOT captured and cannot be reached through
+this channel. A client that can stream the full ~1 MB JSON would get all 1,000.
+
+--- arwu/arwu_2024_webfetch.source.txt
+ARWU / ShanghaiRanking edition 2024
+Source URL: https://www.shanghairanking.com/api/pub/v1/arwu/rank?version=2024
+(public JSON API; discovered via https://github.com/ChalmersLibrary/ShanghaiRankingListsToCSV)
+Method: Channel B WebFetch transcription of the JSON payload.
+Every chunk fetched TWICE with differently-worded prompts; only rows where both agreed
+exactly on rank_display + institution were kept.
+
+Rows: 232 total = 100 exact-rank + 132 banded.
+Disagreement rate on this pass: 0.00% (0/132).
+
+COLUMNS
+  rank_display  the ranking field copied VERBATIM from the API ("57" or "101-150")
+  rank_low/high band edges parsed from rank_display (equal to each other when not a band)
+  is_band       1 if the source gave a band rather than an exact rank
+  total_score   published only for exact ranks; empty/null for banded institutions
+
+IMPORTANT ON BANDS
+ARWU publishes exact ranks only to 100; below that institutions are grouped into bands and
+listed ALPHABETICALLY within each band, with no per-institution rank or score. Band membership
+here was established two ways and both agree:
+  (a) the alphabetical sequence restarts at each band boundary in the raw payload, and
+  (b) targeted single-institution lookups on the boundary names were run twice with different
+      wording and returned the same band string.
+No band label was inferred from position alone.
+
+TRANSCRIPTION FAULT FOUND AND WORKED AROUND
+Asking the fetch model for 'elements whose ranking is exactly "151-200"' made it return the
+101-150 band as well and stamp the requested label onto every row. Positional requests
+("elements 151-200 of the array") failed the same way. Only explicit-exclusion prompts
+("output the 151-200 band, exclude everything in 101-150") returned clean bands. Any future
+pass over this API should use the exclusion phrasing and verify boundary names.
+
+COVERAGE LIMIT
+WebFetch truncates this payload partway through the 201-300 band, so the file stops there.
+Ranks beyond ~300 (bands 301-400 ... 901-1000) are NOT captured and cannot be reached through
+this channel. A client that can stream the full ~1 MB JSON would get all 1,000.
+
+--- arwu/arwu_2025_webfetch.source.txt
+ARWU / ShanghaiRanking edition 2025
+Source URL: https://www.shanghairanking.com/api/pub/v1/arwu/rank?version=2025
+(public JSON API; discovered via https://github.com/ChalmersLibrary/ShanghaiRankingListsToCSV)
+Method: Channel B WebFetch transcription of the JSON payload.
+Every chunk fetched TWICE with differently-worded prompts; only rows where both agreed
+exactly on rank_display + institution were kept.
+
+Rows: 231 total = 100 exact-rank + 131 banded.
+Disagreement rate on this pass: 0.00% (0/131).
+
+COLUMNS
+  rank_display  the ranking field copied VERBATIM from the API ("57" or "101-150")
+  rank_low/high band edges parsed from rank_display (equal to each other when not a band)
+  is_band       1 if the source gave a band rather than an exact rank
+  total_score   published only for exact ranks; empty/null for banded institutions
+
+IMPORTANT ON BANDS
+ARWU publishes exact ranks only to 100; below that institutions are grouped into bands and
+listed ALPHABETICALLY within each band, with no per-institution rank or score. Band membership
+here was established two ways and both agree:
+  (a) the alphabetical sequence restarts at each band boundary in the raw payload, and
+  (b) targeted single-institution lookups on the boundary names were run twice with different
+      wording and returned the same band string.
+No band label was inferred from position alone.
+
+TRANSCRIPTION FAULT FOUND AND WORKED AROUND
+Asking the fetch model for 'elements whose ranking is exactly "151-200"' made it return the
+101-150 band as well and stamp the requested label onto every row. Positional requests
+("elements 151-200 of the array") failed the same way. Only explicit-exclusion prompts
+("output the 151-200 band, exclude everything in 101-150") returned clean bands. Any future
+pass over this API should use the exclusion phrasing and verify boundary names.
+
+COVERAGE LIMIT
+WebFetch truncates this payload partway through the 201-300 band, so the file stops there.
+Ranks beyond ~300 (bands 301-400 ... 901-1000) are NOT captured and cannot be reached through
+this channel. A client that can stream the full ~1 MB JSON would get all 1,000.
+
+--- cwur/NOTES_remaining_depth.txt
+CWUR back years (2016-2023): all eight editions are at a uniform depth of ranks 1-120.
+The request was ~300 rows each; that was not reached. Effort was spread evenly instead of
+deepening a subset, per instruction that years beat depth.
+
+State: 2016, 2017, 2018-19 were raised 60 -> 120 this pass. 2019-20, 2020-21, 2021-22,
+2022-23 and 2023 were already at 120 and are unchanged.
+
+To extend to 300: the pages serve the full 2,000-row table and chunked WebFetch reads them
+reliably (the 200-260 calibration against a known-good mirror was 61/61 exact). Each
+additional 60 ranks costs 2 fetches per year, so 120 -> 300 is 6 fetches x 8 years = 48
+fetches. Nothing blocks it; it is purely a budget item. Use ranges 121-180, 181-240, 241-300.
+
+URL map (several differ from the obvious pattern):
+  2016    https://cwur.org/2016.php
+  2017    https://cwur.org/2017.php
+  2018-19 https://cwur.org/2018-19.php
+  2019-20 https://cwur.org/2019-20.php
+  2020-21 https://cwur.org/2020-21.php
+  2021-22 https://cwur.org/2021.php      <- NOT 2021-22.php (404)
+  2022-23 https://cwur.org/2022-23.php
+  2023    https://cwur.org/2023.php
+2024 and 2025 are already complete at 2,000 rows each from GitHub mirrors.
+
+--- cwur/cwur_2016_webfetch.source.txt
+CWUR edition 2016
+Source URL: https://cwur.org/2016.php
+Method: Channel B WebFetch transcription.
+Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
+agreed exactly on rank + institution were kept.
+Rows: 120   Rank coverage: 1-120
+Disagreement rate: 0.00%   Duplicate institution names: 0
+Ranks strictly increasing: yes.
+
+Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
+200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
+
+URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
+2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
+/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
+transient, not missing pages.
+
+--- cwur/cwur_2017_webfetch.source.txt
+CWUR edition 2017
+Source URL: https://cwur.org/2017.php
+Method: Channel B WebFetch transcription.
+Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
+agreed exactly on rank + institution were kept.
+Rows: 120   Rank coverage: 1-120
+Disagreement rate: 0.00%   Duplicate institution names: 0
+Ranks strictly increasing: yes.
+
+Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
+200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
+
+URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
+2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
+/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
+transient, not missing pages.
+
+--- cwur/cwur_2018_webfetch.source.txt
+CWUR edition 2018-19
+Source URL: https://cwur.org/2018-19.php
+Method: Channel B WebFetch transcription.
+Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
+agreed exactly on rank + institution were kept.
+Rows: 120   Rank coverage: 1-120
+Disagreement rate: 0.00%   Duplicate institution names: 0
+Ranks strictly increasing: yes.
+
+Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
+200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
+
+URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
+2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
+/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
+transient, not missing pages.
+
+--- cwur/cwur_2019_webfetch.source.txt
+CWUR edition 2019-20
+Source URL: https://cwur.org/2019-20.php
+Method: Channel B WebFetch transcription.
+Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
+agreed exactly on rank + institution were kept.
+Rows: 120   Rank coverage: 1-120
+Disagreement rate: 0.00%   Duplicate institution names: 0
+Ranks strictly increasing: yes.
+
+Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
+200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
+
+URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
+2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
+/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
+transient, not missing pages.
+
+--- cwur/cwur_2020_webfetch.source.txt
+CWUR edition 2020-21
+Source URL: https://cwur.org/2020-21.php
+Method: Channel B WebFetch transcription.
+Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
+agreed exactly on rank + institution were kept.
+Rows: 120   Rank coverage: 1-120
+Disagreement rate: 0.00%   Duplicate institution names: 0
+Ranks strictly increasing: yes.
+
+Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
+200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
+
+URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
+2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
+/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
+transient, not missing pages.
+
+--- cwur/cwur_2021_webfetch.source.txt
+CWUR edition 2021-22
+Source URL: https://cwur.org/2021.php
+Method: Channel B WebFetch transcription.
+Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
+agreed exactly on rank + institution were kept.
+Rows: 120   Rank coverage: 1-120
+Disagreement rate: 0.00%   Duplicate institution names: 0
+Ranks strictly increasing: yes.
+
+Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
+200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
+
+URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
+2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
+/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
+transient, not missing pages.
+
+--- cwur/cwur_2022_webfetch.source.txt
+CWUR edition 2022-23
+Source URL: https://cwur.org/2022-23.php
+Method: Channel B WebFetch transcription.
+Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
+agreed exactly on rank + institution were kept.
+Rows: 120   Rank coverage: 1-120
+Disagreement rate: 0.00%   Duplicate institution names: 0
+Ranks strictly increasing: yes.
+
+Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
+200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
+
+URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
+2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
+/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
+transient, not missing pages.
+
+--- cwur/cwur_2023_webfetch.source.txt
+CWUR edition 2023
+Source URL: https://cwur.org/2023.php
+Method: Channel B WebFetch transcription.
+Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
+agreed exactly on rank + institution were kept.
+Rows: 120   Rank coverage: 1-120
+Disagreement rate: 0.00%   Duplicate institution names: 0
+Ranks strictly increasing: yes.
+
+Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
+200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
+
+URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
+2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
+/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
+transient, not missing pages.
+
+--- cwur/cwur_2024_github.source.txt
+CWUR 2024 edition (2,000 institutions)
+Channel A - GitHub mirror
+repo: https://github.com/Vigne98/World_University_Rankings_2024_CWUR
+file: "World University Rankings 2024.xlsx" (sheet Table_1)
+Verified against live https://cwur.org/2024.php :
+  - top 12 rows exact match (rank, institution, location, score)
+  - rows 200-260 exact match, 61/61 (100%) on rank+institution+location
+
+--- cwur/cwur_2025_github.source.txt
+CWUR 2025 edition (2,000 institutions)
+Channel A - GitHub mirror
+repo: https://github.com/lkj20/CENTER-FOR-WORLD-UNIVERSITY-RANKINGS
+file: cwur_2026_all_universities.csv  (repo labels it 2026; content matches cwur.org/2025.php)
+Verified against live https://cwur.org/2025.php : top 12 rows exact match.
+
+--- leiden/NOTES_not_obtained.txt
+CWTS Leiden Ranking - NO NEW EDITIONS OBTAINED. No data files written.
+
+Download index (readable via WebFetch): https://traditional.leidenranking.com/downloads
+Confirmed official file URLs for the missing editions:
+  2025 https://doi.org/10.5281/zenodo.17473109
+  2024 https://doi.org/10.5281/zenodo.12606083
+  2023 https://doi.org/10.5281/zenodo.8027120
+  2022 https://doi.org/10.5281/zenodo.6652118
+  2018 https://doi.org/10.17026/dans-xpt-2ues
+  2017 https://doi.org/10.17026/dans-xsm-22ch
+  2016 https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202016.zip
+  2015 https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202015.zip
+  2014 https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202014.zip
+  2013 https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202013.zip
+  2011/12 https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202011-2012.zip
+
+Why nothing was retrieved:
+ - bash/curl cannot reach either host (org network policy; only github.com,
+   raw.githubusercontent.com, pypi.org, registry.npmjs.org are permitted).
+ - WebFetch CAN reach the .zip URLs but returns BINARY_UNREADABLE - it has no
+   decompression step, so a zip yields nothing usable.
+ - WebFetch CAN read the Zenodo record pages and list their files, but the payload
+   for e.g. 2024 is a single 262.3 MB .xlsx - far beyond what WebFetch can parse.
+ - https://traditional.leidenranking.com/ranking/2024/list renders results client-side;
+   WebFetch sees only the query form, no table (NO_TABLE).
+ - GitHub mirrors searched: only CWTSLeiden/CWTS-Leiden-Ranking-Open-Edition exists and
+   it contains SQL/C# source for building the ranking, no ranking data.
+
+To finish this gap a channel that can download and unzip a binary file is required.
+
+--- natureindex/NOTES.txt
+Nature Index institutional tables
+=================================
+OBTAINED (after second pass): 2016, 2019, 2021, 2023.  Plus 2025 already held.
+  natureindex_2021_institutions_top500.csv - 500 rows, Channel A (GitHub mirror).
+  Columns: rank,Institution,Country,Share 2019,Share 2020,Count 2020,
+           Change Adjusted in Share 2019-2020,lat,lng
+  lat/lng were added by the repo author by geocoding - they are NOT Nature Index fields.
+  Already held elsewhere: institution-2025.csv (2025 edition) in raw/natureindex/.
+
+SECOND PASS 2026-08-12 added, via Channel B (WebFetch transcription of the nature.com URL):
+  natureindex_2019_institutions_top270.csv  270 rows  ranks 1-270
+  natureindex_2016_institutions_top120.csv  120 rows  ranks 1-120
+  natureindex_2023_institutions_top120.csv  120 rows  ranks 1-120
+  Header: rank|institution|country|count|share|provenance   (pipe-delimited)
+  Each file's Count/Share are that EDITION'S OWN figures. Nature Index restates prior-year
+  Share in each edition; no back-restated column was taken from a later edition, and the
+  2021 file's "Share 2019" column should NOT be mixed with the 2019 file's Share.
+  QA: ranks strictly increasing, no duplicate institutions, no blank names, leader is
+  Chinese Academy of Sciences in 2016/2019/2023 (correct for the all-sector table).
+  One fetch of 2019 returned ranks 1-271 but rank 271 arrived truncated (Share missing);
+  that row was DISCARDED, not guessed.
+  DEPTH CAP: 2016 and 2023 were capped at 120 rows to fit the session budget, not by any
+  limit of the source; one WebFetch reliably returns ~270 rows of this table.
+
+CAVEAT: these are ALL-SECTOR tables (CAS, Max Planck, CNRS, NIH, national labs appear),
+not universities only - same convention as the 2021 and 2025 files.
+
+STILL NOT OBTAINED: 2017, 2018, 2020, 2022, 2024; and ranks 121+ for 2016/2023,
+ranks 271+ for 2019.
+Channel A: GitHub search is largely poisoned by the unrelated Norwegian "Nature Index"
+  (biodiversity) project; no repo mirroring the historical institutional tables was found.
+Channel B: natureindex.com/annual-tables/<year>/institution/all/all/global 302-redirects to
+  https://www.nature.com/nature-index/research-leaders/<year>/institution/all/all/global
+  which IS readable by WebFetch and does render the institution table (verified for 2020:
+  returned rank|institution|country|count|share correctly, led by Chinese Academy of
+  Sciences 5538/1769.24, Harvard 2638/921.98). So the remaining years ARE obtainable by
+  WebFetch transcription of that URL pattern, one year at a time, with pagination.
+  Not done this session for context-budget reasons. No rows were invented.
+
+--- natureindex/natureindex_2016_institutions_top120.source.txt
+https://www.nature.com/nature-index/research-leaders/2016/institution/all/all/global
+(reached via natureindex.com/annual-tables/2016/institution/all/all/global which 302-redirects there)
+retrieved 2026-08-12. provenance=webfetch_transcription. Delimiter=pipe.
+EDITION: the 2016 annual table; Count/Share are that edition's own figures, NOT numbers
+back-restated by a later edition. DEPTH: ranks 1-120 only (deliberately capped to fit budget).
+ALL-SECTOR table (includes CAS, Max Planck, CNRS, NIH, national labs), not universities only.
+
+--- natureindex/natureindex_2019_institutions_top270.source.txt
+https://www.nature.com/nature-index/research-leaders/2019/institution/all/all/global
+(reached via natureindex.com/annual-tables/2019/institution/all/all/global which 302-redirects there)
+retrieved 2026-08-12. provenance=webfetch_transcription. Delimiter=pipe.
+EDITION: the 2019 annual table. Count/Share are the edition-year figures shown on that page
+(Nature Index 2019 tables report data for calendar year 2018). No back-restated prior-year
+column was taken from a later edition.
+DEPTH: ranks 1-270. One WebFetch returned ranks 1-271 but rank 271 (Keio University) arrived
+TRUNCATED mid-value (count 261, Share missing), so it was DISCARDED rather than guessed.
+Ranks 272+ were not captured.
+NOTE: this is an ALL-SECTOR table (it includes CAS, Max Planck, CNRS, NIH, national labs),
+not universities only - same convention as the 2025 and 2021 files already held.
+
+--- natureindex/natureindex_2021_institutions_top500.source.txt
+Nature Index 2021 annual table - institutions, global, all subjects. Top 500.
+Channel A (GitHub mirror), NOT a webfetch transcription.
+repo:   https://github.com/lynerlwl/nature-index-map.git
+commit: see below
+path in repo: data/nature_index_2021_with_coord.csv
+Columns: rank,Institution,Country,Share 2019,Share 2020,Count 2020,Change Adjusted in Share 2019-2020,lat,lng
+NOTE: lat/lng were added by the repo author (geocoding), they are NOT Nature Index fields.
+Underlying source: natureindex.com annual tables 2021 (data year 2020).
+provenance=github_mirror_thirdparty
+5629ea842bea9710208f0ddae01a99be0fcd9929
+
+--- natureindex/natureindex_2023_institutions_top120.source.txt
+https://www.nature.com/nature-index/research-leaders/2023/institution/all/all/global
+(reached via natureindex.com/annual-tables/2023/institution/all/all/global which 302-redirects there)
+retrieved 2026-08-12. provenance=webfetch_transcription. Delimiter=pipe.
+EDITION: the 2023 annual table; Count/Share are that edition's own figures, NOT numbers
+back-restated by a later edition. DEPTH: ranks 1-120 only (deliberately capped to fit budget).
+ALL-SECTOR table (includes CAS, Max Planck, CNRS, NIH, national labs), not universities only.
+
+--- qs/NOTES_remaining_gaps.txt
+QS - obtained 2011 only (see qs_2011_webfetch.csv). Still missing: 2004-2010 and 2013.
+
+Leads checked and their outcome:
+ - https://content.qs.com/supplement2011/top500.pdf  -> WORKS, this is the 2011 source used.
+   It holds 500 rows; transcription was stopped at rank 120 for budget reasons.
+   Ranks 121-500 are still available at this URL if more depth is wanted.
+ - https://content.qs.com/supplement2010/top500.pdf  -> HTTP 403.
+ - https://www.topuniversities.com/world-university-rankings/2010 -> 404
+ - https://www.topuniversities.com/university-rankings/world-university-rankings/2010 -> 404
+ - https://www.topuniversities.com/system/files/pdf-uploads/QS_WUR_Supplement2014.pdf
+   Web-search snippets label this "QS World University Rankings 2013/14", but TWO independently
+   worded WebFetch reads BOTH reported the main table is the 2014/15 edition (rank 1 = MIT,
+   2= Cambridge/Imperial). 2014 is already held, so this file was NOT saved and NOT labelled 2013.
+ - https://council-icc.org/wp-content/uploads/QS_World_University_Rankings.pdf -> is the 2018
+   edition (already held). Not saved.
+No source for QS 2004-2010 or 2013 was found within budget.
+
+--- qs/qs_2011_webfetch.source.txt
+QS World University Rankings 2011 - top 500 supplement
+Source URL: https://content.qs.com/supplement2011/top500.pdf
+Method: Channel B WebFetch transcription of the official QS PDF.
+Every chunk fetched TWICE with differently-worded prompts; only rows where both agreed
+exactly on rank_display + institution were kept.
+
+Rows: 494 (400 with an individual rank, 94 banded).
+Rank coverage: 1-400 individually, then bands 401-450 and 451-500.
+Disagreement rate across the 121-500 extension pass: 2.37% (12/506).
+
+COLUMNS
+  rank_display  rank copied VERBATIM from the PDF; "=" marks a tie (e.g. "169="), and the
+                bottom two groups are band strings ("401-450","451-500")
+  rank_low/high band edges; for individual ranks both equal the rank with "=" stripped
+  is_band       1 for the 401-450 / 451-500 groups
+
+STRUCTURE OF THE SOURCE
+QS 2011 prints individual ranks only to 400. Ranks 401-500 are published as two unordered
+alphabetical groups with no per-institution rank, so no ordering within those bands exists
+to recover - the band edges are the whole of the information.
+
+ROWS DROPPED BY THE AGREEMENT RULE (12)
+The two transcriptions of the 401-450 band differed on these names only in whether the
+printed parenthetical acronym was retained. They are genuine institutions, but the two reads
+did not match character-for-character so they were excluded rather than adjudicated:
+  - Dublin Institute of Technology
+  - Dublin Institute of Technology (DIT)
+  - Indian Institute of Technology Roorkee
+  - Indian Institute of Technology Roorkee (IITR)
+  - Johannes Kepler Universität Linz
+  - Johannes Kepler Universität Linz (JKU)
+  - Universidad de Los Andes
+  - Universidad de Los Andes Colombia
+  - Universidade Federal de São Paulo
+  - Universidade Federal de São Paulo (UNIFESP)
+  - Universiti Teknologi Malaysia
+  - Universiti Teknologi Malaysia (UTM)
+
+--- reuters/NOTES.txt
+See ../SOURCES.txt for full provenance, verification method and caveats.
+_pass1/ holds the first-pass verbatim transcriptions the CSVs were built from.
+
+--- reuters/reuters_europe_2016.source.txt
+https://www.timeshighereducation.com/features/100-most-innovative-universities-europe-2016
+
+--- reuters/reuters_europe_2017.source.txt
+https://www.timeshighereducation.com/student/news/100-most-innovative-universities-europe-2017
+
+--- reuters/reuters_europe_2018.source.txt
+https://www.timeshighereducation.com/student/news/top-100-most-innovative-universities-europe-2018
+
+--- reuters/reuters_europe_2019.source.txt
+https://www.timeshighereducation.com/student/news/most-innovative-universities-europe-2019
+
+--- reuters/reuters_world_2015.source.txt
+https://www.timeshighereducation.com/worlds-most-innovative-universities-2015-results
+
+--- reuters/reuters_world_2017.source.txt
+https://www.timeshighereducation.com/student/news/top-100-most-innovative-universities-world-2017
+
+--- reuters/reuters_world_2018.source.txt
+https://www.thomsonreuters.com/en/press-releases/2018/october/stanford-mit-and-harvard-top-the-fourth-annual-reuters-top-100-ranking-of-the-most-innovative-universities
+
+--- reuters/reuters_world_2019.source.txt
+https://www.prnewswire.com/news-releases/stanford-mit-and-harvard-top-the-fifth-annual-reuters-top-100-ranking-of-the-most-innovative-universities-300943569.html
+
+--- scimago/NOTES.txt
+SCImago Institutions Rankings - editions obtained 2026-08-12
+============================================================
+CHANNEL: Channel B, but the BEST sub-case of it - the documented bulk CSV endpoint
+  https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=YYYY&top=300&format=csv&type=download
+WebFetch returns this endpoint's payload verbatim (semicolon-delimited), so this is a raw
+file download surfaced through WebFetch, not a small-model transcription of a rendered table.
+
+FILES (all sector=Higher educ., i.e. universities only; top 300 per edition):
+  COMPLETE ANNUAL SERIES 2009-2019 + latest edition.  12 files, 3602 rows total.
+  scimago_2009_higher-educ_top300.csv   300 rows  5 cols
+  scimago_2010_higher-educ_top300.csv   300 rows  5 cols
+  scimago_2011_higher-educ_top300.csv   301 rows  5 cols  (tie at rank 300 -> 301 rows)
+  scimago_2012_higher-educ_top300.csv   300 rows  5 cols
+  scimago_2013_higher-educ_top300.csv   300 rows  5 cols
+  scimago_2014_higher-educ_top300.csv   300 rows  5 cols
+  scimago_2015_higher-educ_top300.csv   300 rows  5 cols
+  scimago_2016_higher-educ_top300.csv   301 rows  5 cols  (tie at rank 300 -> 301 rows)
+  scimago_2017_higher-educ_top300.csv   300 rows  5 cols  (last rank is 299, tie at 299)
+  scimago_2018_higher-educ_top300.csv   300 rows  5 cols
+  scimago_2019_higher-educ_top300.csv   300 rows  5 cols
+  scimago_2024_higher-educ_top300.csv   300 rows  6 cols  (= LATEST edition, see caveat)
+  NOTE: the endpoint returns all members of a tie group, so top=300 can yield 301 rows.
+Columns 2009/2014/2019: Rank;Global Rank;Institution;Country;Sector
+Columns 2024:           Rank;Global Rank;Institution;Country;Sector;Best Country Quartile
+  "Rank"        = rank within the Higher educ. sector
+  "Global Rank" = rank across ALL sectors (govt, health, companies, non-profit included)
+  A trailing " *" on an institution name is SCImago's own marker, kept verbatim.
+  No overall composite score is exposed by this endpoint in any year.
+
+*** IMPORTANT CAVEAT ON THE YEAR PARAMETER ***
+The endpoint only serves DISTINCT archived editions for year=2009..2019.
+Any year >= 2020 returns the current/latest edition. Verified: year=2020, 2021, 2022,
+2023, 2025, 2026 and even the nonsense year=2099 all return byte-identical payloads.
+So the file labelled 2024 is really "the latest edition the endpoint serves"; its true
+edition year is NOT established by the endpoint. 2025 and 2026 editions were NOT obtained
+as separate editions and no separate files were created for them - that would have been
+duplicate data masquerading as new years.
+
+VERIFICATION / disagreement rate:
+ 1. year=2023 and year=2024 were fetched as separate URLs with differently-worded prompts.
+    Both returned identical 300-row payloads: 0/300 rows disagreed on rank+institution.
+    (They are the same edition - see caveat - which is exactly why this is a clean
+    duplicate-transcription test.)
+ 2. 2009 was re-fetched a second time with a different URL and a different prompt style
+    ("reproduce rows 1,2,3,50,100,150,200,250,299,300"). 9/10 spot rows matched exactly.
+    The single mismatch (row 50) was then adjudicated with a third contiguous-range fetch
+    (top=55, "last 12 lines"), which confirmed the ORIGINAL file is correct
+    (49=Karolinska Institute/73, 50=Universitat Heidelberg/74). The verification fetch had
+    blended adjacent rows. Net disagreement on the primary transcriptions: 0/10.
+    LESSON: contiguous-range prompts are reliable; "pick out row N" prompts are not.
+ 2b. Second pass used ONLY contiguous-range prompts, per that lesson. 2012 was re-fetched
+    independently (top=55, "last 12 lines") and compared to the saved file:
+    0/11 rows disagreed on rank + institution + country.
+ 3. Structural QA on all 4 files: exactly 300 data rows each, rank monotonic
+    non-decreasing 1..300 (ties present, as in source), 0 duplicate institution names,
+    0 blank names, leader = Harvard University in every year (plausible for SCImago
+    higher-ed sector; the all-sector list is topped by Chinese Academy of Sciences etc.).
+
+FRACTION OF EACH EDITION CAPTURED: top 300 universities only. A full higher-educ edition
+is roughly 4000-8000 institutions, so this is very roughly the top 4-8%. The endpoint
+truncates at ~1680 lines through WebFetch (top=0 was cut off mid-row at line 1681), so
+full editions are not retrievable in one call; they would need country-by-country
+partitioning via the &country= parameter.
+
+2026-08-12 SECOND PASS: years 2010-2013 and 2015-2018 were added, completing the annual
+series. Each was a single call of the same form. All 12 files re-validated together:
+ranks monotonic non-decreasing in every file, no ragged rows, no blank institution names,
+no duplicate institution names within a year, and Harvard University is rank 1 in all 12.
+Cross-year check: 198 institutions appear in ALL 12 editions -> a usable balanced panel.
+
+STILL MISSING: ranks 301+ for every year (depth was not extended; the &country= partition
+approach was not attempted), and any genuine 2025/2026 edition (the endpoint does not
+serve one - see caveat above).
+
+--- scimago/scimago_2009_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2009&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint (raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2010_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2010&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
+(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2011_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2011&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
+(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2012_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2012&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
+(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2013_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2013&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
+(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2014_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2014&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint (raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2015_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2015&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
+(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2016_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2016&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
+(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2017_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2017&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
+(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2018_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2018&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
+(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2019_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2019&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint (raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+
+--- scimago/scimago_2024_higher-educ_top300.source.txt
+https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2024&top=300&format=csv&type=download
+retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint (raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
+retrieved 2026-08-12 via WebFetch; delimiter=semicolon; verbatim CSV endpoint (not a transcription of a rendered table).
+Fetched twice with differently-worded prompts (2024 direct + 2023 URL which the server served identical content for); see NOTES.txt
+
+--- usnews/NOTES_not_obtained.txt
+U.S. News Best Global Universities - NO NEW EDITIONS OBTAINED. No data files written.
+
+Attempts:
+ - https://www.usnews.com/education/best-global-universities/rankings -> HTTP 403 to WebFetch
+   (bot protection). bash/curl is blocked from the host entirely by org network policy.
+ - GitHub API repository search for "best global universities us news" and
+   "usnews global universities ranking data" returned zero repositories.
+ - frishberg/US-College-Ranking-Data contains external-data/historical-usnews.json, but that
+   is the U.S. NATIONAL Universities ranking (168 US institutions, 1984-2023), a different
+   product from Best Global Universities - not used.
+ - yanfrog/us_news_annual_ranking is a scraper skeleton (schools_url.csv only), no ranking data.
+
+Remaining gap unchanged: fuller tables for 2014-2025.
+
+--- webometrics/webometrics_2025-07_full.source.txt
+Webometrics Ranking Web of Universities, July 2025 edition (2025.2.0). FULL edition.
+Channel: LOCAL re-extraction from the official source PDF (no network, no transcription).
+Source PDF: /root/uniranks/raw/webometrics/Webometrics_2025-07_source.pdf
+  Title "Ranking Web (webometrics.info) July 2025", Author Isidro Aguillo Cano, 921 pages.
+  (PDF itself came from https://github.com/singularityhacker/webometrics-rankings.git @ d82cca8)
+Extractor: /root/uniranks/work_parse_webo.py  (pdfplumber word-geometry, nearest-anchor row assembly)
+provenance=local_pdf_extraction
+
+WHY THIS SUPERSEDES raw/webometrics/webometrics_rankings_2025-07.csv:
+  new: 32053 rows | old: 28122 rows  (+3931 rows recovered)
+  old had 72 rows whose name was the literal string "NO", plus many names truncated at
+  a line break (multi-line / CJK / Cyrillic names) and one row whose name was a ROR URL.
+  new: 0 blank names, 0 "NO" names, multi-line names correctly re-joined.
+  new has ror_url for 16806 rows vs 13361 in the old file.
+QA: ranks monotonic non-decreasing, min 1 max 31869 (ties present, as in the source).
+    Only 2 blocks rejected across 921 pages - both are the article's prose front matter
+    (pages 1-2), not ranking rows. See webometrics_2025-07_full.rejected_blocks.json.
+Edition total per the paper's own abstract: "almost 32,000 HEIs" - consistent with 32053.
+Note: a leading "(n)" in a name is present verbatim as printed in the source PDF.
+
+
+--- notes recorded during first-wave collection ---
+
+Provenance of downloaded files (retrieved 2026-08-12)
+
+ntu/taiwan_ranks.csv
+  https://github.com/jlehtoma/taiwan_rank.git @ 1780134 (2017-10-17)
+  path in repo: data/taiwan_ranks.csv
+  NTU Ranking (Performance Ranking of Scientific Papers), top 100 per year, 2007-2017.
+
+webometrics/webometrics_rankings_2025-07.csv
+webometrics/Webometrics_2025-07_source.pdf
+  https://github.com/singularityhacker/webometrics-rankings.git @ d82cca8 (2025-12-02)
+  Extracted by repo author from the official Webometrics July 2025 PDF (included).
+  Single edition (2025.2.0) only, no historical years.
+
+natureindex/institution-2025.csv
+  https://github.com/Jyotirmoyp/Nature_index_ranking.git @ da4f840 (2026-02-21)
+  Nature Index institutional table, 2025 edition only.
+
+scimago/scimago_top500_secondary-scrape.json
+  https://github.com/sharmadhiraj/free-json-datasets.git @ 8e768b6 (2026-01-29)
+  path in repo: docs/education-knowledge/research_and_innovation_rankings.json
+  SECONDARY third-party scrape, top 500 institutions only, no indicator scores,
+  edition year not stated by source (file timestamp 2025-12-17). NOT the official
+  SCImago Institutions Rankings download. Treat as low-confidence provenance.
+
+NOT OBTAINED: URAP, Round University Ranking (RUR), Reuters Most Innovative
+Universities. See the task report for the hosts and repositories tried.
+
+Egress note: this sandbox's gateway returns 403 to CONNECT for all primary
+ranking-source hosts (www.scimagoir.com, urapcenter.org, nturanking.csti.tw,
+roundranking.com, www.webometrics.info) and for all general data repositories
+(zenodo.org, figshare.com, osf.io, data.world, kaggle.com, huggingface.co,
+archive.org, gitlab.com). Only github.com and pypi.org are reachable.
