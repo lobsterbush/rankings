@@ -21,7 +21,8 @@ full = np.load(f"{W}/posterior.npz", allow_pickle=True)["theta"]
 C, D, I, T = full.shape
 base = full.reshape(-1, I, T).mean(0)
 
-DROP = ["ARWU", "THE", "QS", "CWUR", "SCImago", "Leiden"]
+DROP = ["ARWU", "THE", "QS", "CWUR", "SCImago", "Leiden",
+        "URAP", "Webometrics", "USNews", "NTU"]
 N_IT = 2000
 rows = []
 

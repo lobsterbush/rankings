@@ -1,709 +1,1249 @@
-Provenance of every input file (retrieved 12 August 2026).
-All sources are open GitHub mirrors; primary ranking sites and general data
-repositories were unreachable from this environment. See METHODS_MEMO.md §1.
+Provenance of every input file (first pass 12 August 2026, second pass
+13 August 2026). GitHub mirrors, official endpoints, and Wayback captures;
+channels and environments are described in METHODS_MEMO.md §1.
 
+arwu/ElijahSum_shanghai-ranking-complete                 https://github.com/ElijahSum/shanghai-ranking-complete.git  @c199c21 (2023-04-18)
 leiden/CWTS-Leiden-Ranking-Open-Edition                  https://github.com/CWTSLeiden/CWTS-Leiden-Ranking-Open-Edition.git  @dfbd277 (2025-10-29)
 leiden/LeidenRanking                                     https://github.com/fsbmat-ufv/LeidenRanking.git  @7d25a08 (2021-07-07)
-uni-ranks                                                https://github.com/d2ski/uni-ranks.git  @9f506ed (2021-11-02)
+natureindex/Jyotirmoyp_Nature_index_ranking              https://github.com/Jyotirmoyp/Nature_index_ranking.git  @da4f840 (2026-02-21)
+natureindex/lynerlwl_nature-index-map                    https://github.com/lynerlwl/nature-index-map.git  @5629ea8 (2021-09-29)
+ntu/jlehtoma_taiwan_rank                                 https://github.com/jlehtoma/taiwan_rank.git  @1780134 (2017-10-17)
+qs/d2ski_uni-ranks                                       https://github.com/d2ski/uni-ranks.git  @9f506ed (2021-11-02)
+scimago/sharmadhiraj_free-json-datasets                  https://github.com/sharmadhiraj/free-json-datasets.git  @8e768b6 (2026-01-29)
+the/c3nk_THE-World-University-Rankings                   https://github.com/c3nk/THE-World-University-Rankings.git  @79eb2b1 (2026-06-25)
+usnews/rNLKJA_ranking-radar_renamed                      https://github.com/rNLKJA/qs-usnews-ranking-viz.git  @a6ed721 (2026-06-26)
+usnews/zequnyu_uRank                                     https://github.com/zequnyu/uRank.git  @c24f46b (2019-09-11)
+webometrics/singularityhacker_webometrics-rankings       https://github.com/singularityhacker/webometrics-rankings.git  @d82cca8 (2025-12-02)
 
 === SECOND WAVE: per-file source URLs and collection notes ===
 
---- arwu/arwu_2023_webfetch.source.txt
-ARWU / ShanghaiRanking edition 2023
-Source URL: https://www.shanghairanking.com/api/pub/v1/arwu/rank?version=2023
-(public JSON API; discovered via https://github.com/ChalmersLibrary/ShanghaiRankingListsToCSV)
-Method: Channel B WebFetch transcription of the JSON payload.
-Every chunk fetched TWICE with differently-worded prompts; only rows where both agreed
-exactly on rank_display + institution were kept.
-
-Rows: 231 total = 100 exact-rank + 131 banded.
-Disagreement rate on this pass: 0.00% (0/167).
-
-COLUMNS
-  rank_display  the ranking field copied VERBATIM from the API ("57" or "101-150")
-  rank_low/high band edges parsed from rank_display (equal to each other when not a band)
-  is_band       1 if the source gave a band rather than an exact rank
-  total_score   published only for exact ranks; empty/null for banded institutions
-
-IMPORTANT ON BANDS
-ARWU publishes exact ranks only to 100; below that institutions are grouped into bands and
-listed ALPHABETICALLY within each band, with no per-institution rank or score. Band membership
-here was established two ways and both agree:
-  (a) the alphabetical sequence restarts at each band boundary in the raw payload, and
-  (b) targeted single-institution lookups on the boundary names were run twice with different
-      wording and returned the same band string.
-No band label was inferred from position alone.
-
-TRANSCRIPTION FAULT FOUND AND WORKED AROUND
-Asking the fetch model for 'elements whose ranking is exactly "151-200"' made it return the
-101-150 band as well and stamp the requested label onto every row. Positional requests
-("elements 151-200 of the array") failed the same way. Only explicit-exclusion prompts
-("output the 151-200 band, exclude everything in 101-150") returned clean bands. Any future
-pass over this API should use the exclusion phrasing and verify boundary names.
-
-COVERAGE LIMIT
-WebFetch truncates this payload partway through the 201-300 band, so the file stops there.
-Ranks beyond ~300 (bands 301-400 ... 901-1000) are NOT captured and cannot be reached through
-this channel. A client that can stream the full ~1 MB JSON would get all 1,000.
-
---- arwu/arwu_2024_webfetch.source.txt
-ARWU / ShanghaiRanking edition 2024
-Source URL: https://www.shanghairanking.com/api/pub/v1/arwu/rank?version=2024
-(public JSON API; discovered via https://github.com/ChalmersLibrary/ShanghaiRankingListsToCSV)
-Method: Channel B WebFetch transcription of the JSON payload.
-Every chunk fetched TWICE with differently-worded prompts; only rows where both agreed
-exactly on rank_display + institution were kept.
-
-Rows: 232 total = 100 exact-rank + 132 banded.
-Disagreement rate on this pass: 0.00% (0/132).
-
-COLUMNS
-  rank_display  the ranking field copied VERBATIM from the API ("57" or "101-150")
-  rank_low/high band edges parsed from rank_display (equal to each other when not a band)
-  is_band       1 if the source gave a band rather than an exact rank
-  total_score   published only for exact ranks; empty/null for banded institutions
-
-IMPORTANT ON BANDS
-ARWU publishes exact ranks only to 100; below that institutions are grouped into bands and
-listed ALPHABETICALLY within each band, with no per-institution rank or score. Band membership
-here was established two ways and both agree:
-  (a) the alphabetical sequence restarts at each band boundary in the raw payload, and
-  (b) targeted single-institution lookups on the boundary names were run twice with different
-      wording and returned the same band string.
-No band label was inferred from position alone.
-
-TRANSCRIPTION FAULT FOUND AND WORKED AROUND
-Asking the fetch model for 'elements whose ranking is exactly "151-200"' made it return the
-101-150 band as well and stamp the requested label onto every row. Positional requests
-("elements 151-200 of the array") failed the same way. Only explicit-exclusion prompts
-("output the 151-200 band, exclude everything in 101-150") returned clean bands. Any future
-pass over this API should use the exclusion phrasing and verify boundary names.
-
-COVERAGE LIMIT
-WebFetch truncates this payload partway through the 201-300 band, so the file stops there.
-Ranks beyond ~300 (bands 301-400 ... 901-1000) are NOT captured and cannot be reached through
-this channel. A client that can stream the full ~1 MB JSON would get all 1,000.
-
---- arwu/arwu_2025_webfetch.source.txt
-ARWU / ShanghaiRanking edition 2025
-Source URL: https://www.shanghairanking.com/api/pub/v1/arwu/rank?version=2025
-(public JSON API; discovered via https://github.com/ChalmersLibrary/ShanghaiRankingListsToCSV)
-Method: Channel B WebFetch transcription of the JSON payload.
-Every chunk fetched TWICE with differently-worded prompts; only rows where both agreed
-exactly on rank_display + institution were kept.
-
-Rows: 231 total = 100 exact-rank + 131 banded.
-Disagreement rate on this pass: 0.00% (0/131).
-
-COLUMNS
-  rank_display  the ranking field copied VERBATIM from the API ("57" or "101-150")
-  rank_low/high band edges parsed from rank_display (equal to each other when not a band)
-  is_band       1 if the source gave a band rather than an exact rank
-  total_score   published only for exact ranks; empty/null for banded institutions
-
-IMPORTANT ON BANDS
-ARWU publishes exact ranks only to 100; below that institutions are grouped into bands and
-listed ALPHABETICALLY within each band, with no per-institution rank or score. Band membership
-here was established two ways and both agree:
-  (a) the alphabetical sequence restarts at each band boundary in the raw payload, and
-  (b) targeted single-institution lookups on the boundary names were run twice with different
-      wording and returned the same band string.
-No band label was inferred from position alone.
-
-TRANSCRIPTION FAULT FOUND AND WORKED AROUND
-Asking the fetch model for 'elements whose ranking is exactly "151-200"' made it return the
-101-150 band as well and stamp the requested label onto every row. Positional requests
-("elements 151-200 of the array") failed the same way. Only explicit-exclusion prompts
-("output the 151-200 band, exclude everything in 101-150") returned clean bands. Any future
-pass over this API should use the exclusion phrasing and verify boundary names.
-
-COVERAGE LIMIT
-WebFetch truncates this payload partway through the 201-300 band, so the file stops there.
-Ranks beyond ~300 (bands 301-400 ... 901-1000) are NOT captured and cannot be reached through
-this channel. A client that can stream the full ~1 MB JSON would get all 1,000.
-
---- cwur/NOTES_remaining_depth.txt
-CWUR back years (2016-2023): all eight editions are at a uniform depth of ranks 1-120.
-The request was ~300 rows each; that was not reached. Effort was spread evenly instead of
-deepening a subset, per instruction that years beat depth.
-
-State: 2016, 2017, 2018-19 were raised 60 -> 120 this pass. 2019-20, 2020-21, 2021-22,
-2022-23 and 2023 were already at 120 and are unchanged.
-
-To extend to 300: the pages serve the full 2,000-row table and chunked WebFetch reads them
-reliably (the 200-260 calibration against a known-good mirror was 61/61 exact). Each
-additional 60 ranks costs 2 fetches per year, so 120 -> 300 is 6 fetches x 8 years = 48
-fetches. Nothing blocks it; it is purely a budget item. Use ranges 121-180, 181-240, 241-300.
-
-URL map (several differ from the obvious pattern):
-  2016    https://cwur.org/2016.php
-  2017    https://cwur.org/2017.php
-  2018-19 https://cwur.org/2018-19.php
-  2019-20 https://cwur.org/2019-20.php
-  2020-21 https://cwur.org/2020-21.php
-  2021-22 https://cwur.org/2021.php      <- NOT 2021-22.php (404)
-  2022-23 https://cwur.org/2022-23.php
-  2023    https://cwur.org/2023.php
-2024 and 2025 are already complete at 2,000 rows each from GitHub mirrors.
-
---- cwur/cwur_2016_webfetch.source.txt
-CWUR edition 2016
-Source URL: https://cwur.org/2016.php
-Method: Channel B WebFetch transcription.
-Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
-agreed exactly on rank + institution were kept.
-Rows: 120   Rank coverage: 1-120
-Disagreement rate: 0.00%   Duplicate institution names: 0
-Ranks strictly increasing: yes.
-
-Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
-200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
-
-URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
-2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
-/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
-transient, not missing pages.
-
---- cwur/cwur_2017_webfetch.source.txt
-CWUR edition 2017
-Source URL: https://cwur.org/2017.php
-Method: Channel B WebFetch transcription.
-Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
-agreed exactly on rank + institution were kept.
-Rows: 120   Rank coverage: 1-120
-Disagreement rate: 0.00%   Duplicate institution names: 0
-Ranks strictly increasing: yes.
-
-Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
-200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
-
-URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
-2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
-/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
-transient, not missing pages.
-
---- cwur/cwur_2018_webfetch.source.txt
-CWUR edition 2018-19
-Source URL: https://cwur.org/2018-19.php
-Method: Channel B WebFetch transcription.
-Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
-agreed exactly on rank + institution were kept.
-Rows: 120   Rank coverage: 1-120
-Disagreement rate: 0.00%   Duplicate institution names: 0
-Ranks strictly increasing: yes.
-
-Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
-200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
-
-URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
-2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
-/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
-transient, not missing pages.
-
---- cwur/cwur_2019_webfetch.source.txt
-CWUR edition 2019-20
-Source URL: https://cwur.org/2019-20.php
-Method: Channel B WebFetch transcription.
-Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
-agreed exactly on rank + institution were kept.
-Rows: 120   Rank coverage: 1-120
-Disagreement rate: 0.00%   Duplicate institution names: 0
-Ranks strictly increasing: yes.
-
-Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
-200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
-
-URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
-2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
-/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
-transient, not missing pages.
-
---- cwur/cwur_2020_webfetch.source.txt
-CWUR edition 2020-21
-Source URL: https://cwur.org/2020-21.php
-Method: Channel B WebFetch transcription.
-Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
-agreed exactly on rank + institution were kept.
-Rows: 120   Rank coverage: 1-120
-Disagreement rate: 0.00%   Duplicate institution names: 0
-Ranks strictly increasing: yes.
-
-Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
-200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
-
-URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
-2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
-/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
-transient, not missing pages.
-
---- cwur/cwur_2021_webfetch.source.txt
-CWUR edition 2021-22
-Source URL: https://cwur.org/2021.php
-Method: Channel B WebFetch transcription.
-Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
-agreed exactly on rank + institution were kept.
-Rows: 120   Rank coverage: 1-120
-Disagreement rate: 0.00%   Duplicate institution names: 0
-Ranks strictly increasing: yes.
-
-Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
-200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
-
-URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
-2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
-/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
-transient, not missing pages.
-
---- cwur/cwur_2022_webfetch.source.txt
-CWUR edition 2022-23
-Source URL: https://cwur.org/2022-23.php
-Method: Channel B WebFetch transcription.
-Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
-agreed exactly on rank + institution were kept.
-Rows: 120   Rank coverage: 1-120
-Disagreement rate: 0.00%   Duplicate institution names: 0
-Ranks strictly increasing: yes.
-
-Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
-200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
-
-URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
-2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
-/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
-transient, not missing pages.
-
---- cwur/cwur_2023_webfetch.source.txt
-CWUR edition 2023
-Source URL: https://cwur.org/2023.php
-Method: Channel B WebFetch transcription.
-Every rank range fetched TWICE with differently-worded prompts; only rows where both fetches
-agreed exactly on rank + institution were kept.
-Rows: 120   Rank coverage: 1-120
-Disagreement rate: 0.00%   Duplicate institution names: 0
-Ranks strictly increasing: yes.
-
-Accuracy calibration for this method: the same procedure run against cwur.org/2024.php rows
-200-260 matched a known-good GitHub mirror on 61/61 rows (100%) for rank+institution+location.
-
-URL NOTE: the per-edition URLs are not uniform. 2021-22 lives at /2021.php, while 2020-21,
-2019-20 and 2018-19 keep the hyphenated form. /2020.php, /2019.php, /2018.php and
-/2021-22.php are all 404. Intermittent HTTP 409s appear above ~3 concurrent requests and are
-transient, not missing pages.
-
---- cwur/cwur_2024_github.source.txt
-CWUR 2024 edition (2,000 institutions)
-Channel A - GitHub mirror
-repo: https://github.com/Vigne98/World_University_Rankings_2024_CWUR
-file: "World University Rankings 2024.xlsx" (sheet Table_1)
-Verified against live https://cwur.org/2024.php :
-  - top 12 rows exact match (rank, institution, location, score)
-  - rows 200-260 exact match, 61/61 (100%) on rank+institution+location
-
---- cwur/cwur_2025_github.source.txt
-CWUR 2025 edition (2,000 institutions)
-Channel A - GitHub mirror
-repo: https://github.com/lkj20/CENTER-FOR-WORLD-UNIVERSITY-RANKINGS
-file: cwur_2026_all_universities.csv  (repo labels it 2026; content matches cwur.org/2025.php)
-Verified against live https://cwur.org/2025.php : top 12 rows exact match.
-
---- leiden/NOTES_not_obtained.txt
-CWTS Leiden Ranking - NO NEW EDITIONS OBTAINED. No data files written.
-
-Download index (readable via WebFetch): https://traditional.leidenranking.com/downloads
-Confirmed official file URLs for the missing editions:
-  2025 https://doi.org/10.5281/zenodo.17473109
-  2024 https://doi.org/10.5281/zenodo.12606083
-  2023 https://doi.org/10.5281/zenodo.8027120
-  2022 https://doi.org/10.5281/zenodo.6652118
-  2018 https://doi.org/10.17026/dans-xpt-2ues
-  2017 https://doi.org/10.17026/dans-xsm-22ch
-  2016 https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202016.zip
-  2015 https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202015.zip
-  2014 https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202014.zip
-  2013 https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202013.zip
-  2011/12 https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202011-2012.zip
-
-Why nothing was retrieved:
- - bash/curl cannot reach either host (org network policy; only github.com,
-   raw.githubusercontent.com, pypi.org, registry.npmjs.org are permitted).
- - WebFetch CAN reach the .zip URLs but returns BINARY_UNREADABLE - it has no
-   decompression step, so a zip yields nothing usable.
- - WebFetch CAN read the Zenodo record pages and list their files, but the payload
-   for e.g. 2024 is a single 262.3 MB .xlsx - far beyond what WebFetch can parse.
- - https://traditional.leidenranking.com/ranking/2024/list renders results client-side;
-   WebFetch sees only the query form, no table (NO_TABLE).
- - GitHub mirrors searched: only CWTSLeiden/CWTS-Leiden-Ranking-Open-Edition exists and
-   it contains SQL/C# source for building the ranking, no ranking data.
-
-To finish this gap a channel that can download and unzip a binary file is required.
-
---- natureindex/NOTES.txt
-Nature Index institutional tables
-=================================
-OBTAINED (after second pass): 2016, 2019, 2021, 2023.  Plus 2025 already held.
-  natureindex_2021_institutions_top500.csv - 500 rows, Channel A (GitHub mirror).
-  Columns: rank,Institution,Country,Share 2019,Share 2020,Count 2020,
-           Change Adjusted in Share 2019-2020,lat,lng
-  lat/lng were added by the repo author by geocoding - they are NOT Nature Index fields.
-  Already held elsewhere: institution-2025.csv (2025 edition) in raw/natureindex/.
-
-SECOND PASS 2026-08-12 added, via Channel B (WebFetch transcription of the nature.com URL):
-  natureindex_2019_institutions_top270.csv  270 rows  ranks 1-270
-  natureindex_2016_institutions_top120.csv  120 rows  ranks 1-120
-  natureindex_2023_institutions_top120.csv  120 rows  ranks 1-120
-  Header: rank|institution|country|count|share|provenance   (pipe-delimited)
-  Each file's Count/Share are that EDITION'S OWN figures. Nature Index restates prior-year
-  Share in each edition; no back-restated column was taken from a later edition, and the
-  2021 file's "Share 2019" column should NOT be mixed with the 2019 file's Share.
-  QA: ranks strictly increasing, no duplicate institutions, no blank names, leader is
-  Chinese Academy of Sciences in 2016/2019/2023 (correct for the all-sector table).
-  One fetch of 2019 returned ranks 1-271 but rank 271 arrived truncated (Share missing);
-  that row was DISCARDED, not guessed.
-  DEPTH CAP: 2016 and 2023 were capped at 120 rows to fit the session budget, not by any
-  limit of the source; one WebFetch reliably returns ~270 rows of this table.
-
-CAVEAT: these are ALL-SECTOR tables (CAS, Max Planck, CNRS, NIH, national labs appear),
-not universities only - same convention as the 2021 and 2025 files.
-
-STILL NOT OBTAINED: 2017, 2018, 2020, 2022, 2024; and ranks 121+ for 2016/2023,
-ranks 271+ for 2019.
-Channel A: GitHub search is largely poisoned by the unrelated Norwegian "Nature Index"
-  (biodiversity) project; no repo mirroring the historical institutional tables was found.
-Channel B: natureindex.com/annual-tables/<year>/institution/all/all/global 302-redirects to
-  https://www.nature.com/nature-index/research-leaders/<year>/institution/all/all/global
-  which IS readable by WebFetch and does render the institution table (verified for 2020:
-  returned rank|institution|country|count|share correctly, led by Chinese Academy of
-  Sciences 5538/1769.24, Harvard 2638/921.98). So the remaining years ARE obtainable by
-  WebFetch transcription of that URL pattern, one year at a time, with pagination.
-  Not done this session for context-budget reasons. No rows were invented.
-
---- natureindex/natureindex_2016_institutions_top120.source.txt
-https://www.nature.com/nature-index/research-leaders/2016/institution/all/all/global
-(reached via natureindex.com/annual-tables/2016/institution/all/all/global which 302-redirects there)
-retrieved 2026-08-12. provenance=webfetch_transcription. Delimiter=pipe.
-EDITION: the 2016 annual table; Count/Share are that edition's own figures, NOT numbers
-back-restated by a later edition. DEPTH: ranks 1-120 only (deliberately capped to fit budget).
-ALL-SECTOR table (includes CAS, Max Planck, CNRS, NIH, national labs), not universities only.
-
---- natureindex/natureindex_2019_institutions_top270.source.txt
-https://www.nature.com/nature-index/research-leaders/2019/institution/all/all/global
-(reached via natureindex.com/annual-tables/2019/institution/all/all/global which 302-redirects there)
-retrieved 2026-08-12. provenance=webfetch_transcription. Delimiter=pipe.
-EDITION: the 2019 annual table. Count/Share are the edition-year figures shown on that page
-(Nature Index 2019 tables report data for calendar year 2018). No back-restated prior-year
-column was taken from a later edition.
-DEPTH: ranks 1-270. One WebFetch returned ranks 1-271 but rank 271 (Keio University) arrived
-TRUNCATED mid-value (count 261, Share missing), so it was DISCARDED rather than guessed.
-Ranks 272+ were not captured.
-NOTE: this is an ALL-SECTOR table (it includes CAS, Max Planck, CNRS, NIH, national labs),
-not universities only - same convention as the 2025 and 2021 files already held.
-
---- natureindex/natureindex_2021_institutions_top500.source.txt
-Nature Index 2021 annual table - institutions, global, all subjects. Top 500.
-Channel A (GitHub mirror), NOT a webfetch transcription.
-repo:   https://github.com/lynerlwl/nature-index-map.git
-commit: see below
-path in repo: data/nature_index_2021_with_coord.csv
-Columns: rank,Institution,Country,Share 2019,Share 2020,Count 2020,Change Adjusted in Share 2019-2020,lat,lng
-NOTE: lat/lng were added by the repo author (geocoding), they are NOT Nature Index fields.
-Underlying source: natureindex.com annual tables 2021 (data year 2020).
-provenance=github_mirror_thirdparty
-5629ea842bea9710208f0ddae01a99be0fcd9929
-
---- natureindex/natureindex_2023_institutions_top120.source.txt
-https://www.nature.com/nature-index/research-leaders/2023/institution/all/all/global
-(reached via natureindex.com/annual-tables/2023/institution/all/all/global which 302-redirects there)
-retrieved 2026-08-12. provenance=webfetch_transcription. Delimiter=pipe.
-EDITION: the 2023 annual table; Count/Share are that edition's own figures, NOT numbers
-back-restated by a later edition. DEPTH: ranks 1-120 only (deliberately capped to fit budget).
-ALL-SECTOR table (includes CAS, Max Planck, CNRS, NIH, national labs), not universities only.
-
---- qs/NOTES_remaining_gaps.txt
-QS - obtained 2011 only (see qs_2011_webfetch.csv). Still missing: 2004-2010 and 2013.
-
-Leads checked and their outcome:
- - https://content.qs.com/supplement2011/top500.pdf  -> WORKS, this is the 2011 source used.
-   It holds 500 rows; transcription was stopped at rank 120 for budget reasons.
-   Ranks 121-500 are still available at this URL if more depth is wanted.
- - https://content.qs.com/supplement2010/top500.pdf  -> HTTP 403.
- - https://www.topuniversities.com/world-university-rankings/2010 -> 404
- - https://www.topuniversities.com/university-rankings/world-university-rankings/2010 -> 404
- - https://www.topuniversities.com/system/files/pdf-uploads/QS_WUR_Supplement2014.pdf
-   Web-search snippets label this "QS World University Rankings 2013/14", but TWO independently
-   worded WebFetch reads BOTH reported the main table is the 2014/15 edition (rank 1 = MIT,
-   2= Cambridge/Imperial). 2014 is already held, so this file was NOT saved and NOT labelled 2013.
- - https://council-icc.org/wp-content/uploads/QS_World_University_Rankings.pdf -> is the 2018
-   edition (already held). Not saved.
-No source for QS 2004-2010 or 2013 was found within budget.
-
---- qs/qs_2011_webfetch.source.txt
-QS World University Rankings 2011 - top 500 supplement
-Source URL: https://content.qs.com/supplement2011/top500.pdf
-Method: Channel B WebFetch transcription of the official QS PDF.
-Every chunk fetched TWICE with differently-worded prompts; only rows where both agreed
-exactly on rank_display + institution were kept.
-
-Rows: 494 (400 with an individual rank, 94 banded).
-Rank coverage: 1-400 individually, then bands 401-450 and 451-500.
-Disagreement rate across the 121-500 extension pass: 2.37% (12/506).
-
-COLUMNS
-  rank_display  rank copied VERBATIM from the PDF; "=" marks a tie (e.g. "169="), and the
-                bottom two groups are band strings ("401-450","451-500")
-  rank_low/high band edges; for individual ranks both equal the rank with "=" stripped
-  is_band       1 for the 401-450 / 451-500 groups
-
-STRUCTURE OF THE SOURCE
-QS 2011 prints individual ranks only to 400. Ranks 401-500 are published as two unordered
-alphabetical groups with no per-institution rank, so no ordering within those bands exists
-to recover - the band edges are the whole of the information.
-
-ROWS DROPPED BY THE AGREEMENT RULE (12)
-The two transcriptions of the 401-450 band differed on these names only in whether the
-printed parenthetical acronym was retained. They are genuine institutions, but the two reads
-did not match character-for-character so they were excluded rather than adjudicated:
-  - Dublin Institute of Technology
-  - Dublin Institute of Technology (DIT)
-  - Indian Institute of Technology Roorkee
-  - Indian Institute of Technology Roorkee (IITR)
-  - Johannes Kepler Universität Linz
-  - Johannes Kepler Universität Linz (JKU)
-  - Universidad de Los Andes
-  - Universidad de Los Andes Colombia
-  - Universidade Federal de São Paulo
-  - Universidade Federal de São Paulo (UNIFESP)
-  - Universiti Teknologi Malaysia
-  - Universiti Teknologi Malaysia (UTM)
-
---- reuters/NOTES.txt
-See ../SOURCES.txt for full provenance, verification method and caveats.
-_pass1/ holds the first-pass verbatim transcriptions the CSVs were built from.
-
---- reuters/reuters_europe_2016.source.txt
-https://www.timeshighereducation.com/features/100-most-innovative-universities-europe-2016
-
---- reuters/reuters_europe_2017.source.txt
-https://www.timeshighereducation.com/student/news/100-most-innovative-universities-europe-2017
-
---- reuters/reuters_europe_2018.source.txt
-https://www.timeshighereducation.com/student/news/top-100-most-innovative-universities-europe-2018
-
---- reuters/reuters_europe_2019.source.txt
-https://www.timeshighereducation.com/student/news/most-innovative-universities-europe-2019
-
---- reuters/reuters_world_2015.source.txt
-https://www.timeshighereducation.com/worlds-most-innovative-universities-2015-results
-
---- reuters/reuters_world_2017.source.txt
-https://www.timeshighereducation.com/student/news/top-100-most-innovative-universities-world-2017
-
---- reuters/reuters_world_2018.source.txt
-https://www.thomsonreuters.com/en/press-releases/2018/october/stanford-mit-and-harvard-top-the-fourth-annual-reuters-top-100-ranking-of-the-most-innovative-universities
-
---- reuters/reuters_world_2019.source.txt
-https://www.prnewswire.com/news-releases/stanford-mit-and-harvard-top-the-fifth-annual-reuters-top-100-ranking-of-the-most-innovative-universities-300943569.html
-
---- scimago/NOTES.txt
-SCImago Institutions Rankings - editions obtained 2026-08-12
-============================================================
-CHANNEL: Channel B, but the BEST sub-case of it - the documented bulk CSV endpoint
-  https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=YYYY&top=300&format=csv&type=download
-WebFetch returns this endpoint's payload verbatim (semicolon-delimited), so this is a raw
-file download surfaced through WebFetch, not a small-model transcription of a rendered table.
-
-FILES (all sector=Higher educ., i.e. universities only; top 300 per edition):
-  COMPLETE ANNUAL SERIES 2009-2019 + latest edition.  12 files, 3602 rows total.
-  scimago_2009_higher-educ_top300.csv   300 rows  5 cols
-  scimago_2010_higher-educ_top300.csv   300 rows  5 cols
-  scimago_2011_higher-educ_top300.csv   301 rows  5 cols  (tie at rank 300 -> 301 rows)
-  scimago_2012_higher-educ_top300.csv   300 rows  5 cols
-  scimago_2013_higher-educ_top300.csv   300 rows  5 cols
-  scimago_2014_higher-educ_top300.csv   300 rows  5 cols
-  scimago_2015_higher-educ_top300.csv   300 rows  5 cols
-  scimago_2016_higher-educ_top300.csv   301 rows  5 cols  (tie at rank 300 -> 301 rows)
-  scimago_2017_higher-educ_top300.csv   300 rows  5 cols  (last rank is 299, tie at 299)
-  scimago_2018_higher-educ_top300.csv   300 rows  5 cols
-  scimago_2019_higher-educ_top300.csv   300 rows  5 cols
-  scimago_2024_higher-educ_top300.csv   300 rows  6 cols  (= LATEST edition, see caveat)
-  NOTE: the endpoint returns all members of a tie group, so top=300 can yield 301 rows.
-Columns 2009/2014/2019: Rank;Global Rank;Institution;Country;Sector
-Columns 2024:           Rank;Global Rank;Institution;Country;Sector;Best Country Quartile
-  "Rank"        = rank within the Higher educ. sector
-  "Global Rank" = rank across ALL sectors (govt, health, companies, non-profit included)
-  A trailing " *" on an institution name is SCImago's own marker, kept verbatim.
-  No overall composite score is exposed by this endpoint in any year.
-
-*** IMPORTANT CAVEAT ON THE YEAR PARAMETER ***
-The endpoint only serves DISTINCT archived editions for year=2009..2019.
-Any year >= 2020 returns the current/latest edition. Verified: year=2020, 2021, 2022,
-2023, 2025, 2026 and even the nonsense year=2099 all return byte-identical payloads.
-So the file labelled 2024 is really "the latest edition the endpoint serves"; its true
-edition year is NOT established by the endpoint. 2025 and 2026 editions were NOT obtained
-as separate editions and no separate files were created for them - that would have been
-duplicate data masquerading as new years.
-
-VERIFICATION / disagreement rate:
- 1. year=2023 and year=2024 were fetched as separate URLs with differently-worded prompts.
-    Both returned identical 300-row payloads: 0/300 rows disagreed on rank+institution.
-    (They are the same edition - see caveat - which is exactly why this is a clean
-    duplicate-transcription test.)
- 2. 2009 was re-fetched a second time with a different URL and a different prompt style
-    ("reproduce rows 1,2,3,50,100,150,200,250,299,300"). 9/10 spot rows matched exactly.
-    The single mismatch (row 50) was then adjudicated with a third contiguous-range fetch
-    (top=55, "last 12 lines"), which confirmed the ORIGINAL file is correct
-    (49=Karolinska Institute/73, 50=Universitat Heidelberg/74). The verification fetch had
-    blended adjacent rows. Net disagreement on the primary transcriptions: 0/10.
-    LESSON: contiguous-range prompts are reliable; "pick out row N" prompts are not.
- 2b. Second pass used ONLY contiguous-range prompts, per that lesson. 2012 was re-fetched
-    independently (top=55, "last 12 lines") and compared to the saved file:
-    0/11 rows disagreed on rank + institution + country.
- 3. Structural QA on all 4 files: exactly 300 data rows each, rank monotonic
-    non-decreasing 1..300 (ties present, as in source), 0 duplicate institution names,
-    0 blank names, leader = Harvard University in every year (plausible for SCImago
-    higher-ed sector; the all-sector list is topped by Chinese Academy of Sciences etc.).
-
-FRACTION OF EACH EDITION CAPTURED: top 300 universities only. A full higher-educ edition
-is roughly 4000-8000 institutions, so this is very roughly the top 4-8%. The endpoint
-truncates at ~1680 lines through WebFetch (top=0 was cut off mid-row at line 1681), so
-full editions are not retrievable in one call; they would need country-by-country
-partitioning via the &country= parameter.
-
-2026-08-12 SECOND PASS: years 2010-2013 and 2015-2018 were added, completing the annual
-series. Each was a single call of the same form. All 12 files re-validated together:
-ranks monotonic non-decreasing in every file, no ragged rows, no blank institution names,
-no duplicate institution names within a year, and Harvard University is rank 1 in all 12.
-Cross-year check: 198 institutions appear in ALL 12 editions -> a usable balanced panel.
-
-STILL MISSING: ranks 301+ for every year (depth was not extended; the &country= partition
-approach was not attempted), and any genuine 2025/2026 edition (the endpoint does not
-serve one - see caveat above).
-
---- scimago/scimago_2009_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2009&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint (raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2010_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2010&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
-(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2011_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2011&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
-(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2012_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2012&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
-(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2013_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2013&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
-(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2014_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2014&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint (raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2015_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2015&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
-(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2016_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2016&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
-(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2017_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2017&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
-(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2018_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2018&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint
-(raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2019_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2019&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint (raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-
---- scimago/scimago_2024_higher-educ_top300.source.txt
-https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2024&top=300&format=csv&type=download
-retrieved 2026-08-12 via WebFetch. Delimiter=semicolon. provenance=webfetch_csv_endpoint (raw CSV download endpoint returned verbatim, NOT a transcription of a rendered HTML table).
-retrieved 2026-08-12 via WebFetch; delimiter=semicolon; verbatim CSV endpoint (not a transcription of a rendered table).
-Fetched twice with differently-worded prompts (2024 direct + 2023 URL which the server served identical content for); see NOTES.txt
-
---- usnews/NOTES_not_obtained.txt
-U.S. News Best Global Universities - NO NEW EDITIONS OBTAINED. No data files written.
-
-Attempts:
- - https://www.usnews.com/education/best-global-universities/rankings -> HTTP 403 to WebFetch
-   (bot protection). bash/curl is blocked from the host entirely by org network policy.
- - GitHub API repository search for "best global universities us news" and
-   "usnews global universities ranking data" returned zero repositories.
- - frishberg/US-College-Ranking-Data contains external-data/historical-usnews.json, but that
-   is the U.S. NATIONAL Universities ranking (168 US institutions, 1984-2023), a different
-   product from Best Global Universities - not used.
- - yanfrog/us_news_annual_ranking is a scraper skeleton (schools_url.csv only), no ranking data.
-
-Remaining gap unchanged: fuller tables for 2014-2025.
-
---- webometrics/webometrics_2025-07_full.source.txt
-Webometrics Ranking Web of Universities, July 2025 edition (2025.2.0). FULL edition.
-Channel: LOCAL re-extraction from the official source PDF (no network, no transcription).
-Source PDF: /root/uniranks/raw/webometrics/Webometrics_2025-07_source.pdf
-  Title "Ranking Web (webometrics.info) July 2025", Author Isidro Aguillo Cano, 921 pages.
-  (PDF itself came from https://github.com/singularityhacker/webometrics-rankings.git @ d82cca8)
-Extractor: /root/uniranks/work_parse_webo.py  (pdfplumber word-geometry, nearest-anchor row assembly)
-provenance=local_pdf_extraction
-
-WHY THIS SUPERSEDES raw/webometrics/webometrics_rankings_2025-07.csv:
-  new: 32053 rows | old: 28122 rows  (+3931 rows recovered)
-  old had 72 rows whose name was the literal string "NO", plus many names truncated at
-  a line break (multi-line / CJK / Cyrillic names) and one row whose name was a ROR URL.
-  new: 0 blank names, 0 "NO" names, multi-line names correctly re-joined.
-  new has ror_url for 16806 rows vs 13361 in the old file.
-QA: ranks monotonic non-decreasing, min 1 max 31869 (ties present, as in the source).
-    Only 2 blocks rejected across 921 pages - both are the article's prose front matter
-    (pages 1-2), not ranking rows. See webometrics_2025-07_full.rejected_blocks.json.
-Edition total per the paper's own abstract: "almost 32,000 HEIs" - consistent with 32053.
-Note: a leading "(n)" in a name is present verbatim as printed in the source PDF.
-
-
---- notes recorded during first-wave collection ---
-
-Provenance of downloaded files (retrieved 2026-08-12)
-
-ntu/taiwan_ranks.csv
-  https://github.com/jlehtoma/taiwan_rank.git @ 1780134 (2017-10-17)
-  path in repo: data/taiwan_ranks.csv
-  NTU Ranking (Performance Ranking of Scientific Papers), top 100 per year, 2007-2017.
-
-webometrics/webometrics_rankings_2025-07.csv
-webometrics/Webometrics_2025-07_source.pdf
-  https://github.com/singularityhacker/webometrics-rankings.git @ d82cca8 (2025-12-02)
-  Extracted by repo author from the official Webometrics July 2025 PDF (included).
-  Single edition (2025.2.0) only, no historical years.
-
-natureindex/institution-2025.csv
-  https://github.com/Jyotirmoyp/Nature_index_ranking.git @ da4f840 (2026-02-21)
-  Nature Index institutional table, 2025 edition only.
-
-scimago/scimago_top500_secondary-scrape.json
-  https://github.com/sharmadhiraj/free-json-datasets.git @ 8e768b6 (2026-01-29)
-  path in repo: docs/education-knowledge/research_and_innovation_rankings.json
-  SECONDARY third-party scrape, top 500 institutions only, no indicator scores,
-  edition year not stated by source (file timestamp 2025-12-17). NOT the official
-  SCImago Institutions Rankings download. Treat as low-confidence provenance.
-
-NOT OBTAINED: URAP, Round University Ranking (RUR), Reuters Most Innovative
-Universities. See the task report for the hosts and repositories tried.
-
-Egress note: this sandbox's gateway returns 403 to CONNECT for all primary
-ranking-source hosts (www.scimagoir.com, urapcenter.org, nturanking.csti.tw,
-roundranking.com, www.webometrics.info) and for all general data repositories
-(zenodo.org, figshare.com, osf.io, data.world, kaggle.com, huggingface.co,
-archive.org, gitlab.com). Only github.com and pypi.org are reachable.
+--- cwur/SOURCE_full.txt
+CWUR World University Rankings — full editions 2012-2025
+Source: cwur.org (static HTML tables), retrieved 13 August 2026 via curl
+with a browser User-Agent. Raw HTML saved under html/. Parsed
+programmatically with python3/pandas.read_html (script: parse_cwur.py in
+session scratchpad). Output: cwur_{year}_full.csv with columns year,
+world_rank, institution, location, score (rank_display added where the
+site shows banded text like '1 Top 0.1%').
+
+Note on edition naming: CWUR labels some editions with academic-year slugs.
+Mapping used: 2018 -> 2018-19.php, 2019 -> 2019-20.php, 2020 -> 2020-21.php,
+2022 -> 2022-23.php; all other years use {year}.php.
+
+year  url                               rows   rank1==Harvard  ranks 1..N  scores  
+2012  https://cwur.org/2012.php         100    PASS            PASS        100     
+2013  https://cwur.org/2013.php         100    PASS            PASS        100     
+2014  https://cwur.org/2014.php         1000   PASS            PASS        1000    
+2015  https://cwur.org/2015.php         1000   PASS            PASS        1000    
+2016  https://cwur.org/2016.php         1000   PASS            PASS        1000    
+2017  https://cwur.org/2017.php         1000   PASS            PASS        1000    
+2018  https://cwur.org/2018-19.php      1000   PASS            PASS        1000    
+2019  https://cwur.org/2019-20.php      2000   PASS            PASS        2000    
+2020  https://cwur.org/2020-21.php      2000   PASS            PASS        2000    
+2021  https://cwur.org/2021.php         2000   PASS            PASS        2000    
+2022  https://cwur.org/2022-23.php      2000   PASS            PASS        2000    
+2023  https://cwur.org/2023.php         2000   PASS            PASS        2000    
+2024  https://cwur.org/2024.php         2000   PASS            PASS        2000    
+2025  https://cwur.org/2025.php         2000   PASS            PASS        2000    
+
+Row-count expectations: 2012-2013: 100; 2014-2018: 1000; 2019-2025: 2000.
+All row counts matched expectations exactly; all sanity checks passed.
+
+--- leiden_full/SOURCE.txt
+CWTS Leiden Ranking - full results files (originals, not reshaped)
+Retrieved: 13 August 2026
+Channels used, in order of the task's preference:
+(a) open.leidenranking.com/resources -> Zenodo records (Open Edition, CC0)
+(b) traditional.leidenranking.com/downloads -> direct zips (2011/12-2016) and
+    DANS / Zenodo records for later traditional editions
+(c) Zenodo REST API (zenodo.org/api/records/...) with a browser User-Agent
+    (bare curl gets 403 on the website; the API worked)
+Provenance pages saved here: open_leiden_resources.html, trad_leiden_downloads.html
+
+TRADITIONAL EDITION - complete and size/CRC-verified:
+- CWTS Leiden Ranking 2011-2012.zip (660,002 B)  https://traditional.leidenranking.com/Content/CWTS%20Leiden%20Ranking%202011-2012.zip  [contains .xls + pdf; unzip -t OK]
+- CWTS Leiden Ranking 2013.zip (3,223,826 B), 2014.zip (3,430,768 B), 2015.zip (24,930,103 B), 2016.zip (31,048,312 B)  same /Content/ path; unzip -t OK
+- CWTS Leiden Ranking 2017.xlsx (40,376,215 B)  DANS data station, doi:10.17026/dans-xsm-22ch, datafile id 186723
+- CWTS Leiden Ranking 2018_v2.xlsx (53,233,971 B)  DANS, doi:10.17026/dans-xpt-2ues, datafile id 186932 (v2 file as published)
+- CWTS Leiden Ranking 2019.xlsx (111,380,671 B)  Zenodo 3339177
+- CWTS Leiden Ranking 2020.xlsx (149,286,410 B)  Zenodo 4745545
+- CWTS Leiden Ranking 2021.xlsx (171,623,263 B)  Zenodo 4889279
+- CWTS Leiden Ranking 2022.xlsx (199,757,046 B)  Zenodo 6652118
+- CWTS Leiden Ranking 2023.xlsx (230,362,541 B)  Zenodo 8027120
+All xlsx sizes match Zenodo/DANS file metadata exactly.
+
+OPEN EDITION (CC0) - complete and verified:
+- open_edition/CWTS Leiden Ranking Open Edition 2023 - Results.ods (230,764,476 B)  Zenodo 10587952; zip CRC test passes ("No errors detected")
+- open_edition/CWTS Leiden Ranking Open Edition 2023 - Universities.ods (37,595 B), 2023 - Main fields.ods (6,826 B)  Zenodo 10587952
+- open_edition/CWTS Leiden Ranking Open Edition 2024 - Universities.xlsx (64,464 B)  Zenodo 13868018
+- open_edition/CWTS Leiden Ranking Open Edition 2025 - Universities.xlsx (117,456 B)  Zenodo 17473224
+
+NOT DOWNLOADED (cut off at wrap-up; Zenodo throttled large transfers to ~100-200 KB/s
+with periodic connection stalls; resume with curl -C - works):
+- CWTS Leiden Ranking 2024.xlsx (262,346,811 B)  Zenodo 12606083
+- CWTS Leiden Ranking Traditional Edition 2025.xlsx (204,808,583 B)  Zenodo 17473109
+- Open Edition 2024 - Results.ods (264,786,441 B)  Zenodo 13868018
+- Open Edition 2025 - Results.xlsx (589,227,497 B)  Zenodo 17473224
+- Open Edition "Data" zips (publication-level, 1.9-4.5 GB each; Zenodo 10579113 / 13868129 / 17471989) intentionally skipped as out of scope.
+
+STRUCTURE (parsed sample checks, 13 Aug 2026):
+Traditional xlsx (2017-2023): sheets ['Explanation','Results'].
+2021+ Results columns: University, Country, Field, Period, Frac_counting, impact_P, collab_P,
+oa_P, gender_A, gender_A_MF, TCS, TNCS, P_top1, P_top5, P_top10, P_top50, P_collab,
+P_int_collab, P_industry_collab, P_short_dist_collab, P_long_dist_collab, P_OA (+subtypes),
+A_gender_*, MCS/MNCS (+_lb/_ub), PP_top1/PP_top5/PP_top10/PP_top50 (+_lb/_ub), PP_collab
+family (+_lb/_ub). 2017 lacks the OA/gender/P_top5 columns (47 cols).
+Results row counts (incl header): 2017: 75,853; 2018_v2: 90,049; 2019: 104,005;
+2020: 141,121; 2021: 161,701; 2022: 189,793; 2023: 220,117.
+Open Edition 2023 Results.ods: opened in full with pandas (engine='odf'):
+sheets ['Explanation','Results']; Results = 220,116 data rows x 77 columns:
+University, ROR ID, Country, Field, Period, Frac_counting, impact_P, collab_P, oa_P,
+TCS, TNCS, P_top1/5/10/50, P_collab family, P_OA family, MCS/MNCS (+_lb/_ub),
+PP_top1/5/10/50 (+_lb/_ub), PP_collab family (+_lb/_ub), PP_OA family (+_lb/_ub). Sample row: Aalborg University,
+ROR 04m5j1k67, Denmark, All sciences, 2006-2009, impact_P=3088, PP_top10=0.1065.
+(Column 'PP_hybrid_OA_OA_ub' is a typo in the published file itself, preserved as is.)
+Open Edition Universities files: columns University, ROR ID, Country
+(2023: 1,411 universities; 2025: 2,831).
+Note: leiden_editions_long.csv and leiden_fields_long.csv in this directory were
+produced by another session, not by this retrieval.
+
+--- natureindex/SOURCE.txt
+Nature Index annual tables - institutions, all sectors, all subjects, global top 500
+Retrieved: 13 August 2026
+Parsed programmatically (python3 regex over server-rendered HTML tables); no hand transcription.
+
+Requested editions:
+- 2016: Wayback capture of natureindex.com
+  https://web.archive.org/web/20161012070820id_/http://www.natureindex.com:80/annual-tables/2016/institution/all/all
+  (columns WFC 2014 / WFC 2015 / AC 2015; score column = WFC 2015)  raw/ni_2016_p1.html
+- 2019: Wayback capture
+  https://web.archive.org/web/20190712141816id_/https://www.natureindex.com/annual-tables/2019/institution/all/all
+  (columns FC 2017 / FC 2018 / AC 2018; score column = FC 2018)  raw/ni_2019_p1.html
+- 2023: live site (annual tables now hosted as "research leaders" on nature.com)
+  https://www.nature.com/nature-index/research-leaders/2023/institution/all/all/global
+  (columns Share 2022 / Count 2022; score column = Share 2022)  raw/ni_2023_p1.html
+
+Bonus editions (live nature.com, same URL scheme, fetched 13 Aug 2026):
+2017, 2018, 2020, 2022, 2024, 2026 (score = Share of edition year minus 1; second data column).
+Raw pages raw/ni_{year}_p1.html. (Project already held 2021 and 2025 via mirrors.)
+
+Outputs: natureindex_{year}_institutions_full.csv, columns year,rank,institution,country,score.
+Each file: 500 rows, ranks contiguous 1-500.
+Sanity checks passed: Chinese Academy of Sciences (CAS), China is #1 in every edition.
+No duplicate institutions except 2019 "Northeastern University (NEU)" which is two distinct
+institutions (USA rank 332; China rank 486) - verified not a parsing artifact.
+Note: institution country parsed from the trailing ", country" of the linked institution label.
+
+--- ntu/SOURCE.txt
+NTU Ranking (Performance Ranking of Scientific Papers for World Universities, Taiwan)
+Overall world rankings, editions 2007-2026 (full lists)
+Retrieved: 13 August 2026
+
+SOURCE
+------
+Live site: https://nturanking.csti.tw/
+The overall ranking page (https://nturanking.csti.tw/ranking/OverallRanking/{year})
+loads its table via a JSON AJAX endpoint used by DataTables:
+
+    https://nturanking.csti.tw/OverallRanking_AJAX/{year}.
+
+(note the trailing dot; endpoint discovered in the page's inline script:
+'"ajax": "/OverallRanking_AJAX/9999.".replace(/9999/, startyear)').
+One request per edition, no pagination (endpoint returns the full list).
+Retrieved with curl using a Chrome 126 desktop User-Agent. All requests HTTP 200.
+Raw responses saved under html/ as ntu_ajax_{year}.json, plus one sample HTML
+page (html/probe_2025.html) documenting the endpoint discovery.
+
+PARSING
+-------
+parse_ntu.py (python3 + pandas) converts each JSON to ntu_{year}_full.csv with
+columns: year, rank_display, rank_low, rank_high, is_band, institution, country,
+score. No rows were transcribed by hand.
+
+Field mapping: rank = RankU (the site's displayed overall-ranking column; exact
+rank, then bands like "501-550"); institution = univ__OrgName_EN; country =
+univ__CountryName; score = Pub_Score ("-" -> empty; banded rows have no score).
+Rows whose RankU is "-" appear only in the site's separate "Reference Ranking"
+column (Ref_RankU, a different criteria set) and are EXCLUDED from the CSVs;
+counts per year are listed below. The raw JSON retains them.
+
+ROW COUNTS AND CHECKS
+---------------------
+Checks run programmatically for every edition:
+  (a) Harvard University is rank 1 -- PASSED in all 20 editions, incl. 2018-2025.
+  (b) Plausible row count (approx 480-1330) -- PASSED (see table).
+  (c) No duplicate institution names within an edition -- PASSED for all years
+      except 2025 (see anomaly note).
+
+year  rows  banded  ref_only_excluded  max_rank
+2007   479       0        0    498   (2007-2009: ~top 500, exact ranks only)
+2008   478       0        0    499
+2009   479       0        0    499
+2010   778       0        0    818   (2010-2016: ~800-940, exact ranks only;
+2011   787       0        0    825    max_rank > rows because tied scores share
+2012   828       0        0    870    a rank and subsequent ranks are skipped)
+2013   843       0        0    883
+2014   862       0        0    897
+2015   883       0        0    919
+2016   903       0        0    937
+2017   787     293       12    800   (2017-2021: exact to 500, bands to 800)
+2018   794     293       28    800
+2019   791     287       32    800
+2020   797     298       28    800
+2021   800     300       16    800
+2022   990     490       56   1000   (2022-2023: bands to 1000)
+2023  1001     500       58   1000
+2024  1203     202       12   1200   (2024-2026: lists to 1200; 2024 exact to
+2025  1233     420       96   1200    ~1000, 2025-2026 exact to ~800)
+2026  1200     392       43   1200
+
+ANOMALY
+-------
+2025: "University of Burgundy" (France) appears twice in the source JSON, once
+at exact rank 498 (score 52.3) and once in band 951-1000 (no score). This is a
+genuine duplicate in the source data (likely the Universite de Bourgogne /
+Universite Bourgogne Europe merger, both mapped to the same English name). Both
+rows are retained as published.
+
+FAILURES / FALLBACKS
+--------------------
+None. The live site served every edition 2007-2026; the Wayback Machine
+fallback was not needed. 2026 and the deeper 2007-2017 lists are a bonus beyond
+the requested 2018-2025 range.
+
+--- qs/SOURCE.txt
+QS World University Rankings 2011 (2011/12 edition) - full table incl. bands
+Retrieved: 13 August 2026, via Wayback Machine captures of topuniversities.com
+Parsed programmatically (python3 regex over server-rendered HTML tables); no hand transcription.
+
+Source pages (all captures from a single consistent window, 14-15 Feb 2012, 50 rows/page):
+  https://web.archive.org/web/20120215id_/http://www.topuniversities.com/university-rankings/world-university-rankings/2011[?page=1..13]
+  Actual capture timestamps: 20120214235048 - 20120215172939 (per page, see fetch log).
+  Raw pages: raw/qs2011_page0.html .. raw/qs2011_page13.html
+Consistency note: an earlier mixed-date fetch (Sep/Oct 2011 captures) produced a conflicting
+placement for Tokyo University of Science (rank 265 vs band 401-450); the Feb 2012 captures
+are internally consistent (TUS at 265 only) and were used for the output. Earlier-window
+files were discarded.
+
+Output: qs_2011_full.csv
+Columns: year,rank_display,rank_low,rank_high,is_band,institution,country_code,score
+- 695 rows total, no duplicate institutions.
+- 400 rows with exact ranks 1-400 (ties shown as "N="; rank_low=rank_high=N, is_band=0).
+- 295 band rows: 401-450 (51), 451-500 (49), 501-550 (47), 551-600 (47), 601+ (101);
+  is_band=1; for 601+ rank_high is empty (open-ended as published).
+- score = published overall score (empty for band rows, as published).
+- country_code: ISO 3166-1 alpha-2 mapped from the country names printed in the table
+  ("Korea, South"->KR, "Serbia and Montenegro"->RS, "United Kingdom"->GB, etc.).
+Sanity: #1 University of Cambridge, #2 Harvard, #3 MIT (matches published 2011/12 edition).
+This supersedes the project's earlier 494-row transcription in depth (695 rows).
+
+--- qs2013/SOURCE.txt
+SOURCE — QS World University Rankings 2013 edition (published Sept 2013)
+Retrieved: 13 August 2026
+Method: raw JSON downloaded from the Wayback Machine and parsed with python3;
+no rows transcribed by hand. Raw files preserved under raw/.
+
+PRIMARY SOURCE:
+  raw/121321_20171010.txt
+  http://web.archive.org/web/20171010103459id_/https://www.topuniversities.com/sites/default/files/qs-rankings-data/121321.txt
+  This is QS's own DataTables JSON endpoint for Drupal node 121321, which is
+  the topuniversities.com page "university-rankings/world-university-rankings/2013"
+  (the node id was confirmed via the archived 2013 page URL
+  ".../2013?destination=node/121321", Wayback 20130919044159). Earliest
+  200-status capture of the endpoint used (2017-10-10). Fields used verbatim:
+  title, rank_display, country, score (overall).
+
+OUTPUT: qs_2013_full.csv, columns
+  year, rank_display, rank_low, rank_high, is_band, institution, country, score
+833 rows total: 400 rows with exact ranks (1-399 incl. ties), 433 rows in bands
+401-410, 411-420, ..., 491-500, 501-550, 551-600, 601-650, 651-700, 701+.
+For "701+" rank_high is left empty (no published upper bound). Banded rows have
+no published overall score; score left empty. is_band=True only for banded
+displays, not for ties.
+
+CROSS-CHECKS:
+1. Second, independent Wayback capture of the same publisher endpoint,
+   raw/121321_20201127.txt (Wayback 20201127045444). 833 rows in both.
+   For the 761 institution titles common to both captures, rank_display is
+   IDENTICAL in every row (0 differences), and scores identical. The 72/71
+   non-overlapping titles are later institution renames by QS (e.g.
+   "Rutgers, The State University of New Jersey..." -> "Rutgers
+   University-New Brunswick", "UCL (University College London)" -> "UCL");
+   the 2017 capture preserves the 2013-era names and is used as primary
+   (closer to the original publication).
+2. Wikipedia, contemporaneous revision of "QS World University Rankings"
+   (oldid=588224473, 2013-12-29; raw/wiki_qs_rev588224473.html), column
+   "2013/14" of its top-50 table: spot rows all MATCH:
+   1 MIT; 2 Harvard; 3 Cambridge; 25 UC Berkeley;
+   50 Ruprecht-Karls-Universitaet Heidelberg.
+No disagreements found between sources.
+
+Auxiliary raw files: raw/results_20131127.html (archived Nov-2013 results page;
+landing shell only, table was AJAX-loaded, no inline data),
+raw/d2ski_QS_World_Rankings.csv (GitHub mirror d2ski/uni-ranks combined QS CSV;
+checked and found to SKIP the 2013 edition — years 2012, 2014-2022 only —
+which is why the Wayback endpoint was used).
+
+Depth: complete published 2013 table (~833 institutions incl. 701+ band);
+nothing padded.
+
+--- reuters/SOURCE.txt
+Reuters Most Innovative Universities - full top-100 lists
+Retrieved: 13 August 2026, via Wayback Machine (web.archive.org)
+Channel: the ranking web apps loaded their data from JSON/JS data files; we fetched
+those data files from Wayback captures and parsed them programmatically (python3 + json5).
+No rows transcribed by hand.
+
+Data sources (Wayback capture id_ URLs; raw files in raw/):
+- World 2015: IPS2_2015.json
+  https://web.archive.org/web/20151022000146id_/http://static.reuters.com/resources/media/rcom/ip_science/IPS2.json?v=16
+- World 2016: IPS2_world_2016.json
+  https://web.archive.org/web/20161123042813id_/http://static.reuters.com/resources/media/rcom/ip_science/IPS2_world.json?v=9
+- World 2017: IPS2_world_2017.json
+  https://web.archive.org/web/20190101101150id_/https://www.reuters.com/media-campaign/ip_science/IPS2_world_2017.json
+- World 2018: IPS2_world_2018.json
+  https://web.archive.org/web/20191231150638id_/https://www.reuters.com/media-campaign/ip_science/IPS2_world_2018.json
+- World 2019: cc_rankings_overall_2019.json (gzip capture also kept as .gz)
+  https://web.archive.org/web/2020id_/https://d3sl9l9bcxfb5q.cloudfront.net/json/cc_rankings_overall
+  (data endpoint of https://graphics.reuters.com/AMERS-REUTERS%20RANKING-INNOVATIVE-UNIVERSITIES/0100B2JP1W1/,
+   embedded by https://www.reuters.com/innovative-universities-2019)
+- Europe 2016: IPS2_europe_2016.json
+  https://web.archive.org/web/20160817015735id_/http://static.reuters.com/resources/media/rcom/ip_science/IPS2_europe.json?v=11
+- Europe 2017: IPS2_europe_2017.json
+  https://web.archive.org/web/20181231144048id_/https://www.reuters.com/media-campaign/ip_science/IPS2_europe_2017.json
+- Europe 2018: IPS2_europe_2018.json
+  https://web.archive.org/web/20191231213116id_/https://www.reuters.com/media-campaign/ip_science/IPS2_europe_2018.json
+- Europe 2019: cc_university_rankings_europe_2019.json (gzip capture kept as .gz)
+  https://web.archive.org/web/2020id_/https://d3sl9l9bcxfb5q.cloudfront.net/json/cc_university_rankings_europe
+  (data endpoint of https://graphics.reuters.com/EUROPE-UNIVERSITY-INNOVATION/010091N02HR/)
+Landing-page shells (world_*.html / europe_*.html in raw/) kept for provenance.
+
+Outputs: reuters_{world|europe}_{year}_full.csv, columns year,rank,institution,country.
+Row counts: 100 rows each, ranks exactly 1-100, no duplicate institutions (9 files).
+Sanity checks passed:
+- Stanford University #1 in world 2015, 2016, 2017, 2018, 2019
+- KU Leuven #1 in europe 2016, 2017, 2018, 2019
+- world 2015 and 2016 differ in content (rank order beyond top-3 differs as published).
+
+--- scimago/SOURCE_full.txt
+SCImago Institutions Rankings (SIR) — Higher education sector, editions 2020, 2021, 2022, 2023, 2025 (+2024 bonus)
+Retrieved: 13 August 2026
+
+CHANNEL
+Wayback Machine (web.archive.org) captures of scimagoir.com CSV exports.
+Live scimagoir.com was tried first: rankings.php loads with full browser headers
+(HTTP 200), but the CSV endpoint getdata.php is behind a Cloudflare "managed"
+JavaScript challenge ("Just a moment...") that returns 403 to curl even with a
+warmed cookie jar, full Chrome header set, and same-origin Referer. Live channel
+abandoned for the export endpoint; Wayback captures of the exact same endpoint
+used instead. GitHub mirror channel not needed.
+
+PARAMETER SEMANTICS (concluded from live rankings.php HTML, fetched 2026-08-13)
+The edition-year dropdown on https://www.scimagoir.com/rankings.php maps the
+displayed EDITION year to a URL "year" parameter equal to edition_year - 6
+(the first year of the underlying publication window):
+  displayed 2020 -> ?year=2014 ... displayed 2025 -> ?year=2019,
+  displayed 2026 (current default) -> ?year=2020.
+The CSV export link on the page is:
+  getdata.php?ranking=Overall&area=&sector=Higher educ.&country=&year=YYYY&top=0&format=csv&type=download
+(older captures use rankingtype= instead of ranking=Overall; same output).
+This mapping is corroborated historically: the edition-2021 export capture below
+was saved in June 2021 (when 2021 was the current edition) and carries year=2015,
+and the edition-2022 capture was saved April 2022 with year=2016.
+
+EXACT SOURCE URLS (raw content via the Wayback id_ modifier)
+ed2020: https://web.archive.org/web/20230404015333id_/https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2014&top=0&format=csv&type=download
+ed2021: https://web.archive.org/web/20210627220825id_/https://www.scimagoir.com/getdata.php?rankingtype=&sector=Higher%20educ.&country=&year=2015&top=0&format=csv&type=download
+ed2022: https://web.archive.org/web/20220404085329id_/https://www.scimagoir.com/getdata.php?rankingtype=&sector=Higher%20educ.&country=&year=2016&top=0&format=csv&type=download
+ed2023: https://web.archive.org/web/20230324223820id_/https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2017&top=0&format=csv&type=download
+ed2024: https://web.archive.org/web/20240509163139id_/https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=Higher%20educ.&country=&year=2018&top=0&format=csv&type=download
+ed2025: https://web.archive.org/web/20260116032158id_/https://www.scimagoir.com/getdata.php?ranking=Overall&area=&sector=&country=&year=2019&top=0&format=csv&type=download
+  (No unfiltered sector=Higher educ. capture exists for year=2019 — only
+  area- or country-filtered ones — so the all-sectors export was used and
+  filtered to Sector == "Universities". Sector counts in that file:
+  Universities 5051, Government 2123, Health 1967, Companies 397, Non-Profit 218.)
+Captures located via the CDX API:
+  http://web.archive.org/cdx/search/cdx?url=scimagoir.com/getdata.php*&output=json&limit=8000&collapse=urlkey&filter=statuscode:200
+
+RAW FILES (under raw/)
+  wb_ed2020_year2014_higher.csv      225117 bytes, 3897 data rows
+  wb_ed2021_year2015_higher.csv      240358 bytes, 4126 data rows
+  wb_ed2022_year2016_higher.csv      255151 bytes, 4364 data rows
+  wb_ed2023_year2017_higher.csv      273359 bytes, 4533 data rows
+  wb_ed2024_year2018_higher.csv      287911 bytes, 4762 data rows
+  wb_ed2025_year2019_allsectors.csv  567934 bytes, 9756 data rows (all sectors)
+Raw format: semicolon-delimited; columns Rank;Global Rank;Institution;Country;Sector
+(ed2021+ add Best Country Quartile; the ed2025 all-sectors file has no
+sector-specific Rank column). No numeric SIR score is included in these exports,
+so the output "score" column is empty.
+
+PARSING (python3/pandas, script raw/parse_scimago.py)
+- The source "Rank" column uses competition-style TIED ranks (e.g. two
+  institutions share rank 85, next is 87). Output "rank" is instead the ordinal
+  position 1..N in the sector, in the file's order (sorted by Global Rank),
+  per the project spec of ascending ranks with no gaps.
+- Trailing " *" footnote markers stripped from institution names.
+- ed2025 rebuilt by filtering the all-sectors file to Sector == "Universities"
+  and ranking by Global Rank order (SIR's sector-specific rank is by
+  construction the position within sector of the overall ranking).
+
+OUTPUTS AND CHECKS (all passed)
+  scimago_2020_higher-educ_full.csv  3897 rows  top3: Harvard University (USA); Harvard Medical School (USA); Massachusetts Institute of Technology (USA)
+  scimago_2021_higher-educ_full.csv  4126 rows  top3: Harvard University (USA); Harvard Medical School (USA); Tsinghua University (CHN)
+  scimago_2022_higher-educ_full.csv  4364 rows  top3: Harvard University (USA); Harvard Medical School (USA); Tsinghua University (CHN)
+  scimago_2023_higher-educ_full.csv  4533 rows  top3: Harvard University (USA); University of Chinese Academy of Sciences (CHN); Tsinghua University (CHN)
+  scimago_2024_higher-educ_full.csv  4762 rows  top3: Harvard University (USA); University of Chinese Academy of Sciences (CHN); Tsinghua University (CHN)
+  scimago_2025_higher-educ_full.csv  5051 rows  top3: Harvard University (USA); University of Chinese Academy of Sciences (CHN); Tsinghua University (CHN)
+- Ranks 1..N strictly increasing, no gaps, within every edition.
+- Source Global Rank monotonically increasing in every file.
+- No duplicate (institution, country) pairs in any edition. Three institution
+  NAMES repeat across different countries (legitimate homonyms): University of
+  Georgia (USA/GEO), Universidad de Cordoba (ESP/COL), University of Health
+  Sciences (TUR/PAK), University of Defence (CZE/SRB in earlier editions).
+- Row counts grow monotonically across editions (3897 -> 5051), consistent with
+  SIR's expanding coverage; note Chinese Academy of Sciences itself is ranked in
+  the Government sector (global #1), which is why the higher-educ top-3 shows
+  Harvard / University of Chinese Academy of Sciences / Tsinghua.
+
+--- theqs/SOURCE.txt
+SOURCE — THE-QS World University Rankings 2004-2009 (top 200 per year)
+Retrieved: 13 August 2026
+Method: all tables downloaded as raw HTML from the Wayback Machine (web.archive.org)
+and parsed programmatically with python3 (regex over <tr>/<td>, html.unescape).
+No rows transcribed by hand. Raw HTML preserved under raw/.
+
+PRIMARY CHANNEL (all six years): archived pages of the original publisher,
+Times Higher Education (timeshighereducation.co.uk), which hosted the official
+THES/THE-QS top-200 tables at hybrid.asp?typeCode=NNN. The per-year typeCodes
+were discovered from THE's own "Statistics / World University Rankings" index
+page (hybrid.asp?typeCode=142, Wayback 20080314044456), which links:
+2007 -> typeCode=144, 2006 -> typeCode=161 (via landing 160),
+2005 -> typeCode=175 (via landing 174), 2004 -> typeCode=153 (via landing 194).
+
+Per-year sources (Wayback snapshot id_ URLs):
+
+2004  raw/the_tc153.html
+  http://web.archive.org/web/20080601id_/http://www.timeshighereducation.co.uk/hybrid.asp?typeCode=153
+  200 rows, ranks 1-200, no tied displays. Columns in source: rank, name,
+  country(2-letter codes US/UK/...), peer review, intl students, faculty/student,
+  citations/faculty, overall. Overall score on the original 1000-point scale
+  (Harvard 1000, ... rank 200 = 102.9); kept verbatim in `score`.
+
+2005  raw/the_tc175.html
+  http://web.archive.org/web/20080601id_/http://www.timeshighereducation.co.uk/hybrid.asp?typeCode=175
+  201 rows (ties: table ends 199= x3), ranks 1-199=. Source cols: 2005 rank,
+  2004 rank, name, country, peer, recruiter, intl faculty, intl students,
+  faculty/student, citations/faculty, overall (100-point scale).
+
+2006  raw/the_tc161.html
+  http://web.archive.org/web/20080601id_/http://www.timeshighereducation.co.uk/hybrid.asp?typeCode=161
+  200 rows, ranks 1-200 with ties (e.g. 198=). Same layout as 2005.
+
+2007  raw/the_tc144.html
+  http://web.archive.org/web/20080601id_/http://www.timeshighereducation.co.uk/hybrid.asp?typeCode=144
+  201 rows (ties incl. 2= x3, 200= x2), ranks 1-200=. Cols: 2007 rank, 2006 rank,
+  name, country, peer, employer, staff/student, citations/staff, intl staff,
+  intl students, overall.
+
+2008  raw/the_243_20081012.html
+  http://web.archive.org/web/20081012034445id_/http://www.timeshighereducation.co.uk/hybrid.asp?typeCode=243&pubCode=1&navcode=137
+  201 rows (ties incl. 200= x2), ranks 1-200=. Layout as 2007 (col2 = 2007 rank).
+  Note: the header GIF alt-texts on this page still say "2007 RANK/2006 RANK"
+  (reused graphics); the data columns are 2008 rank / 2007 rank, verified against
+  the QS 2008 mirror and the 2007 table.
+
+2009  raw/the_2009_top200_20091010.html
+  http://web.archive.org/web/20091010013044id_/http://www.timeshighereducation.co.uk/Rankings2009-Top200.html
+  200 rows, ranks 1-200. Layout as 2008 (col2 = 2008 rank).
+
+OUTPUT: theqs_{year}.csv with columns
+  year, rank_display, rank_low, rank_high, is_band, institution, country, score
+rank_display keeps tie markers verbatim ("199=", "2="); ties are NOT bands, so
+is_band=False everywhere and rank_low=rank_high=numeric part. `score` is the
+overall score column verbatim (1000-scale in 2004, 100-scale 2005-2009).
+`country` verbatim from source: 2004 uses 2-letter codes throughout; 2005-2009
+mix "US"/"UK" codes with full names for other countries; the source's own typo
+"Austraila" (2007, one row) is preserved.
+
+CROSS-CHECKS (5 spot rows per year: top 3 + two mid-table; all MATCH, no
+disagreements found):
+
+2004 vs THE's own 2005 table (tc175) "2004 RANK" column (different document):
+  1 Harvard=1; 2 California/Berkeley=2; 3 MIT=3; 100 Queen Mary=100;
+  150 Sheffield=150. (No independent non-THE mirror of the 2004 table survives
+  in the Wayback Machine; thes.co.uk originals were behind registration.)
+2005 vs THE 2006 table (tc161) "2005 RANK" column:
+  1 Harvard; 2 MIT; 3 Cambridge; 100 Sussex; 169= Malaya — all match.
+2006 vs QS mirror iframe (Wayback 20070114212718,
+  topuniversities.com/scorecard/wur/view.php?year=2006&mode=compact&start=1&end=200,
+  raw/wur2006_top200_iframe.html):
+  1 Harvard; 2 Cambridge; 3 Oxford; 99= Penn State; 150= Korea Univ — all match.
+2007 vs QS mirror top-400 (Wayback 20071118090134,
+  topuniversities.com/worlduniversityrankings/results/2007/overall_rankings/top_400_universities/,
+  raw/tu2007_top400_20071118.html):
+  1 Harvard; 2= Cambridge; 2= Oxford; 100 Helsinki; 151= Hokkaido — all match.
+2008 vs QS mirror full rankings (Wayback 20081009193801,
+  topuniversities.com/worlduniversityrankings/results/2008/overall_rankings/fullrankings/,
+  raw/tu2008_fullrankings_20081009.html):
+  1 Harvard; 2 Yale; 3 Cambridge; 99= Purdue; 155= Tuebingen — all match.
+2009 vs QS mirror pages (Wayback 20110520095301 ranks 1-50 table,
+  20121020144302 ranks 26-50, 20121020141122 ranks 101-124;
+  raw/tu2009_page0_20110520.html, raw/tu2009_page1_20121020.html,
+  raw/tu2009_page4_20121020.html):
+  1 Harvard; 2 Cambridge; 3 Yale; 31 Brown; 106 UC Santa Barbara — all match.
+
+Auxiliary files kept in raw/: the_142_20080314.html (THE index used to find
+typeCodes), the_tc160/174/194.html (year landing pages),
+tu2005_*/tu2006_* (QS-era landing pages; the 2005 QS iframe
+scorecard/wur/view.php?year=2005 itself has no 200-status Wayback capture, so
+no non-THE mirror exists for 2005), wiki_theqs.html / wiki_the_wur.html
+(checked; current Wikipedia articles no longer carry 2004-2009 tables),
+wiki_qs_rev588224473.html (Dec-2013 Wikipedia revision; its historical table
+covers QS Asian rankings + 2010-2013 world tables, used for the QS 2013 file).
+
+Depth: full published top 200 for every year 2004-2009 (200-201 rows per year
+depending on ties). The 201-500 "alphabetical only" annexes of 2005/2006 were
+not captured with usable tables and are NOT included; nothing padded.
+
+--- urap/SOURCE.txt
+URAP (University Ranking by Academic Performance, METU Ankara)
+World rankings, editions 2010-2011 through 2025-2026
+Retrieved: 13 August 2026
+
+File naming: urap_{startyear}.csv, e.g. the 2024-2025 edition -> urap_2024.csv.
+Columns: year (= edition start year), rank, institution, country, score (URAP Total, max 600).
+
+========================================================================
+A. EDITIONS 2018-2025 (2018-2019 ... 2025-2026): live site
+========================================================================
+urapcenter.org is a Meteor application; ranking tables are not server-rendered static HTML. Data was obtained from the site's own backend two ways:
+1. DDP-over-SockJS subscriptions (https://urapcenter.org/sockjs/...) to enumerate editions: publications 'ranking-groups.all', 'rankings.woutdata.all', 'files.excel.all' (raw response: html/meta.json).
+2. Each edition's full world-ranking table is stored as an Excel file (the same file that feeds the site's Kendo grid), downloaded via the site's public CDN route with a browser User-Agent:
+   2018: https://urapcenter.org/cdn/storage/ExcelFiles/CHabTTHcXiDWNf5tP/original/CHabTTHcXiDWNf5tP.xlsx  -> html/urap_world_2018.xlsx
+   2019: https://urapcenter.org/cdn/storage/ExcelFiles/f7bfK9hpAYy5t6gJi/original/f7bfK9hpAYy5t6gJi.xlsx  -> html/urap_world_2019.xlsx
+   2020: https://urapcenter.org/cdn/storage/ExcelFiles/QFRz6N4dxi43ftZwz/original/QFRz6N4dxi43ftZwz.xlsx  -> html/urap_world_2020.xlsx
+   2021: https://urapcenter.org/cdn/storage/ExcelFiles/t58aGsxoHJADHf4nn/original/t58aGsxoHJADHf4nn.xlsx  -> html/urap_world_2021.xlsx
+   2022: https://urapcenter.org/cdn/storage/ExcelFiles/iwEcKcbRNZv9Yanm5/original/iwEcKcbRNZv9Yanm5.xlsx  -> html/urap_world_2022.xlsx
+   2023: https://urapcenter.org/cdn/storage/ExcelFiles/4vdfrtNPjy7nijG3E/original/4vdfrtNPjy7nijG3E.xlsx  -> html/urap_world_2023.xlsx
+   2024: https://urapcenter.org/cdn/storage/ExcelFiles/FqoyQjxsGHDNciSNG/original/FqoyQjxsGHDNciSNG.xlsx  -> html/urap_world_2024.xlsx
+   2025: https://urapcenter.org/cdn/storage/ExcelFiles/XpJ5K2YPT86dEuF7K/original/XpJ5K2YPT86dEuF7K.xlsx  -> html/urap_world_2025.xlsx
+Country strings are as published by URAP in those files ('United States of America' in 2018-2020 files, 'USA'/'CHINA MAINLAND' style in 2021+ files). score = 'Total' column.
+
+========================================================================
+B. EDITION 2017 (2017-2018): Wayback Machine, complete
+========================================================================
+Single-page full table (2500 rows):
+   http://web.archive.org/web/20180612142002/http://www.urapcenter.org/2017/world.php?q=MS0yNTAw
+   (q= is base64 of the rank range; MS0yNTAw = '1-2500'; saved as html/wb_2017_full.html)
+Country given as ISO-2 flag code as published on the old site.
+
+========================================================================
+C. EDITIONS 2010-2016: reconstructed from Internet Archive captures
+========================================================================
+The old PHP site (www.urapcenter.org/{startyear}/world.php?q=...) and its later mirror (old.urapcenter.org) are offline (Cloudflare error 1001). Wayback holds only a subset of the 250-row block pages, and all 2019-era full-page captures are truncated at exactly 1 MB (crawler limit), covering only ranks 1-52x. Editions were therefore assembled from four capture classes, in priority order:
+  1. worldpage   - archived world.php block/full pages (see html/wb_*.html; URLs+timestamps in wb_fetch_list.txt)
+  2. countrypage - archived country.php?ccode=XX&rank=all pages (html/country/, queue in country_queue.csv); these list each country's institutions with world rank and Total score
+  3. univpage    - archived university.php?q=NAME pages (html/univ/, queue in univ_queue2.csv); each page shows that institution's world rank and Total score for the edition
+  4. fieldpage   - archived country field pages (rank=age/eng/life/med/sci/soc, 2011-2012 only; html/field/): 'Overall Ranking' column = world rank (no overall score)
+  5. excelprev   - URAP's own prevNyear/prevNrank columns in the 2018-2021 edition Excel files (institution + rank only, no score). Validated against overlapping wayback rows: the 2018 file agrees 100.0% on institution-at-rank for 2011-2016 (n=154..2351 per year); 2019/2020 files agree 98.8-99.4% (differences are later renames). Note: the 2018 file's 'prev6rank.1' column is URAP's mislabeled prev7rank (2017).
+Ranks claimed inconsistently by two sources are resolved in the priority order above; ambiguous fills were dropped rather than guessed. Rows from layers 4-5 have empty score. Country is the ISO-2 flag code from the old site where observed; fills use the code inferred from the Excel country name (majority mapping), else the Excel name. Per-row provenance: fill_provenance_{year}.csv.
+
+========================================================================
+D. PER-EDITION RESULTS AND SANITY CHECKS
+========================================================================
+2010 (2010-2011 edition): PARTIAL
+   rows=1106  max rank=2000  rows with score=1106
+   Harvard #1: YES
+   duplicate ranks: 0
+   duplicate institution names (source-level; distinct institutions or source duplication): ['Kogakuin University']
+   missing ranks (894): [252, 253, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273] ...
+
+2011 (2011-2012 edition): PARTIAL
+   rows=1552  max rank=2000  rows with score=1118
+   Harvard #1: YES
+   duplicate ranks: 0
+   missing ranks (448): [504, 505, 506, 509, 513, 518, 519, 520, 525, 526, 528, 531, 532, 533, 534, 535, 536, 538, 540, 544] ...
+
+2012 (2012-2013 edition): PARTIAL
+   rows=1406  max rank=1996  rows with score=734
+   Harvard #1: YES
+   duplicate ranks: 0
+   missing ranks (590): [251, 252, 256, 257, 263, 266, 274, 278, 280, 284, 291, 292, 295, 296, 297, 298, 299, 301, 306, 309] ...
+
+2013 (2013-2014 edition): PARTIAL
+   rows=1707  max rank=2000  rows with score=1224
+   Harvard #1: YES
+   duplicate ranks: 0
+   missing ranks (293): [525, 530, 533, 534, 535, 538, 539, 551, 553, 554, 555, 556, 557, 558, 559, 563, 568, 571, 575, 576] ...
+
+2014 (2014-2015 edition): PARTIAL
+   rows=1969  max rank=2000  rows with score=1120
+   Harvard #1: YES
+   duplicate ranks: 0
+   missing ranks (31): [536, 548, 765, 767, 855, 866, 895, 919, 940, 943, 984, 1053, 1099, 1170, 1268, 1345, 1377, 1570, 1614, 1626] ...
+
+2015 (2015-2016 edition): PARTIAL
+   rows=1641  max rank=2000  rows with score=1030
+   Harvard #1: YES
+   duplicate ranks: 0
+   duplicate institution names (source-level; distinct institutions or source duplication): ['Changchun University of Science and Technology', 'Nelson Mandela Metropolitan University', 'University of Life Sciences in Lublin', 'Xian University of Technology']
+   missing ranks (359): [251, 252, 255, 258, 260, 263, 266, 271, 274, 275, 276, 278, 279, 294, 295, 301, 302, 303, 306, 308] ...
+
+2016 (2016-2017 edition): PARTIAL
+   rows=1959  max rank=2000  rows with score=1455
+   Harvard #1: YES
+   duplicate ranks: 0
+   missing ranks (41): [755, 772, 776, 786, 790, 806, 812, 819, 847, 883, 894, 917, 957, 980, 984, 1006, 1033, 1035, 1039, 1064] ...
+
+2017 (2017-2018 edition): COMPLETE
+   rows=2500  max rank=2500  rows with score=2500
+   Harvard #1: YES
+   duplicate ranks: 0
+
+2018 (2018-2019 edition): PARTIAL
+   rows=2499  max rank=2500  rows with score=2499
+   Harvard #1: YES
+   duplicate ranks: 0
+   missing ranks (1): [1526]
+
+2019 (2019-2020 edition): COMPLETE
+   rows=2500  max rank=2500  rows with score=2500
+   Harvard #1: YES
+   duplicate ranks: 0
+
+2020 (2020-2021 edition): PARTIAL
+   rows=3000  max rank=3000  rows with score=3000
+   Harvard #1: YES
+   duplicate ranks: 1
+   missing ranks (1): [1280]
+
+2021 (2021-2022 edition): COMPLETE
+   rows=3002  max rank=3002  rows with score=3002
+   Harvard #1: YES
+   duplicate ranks: 0
+
+2022 (2022-2023 edition): COMPLETE
+   rows=3000  max rank=3000  rows with score=3000
+   Harvard #1: YES
+   duplicate ranks: 0
+   duplicate institution names (source-level; distinct institutions or source duplication): ['Soochow University']
+
+2023 (2023-2024 edition): COMPLETE
+   rows=3000  max rank=3000  rows with score=3000
+   Harvard #1: YES
+   duplicate ranks: 0
+
+2024 (2024-2025 edition): COMPLETE
+   rows=3000  max rank=3000  rows with score=3000
+   Harvard #1: YES
+   duplicate ranks: 0
+
+2025 (2025-2026 edition): COMPLETE
+   rows=3000  max rank=3000  rows with score=3000
+   Harvard #1: YES
+   duplicate ranks: 0
+
+Known source-data quirks (verbatim from URAP's own published files):
+ - 2018 edition: rank 1526 absent in URAP's Excel (2499 rows, max rank 2500).
+ - 2020 edition: rank 729 assigned twice and 1280 skipped in URAP's Excel (off-by-one in source).
+ - 2022 edition: 'Soochow University' appears twice (China mainland rank 135 and Taiwan rank 2872) - two distinct institutions.
+ - 2010 edition: Kogakuin University (JP) listed at both 1822 and 1823 with identical scores on the archived source page.
+
+Collection cutoff: after ~2,500 Wayback requests the Internet Archive began hard rate-limiting (HTTP 498/000) and the targeted university.php harvest for editions 2010-2012 could not finish in this session. univ_harvest7.py is resume-safe: rerunning it later (then finalize_old.py and make_source_txt.py) will close more of the remaining 2010-2013/2015 gaps. All gaps are missing mid-table ranks only; every edition's top 250 is complete and exact.
+
+All parsing was programmatic (python3/pandas/BeautifulSoup); scripts in this directory: ddp_client.py, parse_excel.py, parse_oldpages.py, reconstruct.py, finalize_old.py, univ_harvest*.py, country_harvest.py, field_harvest.py, make_source_txt.py.
+
+--- usnews/SOURCE_full.txt
+US News Best Global Universities — overall world rankings, editions 2020-2025
+Retrieval date: 13 August 2026
+Collector: automated pipeline under raw2/usnews/raw/ (fetch_wayback*.py,
+parse_wayback.py, build_csvs.py). No rows were transcribed by hand.
+
+Year convention: edition year. "2021 Best Global Universities" -> 2021;
+"2024-2025 Best Global Universities" (released 25 Jun 2024) -> 2024;
+"2025-2026" (released 17 Jun 2025) -> 2025.
+
+Output files: usnews_{year}_full.csv with columns
+  year, rank_display, rank_low, rank_high, is_band, institution, country, score
+All six editions publish exact ranks with ties (no banded ranges), so
+is_band=False and rank_low==rank_high throughout. Tied ranks (a rank value
+shared by 2+ institutions) are displayed "#N (tie)". "Unranked" entries present
+in some sources are excluded from the CSVs.
+
+=======================================================================
+2020 (edition "2020", released 22 Oct 2019; officially 1,500 ranked)
+Channel: mirror table on qianmu.org ("2020USNEWS世界大学排名"), retrieved via
+  Wayback Machine snapshot 20191115152706 of
+  http://www.qianmu.org/2020USNEWS%E4%B8%96%E7%95%8C%E5%A4%A7%E5%AD%A6%E6%8E%92%E5%90%8D
+  (raw: raw/qianmu/qianmu_2020_wb.html, md5 40d4a7134f41d27e625e6b4b1a7dc80f)
+Rows: 1,500 ranked (full depth). Ties preserved by the mirror (557 distinct
+  rank values).
+Scores: qianmu carries no scores. Global Score filled for 215 institutions from
+  36 Wayback captures of usnews.com rankings/search pages inside the edition
+  window (raw/wayback/2020/, manifest raw/wayback_manifest.jsonl); score
+  coverage 14%, reaching scattered ranks up to 1500.
+Countries: translated from qianmu's Chinese country names via a fixed
+  dictionary (build_csvs.py ZH2EN); no unmapped values remained.
+Institution names: qianmu English names; 142 names normalized to official
+  US News spellings where identical up to punctuation (mirror mangled some
+  hyphens, e.g. "Sun Yat, sen" -> "Sun Yat-sen").
+Checks: Harvard #1 (yes); row count 1500 vs official 1500 (match); no duplicate
+  institution+country; rank agreement with independent usnews.com Wayback
+  captures 215/215 exact; scores monotone non-increasing in rank; tied ranks
+  share identical scores.
+
+=======================================================================
+2021 (edition "2021", released 20 Oct 2020; officially ~1,500 ranked)
+Channel: mirror table on qianmu.org ("2021USNEWS世界大学排名"), retrieved via
+  Wayback Machine snapshot 20201124235437 of
+  http://www.qianmu.org/2021USNEWS%E4%B8%96%E7%95%8C%E5%A4%A7%E5%AD%A6%E6%8E%92%E5%90%8D
+  (raw: raw/qianmu/qianmu_2021_wb.html, md5 b4384d7dd3ccc46d5e09087f35815a31)
+Rows: 1,499 ranked (full depth) plus 179 "Unranked" rows excluded. The
+  mirror's total of 1,678 entries exactly matches the total_count=1678 embedded
+  in the Wayback capture of the live usnews.com 2021 rankings page.
+Scores: filled for 201 institutions (13%) from 40 usnews.com Wayback captures
+  in the edition window, reaching scattered ranks up to 1448.
+Countries/names: same procedure as 2020 (114 names normalized).
+Checks: Harvard #1 (yes); 1,499 rows vs official "nearly 1,500" (match); no
+  duplicate institution+country; rank agreement with usnews.com Wayback
+  captures 201/201 exact; scores monotone; ties share scores.
+
+=======================================================================
+2022 (edition "2022", released 26 Oct 2021; officially 1,750 ranked)
+Channel: GitHub mirror Goldtype/USNewsSchoolsRank, file 22USNews.xlsx sheet
+  "world" (selenium scrape of usnews.com), commit e8e69ad3f7 dated 2022-02-25
+  (inside the edition window).
+  https://github.com/Goldtype/USNewsSchoolsRank
+  (raw: raw/github_misc/goldtype_22USNews.xlsx)
+Rows: 1,750 ranked (full depth); 255 unranked rows excluded. Scores present
+  for all rows (100%).
+Checks: Harvard #1 (yes); 1,750 vs official 1,750 (match); no duplicate
+  institution+country; scores perfectly monotone non-increasing; all tied
+  ranks share identical scores (ties inferred from repeated rank values).
+
+=======================================================================
+2023 (edition "2022-2023", released 25 Oct 2022; officially 2,000 ranked)
+Channel: GitHub mirror yym68686/uniRank, file 2022-usnews/uni.json (raw items
+  from the usnews.com search API, includes explicit is_tied flags), commit
+  2ea6e181e0a725dbe7a6bfedcf0891c1fc276548 (2023-04-10, inside edition window).
+  https://github.com/yym68686/uniRank
+  (raw: raw/github_unirank/uni_2022.json)
+Rows: 2,000 ranked (full depth); 165 unranked entries excluded. Scores 100%.
+Checks: Harvard #1 (yes); 2,000 vs official 2,000 (match); no duplicate
+  institution+country; scores monotone; ties share scores; tie flags taken
+  from the API's is_tied field.
+
+=======================================================================
+2024 (edition "2024-2025", released 25 Jun 2024; officially 2,250 ranked)
+PARTIAL — top 917 complete, scattered coverage beyond.
+Channels merged:
+  (a) GitHub mirror mmostagirbhuiyan/unirank, file
+      frontend/public/data/legacy/usnews_rankings_2025.csv (Playwright scrape
+      of usnews.com; despite the filename this is the 2024-2025 edition),
+      commit 86d613db (2025-06-21).
+      https://github.com/mmostagirbhuiyan/unirank
+      (raw: raw/github_misc/unirank_usnews_rankings_2025.csv)
+      920 rows covering ranks 1-917 (complete top block; no scores).
+      Edition identity verified: 253/253 institutions common with (b) match
+      ranks exactly, at depths up to ~1250.
+  (b) 43 Wayback Machine captures of usnews.com rankings/search pages from the
+      edition window Jun 2024-Jun 2025 (raw/wayback/2024/), parsed from
+      server-embedded JSON with rank label "Best Global Universities" only.
+      Contributed Global Scores for 341 rows (34% coverage) and 91 additional
+      institutions at scattered ranks 918-2229.
+Rows: 1,011 of 2,250 (depth: complete to rank 917; scattered deciles to 2229).
+Checks: Harvard #1 (yes); no duplicate institution+country; scores monotone;
+  ties share scores; cross-source rank agreement 253/253.
+
+=======================================================================
+2025 (edition "2025-2026", released 17 Jun 2025; officially 2,250 ranked)
+PARTIAL — top 937 only, no scores.
+Channel: GitHub mirror mmostagirbhuiyan/unirank, file
+  frontend/public/data/usnews_rankings.csv, last scraped at commit 31219a72
+  (2026-01-07, inside the edition window Jun 2025-Jun 2026).
+  (raw: raw/github_misc/unirank_usnews_rankings.csv)
+Rows: 940 covering ranks 1-937 (complete top block). Score column empty (the
+  mirror did not capture Global Score).
+Edition identity verified three ways: (i) disagrees with the 2024 edition
+  captures (22/251 rank matches) and with the project's 2026 edition data
+  (6/284) — so it is the middle edition; (ii) commit date inside window;
+  (iii) top-10 matches the official 17 Jun 2025 press release exactly
+  (Harvard, MIT, Stanford, Oxford, Cambridge, Berkeley, UCL, UW-Seattle,
+  Yale, Columbia).
+Checks: Harvard #1 (yes); no duplicate institution+country.
+Deeper coverage (ranks 938-2250) and scores were not recoverable in this run:
+  usnews.com blocks direct crawling; the Wayback Machine holds ~328 candidate
+  captures for this window (see raw/fetchlist.json) but archive.org began
+  refusing connections from this machine before they could be fetched. The
+  fetch pipeline (raw/fetch_wayback_par.py) can be resumed later to extend
+  depth and add scores.
+
+=======================================================================
+What proved unobtainable
+- 2024: ranks 918-2250 except 91 scattered rows; scores below ~rank 300 are
+  sparse. 2025: ranks 938-2250 and all scores. Full 2,250-row dumps of the
+  2024-2025 and 2025-2026 editions exist on no public mirror found (GitHub,
+  Kaggle via anonymous kagglehub, HuggingFace, Zenodo, figshare, archive.org
+  items, Common Crawl all searched); usnews.com itself only serves the current
+  2026-2027 edition.
+- Kaggle dataset zulqarnain11/global-university-rankings-2025-2026 was deleted
+  (404). rNLKJA/ranking-radar is no longer on GitHub; its local copy at
+  raw/usnews/rNLKJA_ranking-radar has US News global data for 2026 only.
+- The wayback fetch of the 2020-2023 windows was intentionally stopped early
+  once full-depth mirrors were verified; raw captures retrieved so far are
+  kept under raw/wayback/ with the manifest raw/wayback_manifest.jsonl.
+
+Raw material inventory (all under raw2/usnews/raw/):
+  cdx_*.json                 CDX index listings used to enumerate captures
+  fetchlist.json             per-window candidate capture list
+  wayback/{window}/*.bin     raw Wayback responses (gzip or plain)
+  wayback_manifest.jsonl     fetch log (url, timestamp, file, status)
+  parsed_{window}.jsonl      parsed rows from wayback captures
+  qianmu/*.html|csv          qianmu mirror snapshots and parsed tables
+  github_unirank/            yym68686/uniRank files (2023 edition)
+  github_misc/               Goldtype xlsx (2022), mmostagirbhuiyan CSVs
+                             (2024, 2025), other inspected candidates
+
+--- webometrics/SOURCE_history.txt
+Webometrics Ranking of World Universities - historical editions
+Recovered from Wayback Machine (web.archive.org) captures of
+webometrics.info. Retrieval date: 13 August 2026.
+
+Method: for each target edition, the paginated world-ranking list
+pages were fetched from Wayback captures taken inside that edition's
+publication window (July editions: captures Aug 1 - Jan 27 next year;
+January editions: captures Feb 1 - Jul 27). Pages parsed
+programmatically (regex row extraction, pandas). Country column is
+the ISO-2 code taken from the row's flag-image filename, uppercased.
+A leading footnote marker of the form '(N) ' was stripped from
+institution names where present. Ranks are competition ranking
+(ties share a rank; the following rank is skipped), validated as:
+first rank = 1, sorted ascending, rank <= position for every row.
+
+Direct access to www.webometrics.info was not possible from this
+machine (connection refused), hence Wayback-only recovery.
+A GitHub search (api.github.com, 'webometrics' repos/code) found no
+usable full mirrors of historical editions.
+
+Edition-specific notes:
+- 2004-12: old site top1000.asp (100 rows/offset page). Wayback has
+  Dec 2004 captures of offsets 0-900 EXCEPT offset=200 (never
+  captured in that state), so output truncates at the contiguous
+  top 200. A Feb 2005 capture cluster of the same URLs shows clearly
+  different data (top-200 name overlap only 44-80%), confirming the
+  Dec 2004 and Feb 2005 states are distinct edition states; the Feb
+  2005 cluster was fetched for comparison only (history_raw/
+  cmp_2005-02/) and is not emitted as an edition.
+- 2005-05: recovered from a static mirror the site itself hosted
+  (top2000.asp.htm and top2000.asp-offset=N.htm, 100 rows/page),
+  captured Oct-Nov 2005. Pages carry 'Last modified: 09/05/2005'.
+  The live top2000.asp capture of 20 Jul 2005 is row-identical to the
+  mirror's first page, so the data state was live by July 2005 and
+  the stamp is read as 9 May 2005 (dd/mm); labeled 2005-05.
+  Known site artifact: QUEEN MARY UNIVERSITY OF LONDON is listed
+  twice (ranks 524 and 549) on the same source page; kept as-is.
+- 2006-07: top3000.asp (50 rows/page); only offsets 0-300 were ever
+  captured in the July-2006 window, so depth is top 350. No captures
+  exist in a January-2006 window.
+- 2009-01: January edition used because the July-2009 window has only
+  6 non-contiguous offset captures (unusable beyond top 100).
+- 2010-07: offsets 800/900/950 not captured in window; depth top 800.
+- 2022-01: January edition used because July-2022 window lacks pages
+  1,5,6,9 (contiguous depth would be only top 100). Page 9 (ranks
+  901-1000) has no capture in the Jan-2022 window either; depth 900.
+- 2024-07: page 9 not captured in window; depth top 900.
+- Unrecoverable as full editions: 2004 beyond top 200, 2006 beyond
+  top 350, July editions of 2009 and 2022 (January used instead).
+- Where adjacent page captures weeks apart produced a one-row overlap
+  at a page boundary (a single institution duplicated at ranks N/N+1:
+  2016-07, 2018-07, 2020-07, 2021-07, 2022-01), the offending page
+  was refetched from a capture taken close in time to its neighbour,
+  which removed the artifact. No hand-editing of rows anywhere.
+- 2022+ Wayback bodies are stored gzip-compressed; decompressed
+  before parsing. Ties share a rank (competition ranking), which is
+  why tied_positions > 0; ranks were NOT renumbered.
+
+========================================================================
+Edition 2004-12  (depth: top 200)
+  checks: ranks_valid=True, tied_positions=0, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: UNIVERSITY OF CALIFORNIA BERKELEY; MASSACHUSETTS INSTITUTE OF TECHNOLOGY; HARVARD UNIVERSITY
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20041214004247  http://www.webometrics.info:80/top1000.asp  rows=100
+    piece01.html  20041221005255  http://www.webometrics.info:80/top1000.asp?offset=100  rows=100
+    piece03.html  20041221010945  http://www.webometrics.info:80/top1000.asp?offset=300  rows=100  [NOT USED - beyond contiguous run]
+    piece04.html  20041221005720  http://www.webometrics.info:80/top1000.asp?offset=400  rows=100  [NOT USED - beyond contiguous run]
+    piece05.html  20041221010258  http://www.webometrics.info:80/top1000.asp?offset=500  rows=100  [NOT USED - beyond contiguous run]
+    piece06.html  20041221011104  http://www.webometrics.info:80/top1000.asp?offset=600  rows=100  [NOT USED - beyond contiguous run]
+    piece07.html  20041221005617  http://www.webometrics.info:80/top1000.asp?offset=700  rows=100  [NOT USED - beyond contiguous run]
+    piece08.html  20041221010513  http://www.webometrics.info:80/top1000.asp?offset=800  rows=100  [NOT USED - beyond contiguous run]
+    piece09.html  20041221011021  http://www.webometrics.info:80/top1000.asp?offset=900  rows=100  [NOT USED - beyond contiguous run]
+
+========================================================================
+Edition 2005-05  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=0, duplicate_institutions=1, harvard_or_mit_in_top3=True
+  top 3: MASSACHUSETTS INSTITUTE OF TECHNOLOGY; UNIVERSITY OF CALIFORNIA BERKELEY; STANFORD UNIVERSITY
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20051013072503  http://www.webometrics.info:80/top2000.asp.htm  rows=100
+    piece01.html  20051125052047  http://www.webometrics.info:80/top2000.asp-offset=100.htm  rows=100
+    piece02.html  20051125004052  http://www.webometrics.info:80/top2000.asp-offset=200.htm  rows=100
+    piece03.html  20051125051816  http://www.webometrics.info:80/top2000.asp-offset=300.htm  rows=100
+    piece04.html  20051125051520  http://www.webometrics.info:80/top2000.asp-offset=400.htm  rows=100
+    piece05.html  20051125052022  http://www.webometrics.info:80/top2000.asp-offset=500.htm  rows=100
+    piece06.html  20051125051400  http://www.webometrics.info:80/top2000.asp-offset=600.htm  rows=100
+    piece07.html  20051026101114  http://www.webometrics.info:80/top2000.asp-offset=700.htm  rows=100
+    piece08.html  20051125115910  http://www.webometrics.info:80/top2000.asp-offset=800.htm  rows=100
+    piece09.html  20051125120327  http://www.webometrics.info:80/top2000.asp-offset=900.htm  rows=100
+
+========================================================================
+Edition 2006-07  (depth: top 350)
+  checks: ranks_valid=True, tied_positions=19, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: UNIVERSITY OF CALIFORNIA BERKELEY; HARVARD UNIVERSITY; MASSACHUSETTS INSTITUTE OF TECHNOLOGY
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20061004162526  http://www.webometrics.info/top3000.asp  rows=50
+    piece01.html  20061107232725  http://www.webometrics.info:80/top3000.asp?offset=50  rows=50
+    piece02.html  20061104132942  http://www.webometrics.info:80/top3000.asp?offset=100  rows=50
+    piece03.html  20061104132637  http://www.webometrics.info:80/top3000.asp?offset=150  rows=50
+    piece04.html  20061104133559  http://www.webometrics.info:80/top3000.asp?offset=200  rows=50
+    piece05.html  20061104133624  http://www.webometrics.info:80/top3000.asp?offset=250  rows=50
+    piece06.html  20061104133731  http://www.webometrics.info:80/top3000.asp?offset=300  rows=50
+
+========================================================================
+Edition 2007-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=61, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: STANFORD UNIVERSITY; MASSACHUSETTS INSTITUTE OF TECHNOLOGY; UNIVERSITY OF CALIFORNIA BERKELEY
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20070804204225  http://www.webometrics.info:80/top4000.asp  rows=50
+    piece01.html  20071011001046  http://www.webometrics.info:80/top4000.asp?offset=50  rows=50
+    piece02.html  20071011001036  http://www.webometrics.info:80/top4000.asp?offset=100  rows=50
+    piece03.html  20071011001041  http://www.webometrics.info:80/top4000.asp?offset=150  rows=50
+    piece04.html  20071011001106  http://www.webometrics.info:80/top4000.asp?offset=200  rows=50
+    piece05.html  20071011001123  http://www.webometrics.info:80/top4000.asp?offset=250  rows=50
+    piece06.html  20071011002159  http://www.webometrics.info:80/top4000.asp?offset=300  rows=50
+    piece07.html  20071011002204  http://www.webometrics.info:80/top4000.asp?offset=350  rows=50
+    piece08.html  20071011002214  http://www.webometrics.info:80/top4000.asp?offset=400  rows=50
+    piece09.html  20071011002221  http://www.webometrics.info:80/top4000.asp?offset=450  rows=50
+    piece10.html  20071011002224  http://www.webometrics.info:80/top4000.asp?offset=500  rows=50
+    piece11.html  20071011002230  http://www.webometrics.info:80/top4000.asp?offset=550  rows=50
+    piece12.html  20071011195055  http://www.webometrics.info:80/top4000.asp?offset=600  rows=50
+    piece13.html  20071011195100  http://www.webometrics.info:80/top4000.asp?offset=650  rows=50
+    piece14.html  20071011195105  http://www.webometrics.info:80/top4000.asp?offset=700  rows=50
+    piece15.html  20071011195109  http://www.webometrics.info:80/top4000.asp?offset=750  rows=50
+    piece16.html  20071011195114  http://www.webometrics.info:80/top4000.asp?offset=800  rows=50
+    piece17.html  20071011195119  http://www.webometrics.info:80/top4000.asp?offset=850  rows=50
+    piece18.html  20071011195124  http://www.webometrics.info:80/top4000.asp?offset=900  rows=50
+    piece19.html  20071011195130  http://www.webometrics.info:80/top4000.asp?offset=950  rows=50
+
+========================================================================
+Edition 2008-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=14, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Massachusetts Institute of Technology; Harvard University; Stanford University
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20080913105638  http://www.webometrics.info:80/top4000.asp  rows=50
+    piece01.html  20080913105725  http://www.webometrics.info:80/top4000.asp?offset=50  rows=50
+    piece02.html  20080913105654  http://www.webometrics.info:80/top4000.asp?offset=100  rows=50
+    piece03.html  20080913105659  http://www.webometrics.info:80/top4000.asp?offset=150  rows=50
+    piece04.html  20080921083847  http://www.webometrics.info:80/top4000.asp?offset=200  rows=50
+    piece05.html  20080913105715  http://www.webometrics.info:80/top4000.asp?offset=250  rows=50
+    piece06.html  20080913105718  http://www.webometrics.info:80/top4000.asp?offset=300  rows=50
+    piece07.html  20080913132358  http://www.webometrics.info:80/top4000.asp?offset=350  rows=50
+    piece08.html  20080913132418  http://www.webometrics.info:80/top4000.asp?offset=400  rows=50
+    piece09.html  20080913132423  http://www.webometrics.info:80/top4000.asp?offset=450  rows=50
+    piece10.html  20080913132428  http://www.webometrics.info:80/top4000.asp?offset=500  rows=50
+    piece11.html  20080913132433  http://www.webometrics.info:80/top4000.asp?offset=550  rows=50
+    piece12.html  20080913132438  http://www.webometrics.info:80/top4000.asp?offset=600  rows=50
+    piece13.html  20080913132443  http://www.webometrics.info:80/top4000.asp?offset=650  rows=50
+    piece14.html  20080913132448  http://www.webometrics.info:80/top4000.asp?offset=700  rows=50
+    piece15.html  20081014024555  http://www.webometrics.info:80/top4000.asp?offset=750  rows=50
+    piece16.html  20080913132458  http://www.webometrics.info:80/top4000.asp?offset=800  rows=50
+    piece17.html  20080913132503  http://www.webometrics.info:80/top4000.asp?offset=850  rows=50
+    piece18.html  20080913132508  http://www.webometrics.info:80/top4000.asp?offset=900  rows=50
+    piece19.html  20081014024618  http://www.webometrics.info:80/top4000.asp?offset=950  rows=50
+
+========================================================================
+Edition 2009-01  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=12, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Massachusetts Institute of Technology; Stanford University; Harvard University
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20090221070506  http://www.webometrics.info:80/top4000.asp  rows=50
+    piece01.html  20090221070104  http://www.webometrics.info:80/top4000.asp?offset=50  rows=50
+    piece02.html  20090221065340  http://www.webometrics.info:80/top4000.asp?offset=100  rows=50
+    piece03.html  20090221072130  http://www.webometrics.info:80/top4000.asp?offset=150  rows=50
+    piece04.html  20090221070042  http://www.webometrics.info:80/top4000.asp?offset=200  rows=50
+    piece05.html  20090221071629  http://www.webometrics.info:80/top4000.asp?offset=250  rows=50
+    piece06.html  20090221071634  http://www.webometrics.info:80/top4000.asp?offset=300  rows=50
+    piece07.html  20090221071431  http://www.webometrics.info:80/top4000.asp?offset=350  rows=50
+    piece08.html  20090220235654  http://www.webometrics.info:80/top4000.asp?offset=400  rows=50
+    piece09.html  20090223055654  http://www.webometrics.info:80/top4000.asp?offset=450  rows=50
+    piece10.html  20090223055659  http://www.webometrics.info:80/top4000.asp?offset=500  rows=50
+    piece11.html  20090224052133  http://www.webometrics.info:80/top4000.asp?offset=550  rows=50
+    piece12.html  20090224052141  http://www.webometrics.info:80/top4000.asp?offset=600  rows=50
+    piece13.html  20090227161844  http://www.webometrics.info:80/top4000.asp?offset=650  rows=50
+    piece14.html  20090322201644  http://www.webometrics.info:80/top4000.asp?offset=700  rows=50
+    piece15.html  20090322203139  http://www.webometrics.info:80/top4000.asp?offset=750  rows=50
+    piece16.html  20090321050145  http://www.webometrics.info:80/top4000.asp?offset=800  rows=50
+    piece17.html  20090412090526  http://www.webometrics.info:80/top4000.asp?offset=850  rows=50
+    piece18.html  20090406025050  http://www.webometrics.info:80/top4000.asp?offset=900  rows=50
+    piece19.html  20090322201712  http://www.webometrics.info:80/top4000.asp?offset=950  rows=50
+
+========================================================================
+Edition 2010-07  (depth: top 800)
+  checks: ranks_valid=True, tied_positions=145, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Massachusetts Institute of Technology; Stanford University
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20100806160707  http://www.webometrics.info:80/top12000.asp  rows=50
+    piece01.html  20100804073328  http://www.webometrics.info:80/top12000.asp?offset=50  rows=50
+    piece02.html  20100804074736  http://www.webometrics.info:80/top12000.asp?offset=100  rows=50
+    piece03.html  20100806154711  http://www.webometrics.info:80/top12000.asp?offset=150  rows=50
+    piece04.html  20100826014446  http://www.webometrics.info:80/top12000.asp?offset=200  rows=50
+    piece05.html  20100818201012  http://www.webometrics.info:80/top12000.asp?offset=250  rows=50
+    piece06.html  20100818204019  http://www.webometrics.info:80/top12000.asp?offset=300  rows=50
+    piece07.html  20100824015806  http://www.webometrics.info:80/top12000.asp?offset=350  rows=50
+    piece08.html  20100830110528  http://www.webometrics.info:80/top12000.asp?offset=400  rows=50
+    piece09.html  20100801053442  http://www.webometrics.info:80/top12000.asp?offset=450  rows=50
+    piece10.html  20100801133511  http://www.webometrics.info:80/top12000.asp?offset=500  rows=50
+    piece11.html  20100803153545  http://www.webometrics.info:80/top12000.asp?offset=550  rows=50
+    piece12.html  20101005060732  http://www.webometrics.info:80/top12000.asp?offset=600  rows=50
+    piece13.html  20101127150157  http://www.webometrics.info:80/top12000.asp?offset=650  rows=50
+    piece14.html  20101127150202  http://www.webometrics.info:80/top12000.asp?offset=700  rows=50
+    piece15.html  20101129034126  http://www.webometrics.info:80/top12000.asp?offset=750  rows=50
+    piece17.html  20110126082236  http://www.webometrics.info:80/top12000.asp?offset=850  rows=50  [NOT USED - beyond contiguous run]
+
+========================================================================
+Edition 2011-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=138, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Massachusetts Institute of Technology; Harvard University; Stanford University
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20110801041741  http://www.webometrics.info:80/top12000.asp  rows=50
+    piece01.html  20110803094407  http://www.webometrics.info:80/top12000.asp?offset=50  rows=50
+    piece02.html  20110803063551  http://www.webometrics.info:80/top12000.asp?offset=100  rows=50
+    piece03.html  20110924022515  http://www.webometrics.info:80/top12000.asp?offset=150  rows=50
+    piece04.html  20110804003721  http://www.webometrics.info:80/top12000.asp?offset=200  rows=50
+    piece05.html  20110831204415  http://www.webometrics.info:80/top12000.asp?offset=250  rows=50
+    piece06.html  20110801041130  http://www.webometrics.info:80/top12000.asp?offset=300  rows=50
+    piece07.html  20110903061645  http://www.webometrics.info:80/top12000.asp?offset=350  rows=50
+    piece08.html  20110803065753  http://www.webometrics.info:80/top12000.asp?offset=400  rows=50
+    piece09.html  20110801043605  http://www.webometrics.info:80/top12000.asp?offset=450  rows=50
+    piece10.html  20110814232414  http://www.webometrics.info:80/top12000.asp?offset=500  rows=50
+    piece11.html  20110824015543  http://www.webometrics.info:80/top12000.asp?offset=550  rows=50
+    piece12.html  20110817022210  http://www.webometrics.info:80/top12000.asp?offset=600  rows=50
+    piece13.html  20110831200946  http://www.webometrics.info:80/top12000.asp?offset=650  rows=50
+    piece14.html  20110803084519  http://www.webometrics.info:80/top12000.asp?offset=700  rows=50
+    piece15.html  20110803102219  http://www.webometrics.info:80/top12000.asp?offset=750  rows=50
+    piece16.html  20110830045734  http://www.webometrics.info:80/top12000.asp?offset=800  rows=50
+    piece17.html  20110815002713  http://www.webometrics.info:80/top12000.asp?offset=850  rows=50
+    piece18.html  20110824034920  http://www.webometrics.info:80/top12000.asp?offset=900  rows=50
+    piece19.html  20110804013618  http://www.webometrics.info:80/top12000.asp?offset=950  rows=50
+
+========================================================================
+Edition 2012-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=220, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Massachusetts Institute of Technology; Stanford University
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20120901200113  http://www.webometrics.info:80/en/world  rows=100
+    piece01.html  20120904062457  http://www.webometrics.info:80/en/world?page=1  rows=100
+    piece02.html  20120914042620  http://www.webometrics.info:80/en/world?page=2  rows=100
+    piece03.html  20120914041954  http://www.webometrics.info:80/en/world?page=3  rows=100
+    piece04.html  20120904060406  http://www.webometrics.info:80/en/world?page=4  rows=100
+    piece05.html  20120910160646  http://www.webometrics.info:80/en/world?page=5  rows=100
+    piece06.html  20120904160246  http://www.webometrics.info:80/en/world?page=6  rows=100
+    piece07.html  20120908050914  http://www.webometrics.info:80/en/world?page=7  rows=100
+    piece08.html  20120914042359  http://www.webometrics.info:80/en/world?page=8  rows=100
+    piece09.html  20120904165215  http://www.webometrics.info:80/en/world?page=9  rows=100
+
+========================================================================
+Edition 2013-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=207, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Massachusetts Institute of Technology; Stanford University
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20130805091410  http://webometrics.info/en/world  rows=100
+    piece01.html  20130806175503  http://webometrics.info/en/world?page=1  rows=100
+    piece02.html  20130806225152  http://www.webometrics.info:80/en/world?page=2  rows=100
+    piece03.html  20130807040753  http://webometrics.info/en/world?page=3  rows=100
+    piece04.html  20130807070756  http://webometrics.info/en/world?page=4  rows=100
+    piece05.html  20130807153909  http://webometrics.info/en/world?page=5  rows=100
+    piece06.html  20130806154000  http://webometrics.info/en/world?page=6  rows=100
+    piece07.html  20130806210220  http://webometrics.info/en/world?page=7  rows=100
+    piece08.html  20130806063757  http://www.webometrics.info:80/en/world?page=8  rows=100
+    piece09.html  20130830061739  http://webometrics.info/en/world?page=9  rows=100
+
+========================================================================
+Edition 2014-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=216, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Massachusetts Institute of Technology; Stanford University
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20140810101833  http://www.webometrics.info:80/en/world?page=0  rows=100
+    piece01.html  20140923100753  http://www.webometrics.info:80/en/world?page=1  rows=100
+    piece02.html  20140925055408  http://www.webometrics.info:80/en/world?page=2  rows=100
+    piece03.html  20140925102209  http://www.webometrics.info:80/en/world?page=3  rows=100
+    piece04.html  20140925123152  http://www.webometrics.info:80/en/world?page=4  rows=100
+    piece05.html  20141009111904  http://www.webometrics.info:80/en/world?page=5  rows=100
+    piece06.html  20140925121518  http://www.webometrics.info:80/en/world?page=6  rows=100
+    piece07.html  20140925102236  http://www.webometrics.info:80/en/world?page=7  rows=100
+    piece08.html  20140925123216  http://www.webometrics.info:80/en/world?page=8  rows=100
+    piece09.html  20141009113015  http://www.webometrics.info:80/en/world?page=9  rows=100
+
+========================================================================
+Edition 2015-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=220, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Massachusetts Institute of Technology; Stanford University
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20150825060654  http://www.webometrics.info:80/en/world?page=0  rows=100
+    piece01.html  20150905093645  http://webometrics.info/en/world?page=1  rows=100
+    piece02.html  20151025033237  http://www.webometrics.info:80/en/world?page=2  rows=100
+    piece03.html  20150905173124  http://webometrics.info/en/world?page=3  rows=100
+    piece04.html  20150817035928  http://www.webometrics.info:80/en/world?page=4  rows=100
+    piece05.html  20150905154710  http://www.webometrics.info:80/en/world?page=5  rows=100
+    piece06.html  20150905133300  http://webometrics.info/en/world?page=6  rows=100
+    piece07.html  20150905091128  http://webometrics.info/en/world?page=7  rows=100
+    piece08.html  20150905090844  http://webometrics.info/en/world?page=8  rows=100
+    piece09.html  20150905172137  http://www.webometrics.info:80/en/world?page=9  rows=100
+
+========================================================================
+Edition 2016-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=194, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Massachusetts Institute of Technology; Stanford University
+  month-year strings seen on pages: July 2016
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20160803065146  http://www.webometrics.info:80/en/world  rows=100
+    piece01.html  20160810114123  http://www.webometrics.info:80/en/world?page=1  rows=100
+    piece02.html  20160812191225  http://www.webometrics.info:80/en/world?page=2  rows=100
+    piece03.html  20160813115748  http://www.webometrics.info:80/en/world?page=3  rows=100
+    piece04.html  20160815064153  http://www.webometrics.info:80/en/world?page=4  rows=100
+    piece05.html  20160915210110  http://www.webometrics.info:80/en/world?page=5  rows=100
+    piece06.html  20160912193446  http://www.webometrics.info/en/world?page=6  rows=100
+    piece07.html  20160924190847  http://www.webometrics.info/en/world?page=7  rows=100
+    piece08.html  20160806230712  http://www.webometrics.info:80/en/world?page=8  rows=100
+    piece09.html  20160930110159  http://www.webometrics.info:80/en/world?page=9  rows=100
+
+========================================================================
+Edition 2017-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=225, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Stanford University; Massachusetts Institute of Technology
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20170801073350  http://www.webometrics.info:80/en/world  rows=100
+    piece01.html  20170803221801  http://www.webometrics.info:80/en/world?page=1  rows=100
+    piece02.html  20170810182240  http://www.webometrics.info:80/en/world?page=2  rows=100
+    piece03.html  20170808203532  http://www.webometrics.info:80/en/world?page=3  rows=100
+    piece04.html  20170815212208  http://www.webometrics.info:80/en/world?page=4  rows=100
+    piece05.html  20170805032505  http://www.webometrics.info:80/en/world?page=5  rows=100
+    piece06.html  20170809025235  http://www.webometrics.info:80/en/world?page=6  rows=100
+    piece07.html  20170816003528  http://www.webometrics.info:80/en/world?page=7  rows=100
+    piece08.html  20170803221806  http://www.webometrics.info:80/en/world?page=8  rows=100
+    piece09.html  20170819203835  http://www.webometrics.info:80/en/world?page=9  rows=100
+
+========================================================================
+Edition 2018-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=215, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Stanford University; Massachusetts Institute of Technology
+  month-year strings seen on pages: July 2018
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20180815023956  http://www.webometrics.info:80/en/world  rows=100
+    piece01.html  20180815142807  https://www.webometrics.info/en/world?page=1  rows=100
+    piece02.html  20180815144331  http://www.webometrics.info:80/en/WORLD?page=2  rows=100
+    piece03.html  20180815144023  http://www.webometrics.info:80/en/WORLD?page=3  rows=100
+    piece04.html  20180809154349  http://www.webometrics.info:80/en/world?page=4  rows=100
+    piece05.html  20180815032636  http://www.webometrics.info:80/en/world?page=5  rows=100
+    piece06.html  20180815142822  http://www.webometrics.info:80/en/WORLD?page=6  rows=100
+    piece07.html  20180815144342  http://www.webometrics.info:80/en/WORLD?page=7  rows=100
+    piece08.html  20180809152301  http://www.webometrics.info:80/en/world?page=8  rows=100
+    piece09.html  20180822235508  http://webometrics.info:80/en/world?page=9  rows=100
+
+========================================================================
+Edition 2019-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=210, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Stanford University; Massachusetts Institute of Technology
+  month-year strings seen on pages: July 2019
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20190802094828  http://www.webometrics.info:80/en/world  rows=100
+    piece01.html  20190822044532  http://www.webometrics.info/en/WORLD?page=1  rows=100
+    piece02.html  20190822044056  http://www.webometrics.info/en/WORLD?page=2  rows=100
+    piece03.html  20190811013720  http://www.webometrics.info:80/en/world?page=3  rows=100
+    piece04.html  20190822043209  http://www.webometrics.info/en/WORLD?page=4  rows=100
+    piece05.html  20190804092400  http://www.webometrics.info:80/en/world?page=5  rows=100
+    piece06.html  20190807015025  http://www.webometrics.info:80/en/world?page=6  rows=100
+    piece07.html  20190822051802  http://www.webometrics.info/en/WORLD?page=7  rows=100
+    piece08.html  20190822050807  http://www.webometrics.info/en/WORLD?page=8  rows=100
+    piece09.html  20190811032342  http://www.webometrics.info:80/en/world?page=9  rows=100
+
+========================================================================
+Edition 2020-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=210, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Stanford University; Massachusetts Institute of Technology
+  month-year strings seen on pages: July 2020
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20200803205939  http://webometrics.info:80/en/world  rows=100
+    piece01.html  20200811152306  http://webometrics.info:80/en/world?page=1  rows=100
+    piece02.html  20200812010911  http://webometrics.info:80/en/world?page=2  rows=100
+    piece03.html  20200812010917  http://webometrics.info:80/en/world?page=3  rows=100
+    piece04.html  20201029012702  https://www.webometrics.info/en/world?page=4  rows=100
+    piece05.html  20201028064034  https://www.webometrics.info/en/world?page=5  rows=100
+    piece06.html  20201028061934  https://www.webometrics.info/en/world?page=6  rows=100
+    piece07.html  20201025021326  https://www.webometrics.info/en/world?page=7  rows=100
+    piece08.html  20200926001623  http://www.webometrics.info/en/world?page=8  rows=100
+    piece09.html  20201125033219  https://www.webometrics.info/en/world?page=9  rows=100
+
+========================================================================
+Edition 2021-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=234, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Stanford University; Massachusetts Institute of Technology
+  month-year strings seen on pages: July 2021
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20210805055945  https://www.webometrics.info/en/world  rows=100
+    piece01.html  20210924114638  https://www.webometrics.info/en/WORLD?page=1  rows=100
+    piece02.html  20210922025013  https://www.webometrics.info/en/world?page=2  rows=100
+    piece03.html  20210920223020  https://www.webometrics.info/en/world?page=3  rows=100
+    piece04.html  20210924124811  https://www.webometrics.info/en/WORLD?page=4  rows=100
+    piece05.html  20210922033520  https://www.webometrics.info/en/world?page=5  rows=100
+    piece06.html  20210922025854  https://www.webometrics.info/en/world?page=6  rows=100
+    piece07.html  20210924130356  https://www.webometrics.info/en/world?page=7  rows=100
+    piece08.html  20210924114627  https://www.webometrics.info/en/world?page=8  rows=100
+    piece09.html  20211016161304  https://www.webometrics.info/en/world?page=9  rows=100
+
+========================================================================
+Edition 2022-01  (depth: top 900)
+  checks: ranks_valid=True, tied_positions=180, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Stanford University; Massachusetts Institute of Technology
+  month-year strings seen on pages: January 2022
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20220217114103  https://webometrics.info/en/world  rows=100
+    piece01.html  20220216165912  https://webometrics.info/en/world?page=1  rows=100
+    piece02.html  20220216234052  https://webometrics.info/en/world?page=2  rows=100
+    piece03.html  20220217011615  https://webometrics.info/en/world?page=3  rows=100
+    piece04.html  20220217011803  https://webometrics.info/en/world?page=4  rows=100
+    piece05.html  20220216230126  https://webometrics.info/en/world?page=5  rows=100
+    piece06.html  20220216165659  https://webometrics.info/en/world?page=6  rows=100
+    piece07.html  20220216232226  https://webometrics.info/en/world?page=7  rows=100
+    piece08.html  20220216230223  https://webometrics.info/en/world?page=8  rows=100
+
+========================================================================
+Edition 2023-07  (depth: top 1000)
+  checks: ranks_valid=True, tied_positions=236, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Stanford University; Massachusetts Institute of Technology
+  month-year strings seen on pages: July 2023
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20231104095237  https://www.webometrics.info/en/world  rows=100
+    piece01.html  20230923234455  https://webometrics.info/en/world?page=1  rows=100
+    piece02.html  20230923192717  https://webometrics.info/en/world?page=2  rows=100
+    piece03.html  20230923145033  https://webometrics.info/en/world?page=3  rows=100
+    piece04.html  20230922091554  https://www.webometrics.info/en/world?page=4  rows=100
+    piece05.html  20230925174215  https://webometrics.info/en/world?page=5  rows=100
+    piece06.html  20230926014829  https://www.webometrics.info/en/WORLD?page=6  rows=100
+    piece07.html  20230925174119  https://webometrics.info/en/world?page=7  rows=100
+    piece08.html  20230926010147  https://webometrics.info/en/world?page=8  rows=100
+    piece09.html  20231112105425  https://www.webometrics.info/en/world?page=9  rows=100
+
+========================================================================
+Edition 2024-07  (depth: top 900)
+  checks: ranks_valid=True, tied_positions=193, duplicate_institutions=0, harvard_or_mit_in_top3=True
+  top 3: Harvard University; Stanford University; Massachusetts Institute of Technology
+  month-year strings seen on pages: July 2024
+  captures used (piece, wayback timestamp, original URL, rows):
+    piece00.html  20240829150628  https://www.webometrics.info/en/world  rows=100
+    piece01.html  20250127103700  https://www.webometrics.info/en/world?page=1  rows=100
+    piece02.html  20240910194313  https://www.webometrics.info/en/world?page=2  rows=100
+    piece03.html  20240926234849  https://www.webometrics.info/en/world?page=3  rows=100
+    piece04.html  20240902173224  https://www.webometrics.info/en/world?page=4  rows=100
+    piece05.html  20241130061725  https://www.webometrics.info/en/WORLD?page=5  rows=100
+    piece06.html  20240809141941  https://www.webometrics.info/en/world?page=6  rows=100
+    piece07.html  20240910085642  https://www.webometrics.info/en/world?page=7  rows=100
+    piece08.html  20240927115641  https://www.webometrics.info/en/world?page=8  rows=100

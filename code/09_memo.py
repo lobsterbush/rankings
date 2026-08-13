@@ -52,28 +52,39 @@ sys_rows = "\n".join(
     for s in item.sort_values("reliability", ascending=False)["system"])
 
 NOTES = {
- "ARWU": ("2003-2022 from a GitHub mirror; 2023-25 via the ShanghaiRanking JSON API, "
-          "which truncates around rank 300", "github + endpoint"),
+ "ARWU": ("2003-2022 from a GitHub mirror; 2023-25 complete (1,000 rows each) "
+          "straight from the ShanghaiRanking JSON API", "github + endpoint"),
  "THE": ("complete; THE's own JSON API via a mirror", "github"),
- "QS": ("2004-2010 and 2013 still missing; 2011 from the official PDF supplement",
-        "github + transcribed"),
- "CWUR": ("2012-15 and 2024-25 complete; 2016-23 captured to rank 120 only",
-          "github + transcribed"),
- "USNews": ("2026 complete; 2015-19 top 150 only; no public history for 2014-2025",
-            "github"),
- "NTU": ("top 100 only; 2018-2026 unobtainable (JavaScript-rendered site)", "github"),
- "Leiden": ("ranked on PP(top 10%), fractional counting; other editions need a client "
-            "that can download and unzip a 262 MB binary", "github"),
- "Webometrics": ("re-extracted locally from the official 921-page PDF: 32,053 rows "
-                 "versus 28,122 with 11% of names lost upstream", "pdf"),
- "NatureIndex": ("2016/2019/2023 transcribed from nature.com; 2021 and 2025 from mirrors",
-                 "github + transcribed"),
- "SCImago": ("higher-education sector, top ~300; the site's year parameter serves "
-             "distinct editions only for 2009-2019", "endpoint"),
- "ReutersWorld": ("Reuters Most Innovative Universities, top 100; 2016 edition not "
-                  "recoverable", "transcribed"),
+ "QS": ("2011 from the recovered full table; 2013 recovered via Wayback; "
+        "2004-2010 exists only as the joint THE-QS ranking (own instrument)",
+        "github + endpoint"),
+ "CWUR": ("complete 2012-2025 at full published depth (100/1,000/2,000 rows), "
+          "parsed from cwur.org directly", "endpoint"),
+ "USNews": ("2020-2023 and 2026 complete; 2015-19 top 150; 2024-25 partial "
+            "(top ~940 prefix; unlisted institutions not treated as censored "
+            "in those editions)", "github + wayback"),
+ "NTU": ("complete 2007-2026 at full depth (479-1,233 rows) from the site's "
+         "JSON endpoint", "endpoint"),
+ "Leiden": ("official edition files 2012-2023; ranked on PP(top 10%), "
+            "fractional counting, most recent window per edition", "endpoint"),
+ "Webometrics": ("2025.2 re-extracted locally from the official 921-page PDF; "
+                 "2004-2024 one edition per year from Wayback captures, mostly "
+                 "top 1,000", "pdf + wayback"),
+ "NatureIndex": ("full 500-row annual tables 2016-2024 and 2026 from "
+                 "nature.com and Wayback; 2025 from a mirror", "endpoint + wayback"),
+ "SCImago": ("higher-education sector; 2009-2019 top ~300, 2020-2025 complete "
+             "(3,900-5,050 rows) from Wayback captures of the CSV export",
+             "endpoint + wayback"),
+ "ReutersWorld": ("Reuters Most Innovative Universities, top 100, all five "
+                  "editions from Reuters' own archived JSON", "wayback"),
  "ReutersEU": ("Reuters Most Innovative Universities in Europe, top 100; a "
-               "region-restricted frame, modelled as its own instrument", "transcribed"),
+               "region-restricted frame, modelled as its own instrument", "wayback"),
+ "THEQS": ("the joint THE-QS World University Rankings 2004-2009, top 200, from "
+           "the publisher's own archived tables; a distinct instrument from both "
+           "successors", "wayback"),
+ "URAP": ("2017-2025 complete (2,500-3,000 rows) from urapcenter.org's own "
+          "files; 2010-2016 partial reconstructions with mid-table gaps, "
+          "handled without censoring assumptions", "endpoint + wayback"),
 }
 coverage_rows = ("| Ranking | Years | Editions | Median list | Channel | Notes |\n"
                  "|---|---|---:|---:|---|---|\n" + "\n".join(
@@ -168,42 +179,47 @@ Three things the pooled measure buys you that no single table does:
 
 ## 1. What data exists, and what I could not get
 
-This ran in a sandbox whose egress gateway refuses connections to essentially every
-primary ranking host — `shanghairanking.com`, `timeshighereducation.com`,
-`topuniversities.com`, `usnews.com`, `cwur.org`, `scimagoir.com`, `webometrics.info`,
-`urapcenter.org`, `nturanking.csti.tw`, `roundranking.com` — and to every general data
-repository — `zenodo.org`, `figshare.com`, `osf.io`, `kaggle.com`, `huggingface.co`,
-`data.world`, `archive.org`, `gitlab.com`. Only `github.com` (via `git clone`),
-`raw.githubusercontent.com` and the package registries were reachable.
+The data was collected in two passes under two very different network environments.
 
-One channel does get through: a fetch tool that renders a page to markdown and passes it
-through a small model. That turned out to be the difference between six usable systems
-and twelve. It reached ShanghaiRanking's undocumented JSON API
-(`/api/pub/v1/arwu/rank?version=YYYY`), SCImago's bulk CSV endpoint, cwur.org's per-year
-pages, and nature.com's research-leaders tables. Where it is a genuine transcription
-rather than a verbatim payload, it was run under the verification protocol in §1a.
+The first pass (12 August 2026) ran in a sandbox whose egress gateway refused
+connections to essentially every primary ranking host and every general data
+repository; only `github.com`, `raw.githubusercontent.com` and the package registries
+were reachable, plus a fetch tool that renders a page through a small model. That pass
+produced twelve systems, several as partial captures (ARWU 2023-25 truncated ~rank
+300, CWUR 2016-23 to rank 120, NTU stopped at 2017, SCImago missing 2020-23).
 
-Everything here is therefore either an exact file from an open GitHub mirror, an official
-endpoint read verbatim, a local re-extraction of an official PDF, or a double-verified
-transcription — and every row records which. Every file's repository and commit, or its
-source URL, is in `data/SOURCES.txt`. Nothing was scraped through a workaround and
-nothing was synthesised.
+The second pass (13 August 2026) ran with direct HTTP access to several primary hosts
+— `shanghairanking.com`, `cwur.org`, `nturanking.csti.tw`, `urapcenter.org`,
+`timeshighereducation.com` — and to the Wayback Machine. Full editions replaced every
+partial capture where the source publishes one: ARWU 2023-25 complete from the JSON
+API, CWUR 2012-25 complete from cwur.org, NTU 2007-26 complete from the site's JSON
+endpoint, SCImago 2020-25 complete from Wayback captures of the official CSV export,
+Leiden 2012-23 from the official edition files. It also added systems the first pass
+could not reach at all: URAP, the THE-QS joint rankings of 2004-2009, twenty-one
+historical Webometrics editions, and the missing US News, Reuters, Nature Index and
+QS editions. First-pass partial transcriptions were kept only for editions no fuller
+source covers; where a full pull overlapped a transcription, every overlapping row
+agreed exactly, which is a useful external check on the §1a transcription protocol.
+
+Everything here is therefore an exact file from an open GitHub mirror, an official
+endpoint read verbatim, an archived capture of an official page or export, a local
+re-extraction of an official PDF, or a double-verified transcription — and every row
+records which. Every file's repository and commit, or its source URL, is in
+`data/SOURCES.txt`. Nothing was scraped through a workaround and nothing was
+synthesised.
 
 {coverage_rows}
 
 **Retrieval channel matters here, so it is recorded per row.** `github` means an exact
-file from an open mirror. `endpoint` means an official machine-readable endpoint
-(ShanghaiRanking's undocumented JSON API, SCImago's bulk CSV) read through a fetch tool
-that returns the payload verbatim. `pdf` means a local re-extraction of an official PDF.
-`transcribed` means a rendered HTML table read by a small model — see §1a.
+file from an open mirror. `endpoint` means an official machine-readable endpoint read
+verbatim. `wayback` means an archive.org capture of an official page or export.
+`pdf` means a local re-extraction of an official PDF. `transcribed` means a rendered
+HTML table read by a small model — see §1a.
 
-**Not obtained at all:** URAP, Round University Ranking, Reuters Most Innovative
-Universities, and the THE–QS joint rankings of 2004–2009. No open mirror of any of them
-exists on the reachable network.
-
-If the blocked hosts were opened up, the highest-value additions in order would be:
-the Leiden Ranking Zenodo deposits (2011–2025, official Excel, CC-BY), the SCImago bulk
-CSV endpoint (2009–2025, one URL per year), CWUR 2016–2025, and ARWU 2023–2025.
+**Still not obtained:** Round University Ranking (JavaScript-only site, no usable
+archive), the Reuters 2016 world edition top-100 (only 2015 and 2017-19 world lists
+survive), mid-table stretches of URAP 2010-2016, and the deep tails of US News
+2024-25.
 
 ---
 

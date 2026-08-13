@@ -108,12 +108,26 @@ a = expand_open_bands(a)
 add(a, "ARWU", "ElijahSum/shanghai-ranking-complete")
 
 
-print("== CWUR 2012-2015")
-c = pd.read_csv(f"{RAW}/cwur/kaggle-bundle_arnaudbenard/cwurData.csv")
-c = c.rename(columns={"institution": "name_raw", "country": "country_raw",
-                      "world_rank": "rank"})
-c["rank_lo"] = c["rank"]; c["rank_hi"] = c["rank"]; c["banded"] = False
-add(c, "CWUR", "kaggle bundle / arnaudbenard")
+print("== CWUR")
+# Prefer the complete editions pulled straight from cwur.org (100 rows in
+# 2012-2013, 1000 in 2014-2018, 2000 from 2019): full depth, exact ranks.
+_cwur_full = sorted(glob.glob(f"{RAW2}/cwur/cwur_*_full.csv"))
+if _cwur_full:
+    cw_full = []
+    for f in _cwur_full:
+        t = pd.read_csv(f)
+        t = t.rename(columns={"institution": "name_raw", "location": "country_raw",
+                              "world_rank": "rank"})
+        t["rank_lo"] = t["rank"]; t["rank_hi"] = t["rank"]; t["banded"] = False
+        cw_full.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo",
+                          "rank_hi", "banded", "score"]])
+    add(pd.concat(cw_full, ignore_index=True), "CWUR", "cwur.org full editions")
+else:
+    c = pd.read_csv(f"{RAW}/cwur/kaggle-bundle_arnaudbenard/cwurData.csv")
+    c = c.rename(columns={"institution": "name_raw", "country": "country_raw",
+                          "world_rank": "rank"})
+    c["rank_lo"] = c["rank"]; c["rank_hi"] = c["rank"]; c["banded"] = False
+    add(c, "CWUR", "kaggle bundle / arnaudbenard")
 
 
 print("== U.S. News Best Global")
@@ -137,11 +151,27 @@ u2["rank_lo"] = u2["rank"]; u2["rank_hi"] = u2["rank"]; u2["banded"] = False
 add(u2, "USNews", "zequnyu/uRank (2015-2019, top 150 only)")
 
 
-print("== NTU Ranking 2007-2017 (top 100)")
-n = pd.read_csv(f"{RAW}/ntu/taiwan_ranks.csv")
-n = n.rename(columns={"university": "name_raw", "total_score": "score"})
-n["rank_lo"] = n["rank"]; n["rank_hi"] = n["rank"]; n["banded"] = False
-add(n, "NTU", "jlehtoma/taiwan_rank")
+print("== NTU Ranking")
+# Prefer the full editions from the nturanking.csti.tw JSON endpoint
+# (479-1233 rows per year, 2007-2026, banded below ~500).
+_ntu_full = sorted(glob.glob(f"{RAW2}/ntu/ntu_*_full.csv"))
+if _ntu_full:
+    nt = []
+    for f in _ntu_full:
+        t = pd.read_csv(f)
+        t = t.rename(columns={"institution": "name_raw", "country": "country_raw",
+                              "rank_low": "rank_lo", "rank_high": "rank_hi"})
+        t["banded"] = t["is_band"].astype(bool)
+        t["rank"] = (t["rank_lo"] + t["rank_hi"]) / 2.0
+        nt.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo",
+                     "rank_hi", "banded", "score"]])
+    add(pd.concat(nt, ignore_index=True), "NTU",
+        "nturanking.csti.tw full editions")
+else:
+    n = pd.read_csv(f"{RAW}/ntu/taiwan_ranks.csv")
+    n = n.rename(columns={"university": "name_raw", "total_score": "score"})
+    n["rank_lo"] = n["rank"]; n["rank_hi"] = n["rank"]; n["banded"] = False
+    add(n, "NTU", "jlehtoma/taiwan_rank")
 
 
 print("== Webometrics 2025")
@@ -175,8 +205,20 @@ ni["rank_lo"] = ni["rank"]; ni["rank_hi"] = ni["rank"]; ni["banded"] = False
 add(ni, "NatureIndex", "Jyotirmoyp/Nature_index_ranking (2025)")
 
 
-print("== CWTS Leiden Ranking (editions 2019, 2020, 2021)")
+print("== CWTS Leiden Ranking")
+_leiden_full = f"{RAW2}/leiden_full/leiden_editions_long.csv"
+if os.path.exists(_leiden_full):
+    # official edition files (00d_convert_leiden.py): all-sciences PP(top 10%),
+    # fractional counting, most recent window, ranked within edition. These
+    # cover 2012-2024 and supersede the fsbmat mirror's 2019-2021.
+    lf = pd.read_csv(_leiden_full)
+    lf["rank_lo"] = lf["rank"]; lf["rank_hi"] = lf["rank"]; lf["banded"] = False
+    add(lf[["year", "name_raw", "country_raw", "rank", "rank_lo", "rank_hi",
+            "banded", "score"]], "Leiden",
+        "leidenranking.com official edition files (PP top 10%)")
 try:
+    if os.path.exists(_leiden_full):
+        raise RuntimeError("official edition files already ingested")
     import pyreadr
     lr = pyreadr.read_r(f"{RAW}/leiden/LeidenRanking/dados/LeidenRanking.Rds")
     lr = list(lr.values())[0]
@@ -230,40 +272,62 @@ except Exception as e:
 if os.path.isdir(RAW2):
     print("\n===== SECOND WAVE =====")
 
-    print("== SCImago Institutions Rankings 2009-2019, 2024 (higher-ed sector)")
-    sci = []
-    for f in sorted(glob.glob(f"{RAW2}/scimago/scimago_*_higher-educ_top*.csv")):
-        y = int(re.search(r"scimago_(\d{4})_", f).group(1))
-        t = pd.read_csv(f, sep=";")
-        t = t.rename(columns={"Rank": "rank", "Institution": "name_raw",
-                              "Country": "country_raw"})
-        t["name_raw"] = t["name_raw"].astype(str).str.replace(r"\s*\*$", "", regex=True)
-        t["year"] = y
-        t["rank_lo"] = t["rank"]; t["rank_hi"] = t["rank"]; t["banded"] = False
-        sci.append(t)
-    if sci:
-        add(pd.concat(sci, ignore_index=True), "SCImago",
-            "scimagoir.com bulk CSV endpoint via WebFetch")
+    print("== SCImago Institutions Rankings (higher-ed sector)")
+    # *_full.csv are complete direct/wayback pulls; *_top*.csv are the original
+    # (or reconstructed) partial captures. Where both exist for a year, the
+    # full pull wins.
+    sci, sci_years = [], set()
+    for pat, src in [(f"{RAW2}/scimago/scimago_*_higher-educ_full.csv",
+                      "scimagoir.com full editions"),
+                     (f"{RAW2}/scimago/scimago_*_higher-educ_top*.csv",
+                      "scimagoir.com bulk CSV endpoint via WebFetch")]:
+        part = []
+        for f in sorted(glob.glob(pat)):
+            y = int(re.search(r"scimago_(\d{4})_", f).group(1))
+            if y in sci_years:
+                continue
+            sep = ";" if open(f).readline().count(";") > 1 else ","
+            t = pd.read_csv(f, sep=sep)
+            t.columns = [c.strip().lower() for c in t.columns]
+            t = t.rename(columns={"institution": "name_raw", "country": "country_raw"})
+            t["name_raw"] = t["name_raw"].astype(str).str.replace(r"\s*\*$", "", regex=True)
+            t["year"] = y
+            t["rank_lo"] = t["rank"]; t["rank_hi"] = t["rank"]; t["banded"] = False
+            part.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo",
+                           "rank_hi", "banded"]])
+            sci_years.add(y)
+        if part:
+            add(pd.concat(part, ignore_index=True), "SCImago", src)
 
     print("== Nature Index annual institution tables")
-    ni2 = []
-    for f in sorted(glob.glob(f"{RAW2}/natureindex/natureindex_*_institutions_*.csv")):
-        y = int(re.search(r"natureindex_(\d{4})_", f).group(1))
-        sep = "|" if open(f).readline().count("|") > 2 else ","
-        t = pd.read_csv(f, sep=sep)
-        t.columns = [c.strip().lower() for c in t.columns]
-        nm = "institution" if "institution" in t else t.columns[1]
-        t = t.rename(columns={nm: "name_raw", "country": "country_raw"})
-        t["year"] = y
-        t["rank_lo"] = t["rank"]; t["rank_hi"] = t["rank"]; t["banded"] = False
-        ni2.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo", "rank_hi", "banded"]])
+    # prefer *_full.csv (complete annual tables) over the partial transcriptions;
+    # 2025 already enters via the first-wave mirror, so skip it here
+    ni2, ni_years = [], {2025}
+    for pat in [f"{RAW2}/natureindex/natureindex_*_institutions_full.csv",
+                f"{RAW2}/natureindex/natureindex_*_institutions_top*.csv"]:
+        for f in sorted(glob.glob(pat)):
+            y = int(re.search(r"natureindex_(\d{4})_", f).group(1))
+            if y in ni_years:
+                continue
+            sep = "|" if open(f).readline().count("|") > 2 else ","
+            t = pd.read_csv(f, sep=sep)
+            t.columns = [c.strip().lower() for c in t.columns]
+            nm = "institution" if "institution" in t else t.columns[1]
+            t = t.rename(columns={nm: "name_raw", "country": "country_raw"})
+            t["year"] = y
+            t["rank_lo"] = t["rank"]; t["rank_hi"] = t["rank"]; t["banded"] = False
+            ni2.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo", "rank_hi", "banded"]])
+            ni_years.add(y)
     if ni2:
         add(pd.concat(ni2, ignore_index=True), "NatureIndex",
-            "nature.com research-leaders + GitHub mirror")
+            "nature.com annual tables (full + transcribed)")
 
-    print("== CWUR 2016-2025")
+    print("== CWUR 2016-2025 (legacy top-120 transcriptions)")
     cw = []
-    for f in sorted(glob.glob(f"{RAW2}/cwur/cwur_*.csv")):
+    # the *_full.csv editions are ingested in the first wave; only pick up
+    # legacy partial transcriptions here, and only for years the full pull lacks
+    for f in sorted(set(glob.glob(f"{RAW2}/cwur/cwur_*.csv"))
+                    - set(glob.glob(f"{RAW2}/cwur/cwur_*_full.csv"))):
         t = pd.read_csv(f)
         t = t.rename(columns={"institution": "name_raw", "location": "country_raw",
                               "world_rank": "rank"})
@@ -289,30 +353,109 @@ if os.path.isdir(RAW2):
             "shanghairanking.com JSON API via WebFetch")
 
     print("== QS 2011")
-    f = f"{RAW2}/qs/qs_2011_webfetch.csv"
+    _q11_full = f"{RAW2}/qs/qs_2011_full.csv"
+    f = _q11_full if os.path.exists(_q11_full) else f"{RAW2}/qs/qs_2011_webfetch.csv"
     if os.path.exists(f):
         t = pd.read_csv(f)
         t = t.rename(columns={"institution": "name_raw", "country_code": "country_raw"})
         t["banded"] = t["is_band"].astype(bool)
         t["rank"] = (t["rank_low"] + t["rank_high"]) / 2.0
         t = t.rename(columns={"rank_low": "rank_lo", "rank_high": "rank_hi"})
+        if "year" not in t:
+            t["year"] = 2011
+        t = expand_open_bands(t)
         add(t[["year", "name_raw", "country_raw", "rank", "rank_lo", "rank_hi", "banded"]],
-            "QS", "QS 2011 official PDF supplement")
+            "QS", "QS 2011 official PDF supplement"
+            if f != _q11_full else "QS 2011 full recovered table")
 
     print("== Reuters Most Innovative Universities")
+    # *_full.csv are complete archived lists; fall back to the transcriptions
+    # only for scope-years no full list covers
     for scope, label in [("world", "ReutersWorld"), ("europe", "ReutersEU")]:
-        rs = []
-        for f in sorted(glob.glob(f"{RAW2}/reuters/reuters_{scope}_*_webfetch.csv")):
-            t = pd.read_csv(f)
-            t = t[t["institution"] != "DROPPED_TRANSCRIPTION_CONFLICT"]
-            t = t.rename(columns={"institution": "name_raw", "country": "country_raw",
-                                  "edition_year": "year"})
-            t["rank_lo"] = t["rank"]; t["rank_hi"] = t["rank"]; t["banded"] = False
-            rs.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo",
-                         "rank_hi", "banded"]])
+        rs, have_years = [], set()
+        for pat in [f"{RAW2}/reuters/reuters_{scope}_*_full.csv",
+                    f"{RAW2}/reuters/reuters_{scope}_*_webfetch.csv"]:
+            for f in sorted(glob.glob(pat)):
+                y = int(re.search(r"_(\d{4})_", f).group(1))
+                if y in have_years:
+                    continue
+                t = pd.read_csv(f)
+                t = t[t["institution"] != "DROPPED_TRANSCRIPTION_CONFLICT"]
+                t = t.rename(columns={"institution": "name_raw", "country": "country_raw",
+                                      "edition_year": "year"})
+                if "year" not in t:
+                    t["year"] = y
+                t["rank_lo"] = t["rank"]; t["rank_hi"] = t["rank"]; t["banded"] = False
+                rs.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo",
+                             "rank_hi", "banded"]])
+                have_years.add(y)
         if rs:
             add(pd.concat(rs, ignore_index=True), label,
                 f"Reuters Most Innovative Universities ({scope})")
+
+    print("== U.S. News Best Global 2020-2025 (recovered editions)")
+    us = []
+    for f in sorted(glob.glob(f"{RAW2}/usnews/usnews_*_full.csv")):
+        t = pd.read_csv(f)
+        t = t.rename(columns={"institution": "name_raw", "country": "country_raw",
+                              "rank_low": "rank_lo", "rank_high": "rank_hi"})
+        t["banded"] = t["is_band"].astype(bool)
+        t["rank"] = (t["rank_lo"] + t["rank_hi"]) / 2.0
+        us.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo",
+                     "rank_hi", "banded", "score"]])
+    if us:
+        add(pd.concat(us, ignore_index=True), "USNews",
+            "usnews.com via Wayback/mirrors (2020-2025)")
+
+    print("== QS 2013 (recovered edition)")
+    f = f"{RAW2}/qs2013/qs_2013_full.csv"
+    if os.path.exists(f):
+        t = pd.read_csv(f)
+        t = t.rename(columns={"institution": "name_raw", "country": "country_raw",
+                              "rank_low": "rank_lo", "rank_hi": "rank_hi",
+                              "rank_high": "rank_hi"})
+        t["banded"] = t["is_band"].astype(bool)
+        t["rank"] = (t["rank_lo"] + t["rank_hi"]) / 2.0
+        t = expand_open_bands(t)          # "701+" rows: hi = edition length
+        add(t[["year", "name_raw", "country_raw", "rank", "rank_lo", "rank_hi",
+               "banded", "score"]], "QS", "topuniversities.com 2013 via Wayback/mirror")
+
+    print("== THE-QS World University Rankings 2004-2009")
+    tq = []
+    for f in sorted(glob.glob(f"{RAW2}/theqs/theqs_*.csv")):
+        t = pd.read_csv(f)
+        t = t.rename(columns={"institution": "name_raw", "country": "country_raw",
+                              "rank_low": "rank_lo", "rank_high": "rank_hi"})
+        t["banded"] = t["is_band"].astype(bool)
+        t["rank"] = (t["rank_lo"] + t["rank_hi"]) / 2.0
+        tq.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo",
+                     "rank_hi", "banded", "score"]])
+    if tq:
+        add(pd.concat(tq, ignore_index=True), "THEQS",
+            "THE-QS joint ranking via Wayback/mirrors (2004-2009)")
+
+    print("== URAP world rankings")
+    ura = []
+    for f in sorted(glob.glob(f"{RAW2}/urap/urap_*.csv")):
+        t = pd.read_csv(f)
+        t = t.rename(columns={"institution": "name_raw", "country": "country_raw"})
+        t["rank_lo"] = t["rank"]; t["rank_hi"] = t["rank"]; t["banded"] = False
+        ura.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo",
+                      "rank_hi", "banded", "score"]])
+    if ura:
+        add(pd.concat(ura, ignore_index=True), "URAP", "urapcenter.org full editions")
+
+    print("== Webometrics historical editions")
+    wh = []
+    for f in sorted(glob.glob(f"{RAW2}/webometrics/webometrics_*_top*.csv")):
+        t = pd.read_csv(f)
+        t = t.rename(columns={"institution": "name_raw", "country": "country_raw"})
+        t["rank_lo"] = t["rank"]; t["rank_hi"] = t["rank"]; t["banded"] = False
+        wh.append(t[["year", "name_raw", "country_raw", "rank", "rank_lo",
+                     "rank_hi", "banded"]])
+    if wh:
+        add(pd.concat(wh, ignore_index=True), "Webometrics",
+            "webometrics.info via Wayback (historical editions)")
 
 # ---------------------------------------------------------------------- write
 long = pd.concat(rows, ignore_index=True)

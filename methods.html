@@ -46,13 +46,13 @@ em{color:var(--ink-2)}
 <hr />
 <h2>The short version</h2>
 <p>I collected every international university ranking I could actually reach, harmonised
-8,638 raw institution strings into 7,555 institutions, and fit a <strong>dynamic
+11,593 raw institution strings into 9,278 institutions, and fit a <strong>dynamic
 Bayesian latent-trait model</strong> that treats each ranking as one noisy, censored
 instrument reading a single underlying quantity rather than as an answer in itself.</p>
-<p>The estimation panel covers <strong>12 ranking systems</strong>, <strong>115 system-editions</strong>,
-<strong>72,870 published listings</strong>, <strong>3,161 institutions</strong>, and <strong>24 reference years
-(2003–2026)</strong>. The likelihood has 46,530 exact rank
-observations, 26,340 interval-censored banded ranks, and 82,823 left-censored
+<p>The estimation panel covers <strong>14 ranking systems</strong>, <strong>194 system-editions</strong>,
+<strong>208,466 published listings</strong>, <strong>5,770 institutions</strong>, and <strong>24 reference years
+(2003–2026)</strong>. The likelihood has 175,790 exact rank
+observations, 32,676 interval-censored banded ranks, and 232,092 left-censored
 non-listings.</p>
 <p>Three things the pooled measure buys you that no single table does:</p>
 <ol>
@@ -68,24 +68,31 @@ non-listings.</p>
 </ol>
 <hr />
 <h2>1. What data exists, and what I could not get</h2>
-<p>This ran in a sandbox whose egress gateway refuses connections to essentially every
-primary ranking host — <code>shanghairanking.com</code>, <code>timeshighereducation.com</code>,
-<code>topuniversities.com</code>, <code>usnews.com</code>, <code>cwur.org</code>, <code>scimagoir.com</code>, <code>webometrics.info</code>,
-<code>urapcenter.org</code>, <code>nturanking.csti.tw</code>, <code>roundranking.com</code> — and to every general data
-repository — <code>zenodo.org</code>, <code>figshare.com</code>, <code>osf.io</code>, <code>kaggle.com</code>, <code>huggingface.co</code>,
-<code>data.world</code>, <code>archive.org</code>, <code>gitlab.com</code>. Only <code>github.com</code> (via <code>git clone</code>),
-<code>raw.githubusercontent.com</code> and the package registries were reachable.</p>
-<p>One channel does get through: a fetch tool that renders a page to markdown and passes it
-through a small model. That turned out to be the difference between six usable systems
-and twelve. It reached ShanghaiRanking's undocumented JSON API
-(<code>/api/pub/v1/arwu/rank?version=YYYY</code>), SCImago's bulk CSV endpoint, cwur.org's per-year
-pages, and nature.com's research-leaders tables. Where it is a genuine transcription
-rather than a verbatim payload, it was run under the verification protocol in §1a.</p>
-<p>Everything here is therefore either an exact file from an open GitHub mirror, an official
-endpoint read verbatim, a local re-extraction of an official PDF, or a double-verified
-transcription — and every row records which. Every file's repository and commit, or its
-source URL, is in <code>data/SOURCES.txt</code>. Nothing was scraped through a workaround and
-nothing was synthesised.</p>
+<p>The data was collected in two passes under two very different network environments.</p>
+<p>The first pass (12 August 2026) ran in a sandbox whose egress gateway refused
+connections to essentially every primary ranking host and every general data
+repository; only <code>github.com</code>, <code>raw.githubusercontent.com</code> and the package registries
+were reachable, plus a fetch tool that renders a page through a small model. That pass
+produced twelve systems, several as partial captures (ARWU 2023-25 truncated ~rank
+300, CWUR 2016-23 to rank 120, NTU stopped at 2017, SCImago missing 2020-23).</p>
+<p>The second pass (13 August 2026) ran with direct HTTP access to several primary hosts
+— <code>shanghairanking.com</code>, <code>cwur.org</code>, <code>nturanking.csti.tw</code>, <code>urapcenter.org</code>,
+<code>timeshighereducation.com</code> — and to the Wayback Machine. Full editions replaced every
+partial capture where the source publishes one: ARWU 2023-25 complete from the JSON
+API, CWUR 2012-25 complete from cwur.org, NTU 2007-26 complete from the site's JSON
+endpoint, SCImago 2020-25 complete from Wayback captures of the official CSV export,
+Leiden 2012-23 from the official edition files. It also added systems the first pass
+could not reach at all: URAP, the THE-QS joint rankings of 2004-2009, twenty-one
+historical Webometrics editions, and the missing US News, Reuters, Nature Index and
+QS editions. First-pass partial transcriptions were kept only for editions no fuller
+source covers; where a full pull overlapped a transcription, every overlapping row
+agreed exactly, which is a useful external check on the §1a transcription protocol.</p>
+<p>Everything here is therefore an exact file from an open GitHub mirror, an official
+endpoint read verbatim, an archived capture of an official page or export, a local
+re-extraction of an official PDF, or a double-verified transcription — and every row
+records which. Every file's repository and commit, or its source URL, is in
+<code>data/SOURCES.txt</code>. Nothing was scraped through a workaround and nothing was
+synthesised.</p>
 <table>
 <thead>
 <tr>
@@ -102,15 +109,47 @@ nothing was synthesised.</p>
 <td>ARWU</td>
 <td>2003-2025</td>
 <td style="text-align: right;">23</td>
-<td style="text-align: right;">500</td>
+<td style="text-align: right;">501</td>
 <td>github + endpoint</td>
-<td>2003-2022 from a GitHub mirror; 2023-25 via the ShanghaiRanking JSON API, which truncates around rank 300</td>
+<td>2003-2022 from a GitHub mirror; 2023-25 complete (1,000 rows each) straight from the ShanghaiRanking JSON API</td>
+</tr>
+<tr>
+<td>Webometrics</td>
+<td>2004-2025</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">995</td>
+<td>pdf + wayback</td>
+<td>2025.2 re-extracted locally from the official 921-page PDF; 2004-2024 one edition per year from Wayback captures, mostly top 1,000</td>
+</tr>
+<tr>
+<td>NTU</td>
+<td>2007-2026</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">812</td>
+<td>endpoint</td>
+<td>complete 2007-2026 at full depth (479-1,233 rows) from the site's JSON endpoint</td>
+</tr>
+<tr>
+<td>SCImago</td>
+<td>2009-2025</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">300</td>
+<td>endpoint + wayback</td>
+<td>higher-education sector; 2009-2019 top ~300, 2020-2025 complete (3,900-5,050 rows) from Wayback captures of the CSV export</td>
+</tr>
+<tr>
+<td>URAP</td>
+<td>2010-2025</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">2,487</td>
+<td>endpoint + wayback</td>
+<td>2017-2025 complete (2,500-3,000 rows) from urapcenter.org's own files; 2010-2016 partial reconstructions with mid-table gaps, handled without censoring assumptions</td>
 </tr>
 <tr>
 <td>THE</td>
 <td>2010-2025</td>
 <td style="text-align: right;">16</td>
-<td style="text-align: right;">1,178</td>
+<td style="text-align: right;">1,180</td>
 <td>github</td>
 <td>complete; THE's own JSON API via a mirror</td>
 </tr>
@@ -118,95 +157,77 @@ nothing was synthesised.</p>
 <td>QS</td>
 <td>2011-2026</td>
 <td style="text-align: right;">16</td>
-<td style="text-align: right;">1,022</td>
-<td>github + transcribed</td>
-<td>2004-2010 and 2013 still missing; 2011 from the official PDF supplement</td>
+<td style="text-align: right;">1,023</td>
+<td>github + endpoint</td>
+<td>2011 from the recovered full table; 2013 recovered via Wayback; 2004-2010 exists only as the joint THE-QS ranking (own instrument)</td>
 </tr>
 <tr>
 <td>CWUR</td>
 <td>2012-2025</td>
 <td style="text-align: right;">14</td>
-<td style="text-align: right;">120</td>
-<td>github + transcribed</td>
-<td>2012-15 and 2024-25 complete; 2016-23 captured to rank 120 only</td>
-</tr>
-<tr>
-<td>SCImago</td>
-<td>2009-2024</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">299</td>
+<td style="text-align: right;">1,493</td>
 <td>endpoint</td>
-<td>higher-education sector, top ~300; the site's year parameter serves distinct editions only for 2009-2019</td>
-</tr>
-<tr>
-<td>NTU</td>
-<td>2007-2017</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">100</td>
-<td>github</td>
-<td>top 100 only; 2018-2026 unobtainable (JavaScript-rendered site)</td>
+<td>complete 2012-2025 at full published depth (100/1,000/2,000 rows), parsed from cwur.org directly</td>
 </tr>
 <tr>
 <td>USNews</td>
 <td>2014-2025</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">150</td>
-<td>github</td>
-<td>2026 complete; 2015-19 top 150 only; no public history for 2014-2025</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">975</td>
+<td>github + wayback</td>
+<td>2020-2023 and 2026 complete; 2015-19 top 150; 2024-25 partial (top ~940 prefix; unlisted institutions not treated as censored in those editions)</td>
+</tr>
+<tr>
+<td>Leiden</td>
+<td>2012-2023</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">920</td>
+<td>endpoint</td>
+<td>official edition files 2012-2023; ranked on PP(top 10%), fractional counting, most recent window per edition</td>
 </tr>
 <tr>
 <td>NatureIndex</td>
-<td>2016-2025</td>
+<td>2016-2026</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">498</td>
+<td>endpoint + wayback</td>
+<td>full 500-row annual tables 2016-2024 and 2026 from nature.com and Wayback; 2025 from a mirror</td>
+</tr>
+<tr>
+<td>THEQS</td>
+<td>2004-2009</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">199</td>
+<td>wayback</td>
+<td>the joint THE-QS World University Rankings 2004-2009, top 200, from the publisher's own archived tables; a distinct instrument from both successors</td>
+</tr>
+<tr>
+<td>ReutersWorld</td>
+<td>2015-2019</td>
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">252</td>
-<td>github + transcribed</td>
-<td>2016/2019/2023 transcribed from nature.com; 2021 and 2025 from mirrors</td>
+<td style="text-align: right;">91</td>
+<td>wayback</td>
+<td>Reuters Most Innovative Universities, top 100, all five editions from Reuters' own archived JSON</td>
 </tr>
 <tr>
 <td>ReutersEU</td>
 <td>2016-2019</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">95</td>
-<td>transcribed</td>
+<td style="text-align: right;">99</td>
+<td>wayback</td>
 <td>Reuters Most Innovative Universities in Europe, top 100; a region-restricted frame, modelled as its own instrument</td>
-</tr>
-<tr>
-<td>ReutersWorld</td>
-<td>2015-2019</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">89</td>
-<td>transcribed</td>
-<td>Reuters Most Innovative Universities, top 100; 2016 edition not recoverable</td>
-</tr>
-<tr>
-<td>Leiden</td>
-<td>2019-2021</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1,171</td>
-<td>github</td>
-<td>ranked on PP(top 10%), fractional counting; other editions need a client that can download and unzip a 262 MB binary</td>
-</tr>
-<tr>
-<td>Webometrics</td>
-<td>2025-2025</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2,186</td>
-<td>pdf</td>
-<td>re-extracted locally from the official 921-page PDF: 32,053 rows versus 28,122 with 11% of names lost upstream</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Retrieval channel matters here, so it is recorded per row.</strong> <code>github</code> means an exact
-file from an open mirror. <code>endpoint</code> means an official machine-readable endpoint
-(ShanghaiRanking's undocumented JSON API, SCImago's bulk CSV) read through a fetch tool
-that returns the payload verbatim. <code>pdf</code> means a local re-extraction of an official PDF.
-<code>transcribed</code> means a rendered HTML table read by a small model — see §1a.</p>
-<p><strong>Not obtained at all:</strong> URAP, Round University Ranking, Reuters Most Innovative
-Universities, and the THE–QS joint rankings of 2004–2009. No open mirror of any of them
-exists on the reachable network.</p>
-<p>If the blocked hosts were opened up, the highest-value additions in order would be:
-the Leiden Ranking Zenodo deposits (2011–2025, official Excel, CC-BY), the SCImago bulk
-CSV endpoint (2009–2025, one URL per year), CWUR 2016–2025, and ARWU 2023–2025.</p>
+file from an open mirror. <code>endpoint</code> means an official machine-readable endpoint read
+verbatim. <code>wayback</code> means an archive.org capture of an official page or export.
+<code>pdf</code> means a local re-extraction of an official PDF. <code>transcribed</code> means a rendered
+HTML table read by a small model — see §1a.</p>
+<p><strong>Still not obtained:</strong> Round University Ranking (JavaScript-only site, no usable
+archive), the Reuters 2016 world edition top-100 (only 2015 and 2017-19 world lists
+survive), mid-table stretches of URAP 2010-2016, and the deep tails of US News
+2024-25.</p>
 <hr />
 <h2>1a. A word about the transcription channel</h2>
 <p>Some of the data above was not downloaded as a file. Several ranking sites are readable
@@ -262,9 +283,9 @@ single entity absorbed 1,689 distinct names.</p>
 co-listed, share a country, and have similar names are probably one institution under
 two names. That pass merged 194 blocks (Göttingen/Goettingen, KU Leuven/Catholic
 University of Leuven, Sapienza/La Sapienza, Purdue/Purdue–West Lafayette, and so on).</p>
-<p><strong>Where it ends up:</strong> 7,555 institutions from 8,638 raw strings, with
-<strong>0.059%</strong> of
-observations left in duplicate cells. A further <strong>158 pairs</strong> are flagged as
+<p><strong>Where it ends up:</strong> 9,278 institutions from 11,593 raw strings, with
+<strong>0.069%</strong> of
+observations left in duplicate cells. A further <strong>1053 pairs</strong> are flagged as
 possible-but-unconfirmed same-entity in <code>entity_review_candidates.csv</code> — mostly
 diacritic variants (Genoa/Genova, Hawaii/Hawaiʻi) and genuine institutional mergers
 (National Chiao Tung → National Yang Ming Chiao Tung). Those are shipped as a review
@@ -290,10 +311,10 @@ fine one. Treating non-listing as missing rather than as censored would throw aw
 single most informative fact about most institutions in most years.</p>
 <p><strong>Dynamics.</strong> θ follows a random walk, θ<em>ᵢₜ</em> = θ<em>ᵢ,ₜ₋₁</em> + N(0, ω²), which pools information
 across adjacent editions and lets an institution's estimate in a thin year borrow
-strength from its neighbours. Posterior ω = 0.137.</p>
+strength from its neighbours. Posterior ω = 0.133.</p>
 <p><strong>Estimation.</strong> A blocked Gibbs sampler in NumPy: truncated normals for the censored
 latent z, an exact forward-filter/backward-sample step for the θ paths (vectorised over
-all 3,161 institutions at once), conjugate draws for α, β, σ², ω². Four chains,
+all 5,770 institutions at once), conjugate draws for α, β, σ², ω². Four chains,
 15,000 iterations each, first half discarded. Roughly six minutes per chain on two cores.</p>
 <p><strong>Identification.</strong> Scale and location are fixed by θ<em>ᵢ</em>,₁ ~ N(0, 1); direction by α<em>ⱼ</em> &gt; 0.
 Item parameters are constant over time, and that is precisely what makes the scale
@@ -302,7 +323,7 @@ comparable across years. Because the likelihood is invariant along the ray
 has mean 0 and standard deviation 1 before any diagnostic is computed.</p>
 <hr />
 <h2>4. Does it work?</h2>
-<p><strong>Convergence.</strong> theta (600 random institution-years): R-hat max 1.014, 99th pct 1.007, share &gt; 1.01: 0.3% theta bulk ESS: min 272, median 1161 (of 1200 draws) The slowest-mixing parameters are the
+<p><strong>Convergence.</strong> theta (600 random institution-years): R-hat max 1.013, 99th pct 1.009, share &gt; 1.01: 0.7% theta bulk ESS: min 379, median 1158 (of 1200 draws) The slowest-mixing parameters are the
 discriminations of the three highest-information systems (R̂ ≈ 1.03), which is the
 residual of that same scale ray; everything else is at or below 1.02.</p>
 <p><strong>The rankings as instruments.</strong> Reliability is α<em>ⱼ</em>²/(α<em>ⱼ</em>² + σ<em>ⱼ</em>²) — the share of a
@@ -321,112 +342,130 @@ system's variation the shared factor explains.</p>
 </thead>
 <tbody>
 <tr>
+<td>NTU</td>
+<td>2007-2026</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">812</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.13</td>
+<td><strong>0.95</strong> [0.95, 0.95]</td>
+</tr>
+<tr>
 <td>ARWU</td>
 <td>2003-2025</td>
 <td style="text-align: right;">23</td>
-<td style="text-align: right;">500</td>
-<td style="text-align: right;">0.50</td>
-<td style="text-align: right;">0.08</td>
-<td><strong>0.97</strong> [0.97, 0.98]</td>
-</tr>
-<tr>
-<td>USNews</td>
-<td>2014-2025</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">150</td>
-<td style="text-align: right;">0.52</td>
-<td style="text-align: right;">0.19</td>
-<td><strong>0.88</strong> [0.87, 0.89]</td>
+<td style="text-align: right;">501</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.15</td>
+<td><strong>0.94</strong> [0.94, 0.94]</td>
 </tr>
 <tr>
 <td>CWUR</td>
 <td>2012-2025</td>
 <td style="text-align: right;">14</td>
-<td style="text-align: right;">120</td>
-<td style="text-align: right;">0.52</td>
-<td style="text-align: right;">0.22</td>
-<td><strong>0.85</strong> [0.84, 0.85]</td>
+<td style="text-align: right;">1,493</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">0.21</td>
+<td><strong>0.88</strong> [0.88, 0.89]</td>
 </tr>
 <tr>
-<td>NTU</td>
-<td>2007-2017</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">0.41</td>
-<td style="text-align: right;">0.21</td>
-<td><strong>0.79</strong> [0.76, 0.81]</td>
+<td>USNews</td>
+<td>2014-2025</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">975</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.24</td>
+<td><strong>0.86</strong> [0.85, 0.86]</td>
+</tr>
+<tr>
+<td>URAP</td>
+<td>2010-2025</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">2,487</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.28</td>
+<td><strong>0.83</strong> [0.82, 0.83]</td>
+</tr>
+<tr>
+<td>SCImago</td>
+<td>2009-2025</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">0.34</td>
+<td><strong>0.79</strong> [0.78, 0.79]</td>
+</tr>
+<tr>
+<td>Webometrics</td>
+<td>2004-2025</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">995</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.34</td>
+<td><strong>0.76</strong> [0.76, 0.77]</td>
 </tr>
 <tr>
 <td>THE</td>
 <td>2010-2025</td>
 <td style="text-align: right;">16</td>
-<td style="text-align: right;">1,178</td>
+<td style="text-align: right;">1,180</td>
 <td style="text-align: right;">0.52</td>
-<td style="text-align: right;">0.28</td>
-<td><strong>0.78</strong> [0.77, 0.78]</td>
+<td style="text-align: right;">0.32</td>
+<td><strong>0.72</strong> [0.72, 0.73]</td>
 </tr>
 <tr>
-<td>Webometrics</td>
-<td>2025-2025</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2,186</td>
-<td style="text-align: right;">0.62</td>
-<td style="text-align: right;">0.35</td>
-<td><strong>0.76</strong> [0.74, 0.77]</td>
+<td>NatureIndex</td>
+<td>2016-2026</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">498</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">0.34</td>
+<td><strong>0.72</strong> [0.71, 0.73]</td>
+</tr>
+<tr>
+<td>Leiden</td>
+<td>2012-2023</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">920</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.33</td>
+<td><strong>0.70</strong> [0.69, 0.71]</td>
 </tr>
 <tr>
 <td>QS</td>
 <td>2011-2026</td>
 <td style="text-align: right;">16</td>
-<td style="text-align: right;">1,022</td>
-<td style="text-align: right;">0.45</td>
-<td style="text-align: right;">0.31</td>
-<td><strong>0.68</strong> [0.67, 0.69]</td>
+<td style="text-align: right;">1,023</td>
+<td style="text-align: right;">0.43</td>
+<td style="text-align: right;">0.36</td>
+<td><strong>0.58</strong> [0.57, 0.59]</td>
 </tr>
 <tr>
-<td>NatureIndex</td>
-<td>2016-2025</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">252</td>
-<td style="text-align: right;">0.50</td>
-<td style="text-align: right;">0.37</td>
-<td><strong>0.64</strong> [0.62, 0.65]</td>
-</tr>
-<tr>
-<td>Leiden</td>
-<td>2019-2021</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1,171</td>
-<td style="text-align: right;">0.38</td>
-<td style="text-align: right;">0.32</td>
-<td><strong>0.58</strong> [0.56, 0.60]</td>
-</tr>
-<tr>
-<td>SCImago</td>
-<td>2009-2024</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">299</td>
+<td>THEQS</td>
+<td>2004-2009</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: right;">0.35</td>
 <td style="text-align: right;">0.33</td>
-<td style="text-align: right;">0.31</td>
-<td><strong>0.53</strong> [0.51, 0.55]</td>
+<td><strong>0.53</strong> [0.49, 0.57]</td>
 </tr>
 <tr>
 <td>ReutersWorld</td>
 <td>2015-2019</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">89</td>
-<td style="text-align: right;">0.24</td>
-<td style="text-align: right;">0.30</td>
-<td><strong>0.39</strong> [0.32, 0.45]</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.31</td>
+<td><strong>0.40</strong> [0.33, 0.47]</td>
 </tr>
 <tr>
 <td>ReutersEU</td>
 <td>2016-2019</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">95</td>
+<td style="text-align: right;">99</td>
 <td style="text-align: right;">0.25</td>
 <td style="text-align: right;">0.33</td>
-<td><strong>0.37</strong> [0.28, 0.44]</td>
+<td><strong>0.37</strong> [0.29, 0.45]</td>
 </tr>
 </tbody>
 </table>
@@ -456,75 +495,85 @@ rank order, computed separately inside each system-edition:</p>
 </thead>
 <tbody>
 <tr>
-<td>ARWU</td>
-<td style="text-align: right;">0.977</td>
-<td style="text-align: right;">500</td>
-</tr>
-<tr>
-<td>USNews</td>
-<td style="text-align: right;">0.888</td>
-<td style="text-align: right;">150</td>
-</tr>
-<tr>
-<td>Webometrics</td>
-<td style="text-align: right;">0.870</td>
-<td style="text-align: right;">2,192</td>
-</tr>
-<tr>
-<td>THE</td>
-<td style="text-align: right;">0.835</td>
-<td style="text-align: right;">1,178</td>
-</tr>
-<tr>
-<td>QS</td>
-<td style="text-align: right;">0.825</td>
-<td style="text-align: right;">1,023</td>
-</tr>
-<tr>
 <td>NTU</td>
-<td style="text-align: right;">0.801</td>
-<td style="text-align: right;">100</td>
+<td style="text-align: right;">0.952</td>
+<td style="text-align: right;">814</td>
+</tr>
+<tr>
+<td>URAP</td>
+<td style="text-align: right;">0.945</td>
+<td style="text-align: right;">2,488</td>
+</tr>
+<tr>
+<td>ARWU</td>
+<td style="text-align: right;">0.938</td>
+<td style="text-align: right;">501</td>
 </tr>
 <tr>
 <td>CWUR</td>
-<td style="text-align: right;">0.782</td>
-<td style="text-align: right;">120</td>
+<td style="text-align: right;">0.902</td>
+<td style="text-align: right;">1,493</td>
 </tr>
 <tr>
-<td>Leiden</td>
-<td style="text-align: right;">0.701</td>
-<td style="text-align: right;">1,171</td>
+<td>USNews</td>
+<td style="text-align: right;">0.896</td>
+<td style="text-align: right;">975</td>
 </tr>
 <tr>
-<td>NatureIndex</td>
-<td style="text-align: right;">0.696</td>
-<td style="text-align: right;">252</td>
+<td>Webometrics</td>
+<td style="text-align: right;">0.815</td>
+<td style="text-align: right;">995</td>
+</tr>
+<tr>
+<td>THE</td>
+<td style="text-align: right;">0.799</td>
+<td style="text-align: right;">1,180</td>
+</tr>
+<tr>
+<td>QS</td>
+<td style="text-align: right;">0.772</td>
+<td style="text-align: right;">989</td>
 </tr>
 <tr>
 <td>SCImago</td>
-<td style="text-align: right;">0.631</td>
-<td style="text-align: right;">299</td>
+<td style="text-align: right;">0.746</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td>NatureIndex</td>
+<td style="text-align: right;">0.729</td>
+<td style="text-align: right;">499</td>
+</tr>
+<tr>
+<td>Leiden</td>
+<td style="text-align: right;">0.712</td>
+<td style="text-align: right;">920</td>
+</tr>
+<tr>
+<td>THEQS</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">199</td>
 </tr>
 <tr>
 <td>ReutersWorld</td>
-<td style="text-align: right;">0.549</td>
-<td style="text-align: right;">89</td>
+<td style="text-align: right;">0.528</td>
+<td style="text-align: right;">91</td>
 </tr>
 <tr>
 <td>ReutersEU</td>
-<td style="text-align: right;">0.529</td>
-<td style="text-align: right;">96</td>
+<td style="text-align: right;">0.470</td>
+<td style="text-align: right;">99</td>
 </tr>
 </tbody>
 </table>
-<p>Overall mean ρ = <strong>0.804</strong>. One latent dimension reproduces ARWU almost
+<p>Overall mean ρ = <strong>0.821</strong>. One latent dimension reproduces ARWU almost
 exactly and QS/THE/U.S. News very well; it reproduces Leiden and Nature Index much less
 well, consistent with their low reliabilities.</p>
 <p><strong>Cross-system agreement.</strong> Mean pairwise Spearman between the raw rank scales is
-0.68 — the weakest pair is Leiden~SCImago at 0.27, the
-strongest THE~USNews at 0.94. The rankings are correlated but not
+0.72 — the weakest pair is ReutersEU~Webometrics at 0.40, the
+strongest NTU~URAP at 0.94. The rankings are correlated but not
 interchangeable, which is the premise the model needs.</p>
-<p><strong>Not just an average.</strong> Correlation of theta with a naive mean of normal-scored ranks: 0.941 (Pearson), 0.933 (Spearman) The correlation with a naive mean of
+<p><strong>Not just an average.</strong> Correlation of theta with a naive mean of normal-scored ranks: 0.949 (Pearson), 0.954 (Spearman) The correlation with a naive mean of
 normal-scored ranks is high, as it must be — but the two diverge most where the naive
 average is least trustworthy: institutions listed by one system, or listed only in short
 editions, where the naive average silently treats "unranked" as "absent" and the model
@@ -543,45 +592,73 @@ treats it as "below the cutoff, and here is how far below."</p>
 <tbody>
 <tr>
 <td>ARWU</td>
-<td style="text-align: right;">27,853</td>
-<td style="text-align: right;">0.889</td>
-<td style="text-align: right;">0.898</td>
-<td style="text-align: right;">0.682</td>
+<td style="text-align: right;">30,935</td>
+<td style="text-align: right;">0.996</td>
+<td style="text-align: right;">0.997</td>
+<td style="text-align: right;">0.945</td>
 </tr>
 <tr>
 <td>THE</td>
-<td style="text-align: right;">36,448</td>
-<td style="text-align: right;">0.923</td>
-<td style="text-align: right;">0.969</td>
-<td style="text-align: right;">0.959</td>
+<td style="text-align: right;">38,640</td>
+<td style="text-align: right;">0.994</td>
+<td style="text-align: right;">0.996</td>
+<td style="text-align: right;">0.966</td>
 </tr>
 <tr>
 <td>QS</td>
-<td style="text-align: right;">28,592</td>
-<td style="text-align: right;">0.919</td>
-<td style="text-align: right;">0.973</td>
-<td style="text-align: right;">0.976</td>
+<td style="text-align: right;">29,440</td>
+<td style="text-align: right;">0.988</td>
+<td style="text-align: right;">0.992</td>
+<td style="text-align: right;">0.995</td>
 </tr>
 <tr>
 <td>CWUR</td>
-<td style="text-align: right;">28,154</td>
-<td style="text-align: right;">0.973</td>
-<td style="text-align: right;">0.987</td>
-<td style="text-align: right;">0.987</td>
+<td style="text-align: right;">32,382</td>
+<td style="text-align: right;">0.991</td>
+<td style="text-align: right;">0.994</td>
+<td style="text-align: right;">0.989</td>
 </tr>
 <tr>
 <td>SCImago</td>
-<td style="text-align: right;">5,076</td>
-<td style="text-align: right;">0.977</td>
-<td style="text-align: right;">0.995</td>
-<td style="text-align: right;">0.954</td>
+<td style="text-align: right;">81,481</td>
+<td style="text-align: right;">0.930</td>
+<td style="text-align: right;">0.976</td>
+<td style="text-align: right;">0.969</td>
 </tr>
 <tr>
 <td>Leiden</td>
-<td style="text-align: right;">3,717</td>
-<td style="text-align: right;">0.992</td>
+<td style="text-align: right;">17,796</td>
+<td style="text-align: right;">0.998</td>
+<td style="text-align: right;">0.999</td>
 <td style="text-align: right;">0.997</td>
-<td style="text-align: right;">0.992</td>
+</tr>
+<tr>
+<td>URAP</td>
+<td style="text-align: right;">45,019</td>
+<td style="text-align: right;">0.964</td>
+<td style="text-align: right;">0.974</td>
+<td style="text-align: right;">0.991</td>
+</tr>
+<tr>
+<td>Webometrics</td>
+<td style="text-align: right;">83,512</td>
+<td style="text-align: right;">0.976</td>
+<td style="text-align: right;">0.990</td>
+<td style="text-align: right;">0.982</td>
+</tr>
+<tr>
+<td>USNews</td>
+<td style="text-align: right;">26,830</td>
+<td style="text-align: right;">0.997</td>
+<td style="text-align: right;">0.998</td>
+<td style="text-align: right;">0.995</td>
+</tr>
+<tr>
+<td>NTU</td>
+<td style="text-align: right;">29,460</td>
+<td style="text-align: right;">0.996</td>
+<td style="text-align: right;">0.997</td>
+<td style="text-align: right;">0.965</td>
 </tr>
 </tbody>
 </table>
@@ -609,121 +686,121 @@ about how little separates the leaders, not about instability in the measure.</p
 <td style="text-align: right;">1</td>
 <td>Harvard University</td>
 <td>United States</td>
-<td style="text-align: right;">5.42</td>
-<td>[5.23, 5.60]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">5.38</td>
+<td>[5.21, 5.56]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">2</td>
 <td>Stanford University</td>
 <td>United States</td>
-<td style="text-align: right;">4.86</td>
-<td>[4.67, 5.06]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">4.77</td>
+<td>[4.60, 4.95]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">3</td>
 <td>Massachusetts Institute of Technology</td>
 <td>United States</td>
-<td style="text-align: right;">4.76</td>
-<td>[4.58, 4.96]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">4.47</td>
+<td>[4.30, 4.65]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">4</td>
-<td>University of Cambridge</td>
+<td>University of Oxford</td>
 <td>United Kingdom</td>
-<td style="text-align: right;">4.47</td>
-<td>[4.29, 4.67]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">4.43</td>
+<td>[4.27, 4.60]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">5</td>
-<td>University of Oxford</td>
+<td>University of Cambridge</td>
 <td>United Kingdom</td>
-<td style="text-align: right;">4.34</td>
-<td>[4.16, 4.54]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">4.28</td>
+<td>[4.11, 4.45]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">6</td>
-<td>University of California, Berkeley</td>
-<td>United States</td>
-<td style="text-align: right;">4.21</td>
-<td>[4.01, 4.42]</td>
-<td style="text-align: right;">5</td>
+<td>University College London</td>
+<td>United Kingdom</td>
+<td style="text-align: right;">4.13</td>
+<td>[3.96, 4.32]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">7</td>
-<td>Princeton University</td>
-<td>United States</td>
-<td style="text-align: right;">4.09</td>
-<td>[3.89, 4.30]</td>
-<td style="text-align: right;">5</td>
+<td>University of Toronto</td>
+<td>Canada</td>
+<td style="text-align: right;">3.97</td>
+<td>[3.80, 4.13]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">8</td>
-<td>Columbia University</td>
+<td>Johns Hopkins University</td>
 <td>United States</td>
 <td style="text-align: right;">3.96</td>
-<td>[3.77, 4.16]</td>
-<td style="text-align: right;">5</td>
+<td>[3.79, 4.12]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">9</td>
-<td>California Institute of Technology</td>
+<td>Columbia University</td>
 <td>United States</td>
-<td style="text-align: right;">3.93</td>
-<td>[3.74, 4.12]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.92</td>
+<td>[3.74, 4.09]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">10</td>
-<td>Yale University</td>
+<td>University of Pennsylvania</td>
 <td>United States</td>
-<td style="text-align: right;">3.84</td>
-<td>[3.66, 4.04]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.88</td>
+<td>[3.72, 4.04]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">11</td>
-<td>University of Chicago</td>
+<td>University of California, Berkeley</td>
 <td>United States</td>
-<td style="text-align: right;">3.84</td>
-<td>[3.64, 4.03]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.86</td>
+<td>[3.70, 4.03]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">12</td>
-<td>Cornell University</td>
-<td>United States</td>
-<td style="text-align: right;">3.75</td>
-<td>[3.57, 3.94]</td>
-<td style="text-align: right;">5</td>
+<td>Tsinghua University</td>
+<td>China</td>
+<td style="text-align: right;">3.85</td>
+<td>[3.67, 4.03]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">13</td>
-<td>University of Pennsylvania</td>
+<td>Yale University</td>
 <td>United States</td>
-<td style="text-align: right;">3.73</td>
-<td>[3.54, 3.92]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.81</td>
+<td>[3.64, 3.99]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">14</td>
-<td>University College London</td>
+<td>Imperial College London</td>
 <td>United Kingdom</td>
-<td style="text-align: right;">3.61</td>
-<td>[3.43, 3.79]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.75</td>
+<td>[3.59, 3.92]</td>
+<td style="text-align: right;">10</td>
 </tr>
 <tr>
 <td style="text-align: right;">15</td>
-<td>University of California, Los Angeles</td>
+<td>University of Michigan, Ann Arbor</td>
 <td>United States</td>
-<td style="text-align: right;">3.61</td>
-<td>[3.42, 3.79]</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.74</td>
+<td>[3.58, 3.92]</td>
+<td style="text-align: right;">10</td>
 </tr>
 </tbody>
 </table>
@@ -750,74 +827,74 @@ both endpoints, listed in at least 12 of the intervening years, and averaging at
 </thead>
 <tbody>
 <tr>
-<td>Peking University</td>
-<td>China</td>
-<td style="text-align: right;">+1.58</td>
-<td style="text-align: right;">+3.39</td>
-<td style="text-align: right;"><strong>+1.81</strong></td>
+<td>Sorbonne University</td>
+<td>France</td>
+<td style="text-align: right;">+0.36</td>
+<td style="text-align: right;">+3.07</td>
+<td style="text-align: right;"><strong>+2.71</strong></td>
 </tr>
 <tr>
 <td>Huazhong University of Science and Technology</td>
 <td>China</td>
-<td style="text-align: right;">+0.58</td>
-<td style="text-align: right;">+2.37</td>
-<td style="text-align: right;"><strong>+1.79</strong></td>
+<td style="text-align: right;">+1.02</td>
+<td style="text-align: right;">+2.87</td>
+<td style="text-align: right;"><strong>+1.85</strong></td>
 </tr>
 <tr>
 <td>Sun Yat-sen University</td>
 <td>China</td>
-<td style="text-align: right;">+0.68</td>
-<td style="text-align: right;">+2.44</td>
-<td style="text-align: right;"><strong>+1.76</strong></td>
+<td style="text-align: right;">+1.19</td>
+<td style="text-align: right;">+2.91</td>
+<td style="text-align: right;"><strong>+1.72</strong></td>
+</tr>
+<tr>
+<td>Xi'an Jiaotong University</td>
+<td>China</td>
+<td style="text-align: right;">+0.88</td>
+<td style="text-align: right;">+2.54</td>
+<td style="text-align: right;"><strong>+1.67</strong></td>
+</tr>
+<tr>
+<td>Wuhan University</td>
+<td>China</td>
+<td style="text-align: right;">+1.04</td>
+<td style="text-align: right;">+2.70</td>
+<td style="text-align: right;"><strong>+1.66</strong></td>
+</tr>
+<tr>
+<td>Tongji University</td>
+<td>China</td>
+<td style="text-align: right;">+0.83</td>
+<td style="text-align: right;">+2.46</td>
+<td style="text-align: right;"><strong>+1.63</strong></td>
+</tr>
+<tr>
+<td>Charité Universitätsmedizin Berlin</td>
+<td>Germany</td>
+<td style="text-align: right;">+0.60</td>
+<td style="text-align: right;">+2.22</td>
+<td style="text-align: right;"><strong>+1.62</strong></td>
 </tr>
 <tr>
 <td>Zhejiang University</td>
 <td>China</td>
-<td style="text-align: right;">+1.44</td>
-<td style="text-align: right;">+3.19</td>
-<td style="text-align: right;"><strong>+1.74</strong></td>
-</tr>
-<tr>
-<td>Tsinghua University</td>
-<td>China</td>
-<td style="text-align: right;">+1.84</td>
-<td style="text-align: right;">+3.50</td>
-<td style="text-align: right;"><strong>+1.67</strong></td>
-</tr>
-<tr>
-<td>Fudan University</td>
-<td>China</td>
-<td style="text-align: right;">+1.24</td>
-<td style="text-align: right;">+2.86</td>
-<td style="text-align: right;"><strong>+1.62</strong></td>
-</tr>
-<tr>
-<td>Shanghai Jiao Tong University</td>
-<td>China</td>
-<td style="text-align: right;">+1.41</td>
-<td style="text-align: right;">+3.02</td>
+<td style="text-align: right;">+1.88</td>
+<td style="text-align: right;">+3.49</td>
 <td style="text-align: right;"><strong>+1.61</strong></td>
 </tr>
 <tr>
 <td>Sichuan University</td>
 <td>China</td>
-<td style="text-align: right;">+0.58</td>
-<td style="text-align: right;">+2.17</td>
-<td style="text-align: right;"><strong>+1.59</strong></td>
+<td style="text-align: right;">+1.03</td>
+<td style="text-align: right;">+2.64</td>
+<td style="text-align: right;"><strong>+1.61</strong></td>
 </tr>
 <tr>
-<td>Harbin Institute of Technology</td>
+<td>Shanghai Jiao Tong University</td>
 <td>China</td>
-<td style="text-align: right;">+0.57</td>
-<td style="text-align: right;">+2.06</td>
-<td style="text-align: right;"><strong>+1.48</strong></td>
-</tr>
-<tr>
-<td>Tianjin University</td>
-<td>China</td>
-<td style="text-align: right;">+0.66</td>
-<td style="text-align: right;">+2.01</td>
-<td style="text-align: right;"><strong>+1.34</strong></td>
+<td style="text-align: right;">+1.80</td>
+<td style="text-align: right;">+3.38</td>
+<td style="text-align: right;"><strong>+1.58</strong></td>
 </tr>
 </tbody>
 </table>
@@ -834,74 +911,74 @@ both endpoints, listed in at least 12 of the intervening years, and averaging at
 </thead>
 <tbody>
 <tr>
-<td>Ecole Polytechnique</td>
+<td>University of Karlsruhe</td>
+<td>Germany</td>
+<td style="text-align: right;">+2.04</td>
+<td style="text-align: right;">-0.98</td>
+<td style="text-align: right;"><strong>-3.01</strong></td>
+</tr>
+<tr>
+<td>University of Washington, Seattle</td>
+<td>United States</td>
+<td style="text-align: right;">+4.65</td>
+<td style="text-align: right;">+2.50</td>
+<td style="text-align: right;"><strong>-2.15</strong></td>
+</tr>
+<tr>
+<td>University of Nice Sophia Antipolis</td>
 <td>France</td>
-<td style="text-align: right;">+1.56</td>
-<td style="text-align: right;">-0.63</td>
-<td style="text-align: right;"><strong>-2.19</strong></td>
+<td style="text-align: right;">+1.40</td>
+<td style="text-align: right;">-0.76</td>
+<td style="text-align: right;"><strong>-2.15</strong></td>
+</tr>
+<tr>
+<td>National Yang Ming University</td>
+<td>Taiwan</td>
+<td style="text-align: right;">+1.28</td>
+<td style="text-align: right;">-0.78</td>
+<td style="text-align: right;"><strong>-2.06</strong></td>
 </tr>
 <tr>
 <td>Osaka Prefecture University</td>
 <td>Japan</td>
-<td style="text-align: right;">+0.91</td>
-<td style="text-align: right;">-1.04</td>
-<td style="text-align: right;"><strong>-1.95</strong></td>
+<td style="text-align: right;">+1.26</td>
+<td style="text-align: right;">-0.78</td>
+<td style="text-align: right;"><strong>-2.05</strong></td>
 </tr>
 <tr>
-<td>Yamaguchi University</td>
-<td>Japan</td>
-<td style="text-align: right;">+1.18</td>
-<td style="text-align: right;">-0.50</td>
-<td style="text-align: right;"><strong>-1.69</strong></td>
+<td>Ecole Normale Superieure - Paris</td>
+<td>France</td>
+<td style="text-align: right;">+2.56</td>
+<td style="text-align: right;">+0.68</td>
+<td style="text-align: right;"><strong>-1.87</strong></td>
+</tr>
+<tr>
+<td>University of Maryland</td>
+<td>United States</td>
+<td style="text-align: right;">+1.68</td>
+<td style="text-align: right;">-0.16</td>
+<td style="text-align: right;"><strong>-1.83</strong></td>
+</tr>
+<tr>
+<td>Universite Paris-Dauphine</td>
+<td>France</td>
+<td style="text-align: right;">+1.46</td>
+<td style="text-align: right;">-0.34</td>
+<td style="text-align: right;"><strong>-1.80</strong></td>
+</tr>
+<tr>
+<td>University of Northern Iowa</td>
+<td>United States</td>
+<td style="text-align: right;">+1.01</td>
+<td style="text-align: right;">-0.79</td>
+<td style="text-align: right;"><strong>-1.80</strong></td>
 </tr>
 <tr>
 <td>Osaka City University</td>
 <td>Japan</td>
-<td style="text-align: right;">+0.83</td>
-<td style="text-align: right;">-0.65</td>
-<td style="text-align: right;"><strong>-1.48</strong></td>
-</tr>
-<tr>
-<td>Yeshiva University</td>
-<td>United States</td>
-<td style="text-align: right;">+1.76</td>
-<td style="text-align: right;">+0.35</td>
-<td style="text-align: right;"><strong>-1.41</strong></td>
-</tr>
-<tr>
-<td>Gunma University</td>
-<td>Japan</td>
-<td style="text-align: right;">+1.01</td>
-<td style="text-align: right;">-0.37</td>
-<td style="text-align: right;"><strong>-1.38</strong></td>
-</tr>
-<tr>
-<td>Oregon State University</td>
-<td>United States</td>
-<td style="text-align: right;">+2.20</td>
-<td style="text-align: right;">+0.83</td>
-<td style="text-align: right;"><strong>-1.37</strong></td>
-</tr>
-<tr>
-<td>University of Montana</td>
-<td>United States</td>
-<td style="text-align: right;">+1.21</td>
-<td style="text-align: right;">-0.15</td>
-<td style="text-align: right;"><strong>-1.36</strong></td>
-</tr>
-<tr>
-<td>Kagoshima University</td>
-<td>Japan</td>
-<td style="text-align: right;">+0.92</td>
-<td style="text-align: right;">-0.37</td>
-<td style="text-align: right;"><strong>-1.29</strong></td>
-</tr>
-<tr>
-<td>Niigata University</td>
-<td>Japan</td>
-<td style="text-align: right;">+1.22</td>
-<td style="text-align: right;">+0.02</td>
-<td style="text-align: right;"><strong>-1.21</strong></td>
+<td style="text-align: right;">+1.37</td>
+<td style="text-align: right;">-0.42</td>
+<td style="text-align: right;"><strong>-1.80</strong></td>
 </tr>
 </tbody>
 </table>
@@ -933,7 +1010,7 @@ and QS. Everything in between is better identified than either end.</p>
 observation to a system-edition only if that system lists it in some other edition. That
 is a defensible frame but it is a modelling choice, and it means the model never asks
 why a system ignores an institution entirely.</p>
-<p><strong>Entity resolution is good, not perfect.</strong> 158 unresolved candidate pairs remain.
+<p><strong>Entity resolution is good, not perfect.</strong> 1053 unresolved candidate pairs remain.
 For an institution caught in one of those splits, the trajectory will show a spurious
 break.</p>
 <hr />
@@ -942,7 +1019,7 @@ break.</p>
   rankings_panel_long.csv     every listing, harmonised: system, year, institution, rank, score
   crosswalk.csv               raw name -&gt; institution id, with all variants
   edition_summary.csv         one row per system-edition: length, censoring cutoff
-  entity_review_candidates.csv  158 possible-but-unconfirmed same-entity pairs
+  entity_review_candidates.csv  1053 possible-but-unconfirmed same-entity pairs
   SOURCES.txt                 repository and commit for every input file
 estimates/
   latent_scores.csv           theta posterior mean, sd, 2.5/5/50/95/97.5 percentiles,

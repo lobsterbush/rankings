@@ -46,6 +46,10 @@ for f in ["latent_scores.csv", "item_parameters.csv", "validation_edition_recove
           "validation_pairwise.csv", "sensitivity_loo.csv", "diagnostics.txt"]:
     if os.path.exists(f"{W}/{f}"):
         shutil.copy(f"{W}/{f}", f"{PKG}/estimates/{f}")
+WD = os.path.expanduser("~/uniranks/work_dept")
+for f in ["dept_latent_scores.csv", "dept_item_parameters.csv", "dept_fit_log.txt"]:
+    if os.path.exists(f"{WD}/{f}"):
+        shutil.copy(f"{WD}/{f}", f"{PKG}/estimates/{f}")
 
 # ---- code + figures
 for f in sorted(glob.glob(f"{W}/[01]*.py")):
@@ -56,9 +60,9 @@ shutil.copy(f"{OUT}/university_rankings_dashboard.html", f"{PKG}/")
 shutil.copy(f"{OUT}/METHODS_MEMO.md", f"{PKG}/")
 
 # ---- provenance for every raw file actually used
-src = ["Provenance of every input file (retrieved 12 August 2026).",
-       "All sources are open GitHub mirrors; primary ranking sites and general data",
-       "repositories were unreachable from this environment. See METHODS_MEMO.md §1.", ""]
+src = ["Provenance of every input file (first pass 12 August 2026, second pass",
+       "13 August 2026). GitHub mirrors, official endpoints, and Wayback captures;",
+       "channels and environments are described in METHODS_MEMO.md §1.", ""]
 for repo in sorted(glob.glob(f"{RAW}/*/*/.git") + glob.glob(f"{RAW}/*/.git")):
     d = os.path.dirname(repo)
     try:
@@ -75,7 +79,7 @@ RAW2 = os.path.expanduser("~/uniranks/raw2")
 if os.path.isdir(RAW2):
     src += ["", "=== SECOND WAVE: per-file source URLs and collection notes ===", ""]
     for f in sorted(glob.glob(f"{RAW2}/*/*.source.txt") + glob.glob(f"{RAW2}/*/NOTES*.txt")
-                    + glob.glob(f"{RAW2}/*/SOURCES*.txt")):
+                    + glob.glob(f"{RAW2}/*/SOURCE*.txt")):
         src.append(f"--- {os.path.relpath(f, RAW2)}")
         src.append(open(f, errors="replace").read().strip())
         src.append("")

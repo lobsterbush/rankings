@@ -100,7 +100,7 @@ HTML = r"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>A latent measure of international university standing, 2003–2026</title>
-<meta name="description" content="Twelve international university rankings pooled with a dynamic Bayesian latent-trait model.">
+<meta name="description" content="__NSYS__ international university rankings pooled with a dynamic Bayesian latent-trait model.">
 <style>
 :root{
   --paper:#fffefb; --ink:#16150f; --ink-2:#4a4841; --ink-3:#807d73;
@@ -198,7 +198,10 @@ footer{margin-top:46px;padding-top:26px;border-top:1px solid var(--rule);
 <header class="col">
  <h1>A latent measure of international university standing, 2003–2026</h1>
  <p class="byline">Charles Crabtree · Monash University · <span id="dateline"></span></p>
- <p class="lede">Twelve international ranking systems, pooled with a dynamic Bayesian
+ <p class="byline" style="margin-top:-16px"><b>Universities</b> ·
+   <a href="departments.html">Departments</a> ·
+   <a href="methods.html">Methods</a></p>
+ <p class="lede">__NSYS__ international ranking systems, pooled with a dynamic Bayesian
  latent-trait model. Each ranking is treated as one noisy, censored instrument reading a
  single underlying quantity, rather than as an answer in itself.</p>
  <p class="small" id="scope"></p>
@@ -586,7 +589,9 @@ function redraw(){drawTraj();drawPin();drawCountry();drawRel();drawCov();drawRan
 redraw();
 </script></body></html>"""
 
-html = HTML.replace("__DATA__", DATA)
+NWORD = {12: "Twelve", 13: "Thirteen", 14: "Fourteen", 15: "Fifteen",
+         16: "Sixteen"}.get(item.system.nunique(), str(item.system.nunique()))
+html = HTML.replace("__DATA__", DATA).replace("__NSYS__", NWORD)
 open(f"{OUT}/university_rankings_dashboard.html", "w").write(html)
 print(f"wrote page ({os.path.getsize(f'{OUT}/university_rankings_dashboard.html')/1e6:.2f} MB); "
       f"pinned index = {stats['pinned']}")

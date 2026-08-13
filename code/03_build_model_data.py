@@ -95,16 +95,30 @@ for _, r in p.iterrows():
         v = zq(r["rank"]); obs_lo.append(v); obs_hi.append(v); obs_kind.append(0)
 
 listed = {(r.inst_id, r.system, r.ref_year) for r in p.itertuples()}
-n_cens = 0
+
+# Editions recovered with MID-TABLE gaps (not clean prefixes): an institution
+# absent from the captured rows may sit inside the gap, so "unlisted" does NOT
+# imply "below the last captured rank". Left-censoring is wrong there; treat
+# unlisted as missing instead. URAP 2010-2016 reconstructions and the partial
+# USNews 2024/2025 editions (ref years 2023/2024 after the forward-date shift).
+GAP_EDITIONS = {("URAP", y) for y in range(2010, 2017)} | {
+    ("USNews", 2023), ("USNews", 2024)}
+
+n_cens = n_gap_skipped = 0
 for _, e in ed.iterrows():
     fr = frame[e.system]
     jj, tt, cut = j_of[e.system], t_of[e.ref_year], e.cut
+    if (e.system, e.ref_year) in GAP_EDITIONS:
+        n_gap_skipped += len(fr) - e.N
+        continue
     for inst in fr:
         if (inst, e.system, e.ref_year) in listed:
             continue
         obs_i.append(i_of[inst]); obs_t.append(tt); obs_j.append(jj)
         obs_lo.append(Z_FLOOR); obs_hi.append(cut); obs_kind.append(2)
         n_cens += 1
+print(f"gap editions: censoring skipped for {len(GAP_EDITIONS)} system-editions "
+      f"(~{n_gap_skipped} would-be censored observations)")
 
 obs = dict(i=np.array(obs_i, np.int32), t=np.array(obs_t, np.int32),
            j=np.array(obs_j, np.int32), lo=np.array(obs_lo, float),

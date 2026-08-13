@@ -1,159 +1,1054 @@
 similarity,combined_obs,id_a,name_a,years_a,obs_a,id_b,name_b,years_b,obs_b,country
-96,95,U03079,Lund University,2003-2026,86,U03082,Lunds University,2012-2024,9,Sweden
-82,71,U02723,Karlsruhe Institute of Technology,2010-2026,58,U02725,Karlsruher Institut fur Technologie,2009-2024,13,Germany
-93,66,U01713,Goethe University Frankfurt,2010-2026,49,U06180,University of Frankfurt,2003-2019,17,Germany
-100,66,U03504,National Chiao Tung University,2003-2025,54,U03683,National Yang Ming Chiao Tung University (NYCU Taiwan),2021-2026,12,Taiwan
-83,65,U03962,PSL University,2015-2026,40,U06462,University of Nice Sophia Antipolis,2003-2019,25,France
-82,63,U01681,Georgia Health Sciences University,2010-2013,4,U03916,Oregon Health and Science University,2003-2025,59,United States
-83,62,U02658,Joseph Fourier University,2003-2016,22,U03962,PSL University,2015-2026,40,France
-83,59,U03962,PSL University,2015-2026,40,U06521,University of Paris Dauphine (Paris 9),2004-2019,19,France
-86,59,U05326,UNIVERSITÉ STENDHAL GRENOBLE 3,2011-2015,4,U06960,Université Grenoble Alpes,2011-2026,55,France
-86,59,U05325,UNIVERSITÉ PIERRE MENDÈS FRANCE - GRENOBLE 2,2011-2015,4,U06960,Université Grenoble Alpes,2011-2026,55,France
-86,59,U04424,Saint Petersburg State University,2003-2026,56,U05276,Tula State University,2023-2025,3,Russia
-100,58,U06065,University of Canterbury,2005-2025,46,U06066,University of Canterbury | Te Whare Wānanga o Waitaha,2015-2026,12,New Zealand
-86,52,U00413,Autonomous University of Madrid,2003-2025,44,U02157,IE University,2019-2026,8,Spain
-86,52,U03921,Osaka City University,2003-2022,39,U03925,Osaka Metropolitan University,2022-2026,13,Japan
-83,49,U01975,Henri Poincare University (Nancy 1),2003-2010,9,U03962,PSL University,2015-2026,40,France
-83,49,U03962,PSL University,2015-2026,40,U06565,University of Provence (Aix-Marseille 1),2003-2011,9,France
-83,49,U03962,PSL University,2015-2026,40,U07153,Victor Segalen Bordeaux 2 University,2003-2013,9,France
-83,48,U03962,PSL University,2015-2026,40,U06526,University of Paris XI: Sud,2009-2015,8,France
-100,47,U06519,University of Paris,2010-2026,39,U06526,University of Paris XI: Sud,2009-2015,8,France
-100,47,U03683,National Yang Ming Chiao Tung University (NYCU Taiwan),2021-2026,12,U03684,National Yang Ming University,2005-2021,35,Taiwan
-86,46,U03921,Osaka City University,2003-2022,39,U03924,Osaka Medical and Pharmaceutical University,2022-2025,7,Japan
-84,46,U01118,Communication University of China,2022-2025,4,U04269,Renmin University of China,2010-2026,42,China
-83,43,U03962,PSL University,2015-2026,40,U05315,UNIVERSITY PARIS 2 PANTHÉON-ASSAS,2011-2014,3,France
-83,43,U03962,PSL University,2015-2026,40,U06772,University of Valenciennes and Hainaut-Cambresis,2014-2025,3,France
-83,43,U03012,Lille 2 University of Health and Law,2014-2015,3,U03962,PSL University,2015-2026,40,France
-84,41,U03649,National United University,2021-2025,6,U03684,National Yang Ming University,2005-2021,35,Taiwan
-82,40,U03523,National Formosa University,2022-2025,5,U03684,National Yang Ming University,2005-2021,35,Taiwan
-100,38,U04978,Tampere University,2019-2026,23,U04979,Tampere University of Technology,2011-2020,15,Finland
-86,36,U02157,IE University,2019-2026,8,U05023,Technical University of Madrid,2014-2025,28,Spain
-86,36,U02157,IE University,2019-2026,8,U06635,University of Seville,2014-2025,28,Spain
-86,36,U00410,Autonomous University of Barcelona,2003-2025,28,U02157,IE University,2019-2026,8,Spain
-88,35,U06099,University of Colorado Anschutz Medical Campus (CU Anschutz),2019-2025,3,U06106,"University of Colorado, Anschutz Medical Campus",2013-2026,32,United States
-84,34,U04852,State University of New York Health Science Center at Brooklyn,2003-2022,18,U05076,Texas State University,2017-2025,16,United States
-86,32,U02157,IE University,2019-2026,8,U06270,University of Jaén,2014-2025,24,Spain
-84,31,U04499,Sciences Po,2010-2026,27,U05866,Universite Montpellier II Sciences et Technique,2009-2012,4,France
-85,30,U04481,Sathyabama Institute of Science and Technology,2016-2025,10,U07141,Vellore Institute of Technology,2018-2026,20,India
-86,30,U02157,IE University,2019-2026,8,U06860,University of the Balearic Islands,2014-2025,22,Spain
-84,30,U04492,School for Advanced Studies in the Social Sciences,2020-2022,3,U04499,Sciences Po,2010-2026,27,France
-84,30,U01899,Harvard Medical School,2013-2024,8,U03195,Mayo Medical School,2005-2022,22,United States
-86,29,U02157,IE University,2019-2026,8,U06194,University of Girona,2014-2025,21,Spain
-82,27,U06521,University of Paris Dauphine (Paris 9),2004-2019,19,U06526,University of Paris XI: Sud,2009-2015,8,France
-86,27,U02157,IE University,2019-2026,8,U06320,University of Las Palmas de Gran Canaria,2018-2025,19,Spain
-85,27,U02290,Indraprastha Institute of Information Technology Delhi,2020-2025,7,U07141,Vellore Institute of Technology,2018-2026,20,India
-84,26,U05771,Universit degli Studi di Perugia,2015-2026,12,U05776,Universita degli Studi di Milano,2009-2025,14,Italy
-82,26,U03353,Morgan State University,2020-2025,8,U04852,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
-84,26,U05771,Universit degli Studi di Perugia,2015-2026,12,U05780,Universita degli Studi di Torino,2009-2025,14,Italy
-82,26,U04852,State University of New York Health Science Center at Brooklyn,2003-2022,18,U07312,Wright State University,2014-2025,8,United States
-84,25,U01344,Eastern Virginia Medical School,2024-2025,3,U03195,Mayo Medical School,2005-2022,22,United States
-84,25,U00830,Ceará State University,2018-2025,9,U04469,Sao Paulo State University,2003-2025,16,Brazil
-90,25,U03904,Open University of Catalonia,2018-2025,10,U04080,Polytechnic University of Catalonia,2014-2025,15,Spain
-85,24,U01993,Hindustan Institute of Technology and Science,2023-2025,4,U07141,Vellore Institute of Technology,2018-2026,20,India
-84,24,U04093,Pontifical Catholic University of Chile,2007-2025,20,U05057,Temuco Catholic University,2022-2025,4,Chile
-85,24,U03581,National Institute of Technology Srinagar,2023-2025,4,U07141,Vellore Institute of Technology,2018-2026,20,India
-85,23,U00431,B. S. Abdur Rahman Crescent Institute of Science and Technology,2023-2025,3,U07141,Vellore Institute of Technology,2018-2026,20,India
-86,23,U02157,IE University,2019-2026,8,U04080,Polytechnic University of Catalonia,2014-2025,15,Spain
-85,23,U01850,Hamburg University of Technology,2017-2026,15,U02694,Kaiserslautern University of Technology,2003-2021,8,Germany
-86,22,U00471,Ball State University,2024-2025,4,U04852,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
-84,21,U00830,Ceará State University,2018-2025,9,U04296,Rio de Janeiro State University,2014-2025,12,Brazil
-85,20,U04519,Second University of Naples,2014-2019,5,U06443,University of Naples Parthenope,2020-2026,15,Italy
-84,20,U05349,Uniformed Services University of the Health Sciences,2018-2025,12,U06549,University of Pittsburgh Health Sciences,2013-2024,8,United States
-86,19,U02157,IE University,2019-2026,8,U04157,Public University of Navarre,2014-2025,11,Spain
-86,19,U02157,IE University,2019-2026,8,U06035,University of Burgos,2018-2025,11,Spain
-86,18,U02157,IE University,2019-2026,8,U03904,Open University of Catalonia,2018-2025,10,Spain
-83,18,U00370,Asia Pacific University of Technology and Innovation (APU) Malaysia,2023-2026,4,U06630,"University of Science, Malaysia",2014-2025,14,Malaysia
-86,18,U02252,"Indian Institute of Science Education and Research, Pune",2018-2025,14,U02279,Indian Institutes of Science Education and Research (IISERs),2018-2021,4,India
-86,18,U01016,China University of Political Science and Law,2021-2026,7,U06663,University of South China,2018-2025,11,China
-83,17,U00910,Chandigarh University,2022-2026,7,U07110,VIT University,2016-2025,10,India
-84,17,U02250,Indian Institute of Science Education and Research Kolkata,2018-2025,13,U02279,Indian Institutes of Science Education and Research (IISERs),2018-2021,4,India
-82,17,U05435,Universidad Externado de Colombia,2011-2026,13,U05511,Universidad Pedagogica y Tecnologica de Colombia - UPTC,2022-2025,4,Colombia
-86,16,U01435,European University of Madrid,2020-2025,8,U02157,IE University,2019-2026,8,Spain
-86,16,U02157,IE University,2019-2026,8,U02810,King Juan Carlos University,2014-2025,8,Spain
-87,16,U02249,Indian Institute of Science Education and Research Bhopal,2020-2025,12,U02279,Indian Institutes of Science Education and Research (IISERs),2018-2021,4,India
-83,16,U01814,Guru Nanak Dev University,2020-2025,6,U07110,VIT University,2016-2025,10,India
-83,16,U06357,University of Madras,2022-2025,6,U07110,VIT University,2016-2025,10,India
-100,16,U04481,Sathyabama Institute of Science and Technology,2016-2025,10,U04482,Sathyabama Institute of Science and Technology (Deemed to be University),2022-2026,6,India
-86,16,U01681,Georgia Health Sciences University,2010-2013,4,U05349,Uniformed Services University of the Health Sciences,2018-2025,12,United States
-86,16,U02157,IE University,2019-2026,8,U05009,Technical University of Cartagena,2019-2025,8,Spain
-83,15,U07110,VIT University,2016-2025,10,U07191,Visva-Bharati University,2024-2025,5,India
-86,15,U02157,IE University,2019-2026,8,U03655,National University of Distance Education (UNED),2021-2025,7,Spain
-83,15,U00991,China Medical University (Shenyang),2017-2022,6,U04606,Shanxi Medical University,2020-2025,9,China
-86,15,U02157,IE University,2019-2026,8,U06787,University of Vic – Central University of Catalonia,2021-2025,7,Spain
-84,14,U01446,FEDERAL UNIVERSITY OF MATO GROSSO,2020-2025,6,U01487,Federal University of Itajubá,2017-2024,8,Brazil
-82,14,U00308,Andhra University,2015-2025,10,U04614,Sharda University,2024-2025,4,India
-83,14,U00370,Asia Pacific University of Technology and Innovation (APU) Malaysia,2023-2026,4,U03663,National University of Malaysia,2016-2025,10,Malaysia
-89,14,U00442,BOGAZIÇI ÜNIVERSITESI,2011-2014,3,U01653,Gazi Üniversitesi,2016-2026,11,Turkey
-86,14,U02157,IE University,2019-2026,8,U06241,University of Huelva,2024-2025,6,Spain
-85,14,U02622,Jichi Medical University,2014-2025,8,U02704,Kanazawa Medical University,2020-2025,6,Japan
-83,13,U02554,Jain University,2025-2025,3,U07110,VIT University,2016-2025,10,India
-83,13,U06543,University of Petroleum & Energy Studies (UPES),2025-2025,3,U07110,VIT University,2016-2025,10,India
-83,13,U06280,University of Kalyani,2025-2025,3,U07110,VIT University,2016-2025,10,India
-83,13,U04159,Punjab Agricultural University,2024-2025,3,U07110,VIT University,2016-2025,10,India
-83,13,U02697,Kalinga Institute of Industrial Technology (KIIT) University,2025-2026,3,U07110,VIT University,2016-2025,10,India
-83,13,U06034,University of Burdwan,2025-2025,3,U07110,VIT University,2016-2025,10,India
-83,13,U00991,China Medical University (Shenyang),2017-2022,6,U07372,Xuzhou Medical University,2022-2025,7,China
-86,13,U00910,Chandigarh University,2022-2026,7,U02674,KL University,2020-2025,6,India
-83,13,U00367,Ashoka University,2025-2025,3,U07110,VIT University,2016-2025,10,India
-88,13,U04934,Szent István University,2019-2025,3,U04935,Széchenyi István University,2021-2026,10,Hungary
-83,13,U00308,Andhra University,2015-2025,10,U01167,DIT University,2024-2025,3,India
-82,13,U06717,University of Technology of Belfort-Montbéliard,2024-2025,3,U06718,University of Technology of Compiègne,2017-2025,10,France
-86,13,U04159,Punjab Agricultural University,2024-2025,3,U04974,Tamil Nadu Agricultural University,2017-2025,10,India
-86,12,U01814,Guru Nanak Dev University,2020-2025,6,U02674,KL University,2020-2025,6,India
-84,12,U06496,University of Oklahoma Health Sciences Center,2015-2025,4,U06549,University of Pittsburgh Health Sciences,2013-2024,8,United States
-83,12,U01262,Dong-A University,2020-2025,7,U07420,Youngsan University,2021-2025,5,South Korea
-86,12,U01681,Georgia Health Sciences University,2010-2013,4,U06549,University of Pittsburgh Health Sciences,2013-2024,8,United States
-84,12,U01483,Federal University of Campina Grande,2024-2025,4,U01487,Federal University of Itajubá,2017-2024,8,Brazil
-86,12,U02674,KL University,2020-2025,6,U06357,University of Madras,2022-2025,6,India
-85,12,U05693,Universidade Federal de Sergipe,2020-2025,9,U05705,Universidade Federal do Estado do Rio de Janeiro,2022-2024,3,Brazil
-85,11,U00991,China Medical University (Shenyang),2017-2022,6,U07482,Zunyi Medical University,2024-2025,5,China
-84,11,U01487,Federal University of Itajubá,2017-2024,8,U01505,Federal University of São João del-Rei,2024-2025,3,Brazil
-84,11,U01487,Federal University of Itajubá,2017-2024,8,U01497,Federal University of Rio Grande,2024-2025,3,Brazil
-83,11,U00991,China Medical University (Shenyang),2017-2022,6,U01835,Hainan Medical University,2024-2025,5,China
-86,11,U01016,China University of Political Science and Law,2021-2026,7,U03313,Minzu University of China,2024-2025,4,China
-85,11,U05981,University of Avignon,2024-2025,3,U06621,University of Savoy,2014-2025,8,France
-86,11,U02674,KL University,2020-2025,6,U07191,Visva-Bharati University,2024-2025,5,India
-83,10,U05405,Universidad Católica de Colombia,2020-2025,6,U05511,Universidad Pedagogica y Tecnologica de Colombia - UPTC,2022-2025,4,Colombia
-100,10,U03768,Normandy University,2018-2021,4,U05312,UNIVERSITY OF CAEN NORMANDY,2014-2025,6,France
-86,10,U05511,Universidad Pedagogica y Tecnologica de Colombia - UPTC,2022-2025,4,U05568,Universidad de Córdoba - Colombia,2011-2025,6,Colombia
-97,10,U05610,Universidad de las Fuerzas Armadas ESPE (Ex - Escuela Politécnica del Ejército),2020-2024,5,U05611,Universidad de las Fuerzas Armadas – ESPE,2021-2025,5,Ecuador
-83,10,U00902,Cha University,2024-2025,5,U07420,Youngsan University,2021-2025,5,South Korea
-84,10,U06101,University of Colorado Colorado Springs,2021-2025,5,U06103,University of Colorado Health Science Center,2003-2007,5,United States
-87,10,U01993,Hindustan Institute of Technology and Science,2023-2025,4,U04482,Sathyabama Institute of Science and Technology (Deemed to be University),2022-2026,6,India
-86,10,U05276,Tula State University,2023-2025,3,U05334,Ufa State Aviation Technical University,2019-2023,7,Russia
-88,9,U06282,University of Kansas Medical Center,2004-2010,5,U06413,University of Mississippi Medical Center,2014-2025,4,United States
-89,9,U05401,Universidad Catlica de la Santsima Concepcin (UCSC),2022-2024,3,U05413,Universidad Católica de la Santísima Concepción,2023-2025,6,Chile
-83,9,U00991,China Medical University (Shenyang),2017-2022,6,U02636,Jining Medical University,2025-2025,3,China
-85,9,U00991,China Medical University (Shenyang),2017-2022,6,U07340,Xi'an Medical University,2025-2025,3,China
-86,9,U02674,KL University,2020-2025,6,U06280,University of Kalyani,2025-2025,3,India
-88,9,U05159,The University of Texas Southwestern Medical Center (UT Southwestern Medical Center),2019-2025,4,U06282,University of Kansas Medical Center,2004-2010,5,United States
-89,9,U06103,University of Colorado Health Science Center,2003-2007,5,U06496,University of Oklahoma Health Sciences Center,2015-2025,4,United States
-86,9,U02674,KL University,2020-2025,6,U02697,Kalinga Institute of Industrial Technology (KIIT) University,2025-2026,3,India
-86,9,U02674,KL University,2020-2025,6,U06543,University of Petroleum & Energy Studies (UPES),2025-2025,3,India
-86,9,U02674,KL University,2020-2025,6,U06034,University of Burdwan,2025-2025,3,India
-86,9,U02554,Jain University,2025-2025,3,U02674,KL University,2020-2025,6,India
-84,9,U02251,"Indian Institute of Science Education and Research, Mohali",2024-2025,5,U02279,Indian Institutes of Science Education and Research (IISERs),2018-2021,4,India
-84,9,U04020,Penza State University,2022-2025,5,U04350,Russian State Agrarian University - Moscow Timiryazev Agricultural Academy,2021-2024,4,Russia
-87,9,U06717,University of Technology of Belfort-Montbéliard,2024-2025,3,U06719,University of Technology of Troyes,2020-2025,6,France
-86,9,U00367,Ashoka University,2025-2025,3,U02674,KL University,2020-2025,6,India
-87,9,U03357,Moscow City University,2021-2024,4,U03362,Moscow Polytechnic University,2021-2025,5,Russia
-86,9,U02674,KL University,2020-2025,6,U04159,Punjab Agricultural University,2024-2025,3,India
-86,8,U01118,Communication University of China,2022-2025,4,U03313,Minzu University of China,2024-2025,4,China
-87,8,U03357,Moscow City University,2021-2024,4,U03367,Moscow State University of Civil Engineering,2021-2025,4,Russia
-86,8,U01681,Georgia Health Sciences University,2010-2013,4,U06496,University of Oklahoma Health Sciences Center,2015-2025,4,United States
-84,8,U06079,University of Central Oklahoma,2022-2025,4,U06496,University of Oklahoma Health Sciences Center,2015-2025,4,United States
-82,8,U05159,The University of Texas Southwestern Medical Center (UT Southwestern Medical Center),2019-2025,4,U06413,University of Mississippi Medical Center,2014-2025,4,United States
-88,8,U02357,"Institute of Cancer Research, University of London",2024-2025,5,U06809,University of West London,2023-2025,3,United Kingdom
-86,8,U01681,Georgia Health Sciences University,2010-2013,4,U05078,Texas Tech University Health Sciences Center,2024-2025,4,United States
-86,8,U03360,Moscow Pedagogical State University,2021-2025,5,U05276,Tula State University,2023-2025,3,Russia
-93,7,U05323,UNIVERSITÉ MONTPELLIER 2 SCIENCES ET TECHNIQUES,2011-2014,3,U05866,Universite Montpellier II Sciences et Technique,2009-2012,4,France
-83,7,U01712,Goa University,2023-2025,4,U04159,Punjab Agricultural University,2024-2025,3,India
-83,7,U01712,Goa University,2023-2025,4,U02697,Kalinga Institute of Industrial Technology (KIIT) University,2025-2026,3,India
-86,7,U01681,Georgia Health Sciences University,2010-2013,4,U04386,SUNY Downstate Health Sciences University,2025-2025,3,United States
-87,7,U03357,Moscow City University,2021-2024,4,U03370,Moscow Technical University of Communications and Informatics,2024-2025,3,Russia
-86,7,U04350,Russian State Agrarian University - Moscow Timiryazev Agricultural Academy,2021-2024,4,U05276,Tula State University,2023-2025,3,Russia
-88,7,U00726,COMSATS INSTITUTE OF INFORMATION TECHNOLOGY,2019-2021,3,U02377,Institute of Space Technology,2023-2025,4,Pakistan
-83,6,U01167,DIT University,2024-2025,3,U04159,Punjab Agricultural University,2024-2025,3,India
-83,6,U01167,DIT University,2024-2025,3,U02697,Kalinga Institute of Industrial Technology (KIIT) University,2025-2026,3,India
-86,6,U05276,Tula State University,2023-2025,3,U07434,Yuri Gagarin State Technical University of Saratov (SSTU),2021-2025,3,Russia
-82,6,U02686,Kafkas University,2024-2025,3,U05260,Trakya University,2024-2025,3,Turkey
+100,195,U01629,ETH Zurich,2003-2026,162,U06146,Swiss Federal Institute of Technology ETH Zurich,2009-2026,33,Switzerland
+82,188,U06531,Tsing Hua University,2004-2014,4,U06533,Tsinghua University,2003-2026,184,China
+88,185,U06329,Texas A&M University,2003-2026,178,U06335,Texas A&amp;M University (TAMU),2017-2026,7,United States
+96,184,U03853,Lund University,2003-2026,169,U03855,Lunds University,2004-2025,15,Sweden
+83,179,U02146,Goteborg University,2004-2015,12,U07835,University of Gothenburg,2003-2026,167,Sweden
+92,179,U08165,University of Padova,2005-2026,90,U08166,University of Padua,2003-2026,89,Italy
+100,172,U08615,Université Catholique de Louvain,2003-2026,157,U08650,Université catholique de Louvain (UCLouvain),2011-2026,15,Belgium
+100,171,U01141,Charles University,2003-2026,156,U01142,Charles University in Prague / Univerzita Karlova v Praze,2011-2025,15,Czechia
+83,163,U08057,University of Missouri - Mizzou,2007-2026,43,U08058,University of Missouri Columbia,2003-2026,120,United States
+82,161,U05264,Queen&#039;s University,2017-2023,3,U05266,Queen's University,2003-2026,158,Canada
+85,156,U01981,Free University of Berlin,2003-2026,88,U01985,Freie Universität Berlin,2007-2026,68,Germany
+82,152,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,U08105,University of New Mexico,2004-2026,134,United States
+85,147,U08878,Vrije Universiteit Brussel,2003-2026,141,U08879,Vrije University of Brussels,2014-2019,6,Belgium
+100,147,U04377,National Chiao Tung University,2003-2026,135,U04586,National Yang Ming Chiao Tung University (NYCU Taiwan),2021-2026,12,Taiwan
+100,144,U07691,University of Canterbury,2005-2026,132,U07692,University of Canterbury | Te Whare Wānanga o Waitaha,2015-2026,12,New Zealand
+96,143,U09044,Xi'an Jiaotong University,2007-2026,135,U09060,Xian Jiao Tong University,2010-2017,8,China
+86,142,U09039,Xi&#039;an Jiaotong University (XJTU),2017-2026,7,U09044,Xi'an Jiaotong University,2007-2026,135,China
+86,138,U04839,Ohio State University,2004-2026,120,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
+84,134,U00636,Baylor College of Medicine,2003-2026,127,U04090,Michigan State University College of Human Medicine,2019-2025,7,United States
+82,134,U03427,Karlsruhe Institute of Technology,2007-2026,117,U03429,Karlsruher Institut fur Technologie,2009-2025,17,Germany
+87,128,U03158,Istanbul Technical University,2005-2026,125,U03159,Istanbul Teknik University,2014-2017,3,Turkey
+86,126,U06605,UNIVERSITÉ PIERRE MENDÈS FRANCE - GRENOBLE 2,2007-2015,12,U08621,Université Grenoble Alpes,2011-2026,114,France
+86,126,U04076,Metropolitan State University,2020-2025,6,U04839,Ohio State University,2004-2026,120,United States
+100,126,U09254,École Normale Supérieure de Lyon,2003-2026,118,U09255,École Normale Supérieure de Lyon (comUE Université de Lyon),2017-2025,8,France
+100,126,U04097,Middle East Technical University,2005-2026,113,U04098,Middle East Technical University / Orta Doğu Teknik Üniversitesi,2013-2025,13,Turkey
+100,124,U03978,Masaryk University,2005-2026,109,U03979,Masaryk University in Brno / Masarykova Univerzita v Brně,2011-2025,15,Czechia
+85,122,U09252,École Normale Supérieure ENS Paris (comUE Université Paris PSL),2017-2021,4,U09254,École Normale Supérieure de Lyon,2003-2026,118,France
+86,121,U06606,UNIVERSITÉ STENDHAL GRENOBLE 3,2010-2015,7,U08621,Université Grenoble Alpes,2011-2026,114,France
+100,119,U01356,Comenius University Bratislava,2005-2026,105,U01357,Comenius University in Bratislava / Univerzita Komenského v Bratislave,2012-2025,14,Slovakia
+86,118,U04893,Osaka City University,2003-2026,87,U04903,Osaka Metropolitan University,2017-2026,31,Japan
+100,114,U03303,Jinan University,2010-2026,85,U03304,Jinan University (China),2016-2026,29,China
+94,114,U00096,AGH University of Science & Technology / Akademia Górniczo-Hutnicza Stanisława Staszica w Krakowie,2011-2025,15,U00097,AGH University of Science and Technology,2007-2026,99,Poland
+100,111,U01411,Czech Technical University in Prague,2005-2026,96,U01412,Czech Technical University in Prague / České Vysoké Učení Technické v Praze,2011-2025,15,Czechia
+83,111,U03343,Joseph Fourier University,2003-2016,46,U04956,PSL University,2015-2026,65,France
+82,110,U01356,Comenius University Bratislava,2005-2026,105,U05885,Slovak University of Technology in Bratislava / Slovenská technická univerzita v Bratislave,2012-2025,5,Slovakia
+83,109,U04956,PSL University,2015-2026,65,U08174,University of Paris Descartes (Paris 5),2003-2019,44,France
+88,105,U04148,Missouri University of Science and Technology,2010-2026,102,U06593,UNIVERSITY OF MISSOURI ROLLA,2005-2007,3,United States
+100,104,U00840,Budapest University of Technology and Economics,2004-2026,89,U00841,Budapest University of Technology and Economics / Budapesti Műszaki és Gazdaságtudományi Egyetem BME,2011-2025,15,Hungary
+86,100,U08637,Université Paris Cité,2014-2026,72,U08639,Université Paris Descartes,2010-2019,28,France
+100,99,U04769,Northwest University,2014-2026,73,U04770,Northwest University (China),2013-2026,26,China
+84,98,U00664,Beijing Jiaotong Daxue,2010-2013,3,U00665,Beijing Jiaotong University,2011-2026,95,China
+90,96,U03520,Kindai University,2003-2026,89,U03547,Kinki University,2010-2015,7,Japan
+86,96,U04893,Osaka City University,2003-2026,87,U04902,Osaka Medical and Pharmaceutical University,2022-2025,9,Japan
+86,95,U01205,China Medical University (Taichung),2017-2025,15,U01206,"China Medical University, Taiwan",2010-2026,80,Taiwan
+100,94,U01287,City College of New York,2004-2026,85,U01288,City College of New York CUNY,2011-2025,9,United States
+100,94,U04655,Nicolaus Copernicus University,2008-2026,81,U04656,Nicolaus Copernicus University / Uniwersytet Mikołaja Kopernika w Toruniu,2013-2025,13,Poland
+83,90,U04956,PSL University,2015-2026,65,U08181,University of Paris Sud - Paris XI,2005-2019,25,France
+86,90,U04381,National Chung Cheng University,2005-2026,86,U06190,Taiwan Chung Cheng University,2014-2017,4,Taiwan
+82,88,U04074,Metropolitan Autonomous University,2013-2025,31,U06687,Universidad Autónoma Metropolitana,2007-2026,57,Mexico
+83,86,U04956,PSL University,2015-2026,65,U07650,University of Bordeaux 1,2003-2014,21,France
+100,86,U00821,Brno University of Technology,2005-2026,74,U00822,Brno University of Technology / Vysoké Učení Technické v Brně,2011-2025,12,Czechia
+82,86,U01320,Coastal Carolina University,2020-2025,7,U08328,University of South Carolina - Columbia,2003-2025,79,United States
+100,86,U04586,National Yang Ming Chiao Tung University (NYCU Taiwan),2021-2026,12,U04587,National Yang Ming University,2005-2022,74,Taiwan
+100,85,U08432,University of Tromso,2004-2026,70,U08433,University of Tromso / Universitetet i Tromsø,2011-2025,15,Norway
+100,85,U04083,Miami University,2010-2026,57,U04084,Miami University of Ohio,2006-2025,28,United States
+84,84,U04650,Nicholas Copernicus University of Torun,2014-2017,3,U04655,Nicolaus Copernicus University,2008-2026,81,Poland
+90,83,U08179,University of Paris Sud (Paris 11),2003-2019,58,U08181,University of Paris Sud - Paris XI,2005-2019,25,France
+100,83,U04786,Norwegian University of Life Sciences,2011-2026,79,U04787,Norwegian University of Life Sciences / Norges miljø- og biovitenskapelige universitet,2017-2025,4,Norway
+88,82,U05928,South University of Science and Technology of China / 南方科技大学,2016-2025,7,U05955,Southern University of Science and Technology,2017-2026,75,China
+90,82,U04763,Northwest A&F University,2010-2026,68,U04764,Northwest Agriculture & Forestry University,2014-2026,14,China
+82,81,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,U09009,Wright State University,2005-2025,63,United States
+83,81,U02452,Henri Poincare University (Nancy 1),2003-2015,16,U04956,PSL University,2015-2026,65,France
+84,80,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,U06340,Texas State University,2005-2025,62,United States
+89,80,U01295,City University of New York,2004-2026,62,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
+90,80,U00096,AGH University of Science & Technology / Akademia Górniczo-Hutnicza Stanisława Staszica w Krakowie,2011-2025,15,U03809,Lodz University of Technology,2009-2026,65,Poland
+91,80,U01545,Dokuz Eylul Universitesi,2020-2026,8,U01546,Dokuz Eylul University,2010-2025,72,Turkey
+83,78,U04956,PSL University,2015-2026,65,U08223,University of Provence (Aix-Marseille 1),2003-2013,13,France
+87,78,U05130,Pontifical Catholic University of Rio de Janeiro,2005-2025,22,U05149,Pontificia Universidade Catolica do Rio de Janeiro,2007-2026,56,Brazil
+83,78,U04956,PSL University,2015-2026,65,U08811,Victor Segalen Bordeaux 2 University,2003-2014,13,France
+89,77,U04546,National University of Defence Technology - China,2014-2025,7,U04547,National University of Defense Technology,2014-2026,70,China
+86,77,U08637,Université Paris Cité,2014-2026,72,U08677,Université de Paris (IPGP Descartes Diderot),2021-2025,5,France
+98,76,U04332,Nanjing University of Post and TeleCommunications,2010-2015,4,U04333,Nanjing University of Posts and Telecommunications,2014-2026,72,China
+84,76,U05048,Peter the Great St. Petersburg Polytechnic University,2010-2026,71,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+86,75,U08637,Université Paris Cité,2014-2026,72,U08640,Université Paris East Marne la Vallée,2010-2012,3,France
+86,75,U01346,Collège de France (comUE Université Paris PSL),2017-2019,3,U08637,Université Paris Cité,2014-2026,72,France
+90,75,U03809,Lodz University of Technology,2009-2026,65,U05845,Silesian University of Technology in Gliwice / Politechnika Śląska w Gliwicach,2014-2025,10,Poland
+86,75,U08637,Université Paris Cité,2014-2026,72,U08678,Université de Paris 13 / Université Paris XIII Nord (comUE Université Sorbonne Paris Cité),2017-2019,3,France
+83,74,U04956,PSL University,2015-2026,65,U08175,University of Paris Descartes - Paris V,2014-2019,9,France
+100,74,U04955,PSL Research University Paris (ComUE),2019-2025,9,U04956,PSL University,2015-2026,65,France
+95,74,U07593,University of Aquila,2014-2025,14,U07949,University of L'Aquila,2007-2026,60,Italy
+83,74,U04956,PSL University,2015-2026,65,U08177,University of Paris Diderot - Paris VII,2012-2019,9,France
+88,73,U01918,Federico Santa María Technical University,2014-2025,29,U06857,Universidad Tecnica Federico Santa Maria,2010-2026,44,Chile
+83,73,U03782,Lille 2 University of Health and Law,2010-2017,8,U04956,PSL University,2015-2026,65,France
+83,72,U02276,HSE University,2011-2026,36,U05035,Peoples Friendship University of Russia,2010-2025,36,Russia
+83,71,U04956,PSL University,2015-2026,65,U08170,University of Pantheon Sorbonne - Paris I,2013-2020,6,France
+83,71,U04956,PSL University,2015-2026,65,U08071,University of Montpellier II,2009-2014,6,France
+83,70,U04956,PSL University,2015-2026,65,U06599,UNIVERSITY PARIS 2 PANTHÉON-ASSAS,2010-2014,5,France
+83,70,U04956,PSL University,2015-2026,65,U08185,University of Pau and Pays Adour,2014-2025,5,France
+83,70,U04956,PSL University,2015-2026,65,U08178,University of Paris Nord - Paris XIII,2014-2025,5,France
+90,70,U03809,Lodz University of Technology,2009-2026,65,U09012,Wroclaw University of Technology / Politechnika Wrocławska,2011-2016,5,Poland
+83,70,U03831,Louis Pasteur University (Strasbourg 1),2010-2015,5,U04956,PSL University,2015-2026,65,France
+86,70,U02100,Georgia Health Sciences University,2010-2014,5,U06638,Uniformed Services University of the Health Sciences,2005-2026,65,United States
+92,69,U04996,Paris Diderot University – Paris 7,2011-2019,27,U08176,University of Paris Diderot (Paris 7),2003-2019,42,France
+85,69,U04098,Middle East Technical University / Orta Doğu Teknik Üniversitesi,2013-2025,13,U09131,Yildiz Technical University,2011-2026,56,Turkey
+86,69,U00580,Ball State University,2005-2026,51,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
+84,69,U06335,Texas A&amp;M University (TAMU),2017-2026,7,U06340,Texas State University,2005-2025,62,United States
+93,69,U01620,EPFL - Swiss Federal lnstitute of Technology Lausanne,2018-2019,3,U06145,Swiss Federal Institute of Technology - Lausanne,2003-2026,66,Switzerland
+100,69,U03052,International School for Advanced Studies,2005-2026,57,U03053,International School for Advanced Studies / Scuola Internazionale Superiore di Studi Avanzati SISSA di Trieste,2014-2025,12,Italy
+83,68,U04956,PSL University,2015-2026,65,U08173,University of Paris Dauphine - Paris IX,2014-2017,3,France
+90,68,U03809,Lodz University of Technology,2009-2026,65,U06179,Tadeusz Kościuszko Cracow University of Technology / Politechnika Krakowska Tadeusza Kościuszki,2012-2025,3,Poland
+83,68,U04956,PSL University,2015-2026,65,U08343,University of Southern Bretagne,2014-2017,3,France
+82,67,U05128,Pontifical Catholic University of Peru,2014-2025,17,U05138,Pontificia Universidad Catolica del Peru,2007-2026,50,Peru
+85,67,U04594,Naval Medical University,2018-2025,10,U05647,Second Military Medical University,2010-2026,57,China
+83,67,U01003,Catholic University of Leuven / Katholieke Universiteit Leuven,2022-2025,4,U08066,University of Mons,2014-2026,63,Belgium
+87,66,U00096,AGH University of Science & Technology / Akademia Górniczo-Hutnicza Stanisława Staszica w Krakowie,2011-2025,15,U01398,Cracow University of Technology,2010-2026,51,Poland
+100,66,U05844,Silesian University of Technology,2012-2026,56,U05845,Silesian University of Technology in Gliwice / Politechnika Śląska w Gliwicach,2014-2025,10,Poland
+86,66,U08395,University of Tennessee Health Science Center,2004-2026,59,U08396,University of Tennessee Martin,2005-2025,7,United States
+88,65,U05132,Pontifical Javeriana University,2014-2025,8,U05142,Pontificia Universidad Javeriana,2010-2026,57,Colombia
+100,64,U05884,Slovak University of Technology in Bratislava,2008-2026,59,U05885,Slovak University of Technology in Bratislava / Slovenská technická univerzita v Bratislave,2012-2025,5,Slovakia
+100,64,U06200,Tallinn University of Technology,2005-2025,51,U06201,Tallinn University of Technology (TalTech),2015-2026,13,Estonia
+85,64,U00300,All India Institute of Medical Sciences,2010-2026,60,U05788,Sher-i-Kashmir Institute of Medical Sciences,2022-2025,4,India
+83,63,U01655,Eastern Washington University,2005-2025,5,U08486,"University of Washington, Seattle",2007-2026,58,United States
+83,63,U03979,Masaryk University in Brno / Masarykova Univerzita v Brně,2011-2025,15,U04050,Mendel University in Brno,2009-2026,48,Czechia
+94,63,U06215,Taras Shevchenko National University Kiev,2014-2025,14,U06216,Taras Shevchenko National University of Kyiv,2010-2026,49,Ukraine
+83,62,U07668,University of Caen,2014-2025,4,U08179,University of Paris Sud (Paris 11),2003-2019,58,France
+83,61,U05131,Pontifical Catholic University of Valparaíso,2015-2025,19,U05135,Pontificia Universidad Catolica de Valparaiso,2010-2026,42,Chile
+88,61,U05475,SOAS University of London,2011-2026,34,U07981,University of London School Oriental & African Studies (SOAS),2004-2025,27,United Kingdom
+83,61,U00705,Bengbu Medical University,2024-2025,4,U05647,Second Military Medical University,2010-2026,57,China
+83,61,U08170,University of Pantheon Sorbonne - Paris I,2013-2020,6,U08635,Université Paris 1 Panthéon-Sorbonne,2004-2026,55,France
+87,61,U01398,Cracow University of Technology,2010-2026,51,U05845,Silesian University of Technology in Gliwice / Politechnika Śląska w Gliwicach,2014-2025,10,Poland
+100,61,U06269,Technical University of Ostrava,2007-2026,56,U06270,Technical University of Ostrava / Vysoká Škola Báňská Technická Univerzita Ostrava,2011-2016,5,Czechia
+84,60,U00913,California Polytechnic State University Cal Poly,2011-2025,16,U00915,"California Polytechnic State University, San Luis Obispo",2005-2026,44,United States
+84,60,U05125,Pontifical Catholic University of Chile,2005-2026,56,U06316,Temuco Catholic University,2022-2025,4,Chile
+82,60,U02311,Hamline University,2005-2025,3,U04083,Miami University,2010-2026,57,United States
+86,60,U09131,Yildiz Technical University,2011-2026,56,U09133,Yildiz Teknik University,2014-2020,4,Turkey
+86,60,U05106,Polytechnic University of Catalonia,2005-2026,57,U06251,Technical University of Catalonia (UPC),2023-2025,3,Spain
+92,60,U06212,Tampere University (TUT+UoT) / Tampereen korkeakouluyhteisö,2019-2025,7,U08382,University of Tampere,2005-2025,53,Finland
+85,59,U00675,Beijing Union University,2017-2025,17,U01223,"China University of Geosciences, Beijing",2012-2026,42,China
+85,59,U08799,Vellore Institute of Technology,2014-2026,51,U08801,Vels Institute of Science Technology and Advanced Studies,2020-2025,8,India
+88,59,U01008,Cayetano Heredia Peruvian University,2019-2025,7,U06821,Universidad Peruana Cayetano Heredia,2012-2026,52,Peru
+91,59,U05491,SUNY Upstate Medical University,2017-2025,19,U06066,"State University of New York, Upstate Medical University",2005-2026,40,United States
+84,58,U02725,Idaho State University,2005-2025,40,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
+85,58,U02784,Indian Institute of Space Science and Technology,2021-2025,7,U08799,Vellore Institute of Technology,2014-2026,51,India
+85,58,U03253,Jaypee Institute of Information Technology,2020-2025,7,U08799,Vellore Institute of Technology,2014-2026,51,India
+100,57,U08490,University of West Bohemia,2005-2025,51,U08491,University of West Bohemia (Vysoká Škola v Plzni) / Západočeská Univerzita v Plzni,2011-2016,6,Czechia
+85,57,U01570,Dr BR Ambedkar National Institute of Technology,2020-2025,6,U08799,Vellore Institute of Technology,2014-2026,51,India
+97,57,U08747,V.N. Karazin Kharkiv National University,2010-2026,42,U08760,VN Karazin Kharkiv National University,2014-2025,15,Ukraine
+85,57,U00554,BS Abdur Rahman Crescent Institute of Science and Technology,2020-2025,6,U08799,Vellore Institute of Technology,2014-2026,51,India
+85,57,U01525,Dhirubhai Ambani Institute of Information and Communication Technology,2020-2025,6,U08799,Vellore Institute of Technology,2014-2026,51,India
+84,57,U07197,Universit degli Studi di Perugia,2015-2026,12,U07220,Universita degli Studi di Torino,2007-2025,45,Italy
+85,57,U01322,Coimbatore Institute of Technology,2020-2025,6,U08799,Vellore Institute of Technology,2014-2026,51,India
+87,56,U01398,Cracow University of Technology,2010-2026,51,U09012,Wroclaw University of Technology / Politechnika Wrocławska,2011-2016,5,Poland
+89,56,U08323,University of South Bohemia / Jihočeská Univerzita v Českých Budějovicích,2011-2016,5,U08490,University of West Bohemia,2005-2025,51,Czechia
+85,56,U08799,Vellore Institute of Technology,2014-2026,51,U08856,Vishwakarma Institute of Technology,2020-2025,5,India
+85,56,U00472,"Atal Bihari Vajpayee Indian Institute of Information Technology and Management, Gwalior",2021-2025,5,U08799,Vellore Institute of Technology,2014-2026,51,India
+95,56,U05104,Polytechnic University of Bucharest,2014-2026,52,U07526,University Politechnica of Bucharest,2008-2015,4,Romania
+85,56,U04465,National Institute of Technology Srinagar,2023-2025,5,U08799,Vellore Institute of Technology,2014-2026,51,India
+85,55,U03692,LNM Institute of Information Technology,2022-2025,4,U08799,Vellore Institute of Technology,2014-2026,51,India
+86,55,U02076,Gebze Technical University,2016-2026,42,U04098,Middle East Technical University / Orta Doğu Teknik Üniversitesi,2013-2025,13,Turkey
+87,55,U06603,"UNIVERSITÉ PARIS-DAUPHINE, UNIVERSITÉ PSL",2011-2014,3,U07378,Universite Paris-Dauphine,2004-2025,52,France
+89,54,U02861,Institut National Polytechnique de Lorraine,2012-2015,3,U02876,Institut Polytechnique de Paris,2010-2026,51,France
+92,54,U02036,GMR Institute of Technology,2024-2025,3,U08799,Vellore Institute of Technology,2014-2026,51,India
+100,54,U01398,Cracow University of Technology,2010-2026,51,U06179,Tadeusz Kościuszko Cracow University of Technology / Politechnika Krakowska Tadeusza Kościuszki,2012-2025,3,Poland
+85,54,U03370,KPR Institute of Engineering and Technology,2024-2025,3,U08799,Vellore Institute of Technology,2014-2026,51,India
+83,54,U00841,Budapest University of Technology and Economics / Budapesti Műszaki és Gazdaságtudományi Egyetem BME,2011-2025,15,U01388,Corvinus University of Budapest,2011-2025,39,Hungary
+84,54,U07197,Universit degli Studi di Perugia,2015-2026,12,U07215,Universita degli Studi di Milano,2007-2025,42,Italy
+85,54,U04451,National Institute of Technology Delhi,2024-2025,3,U08799,Vellore Institute of Technology,2014-2026,51,India
+93,53,U08174,University of Paris Descartes (Paris 5),2003-2019,44,U08175,University of Paris Descartes - Paris V,2014-2019,9,France
+90,53,U08662,Université de Caen / Université Caen Normandie (comUE Normandie Université),2017-2025,9,U08663,Université de Caen Basse Normandie,2005-2026,44,France
+93,53,U05137,Pontificia Universidad Catolica del Per&uacute;,2011-2013,3,U05138,Pontificia Universidad Catolica del Peru,2007-2026,50,Peru
+91,53,U06501,Toulouse Capitole University,2005-2025,47,U07337,"Universite Capitole, Toulouse I",2020-2025,6,France
+84,53,U02365,Harvard Medical School,2013-2025,13,U03995,Mayo Medical School,2005-2026,40,United States
+82,53,U07402,Universite d'Angers,2007-2025,25,U07587,University of Angers,2014-2026,28,France
+83,53,U00779,Bogor Agricultural University,2010-2026,42,U02706,IPB University,2017-2025,11,Indonesia
+86,53,U06260,Technical University of Kosice,2007-2026,49,U06261,Technical University of Košice / Technická univerzita v Košiciach,2012-2025,4,Slovakia
+85,52,U01964,Fourth Military Medical University,2010-2026,42,U04594,Naval Medical University,2018-2025,10,China
+93,51,U04050,Mendel University in Brno,2009-2026,48,U04051,Mendel University of Agriculture and Forestry Brno / Mendelova Univerzita v Brně,2012-2014,3,Czechia
+93,51,U01502,Democritus University of Thrace,2014-2026,48,U01503,Demokritos University of Thrace,2011-2013,3,Greece
+90,51,U08176,University of Paris Diderot (Paris 7),2003-2019,42,U08177,University of Paris Diderot - Paris VII,2012-2019,9,France
+90,51,U04503,National Research University Higher School of Economics,2012-2026,41,U06042,State University - Higher School of Economics,2007-2025,10,Russia
+88,50,U04573,National University of Sciences & Technology (NUST) Islamabad,2010-2026,29,U04574,National University of Sciences & Technology - Pakistan,2014-2025,21,Pakistan
+94,50,U00554,BS Abdur Rahman Crescent Institute of Science and Technology,2020-2025,6,U05479,SRM Institute of Science and Technology,2016-2026,44,India
+100,50,U06270,Technical University of Ostrava / Vysoká Škola Báňská Technická Univerzita Ostrava,2011-2016,5,U08158,University of Ostrava,2014-2026,45,Czechia
+83,50,U02276,HSE University,2011-2026,36,U05521,Saint Petersburg State Electrotechnical University,2018-2025,14,Russia
+100,49,U01019,Central European University,2005-2026,40,U01020,Central European University Budapest / Közép-európai Egyetem,2011-2025,9,Hungary
+83,49,U07669,University of Caen Lower Normandy,2010-2026,29,U07995,University of Lyon,2010-2026,20,France
+100,49,U05643,Sechenov First Moscow State Medical University,2017-2025,23,U05645,Sechenov University,2016-2026,26,Russia
+84,49,U07456,Universite de Technologie de Compiegne,2007-2025,31,U08390,University of Technology of Compiègne,2014-2025,18,France
+88,49,U06625,UiT The Arctic University of Norway,2011-2026,35,U06626,UiT The Arctic University of Tromso,2014-2025,14,Norway
+87,48,U00683,Beijing Wuzi University,2020-2025,6,U01223,"China University of Geosciences, Beijing",2012-2026,42,China
+84,48,U02725,Idaho State University,2005-2025,40,U05452,"Rutgers, The State University of New Jersey--Newark",2010-2025,8,United States
+87,48,U04287,NOVA University Lisbon,2010-2026,40,U04625,New University of Lisbon,2005-2025,8,Portugal
+88,48,U06405,The University of Texas Southwestern Medical Center (UT Southwestern Medical Center),2016-2026,11,U07919,University of Kansas Medical Center,2004-2026,37,United States
+83,48,U07668,University of Caen,2014-2025,4,U08174,University of Paris Descartes (Paris 5),2003-2019,44,France
+95,47,U01259,Chongqing University of Post and Telecommunications,2020-2025,6,U01260,Chongqing University of Posts & Telecommunications,2010-2026,41,China
+94,47,U02438,Henan Polytech University,2014-2018,4,U02439,Henan Polytechnic University,2010-2026,43,China
+83,47,U04409,National Institute Interdisciplinary Science & Technology - India,2016-2018,3,U05479,SRM Institute of Science and Technology,2016-2026,44,India
+84,47,U07703,University of Central Missouri,2005-2025,4,U08057,University of Missouri - Mizzou,2007-2026,43,United States
+83,47,U02276,HSE University,2011-2026,36,U08719,Ural State Medical University,2010-2025,11,Russia
+86,47,U02783,"Indian Institute of Science Education and Research, Pune",2014-2026,43,U02808,Indian Institutes of Science Education and Research (IISERs),2018-2021,4,India
+83,46,U07668,University of Caen,2014-2025,4,U08176,University of Paris Diderot (Paris 7),2003-2019,42,France
+87,46,U04287,NOVA University Lisbon,2010-2026,40,U06264,Technical University of Lisbon,2005-2013,6,Portugal
+83,46,U00502,Autonomous University of Baja California,2014-2025,12,U06664,Universidad Autonoma de Baja California,2011-2025,34,Mexico
+89,46,U05932,South Western University of Finance & Economics - China,2014-2018,4,U05977,Southwestern University of Finance and Economics,2015-2026,42,China
+84,46,U01173,Chicago Medical School,2019-2025,6,U03995,Mayo Medical School,2005-2026,40,United States
+88,46,U06593,UNIVERSITY OF MISSOURI ROLLA,2005-2007,3,U08057,University of Missouri - Mizzou,2007-2026,43,United States
+83,46,U02276,HSE University,2011-2026,36,U06042,State University - Higher School of Economics,2007-2025,10,Russia
+86,46,U02100,Georgia Health Sciences University,2010-2014,5,U08150,University of Oklahoma Health Sciences Center,2005-2026,41,United States
+100,46,U01300,"City University of New York, Hunter College",2005-2025,7,U02658,Hunter College,2012-2025,39,United States
+82,46,U04503,National Research University Higher School of Economics,2012-2026,41,U04961,Pacific National University,2021-2025,5,Russia
+83,46,U00705,Bengbu Medical University,2024-2025,4,U01964,Fourth Military Medical University,2010-2026,42,China
+82,45,U01471,Darmstadt University of Technology,2005-2026,38,U01984,Freiberg University of Mining and Technology,2019-2025,7,Germany
+82,45,U05900,Sonoma State University,2005-2025,27,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
+82,45,U05127,Pontifical Catholic University of Paraná,2019-2025,7,U05148,Pontificia Universidade Catolica do Parana,2014-2025,38,Brazil
+87,45,U03414,Karadeniz Technical University,2013-2026,37,U03416,Karadeniz Teknik University,2014-2020,8,Turkey
+84,44,U00196,"AgroParisTech, Institut des Sciences et Industries du Vivant et de l'Environnement",2013-2025,8,U05623,Sciences Po,2005-2026,36,France
+84,44,U05623,Sciences Po,2005-2026,36,U08633,Université Montpellier II Sciences et Techniques du Languedoc,2007-2014,8,France
+96,44,U06517,Transilvania University of Brasov,2012-2026,32,U06519,Transylvania University of Brasov,2014-2025,12,Romania
+84,44,U05945,Southern Illinois University Carbondale,2003-2025,40,U05951,Southern Oregon University,2005-2025,4,United States
+84,44,U02782,"Indian Institute of Science Education and Research, Kolkata",2016-2026,40,U02808,Indian Institutes of Science Education and Research (IISERs),2018-2021,4,India
+83,43,U02276,HSE University,2011-2026,36,U03626,Kuban State Agrarian University,2020-2025,7,Russia
+83,43,U02276,HSE University,2011-2026,36,U03653,Kuzbass State Technical University,2020-2025,7,Russia
+83,43,U02276,HSE University,2011-2026,36,U03629,Kuban State University,2020-2025,7,Russia
+83,43,U02276,HSE University,2011-2026,36,U05526,Saint Petersburg State University of Architecture and Civil Engineering,2020-2025,7,Russia
+83,43,U02276,HSE University,2011-2026,36,U04215,Moscow State Technological University Stankin,2020-2025,7,Russia
+83,43,U02276,HSE University,2011-2026,36,U05440,Russian State Social University,2020-2025,7,Russia
+83,43,U02276,HSE University,2011-2026,36,U04890,Orenburg State University,2020-2025,7,Russia
+97,43,U03687,L. N. Gumilov Eurasian National University,2020-2025,7,U03689,L.N. Gumilyov Eurasian National University,2010-2026,36,Kazakhstan
+83,43,U02276,HSE University,2011-2026,36,U06451,Togliatti State University,2020-2025,7,Russia
+83,43,U02276,HSE University,2011-2026,36,U04218,Moscow State University of Medicine and Dentistry,2020-2025,7,Russia
+83,43,U02276,HSE University,2011-2026,36,U06204,Tambov State Technical University,2020-2025,7,Russia
+83,43,U02276,HSE University,2011-2026,36,U03079,Irkutsk State Technical University,2020-2025,7,Russia
+83,43,U01588,Dubna State University,2020-2025,7,U02276,HSE University,2011-2026,36,Russia
+86,43,U03351,Julius Maximilian University of Würzburg,2015-2017,3,U03352,Julius-Maximilians-Universität Würzburg,2009-2026,40,Germany
+83,43,U02276,HSE University,2011-2026,36,U06482,Tomsk State Pedagogical University,2019-2025,7,Russia
+87,43,U00096,AGH University of Science & Technology / Akademia Górniczo-Hutnicza Stanisława Staszica w Krakowie,2011-2025,15,U03844,Lublin University of Technology,2014-2026,28,Poland
+83,43,U01433,Dagestan State University,2020-2025,7,U02276,HSE University,2011-2026,36,Russia
+83,43,U02276,HSE University,2011-2026,36,U09111,Yaroslavl State University,2020-2025,7,Russia
+83,43,U02276,HSE University,2011-2026,36,U06635,Ulyanovsk State University,2020-2025,7,Russia
+83,42,U02276,HSE University,2011-2026,36,U05397,Rostov State Transport University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U04747,Northern Arctic Federal University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U04801,Novosibirsk State Medical University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U04889,Orel State University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U08880,Vyatka State University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U05036,Peoples'Friendship University of Russia,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U06205,Tambov State University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U05398,Rostov State University of Economics,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U04256,N. P. Ogarev's Mordovian State University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U08864,Vladimir State University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U06634,Ulyanovsk State Technical University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U06549,Tver State University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U05820,Siberian State Industrial University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U05957,Southern Ural State University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U06014,St Petersburg State University of Aerospace Instrumentation,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U06048,State University of Management,2021-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U04258,N.I. Lobachevsky State University of Nizhni Novgorod,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U05396,Rostov State Medical University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U03377,Kabardino-Balkarian State University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U03078,Irkutsk State Medical University,2020-2025,6,Russia
+84,42,U00785,Bordeaux Sciences Agro,2020-2025,6,U05623,Sciences Po,2005-2026,36,France
+83,42,U02276,HSE University,2011-2026,36,U03644,Kursk State Medical University,2021-2025,6,Russia
+83,42,U01420,D. Mendeleev University of Chemical Technology,2020-2025,6,U02276,HSE University,2011-2026,36,Russia
+84,42,U02866,Institut National des Sciences Appliquees de Rouen,2020-2025,6,U05623,Sciences Po,2005-2026,36,France
+83,42,U02276,HSE University,2011-2026,36,U03628,Kuban State Technological University,2020-2025,6,Russia
+83,42,U02276,HSE University,2011-2026,36,U03627,Kuban State Medical University,2020-2025,6,Russia
+83,42,U01283,Chuvash State University,2020-2025,6,U02276,HSE University,2011-2026,36,Russia
+83,42,U01162,Cherepovets State University,2020-2025,6,U02276,HSE University,2011-2026,36,Russia
+83,42,U02276,HSE University,2011-2026,36,U04200,"Moscow Aviation Institute, State University of Aerospace Technologies",2020-2025,6,Russia
+83,42,U00692,Belgorod State Technological University,2020-2025,6,U02276,HSE University,2011-2026,36,Russia
+97,42,U04056,Menofia University,2014-2026,19,U04057,Menoufia University,2018-2025,23,Egypt
+84,42,U01723,Ecole Superieure des Sciences Economiques et Commerciales,2020-2025,6,U05623,Sciences Po,2005-2026,36,France
+83,42,U01765,Emperor Alexander I St. Petersburg State Transport University,2020-2025,6,U02276,HSE University,2011-2026,36,Russia
+83,41,U02276,HSE University,2011-2026,36,U08721,Ural State University of Economics,2020-2025,5,Russia
+83,41,U02276,HSE University,2011-2026,36,U06031,St. Petersburg State Marine Technical University,2021-2025,5,Russia
+83,41,U02276,HSE University,2011-2026,36,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+83,41,U02276,HSE University,2011-2026,36,U06618,Udmurt State University,2020-2024,5,Russia
+83,41,U02219,Gubkin University,2021-2025,5,U02276,HSE University,2011-2026,36,Russia
+83,41,U02276,HSE University,2011-2026,36,U03462,Kazan National Research Technical University named after AN Tupolev,2021-2025,5,Russia
+83,41,U02276,HSE University,2011-2026,36,U04219,Moscow State University of Psychology and Education,2022-2025,5,Russia
+83,41,U02276,HSE University,2011-2026,36,U06074,Stavropol State Medical University,2021-2025,5,Russia
+84,41,U00198,"AgroSup Dijon, Institut National Superieur des Sciences Agronomiques, de l'Alimentation et de l'Environnement",2020-2024,5,U05623,Sciences Po,2005-2026,36,France
+83,41,U02276,HSE University,2011-2026,36,U03799,Lipetsk State Technical University,2021-2025,5,Russia
+83,41,U01554,Dong-A University,2010-2025,36,U09143,Youngsan University,2021-2025,5,South Korea
+83,41,U02276,HSE University,2011-2026,36,U05115,Polzunov Altai State Technical University,2020-2025,5,Russia
+83,41,U02276,HSE University,2011-2026,36,U04961,Pacific National University,2021-2025,5,Russia
+85,41,U06262,Technical University of Liberec,2014-2026,36,U06270,Technical University of Ostrava / Vysoká Škola Báňská Technická Univerzita Ostrava,2011-2016,5,Czechia
+84,41,U04189,"Montpellier SupAgro, Centre International d'Etudes Superieures en Sciences Agronomiques",2020-2024,5,U05623,Sciences Po,2005-2026,36,France
+83,41,U01565,Dostoevsky Omsk State University,2021-2025,5,U02276,HSE University,2011-2026,36,Russia
+83,40,U02276,HSE University,2011-2026,36,U08876,Voronezh State University of Engineering Technology,2022-2025,4,Russia
+85,40,U00096,AGH University of Science & Technology / Akademia Górniczo-Hutnicza Stanisława Staszica w Krakowie,2011-2025,15,U05458,Rzeszow University of Technology,2014-2025,25,Poland
+88,40,U05475,SOAS University of London,2011-2026,34,U05617,School of Advanced Study University of London,2012-2025,6,United Kingdom
+83,40,U02276,HSE University,2011-2026,36,U06548,Tver State Technical University,2022-2025,4,Russia
+91,40,U06362,The Education University of Hong Kong,2017-2026,37,U06388,The Open University of Hong Kong,2020-2022,3,Hong Kong
+83,40,U00470,Astrakhan State Medical University,2021-2025,4,U02276,HSE University,2011-2026,36,Russia
+83,40,U02276,HSE University,2011-2026,36,U06120,Surgut State University,2021-2024,4,Russia
+84,40,U03718,Lanzhou Jiaotong University,2013-2025,32,U09060,Xian Jiao Tong University,2010-2017,8,China
+84,40,U05623,Sciences Po,2005-2026,36,U09243,École Nationale Supérieure des Sciences de l'Information et des Bibliotheques,2008-2011,4,France
+83,40,U02276,HSE University,2011-2026,36,U04214,Moscow State Regional University,2021-2024,4,Russia
+83,40,U02276,HSE University,2011-2026,36,U04861,Omsk State Medical University,2022-2025,4,Russia
+83,40,U02276,HSE University,2011-2026,36,U05438,Russian State Hydrometeorological University,2021-2024,4,Russia
+83,40,U02276,HSE University,2011-2026,36,U05455,Ryazan State Radio Engineering University,2020-2023,4,Russia
+84,40,U05616,School for Advanced Studies in the Social Sciences,2020-2023,4,U05623,Sciences Po,2005-2026,36,France
+96,40,U02375,Hassan II University of Casablanca,2018-2026,35,U07695,University of Casablanca Hassan 2,2019-2025,5,Morocco
+83,40,U02276,HSE University,2011-2026,36,U04756,Northern State Medical University,2022-2025,4,Russia
+83,40,U02276,HSE University,2011-2026,36,U06073,Stavropol State Agrarian University,2021-2024,4,Russia
+82,39,U03718,Lanzhou Jiaotong University,2013-2025,32,U09039,Xi&#039;an Jiaotong University (XJTU),2017-2026,7,China
+83,39,U02276,HSE University,2011-2026,36,U05546,Samara State University of Economics,2023-2025,3,Russia
+83,39,U02276,HSE University,2011-2026,36,U03393,Kalashnikov Izhevsk State Technical University,2021-2023,3,Russia
+82,39,U04196,Morgan State University,2019-2025,21,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
+83,39,U00831,Bryansk State Technical University,2021-2023,3,U02276,HSE University,2011-2026,36,Russia
+97,39,U03689,L.N. Gumilyov Eurasian National University,2010-2026,36,U03691,LN Gumilyov Eurasian National University,2014-2017,3,Kazakhstan
+84,39,U02867,Institut National des Sciences Appliquees de Strasbourg,2023-2025,3,U05623,Sciences Po,2005-2026,36,France
+94,39,U02031,GH Asachi Technical University,2014-2025,15,U02120,Gheorghe Asachi Technical University of Iaşi,2011-2025,24,Romania
+83,39,U00367,Amur State University,2021-2023,3,U02276,HSE University,2011-2026,36,Russia
+83,39,U02276,HSE University,2011-2026,36,U04217,Moscow State University of Food Production,2022-2024,3,Russia
+85,39,U08030,University of Medicine and Dentistry New Jersey,2003-2014,31,U08104,University of New Haven,2020-2025,8,United States
+84,39,U00682,Beijing University of Technology (Beijing Polytechnic University) / 北京工业大学,2013-2025,11,U06431,Tianjin Polytechnic University,2011-2026,28,China
+83,39,U02276,HSE University,2011-2026,36,U04053,Mendeleyev University of Chemical Technology,2014-2018,3,Russia
+83,39,U02276,HSE University,2011-2026,36,U03468,Kazan State University of Architecture and Engineering,2021-2023,3,Russia
+85,39,U04241,Muroran Institute of Technology,2011-2025,29,U04422,National Institute of Advanced Industrial Science and Technology (AIST),2016-2026,10,Japan
+88,39,U00939,Campus Bio-Medico University of Rome,2014-2025,32,U07199,Universita Campus Bio-Medico di Roma,2020-2025,7,Italy
+84,39,U05004,ParisTech Institut des Sciences et Technologies de Paris,2020-2025,3,U05623,Sciences Po,2005-2026,36,France
+86,39,U00367,Amur State University,2021-2023,3,U05929,South Ural State University,2018-2026,36,Russia
+86,39,U07197,Universit degli Studi di Perugia,2015-2026,12,U08596,Università degli Studi di Palermo,2007-2025,27,Italy
+83,39,U02276,HSE University,2011-2026,36,U06484,Tomsk State University of Architecture and Building,2020-2023,3,Russia
+83,39,U02276,HSE University,2011-2026,36,U08867,Volga State University of Technology,2020-2022,3,Russia
+83,39,U01876,Far Eastern State Transport University,2020-2022,3,U02276,HSE University,2011-2026,36,Russia
+83,39,U02276,HSE University,2011-2026,36,U05871,Sirius University of Science and Technology,2024-2025,3,Russia
+84,39,U06372,The Hong Kong Polytechnic University (PolyU),2016-2026,11,U06431,Tianjin Polytechnic University,2011-2026,28,China
+83,38,U06353,Thapar University,2013-2025,12,U08757,VIT University,2016-2025,26,India
+91,38,U08827,Vietnam National University Hochiminh City,2014-2026,17,U08832,"Vietnam National University, Ho Chi Minh City",2019-2025,21,Vietnam
+87,38,U03844,Lublin University of Technology,2014-2026,28,U05845,Silesian University of Technology in Gliwice / Politechnika Śląska w Gliwicach,2014-2025,10,Poland
+100,37,U00616,Baruch College,2010-2025,24,U01297,"City University of New York, Baruch College",2013-2025,13,United States
+88,37,U02920,Institute of Education University of London,2014-2015,3,U05475,SOAS University of London,2011-2026,34,United Kingdom
+83,37,U01102,Cha University,2014-2025,32,U09143,Youngsan University,2021-2025,5,South Korea
+100,37,U02027,G d'Annunzio University of Chieti-Pescara,2014-2026,28,U07713,University of Chieti-Pescara,2018-2026,9,Italy
+87,37,U09251,École Normale Supérieure Cachan,2007-2020,13,U09272,École normale supérieure Paris-Saclay,2011-2025,24,France
+87,37,U04944,PLA University of Science and Technology,2010-2021,10,U09087,Xuzhou University of Technology,2018-2026,27,China
+84,37,U08175,University of Paris Descartes - Paris V,2014-2019,9,U08639,Université Paris Descartes,2010-2019,28,France
+86,37,U08088,University of Natural Resources and Life Sciences - BOKU,2015-2017,3,U08089,"University of Natural Resources and Life Sciences, Vienna",2011-2026,34,Austria
+96,37,U08119,University of North British Columbia,2014-2021,7,U08134,University of Northern British Columbia,2005-2026,30,Canada
+83,36,U01604,Duzce University,2010-2025,30,U09233,Çağ University,2019-2025,6,Turkey
+88,36,U02605,Hubei Polytechnic University,2020-2025,8,U06431,Tianjin Polytechnic University,2011-2026,28,China
+89,36,U02777,Indian Institute of Science Education & Research (IISER) - Bhopal,2014-2025,32,U02808,Indian Institutes of Science Education and Research (IISERs),2018-2021,4,India
+88,36,U00096,AGH University of Science & Technology / Akademia Górniczo-Hutnicza Stanisława Staszica w Krakowie,2011-2025,15,U04877,Opole University of Technology,2015-2025,21,Poland
+100,36,U04535,National Technical University of Ukraine,2012-2017,5,U04536,"National Technical University of Ukraine ""Igor Sikorsky Kyiv Polytechnic Institute""",2010-2026,31,Ukraine
+94,36,U00257,Al-Imam Muhammad Ibn Saud Islamic University,2019-2025,13,U02740,Imam Mohammad Ibn Saud Islamic University,2011-2026,23,Saudi Arabia
+92,36,U04996,Paris Diderot University – Paris 7,2011-2019,27,U08177,University of Paris Diderot - Paris VII,2012-2019,9,France
+82,36,U07466,Universite des Sciences et de la Technologie Houari Boumediene,2020-2025,10,U07535,University Science & Technology Houari Boumediene,2013-2025,26,Algeria
+85,35,U05458,Rzeszow University of Technology,2014-2025,25,U05845,Silesian University of Technology in Gliwice / Politechnika Śląska w Gliwicach,2014-2025,10,Poland
+82,35,U05452,"Rutgers, The State University of New Jersey--Newark",2010-2025,8,U05900,Sonoma State University,2005-2025,27,United States
+88,34,U01359,Comillas Pontifical University,2017-2026,27,U06829,Universidad Pontificia Comillas,2020-2025,7,Spain
+88,34,U03462,Kazan National Research Technical University named after AN Tupolev,2021-2025,5,U05542,Samara National Research University,2017-2026,29,Russia
+88,34,U05917,South Central Minzu University,2022-2025,9,U05918,South Central University for Nationalities,2011-2025,25,China
+84,34,U04533,National Technical University Kharkiv Polytechnic Institute,2012-2026,29,U04535,National Technical University of Ukraine,2012-2017,5,Ukraine
+100,34,U02700,INSEAD,2007-2025,30,U02701,INSEAD Business School / Institut Européen d’Administration des Affaires (comUE Sorbonne Universités),2018-2025,4,France
+95,34,U03344,Josip Juraj Strossmayer University of Osijek,2010-2026,19,U07904,University of JJ Strossmayer Osijek,2014-2025,15,Croatia
+85,34,U00675,Beijing Union University,2017-2025,17,U01225,"China University of Mining and Technology, Beijing",2020-2026,17,China
+87,34,U05928,South University of Science and Technology of China / 南方科技大学,2016-2025,7,U09087,Xuzhou University of Technology,2018-2026,27,China
+82,34,U04961,Pacific National University,2021-2025,5,U05542,Samara National Research University,2017-2026,29,Russia
+86,34,U03148,Istanbul Aydin University,2019-2026,31,U03159,Istanbul Teknik University,2014-2017,3,Turkey
+87,34,U00836,Bucharest Academy of Economic Studies,2010-2025,14,U00837,Bucharest University of Economic Studies,2015-2026,20,Romania
+86,34,U03729,Laurentian University,2014-2025,30,U07359,Universite Laurentienne,2011-2015,4,Canada
+83,33,U05308,Rajiv Gandhi University of Health Sciences,2019-2025,7,U08757,VIT University,2016-2025,26,India
+86,33,U04766,Northwest Minzu University,2020-2025,7,U04770,Northwest University (China),2013-2026,26,China
+95,33,U06802,Universidad Nacional de Tucuman,2013-2025,21,U06803,Universidad Nacional de Tucumà¡n,2011-2024,12,Argentina
+100,33,U04697,Normandy University,2018-2021,4,U07669,University of Caen Lower Normandy,2010-2026,29,France
+100,33,U07668,University of Caen,2014-2025,4,U07669,University of Caen Lower Normandy,2010-2026,29,France
+87,33,U03844,Lublin University of Technology,2014-2026,28,U09012,Wroclaw University of Technology / Politechnika Wrocławska,2011-2016,5,Poland
+83,33,U00151,Acibadem University,2014-2025,27,U09233,Çağ University,2019-2025,6,Turkey
+84,33,U03159,Istanbul Teknik University,2014-2017,3,U03162,Istanbul University - Cerrahpasa,2019-2026,30,Turkey
+98,33,U05187,Princess Nourah bint Abdul Rahman University,2021-2025,5,U05188,Princess Nourah bint Abdulrahman University,2019-2026,28,Saudi Arabia
+97,33,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U00209,Ahvaz Jundishapur University of Medical Sciences,2017-2025,30,Iran
+86,33,U00397,Anna University Chennai,2012-2025,21,U03367,KL University,2020-2025,12,India
+83,33,U07995,University of Lyon,2010-2026,20,U08223,University of Provence (Aix-Marseille 1),2003-2013,13,France
+100,33,U08639,Université Paris Descartes,2010-2019,28,U08677,Université de Paris (IPGP Descartes Diderot),2021-2025,5,France
+97,33,U05676,Shahid Chamran University of Ahvaz,2013-2025,29,U05677,Shahid Chamran University of Ahwaz,2020-2023,4,Iran
+82,33,U04993,Paracelsus Medizinische Privatuniversitat,2020-2025,7,U04994,Paracelsus Private Medical University,2014-2026,26,Austria
+83,33,U06207,Tamil Nadu Dr. M.G.R. Medical University,2019-2025,7,U08757,VIT University,2016-2025,26,India
+95,32,U03868,Lviv Polytech National University,2017-2022,6,U03869,Lviv Polytechnic National University,2016-2026,26,Ukraine
+85,32,U06402,The University of New Mexico - Albuquerque,2003-2025,24,U08104,University of New Haven,2020-2025,8,United States
+88,32,U02178,Grenoble INP / Institut polytechnique de Grenoble (Communauté Université Grenoble Alpes),2017-2025,9,U02860,Institut National Polytechnique de Grenoble,2007-2025,23,France
+82,31,U05109,Polytechnic University of Timisoara,2014-2025,28,U07316,Universitatea Politehnica Timisoara,2015-2025,3,Romania
+83,31,U09212,Zonguldak Bulent Ecevit University,2012-2025,25,U09233,Çağ University,2019-2025,6,Turkey
+83,31,U01628,ESSEC Business School,2011-2025,19,U04187,Montpellier Business School,2020-2026,12,France
+97,31,U00238,Al Jouf University,2019-2026,25,U00299,Aljouf University,2020-2025,6,Saudi Arabia
+82,31,U00825,Brooklyn College (CUNY),2005-2025,24,U01298,"City University of New York, Brooklyn College",2020-2025,7,United States
+87,31,U03844,Lublin University of Technology,2014-2026,28,U06179,Tadeusz Kościuszko Cracow University of Technology / Politechnika Krakowska Tadeusza Kościuszki,2012-2025,3,Poland
+88,31,U04877,Opole University of Technology,2015-2025,21,U05845,Silesian University of Technology in Gliwice / Politechnika Śląska w Gliwicach,2014-2025,10,Poland
+83,31,U05324,Recep Tayyip Erdogan University,2012-2025,25,U09233,Çağ University,2019-2025,6,Turkey
+89,30,U03533,King Mongkut's Institute of Technology North Bangkok,2020-2025,6,U03534,King Mongkut's University of Technology North Bangkok,2017-2026,24,Thailand
+100,30,U05599,Sathyabama Institute of Science and Technology,2016-2025,24,U05600,Sathyabama Institute of Science and Technology (Deemed to be University),2022-2026,6,India
+85,30,U05458,Rzeszow University of Technology,2014-2025,25,U09012,Wroclaw University of Technology / Politechnika Wrocławska,2011-2016,5,Poland
+94,30,U00516,Avignon Universite,2019-2025,17,U07404,Universite d'Avignon,2014-2025,13,France
+83,30,U03155,Istanbul Medeniyet University,2017-2025,24,U09233,Çağ University,2019-2025,6,Turkey
+85,30,U05529,Saints Cyril & Methodius University of Skopje,2017-2025,17,U06004,Ss. Cyril and Methodius University in Skopje,2019-2025,13,North Macedonia
+82,30,U08820,Viet Nam National University Ho Chi Minh City (VNU-HCM),2018-2026,9,U08832,"Vietnam National University, Ho Chi Minh City",2019-2025,21,Vietnam
+82,30,U05753,Shaoxing University,2013-2025,26,U06531,Tsing Hua University,2004-2014,4,China
+84,30,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,U08924,Weber State University,2005-2025,12,United States
+83,30,U00703,Bengal Engineering and Science University,2010-2015,4,U08757,VIT University,2016-2025,26,India
+84,29,U01635,East China Institute of Technology,2014-2025,8,U01639,East China University of Technology,2017-2025,21,China
+86,29,U02100,Georgia Health Sciences University,2010-2014,5,U06342,Texas Tech University Health Sciences Center,2008-2025,24,United States
+89,29,U04029,Mediterranean University of Reggio Calabria,2019-2024,6,U07203,Universita Mediterranea di Reggio Calabria,2010-2025,23,Italy
+83,29,U05201,Pt. Ravishankar Shukla University,2017-2021,3,U08757,VIT University,2016-2025,26,India
+82,29,U04537,National Textile University,2020-2025,8,U04574,National University of Sciences & Technology - Pakistan,2014-2025,21,Pakistan
+82,29,U04196,Morgan State University,2019-2025,21,U05447,Rutgers State University,2004-2017,8,United States
+82,29,U04196,Morgan State University,2019-2025,21,U05452,"Rutgers, The State University of New Jersey--Newark",2010-2025,8,United States
+86,28,U00853,Bursa Technical University,2020-2025,15,U04098,Middle East Technical University / Orta Doğu Teknik Üniversitesi,2013-2025,13,Turkey
+82,28,U04242,Murray State University,2005-2025,10,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
+85,28,U06800,Universidad Nacional de San Martn (UNSAM),2019-2025,7,U06802,Universidad Nacional de Tucuman,2013-2025,21,Argentina
+86,28,U05043,Perm State University,2017-2025,23,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+85,28,U05458,Rzeszow University of Technology,2014-2025,25,U06179,Tadeusz Kościuszko Cracow University of Technology / Politechnika Krakowska Tadeusza Kościuszki,2012-2025,3,Poland
+96,28,U00193,Agro ParisTech,2010-2026,17,U00194,AgroParisTech,2018-2025,11,France
+83,28,U06799,"Universidad Nacional de San Martin, Argentina",2018-2025,16,U06803,Universidad Nacional de Tucumà¡n,2011-2024,12,Argentina
+83,28,U03782,Lille 2 University of Health and Law,2010-2017,8,U07995,University of Lyon,2010-2026,20,France
+92,28,U02054,Gangneung-Wonju National University,2015-2025,16,U03404,Kangnung Wonju National University,2014-2025,12,South Korea
+84,28,U00318,Altai State University,2018-2026,23,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+85,27,U00897,CUNY Graduate Center,2017-2025,12,U01302,"City University of New York, The Graduate Center",2018-2026,15,United States
+89,27,U04057,Menoufia University,2018-2025,23,U04139,Minufiya University,2010-2015,4,Egypt
+82,27,U06405,The University of Texas Southwestern Medical Center (UT Southwestern Medical Center),2016-2026,11,U08056,University of Mississippi Medical Center,2014-2025,16,United States
+84,27,U06012,St Petersburg Academic University,2014-2025,19,U06013,St Petersburg Electrotechnical University (LETI),2018-2025,8,Russia
+82,27,U03290,Jichi Medical School,2003-2025,12,U03452,Kawasaki Medical School,2014-2025,15,Japan
+100,27,U00883,CINVESTAV,2018-2025,7,U01098,Centro de Investigación y de Estudios Avanzados del IPN CINVESTAV,2012-2025,20,Mexico
+88,27,U00969,Cardiff Metropolitan University,2015-2025,23,U03747,Leeds Metropolitan University,2010-2016,4,United Kingdom
+84,27,U00096,AGH University of Science & Technology / Akademia Górniczo-Hutnicza Stanisława Staszica w Krakowie,2011-2025,15,U03610,Koszalin University of Technology,2020-2025,12,Poland
+97,27,U04246,Mustansiriya University,2020-2025,7,U04247,Mustansiriyah University,2018-2026,20,Iraq
+83,27,U00397,Anna University Chennai,2012-2025,21,U04939,PES University,2020-2025,6,India
+82,27,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,U06553,Tyumen State University,2020-2026,22,Russia
+84,27,U00363,Amrita University,2015-2025,18,U02034,GITAM University,2017-2025,9,India
+96,27,U05171,Prague University of Economics and Business,2013-2026,16,U07775,University of Economics - Prague,2007-2020,11,Czechia
+84,27,U03156,Istanbul Medipol University,2018-2025,24,U03159,Istanbul Teknik University,2014-2017,3,Turkey
+83,27,U07995,University of Lyon,2010-2026,20,U08446,University of Upper Alsace,2019-2025,7,France
+82,26,U02482,Hiroshima Institute of Technology,2018-2025,16,U04422,National Institute of Advanced Industrial Science and Technology (AIST),2016-2026,10,Japan
+88,26,U04877,Opole University of Technology,2015-2025,21,U09012,Wroclaw University of Technology / Politechnika Wrocławska,2011-2016,5,Poland
+84,26,U01441,Dalian Jiaotong University,2013-2025,19,U09039,Xi&#039;an Jiaotong University (XJTU),2017-2026,7,China
+87,26,U00096,AGH University of Science & Technology / Akademia Górniczo-Hutnicza Stanisława Staszica w Krakowie,2011-2025,15,U03515,Kielce University of Technology,2020-2025,11,Poland
+87,26,U05013,Paul Valéry University Montpellier,2011-2026,15,U07385,"Universite Paul Valery, Montpellier III",2014-2025,11,France
+82,26,U07600,University of Artois,2017-2025,4,U08281,University of Savoy,2014-2026,22,France
+88,26,U06265,"Technical University of Malaysia, Melaka",2020-2025,6,U07536,University Teknikal Malaysia Melaka,2017-2026,20,Malaysia
+83,26,U02132,Goa University,2017-2025,19,U05308,Rajiv Gandhi University of Health Sciences,2019-2025,7,India
+83,26,U00395,Ankara Yildirim Beyazit University,2017-2025,20,U09233,Çağ University,2019-2025,6,Turkey
+83,26,U03401,Kanazawa Institute of Technology,2010-2025,16,U04422,National Institute of Advanced Industrial Science and Technology (AIST),2016-2026,10,Japan
+83,26,U03188,Izmir Katip Celebi University,2015-2025,20,U09233,Çağ University,2019-2025,6,Turkey
+88,26,U02915,Institute of Cancer Research University of London,2016-2025,17,U08494,University of West London,2020-2025,9,United Kingdom
+83,26,U04700,North Carolina A&T State University,2014-2025,20,U08120,University of North Carolina Asheville,2005-2025,6,United States
+85,26,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,U08104,University of New Haven,2020-2025,8,United States
+83,26,U02132,Goa University,2017-2025,19,U06207,Tamil Nadu Dr. M.G.R. Medical University,2019-2025,7,India
+83,26,U07506,University College of Southeast Norway,2017-2024,9,U08341,University of South-Eastern Norway,2019-2025,17,Norway
+85,26,U01628,ESSEC Business School,2011-2025,19,U03362,KEDGE Business School,2020-2025,7,France
+93,25,U04700,North Carolina A&T State University,2014-2025,20,U04701,North Carolina Agricultural & Technical State University,2010-2025,5,United States
+87,25,U05134,Pontificia Universidad Catolica Argentina Santa Maria de los Buenos Aires,2010-2025,7,U05139,Pontificia Universidad Católica Argentina,2011-2026,18,Argentina
+84,25,U08485,University of Washington Tacoma,2017-2025,9,U08918,Washington and Lee University,2005-2025,16,United States
+100,25,U08647,Université Sorbonne Paris Nord,2011-2026,22,U08678,Université de Paris 13 / Université Paris XIII Nord (comUE Université Sorbonne Paris Cité),2017-2019,3,France
+94,25,U04723,North West Agriculture and Forestry University,2016-2026,11,U04764,Northwest Agriculture & Forestry University,2014-2026,14,China
+84,25,U05014,Pavlov First Saint Petersburg State Medical University,2018-2025,20,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+92,25,U03053,International School for Advanced Studies / Scuola Internazionale Superiore di Studi Avanzati SISSA di Trieste,2014-2025,12,U05630,Scuola Internazionale Superiore di Studi Avanzati (SISSA),2017-2025,13,Italy
+96,25,U01420,D. Mendeleev University of Chemical Technology,2020-2025,6,U04052,Mendeleev University of Chemical Technology of Russia,2019-2025,19,Russia
+88,24,U02211,Guangxi University of Science & Technology,2020-2025,14,U04944,PLA University of Science and Technology,2010-2021,10,China
+84,24,U02400,Hebei North University,2020-2025,13,U04723,North West Agriculture and Forestry University,2016-2026,11,China
+82,24,U01925,Ferris State University,2005-2025,4,U04700,North Carolina A&T State University,2014-2025,20,United States
+86,24,U03367,KL University,2020-2025,12,U06353,Thapar University,2013-2025,12,India
+82,24,U04700,North Carolina A&T State University,2014-2025,20,U06529,Truman State University,2005-2025,4,United States
+83,24,U01778,Erzurum Technical University,2020-2025,11,U04098,Middle East Technical University / Orta Doğu Teknik Üniversitesi,2013-2025,13,Turkey
+83,24,U02035,GLA University,2020-2025,17,U05308,Rajiv Gandhi University of Health Sciences,2019-2025,7,India
+86,24,U02680,IE University,2019-2026,16,U06250,Technical University of Cartagena,2019-2025,8,Spain
+88,24,U03047,"International Islamic University, Islamabad",2019-2026,18,U03048,"International Islamic University, Pakistan",2022-2025,6,Pakistan
+90,24,U08359,University of St Thomas Minnesota,2014-2025,10,U08360,University of St. Thomas,2005-2025,14,United States
+94,24,U00950,Canakkale Onsekiz Mart Universitesi,2020-2025,6,U00951,Canakkale Onsekiz Mart University,2014-2025,18,Turkey
+83,24,U00951,Canakkale Onsekiz Mart University,2014-2025,18,U06167,TED University,2021-2025,6,Turkey
+83,24,U02035,GLA University,2020-2025,17,U06207,Tamil Nadu Dr. M.G.R. Medical University,2019-2025,7,India
+88,24,U02778,Indian Institute of Science Education & Research (IISER) - Mohali,2014-2025,20,U02808,Indian Institutes of Science Education and Research (IISERs),2018-2021,4,India
+100,24,U07308,Universitat de Vic,2017-2025,14,U07309,Universitat de Vic - Universitat Central de Catalunya (UVic-UCC),2019-2025,10,Spain
+83,24,U01292,City University of Hong Kong (CityU),2016-2026,11,U02633,Hunan City University,2020-2025,13,China
+83,24,U01628,ESSEC Business School,2011-2025,19,U05339,Rennes School of Business,2021-2025,5,France
+82,24,U02066,Gazi Üniversitesi,2016-2026,11,U04098,Middle East Technical University / Orta Doğu Teknik Üniversitesi,2013-2025,13,Turkey
+88,24,U04877,Opole University of Technology,2015-2025,21,U06179,Tadeusz Kościuszko Cracow University of Technology / Politechnika Krakowska Tadeusza Kościuszki,2012-2025,3,Poland
+85,23,U03846,Lucian Blaga University of Sibiu,2018-2025,17,U07314,Universitatea Lucian Blaga din Sibiu,2020-2025,6,Romania
+87,23,U00683,Beijing Wuzi University,2020-2025,6,U01225,"China University of Mining and Technology, Beijing",2020-2026,17,China
+83,23,U02026,G B Pant University of Agriculture & Technology,2010-2018,4,U02132,Goa University,2017-2025,19,India
+85,23,U07457,Universite de Technologie de Troyes,2015-2025,15,U08391,University of Technology of Troyes,2016-2025,8,France
+82,23,U07403,Universite d'Artois,2010-2025,19,U07600,University of Artois,2017-2025,4,France
+83,23,U00703,Bengal Engineering and Science University,2010-2015,4,U02132,Goa University,2017-2025,19,India
+83,23,U01628,ESSEC Business School,2011-2025,19,U02701,INSEAD Business School / Institut Européen d’Administration des Affaires (comUE Sorbonne Universités),2018-2025,4,France
+85,23,U01628,ESSEC Business School,2011-2025,19,U05471,SKEMA Business School,2022-2025,4,France
+83,23,U01423,DIT University,2020-2025,11,U06353,Thapar University,2013-2025,12,India
+83,23,U05694,Shandong Jiaotong University,2017-2025,15,U09060,Xian Jiao Tong University,2010-2017,8,China
+83,23,U06797,Universidad Nacional de San Juan,2017-2025,11,U06803,Universidad Nacional de Tucumà¡n,2011-2024,12,Argentina
+83,23,U06799,"Universidad Nacional de San Martin, Argentina",2018-2025,16,U06800,Universidad Nacional de San Martn (UNSAM),2019-2025,7,Argentina
+82,23,U04944,PLA University of Science and Technology,2010-2021,10,U06437,Tianjin University of Technology and Education,2020-2025,13,China
+85,23,U04594,Naval Medical University,2018-2025,10,U05247,Qiqihar Medical University,2020-2025,13,China
+94,23,U02399,Hebei Normal University of Science and Technology,2020-2025,13,U04944,PLA University of Science and Technology,2010-2021,10,China
+83,23,U02621,Hue University,2019-2025,19,U08825,Vietnam National University Hanoi / Đại học Quốc gia Hà Nội,2021-2025,4,Vietnam
+88,23,U02617,Hubei University of Science & Technology,2020-2025,13,U04944,PLA University of Science and Technology,2010-2021,10,China
+83,23,U02585,Huaiyin Normal University,2017-2025,20,U02586,Huaiyin Teachers University,2020-2022,3,China
+86,23,U04056,Menofia University,2014-2026,19,U04139,Minufiya University,2010-2015,4,Egypt
+85,22,U05671,Shaanxi University of Technology,2018-2025,15,U05928,South University of Science and Technology of China / 南方科技大学,2016-2025,7,China
+83,22,U04939,PES University,2020-2025,6,U05465,SASTRA University,2016-2025,16,India
+82,22,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,U06529,Truman State University,2005-2025,4,United States
+85,22,U05126,Pontifical Catholic University of Minas Gerais,2019-2025,7,U05147,Pontificia Universidade Catolica de Minas Gerais,2017-2025,15,Brazil
+87,22,U05881,Slovak Medical University Bratislava,2015-2025,17,U05885,Slovak University of Technology in Bratislava / Slovenská technická univerzita v Bratislave,2012-2025,5,Slovakia
+91,22,U04052,Mendeleev University of Chemical Technology of Russia,2019-2025,19,U04053,Mendeleyev University of Chemical Technology,2014-2018,3,Russia
+84,22,U03610,Koszalin University of Technology,2020-2025,12,U05845,Silesian University of Technology in Gliwice / Politechnika Śląska w Gliwicach,2014-2025,10,Poland
+88,22,U05521,Saint Petersburg State Electrotechnical University,2018-2025,14,U06013,St Petersburg Electrotechnical University (LETI),2018-2025,8,Russia
+83,22,U05578,Sant Anna School of Advanced Studies,2024-2026,3,U05585,Sant’Anna School of Advanced Studies – Pisa,2015-2025,19,Italy
+82,22,U02034,GITAM University,2017-2025,9,U04154,Mizoram University,2020-2025,13,India
+88,22,U01275,Chung Hua University,2010-2025,18,U06190,Taiwan Chung Cheng University,2014-2017,4,Taiwan
+82,22,U03948,Manipal University,2013-2025,19,U05007,Parul University,2025-2025,3,India
+84,22,U00614,Bartin University,2017-2025,18,U01882,Fatih University,2010-2015,4,Turkey
+88,22,U01586,Dublin Institute of Technology,2005-2021,18,U02945,Institute of Technology Sligo,2021-2023,4,Ireland
+82,22,U01925,Ferris State University,2005-2025,4,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
+90,22,U00485,Auezov South Kazakhstan University (SKU),2011-2026,16,U05926,South Kazakhstan State University,2010-2025,6,Kazakhstan
+85,22,U03280,Jiangsu University of Technology,2019-2025,15,U05928,South University of Science and Technology of China / 南方科技大学,2016-2025,7,China
+94,22,U05485,SUNY College of Environmental Science and Forestry,2019-2025,12,U06064,"State University of New York, College of Environmental Science and Forestry",2014-2025,10,United States
+88,21,U01275,Chung Hua University,2010-2025,18,U01276,Chung Hwa University of Medical Technology,2021-2024,3,Taiwan
+89,21,U06698,Universidad Catlica de la Santsima Concepcin (UCSC),2022-2024,3,U06706,Universidad Catolica de la Santisima Concepcion,2020-2025,18,Chile
+84,21,U07197,Universit degli Studi di Perugia,2015-2026,12,U07214,Universita degli Studi di Macerata,2020-2025,9,Italy
+83,21,U06167,TED University,2021-2025,6,U06171,TOBB Ekonomi ve Teknoloji University,2014-2025,15,Turkey
+83,21,U04884,Ordu University,2020-2025,15,U09233,Çağ University,2019-2025,6,Turkey
+83,21,U00703,Bengal Engineering and Science University,2010-2015,4,U02035,GLA University,2020-2025,17,India
+82,21,U06316,Temuco Catholic University,2022-2025,4,U06704,Universidad Catolica de Temuco,2020-2025,17,Chile
+87,21,U03515,Kielce University of Technology,2020-2025,11,U05845,Silesian University of Technology in Gliwice / Politechnika Śląska w Gliwicach,2014-2025,10,Poland
+100,21,U07387,Universite Paul-Valery,2019-2025,14,U07388,Universite Paul-Valery Montpellier 3,2010-2025,7,France
+85,21,U01622,ESCP Business School,2019-2025,9,U04187,Montpellier Business School,2020-2026,12,France
+87,21,U09251,École Normale Supérieure Cachan,2007-2020,13,U09255,École Normale Supérieure de Lyon (comUE Université de Lyon),2017-2025,8,France
+83,21,U04447,National Institute of Standards and Technology (NIST),2016-2026,10,U04633,New York Institute of Technology,2020-2025,11,United States
+85,21,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,U08132,University of North Texas Health Science Center,2019-2025,3,United States
+84,21,U06053,State University of New York Brockport,2010-2025,3,U06056,State University of New York Health Science Center at Brooklyn,2003-2022,18,United States
+83,21,U04939,PES University,2020-2025,6,U05806,Shiv Nadar University,2017-2026,15,India
+86,21,U02211,Guangxi University of Science & Technology,2020-2025,14,U05928,South University of Science and Technology of China / 南方科技大学,2016-2025,7,China
+88,21,U05013,Paul Valéry University Montpellier,2011-2026,15,U08071,University of Montpellier II,2009-2014,6,France
+85,21,U02057,Gannan Medical University,2018-2025,11,U04594,Naval Medical University,2018-2025,10,China
+83,21,U00853,Bursa Technical University,2020-2025,15,U09233,Çağ University,2019-2025,6,Turkey
+89,21,U05465,SASTRA University,2016-2025,16,U05608,Saurashtra University,2020-2025,5,India
+84,21,U03772,Liaoning Petrochemical University,2021-2025,11,U03773,Liaoning Shihua University,2014-2023,10,China
+86,21,U03574,Konya Technical University,2022-2025,8,U04098,Middle East Technical University / Orta Doğu Teknik Üniversitesi,2013-2025,13,Turkey
+95,21,U00569,Bahir Dar Univeristy,2017-2021,5,U00570,Bahir Dar University,2019-2025,16,Ethiopia
+83,21,U02026,G B Pant University of Agriculture & Technology,2010-2018,4,U02035,GLA University,2020-2025,17,India
+86,21,U04764,Northwest Agriculture & Forestry University,2014-2026,14,U04766,Northwest Minzu University,2020-2025,7,China
+96,21,U01569,Dr B R Ambedkar National Institute of Technology Jalandhar,2017-2025,15,U01570,Dr BR Ambedkar National Institute of Technology,2020-2025,6,India
+83,21,U04618,Nevsehir University,2014-2025,15,U09233,Çağ University,2019-2025,6,Turkey
+93,21,U05520,Saint Petersburg Electrotechnical University ETU-LETI,2020-2026,7,U05521,Saint Petersburg State Electrotechnical University,2018-2025,14,Russia
+87,21,U01299,"City University of New York, College of Staten Island",2020-2025,6,U01340,College of Staten Island (CUNY),2013-2025,15,United States
+88,21,U07983,University of London School of Pharmacy,2011-2025,12,U08494,University of West London,2020-2025,9,United Kingdom
+86,21,U03551,Kitami Institute of Technology,2017-2025,11,U04422,National Institute of Advanced Industrial Science and Technology (AIST),2016-2026,10,Japan
+83,21,U06171,TOBB Ekonomi ve Teknoloji University,2014-2025,15,U09233,Çağ University,2019-2025,6,Turkey
+85,20,U02915,Institute of Cancer Research University of London,2016-2025,17,U02920,Institute of Education University of London,2014-2015,3,United Kingdom
+94,20,U00096,AGH University of Science & Technology / Akademia Górniczo-Hutnicza Stanisława Staszica w Krakowie,2011-2025,15,U06615,UTP University of Science & Technology,2017-2021,5,Poland
+83,20,U07668,University of Caen,2014-2025,4,U08585,University of Évry Val d'Essonne,2010-2025,16,France
+88,20,U06793,Universidad Nacional de Salta,2010-2025,8,U06803,Universidad Nacional de Tucumà¡n,2011-2024,12,Argentina
+90,20,U01957,Foro Italico University of Rome,2015-2025,8,U08251,University of Rome III,2014-2025,12,Italy
+84,20,U05447,Rutgers State University,2004-2017,8,U08924,Weber State University,2005-2025,12,United States
+83,20,U06803,Universidad Nacional de Tucumà¡n,2011-2024,12,U06804,Universidad Nacional de la Patagonia San Juan Bosco,2020-2025,8,Argentina
+83,20,U00158,Adana Alparslan Turkes Science & Technology University,2020-2025,14,U09233,Çağ University,2019-2025,6,Turkey
+83,20,U00125,Abdullah Gul University,2018-2025,14,U09233,Çağ University,2019-2025,6,Turkey
+86,20,U02030,GGS Indraprastha University,2017-2025,8,U03367,KL University,2020-2025,12,India
+92,20,U02030,GGS Indraprastha University,2017-2025,8,U02253,Guru Gobind Singh Indraprastha University,2020-2026,12,India
+86,20,U05903,Soochow University Taiwan,2008-2025,14,U05905,"Soochow University, Taipei",2020-2025,6,Taiwan
+84,20,U05452,"Rutgers, The State University of New Jersey--Newark",2010-2025,8,U08924,Weber State University,2005-2025,12,United States
+86,20,U02100,Georgia Health Sciences University,2010-2014,5,U08966,Western University of Health Sciences,2019-2025,15,United States
+88,20,U02617,Hubei University of Science & Technology,2020-2025,13,U05928,South University of Science and Technology of China / 南方科技大学,2016-2025,7,China
+84,20,U04718,North Minzu University,2020-2025,9,U04723,North West Agriculture and Forestry University,2016-2026,11,China
+82,20,U04392,National Defense University,2020-2025,8,U04586,National Yang Ming Chiao Tung University (NYCU Taiwan),2021-2026,12,Taiwan
+82,20,U04944,PLA University of Science and Technology,2010-2021,10,U05781,Shenzhen Technology University,2021-2025,10,China
+89,20,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U05657,Semnan University of Medical Sciences,2020-2025,17,Iran
+100,20,U05171,Prague University of Economics and Business,2013-2026,16,U07774,University of Economics,2005-2022,4,Czechia
+85,20,U01445,Dalian Minzu University,2019-2025,15,U01446,Dalian Nationalities University,2013-2025,5,China
+86,19,U01578,Dr. Hari Singh Gour University,2019-2025,7,U03367,KL University,2020-2025,12,India
+83,19,U06789,Universidad Nacional de Misiones,2020-2025,7,U06803,Universidad Nacional de Tucumà¡n,2011-2024,12,Argentina
+87,19,U00096,AGH University of Science & Technology / Akademia Górniczo-Hutnicza Stanisława Staszica w Krakowie,2011-2025,15,U00859,Bydgoszcz University of Science & Technology,2022-2025,4,Poland
+83,19,U06785,Universidad Nacional de La Pampa,2020-2025,7,U06803,Universidad Nacional de Tucumà¡n,2011-2024,12,Argentina
+86,19,U03367,KL University,2020-2025,12,U05308,Rajiv Gandhi University of Health Sciences,2019-2025,7,India
+85,19,U06246,Technical University Zvolen,2017-2025,15,U06261,Technical University of Košice / Technická univerzita v Košiciach,2012-2025,4,Slovakia
+82,19,U01259,Chongqing University of Post and Telecommunications,2020-2025,6,U09052,Xi'an University of Posts & Telecommunications,2017-2025,13,China
+88,19,U05521,Saint Petersburg State Electrotechnical University,2018-2025,14,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+83,19,U06791,Universidad Nacional de Rio Negro,2020-2025,7,U06803,Universidad Nacional de Tucumà¡n,2011-2024,12,Argentina
+86,19,U02680,IE University,2019-2026,16,U06251,Technical University of Catalonia (UPC),2023-2025,3,Spain
+91,19,U02491,Ho Chi Minh City Open University,2021-2025,10,U08820,Viet Nam National University Ho Chi Minh City (VNU-HCM),2018-2026,9,Vietnam
+95,19,U08632,Université Montpellier 1,2004-2016,11,U08633,Université Montpellier II Sciences et Techniques du Languedoc,2007-2014,8,France
+87,19,U02477,Hindustan Institute of Technology and Science,2020-2025,13,U05600,Sathyabama Institute of Science and Technology (Deemed to be University),2022-2026,6,India
+100,19,U05171,Prague University of Economics and Business,2013-2026,16,U07780,University of Economics and Business,2023-2025,3,Czechia
+86,19,U05965,Southwest Minzu University,2020-2025,16,U05970,Southwest University for Nationalities - China,2017-2019,3,China
+83,19,U08729,Uskudar University,2020-2025,13,U09233,Çağ University,2019-2025,6,Turkey
+85,19,U02010,Fukuoka Institute of Technology,2020-2025,9,U04422,National Institute of Advanced Industrial Science and Technology (AIST),2016-2026,10,Japan
+85,19,U02203,Guangxi Minzu University,2023-2025,5,U02210,Guangxi University of Nationalities,2016-2025,14,China
+83,19,U04939,PES University,2020-2025,6,U05810,Shoolini University of Biotechnology and Management Sciences,2022-2026,13,India
+84,19,U02223,Guilin Medical University,2017-2025,12,U03770,Liaoning Medical University,2016-2025,7,China
+94,19,U09051,Xi'an University of Post and Telecommunications,2020-2025,6,U09052,Xi'an University of Posts & Telecommunications,2017-2025,13,China
+82,19,U04173,Monash University Malaysia,2015-2025,10,U04174,Monash University Sunway,2014-2023,9,Malaysia
+88,19,U02605,Hubei Polytechnic University,2020-2025,8,U06372,The Hong Kong Polytechnic University (PolyU),2016-2026,11,China
+86,19,U03367,KL University,2020-2025,12,U06207,Tamil Nadu Dr. M.G.R. Medical University,2019-2025,7,India
+100,19,U02218,Gubkin Russian State University of Oil and Gas,2019-2025,14,U02219,Gubkin University,2021-2025,5,Russia
+91,19,U00388,Anhui University of Finance & Economics,2020-2025,15,U05932,South Western University of Finance & Economics - China,2014-2018,4,China
+83,18,U02248,Gumushane University,2014-2025,12,U09233,Çağ University,2019-2025,6,Turkey
+84,18,U01113,Chang Gung University of Science and Technology,2020-2025,13,U04310,Nan Kai University Technology,2014-2020,5,Taiwan
+83,18,U09043,Xi'an Aeronautical University,2020-2024,5,U09046,Xi'an Medical University,2017-2025,13,China
+82,18,U02218,Gubkin Russian State University of Oil and Gas,2019-2025,14,U06120,Surgut State University,2021-2024,4,Russia
+83,18,U00849,Bundeswehr University Munich,2019-2025,8,U07311,Universitat der Bundeswehr Munchen,2010-2025,10,Germany
+90,18,U05932,South Western University of Finance & Economics - China,2014-2018,4,U09157,Yunnan University of Finance & Economics,2019-2025,14,China
+83,18,U04723,North West Agriculture and Forestry University,2016-2026,11,U08942,West Anhui University,2020-2025,7,China
+83,18,U03497,Kharkiv National Automobile and Highway University,2022-2025,3,U08760,VN Karazin Kharkiv National University,2014-2025,15,Ukraine
+89,18,U02236,Guizhou University of Finance & Economics,2020-2025,14,U05932,South Western University of Finance & Economics - China,2014-2018,4,China
+83,18,U02223,Guilin Medical University,2017-2025,12,U05722,Shanghai Medical College of Fudan University,2020-2025,6,China
+83,18,U03153,Istanbul Gelisim University,2021-2025,12,U09233,Çağ University,2019-2025,6,Turkey
+83,18,U03085,Iskenderun Technical University,2020-2025,12,U09233,Çağ University,2019-2025,6,Turkey
+83,18,U02223,Guilin Medical University,2017-2025,12,U05745,Shantou University Medical College,2020-2025,6,China
+85,18,U04319,Nanjing Audit University,2020-2025,14,U04332,Nanjing University of Post and TeleCommunications,2010-2015,4,China
+82,18,U07391,Universite Rennes 2,2010-2025,14,U08686,Université de Rennes I,2014-2022,4,France
+83,18,U02017,Fundacao Getulio Vargas,2011-2025,11,U02116,Getúlio Vargas Foundation,2019-2025,7,Brazil
+91,18,U06797,Universidad Nacional de San Juan,2017-2025,11,U06800,Universidad Nacional de San Martn (UNSAM),2019-2025,7,Argentina
+83,18,U01423,DIT University,2020-2025,11,U05308,Rajiv Gandhi University of Health Sciences,2019-2025,7,India
+86,18,U02100,Georgia Health Sciences University,2010-2014,5,U08203,University of Pittsburgh Health Sciences,2013-2025,13,United States
+83,18,U01423,DIT University,2020-2025,11,U06207,Tamil Nadu Dr. M.G.R. Medical University,2019-2025,7,India
+90,18,U07385,"Universite Paul Valery, Montpellier III",2014-2025,11,U07388,Universite Paul-Valery Montpellier 3,2010-2025,7,France
+86,18,U00705,Bengbu Medical University,2024-2025,4,U08926,Weifang Medical University,2017-2025,14,China
+93,18,U02026,G B Pant University of Agriculture & Technology,2010-2018,4,U02155,Govind Ballabh Pant University of Agriculture and Technology,2014-2025,14,India
+85,18,U05617,School of Advanced Study University of London,2012-2025,6,U07983,University of London School of Pharmacy,2011-2025,12,United Kingdom
+82,18,U04242,Murray State University,2005-2025,10,U05447,Rutgers State University,2004-2017,8,United States
+83,18,U02706,IPB University,2017-2025,11,U02823,Indonesia University of Education,2012-2025,7,Indonesia
+83,18,U04939,PES University,2020-2025,6,U06353,Thapar University,2013-2025,12,India
+82,18,U04242,Murray State University,2005-2025,10,U05452,"Rutgers, The State University of New Jersey--Newark",2010-2025,8,United States
+82,17,U06353,Thapar University,2013-2025,12,U08758,VIT-AP University,2023-2025,5,India
+83,17,U02301,Haluoleo University,2020-2025,6,U02706,IPB University,2017-2025,11,Indonesia
+83,17,U03399,Kanagawa Institute of Technology,2020-2025,7,U04422,National Institute of Advanced Industrial Science and Technology (AIST),2016-2026,10,Japan
+86,17,U00367,Amur State University,2021-2023,3,U02218,Gubkin Russian State University of Oil and Gas,2019-2025,14,Russia
+83,17,U02706,IPB University,2017-2025,11,U06150,Syarif Hidayatullah State Islamic University Jakarta,2020-2025,6,Indonesia
+83,17,U07668,University of Caen,2014-2025,4,U08223,University of Provence (Aix-Marseille 1),2003-2013,13,France
+82,17,U04098,Middle East Technical University / Orta Doğu Teknik Üniversitesi,2013-2025,13,U09133,Yildiz Teknik University,2014-2020,4,Turkey
+83,17,U01778,Erzurum Technical University,2020-2025,11,U09233,Çağ University,2019-2025,6,Turkey
+82,17,U06531,Tsing Hua University,2004-2014,4,U09179,Zhaoqing University,2020-2025,13,China
+84,17,U08071,University of Montpellier II,2009-2014,6,U08632,Université Montpellier 1,2004-2016,11,France
+83,17,U00184,Agri Ibrahim Cecen University,2020-2025,11,U09233,Çağ University,2019-2025,6,Turkey
+88,17,U05587,Sapientia Hungarian University of Transylvania,2022-2025,5,U06519,Transylvania University of Brasov,2014-2025,12,Romania
+100,17,U01139,Charles R. Drew University of Medicine & Science,2019-2025,10,U01581,Drew University,2019-2025,7,United States
+83,17,U00762,Biruni University,2021-2025,11,U09233,Çağ University,2019-2025,6,Turkey
+85,17,U05102,Polytechnic Institute of New York University,2004-2013,9,U08104,University of New Haven,2020-2025,8,United States
+90,17,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U08719,Ural State Medical University,2010-2025,11,Russia
+85,17,U03770,Liaoning Medical University,2016-2025,7,U04594,Naval Medical University,2018-2025,10,China
+84,17,U05649,Seconda Universita degli Studi di Napoli,2013-2018,8,U07214,Universita degli Studi di Macerata,2020-2025,9,Italy
+87,17,U09251,École Normale Supérieure Cachan,2007-2020,13,U09252,École Normale Supérieure ENS Paris (comUE Université Paris PSL),2017-2021,4,France
+89,17,U04098,Middle East Technical University / Orta Doğu Teknik Üniversitesi,2013-2025,13,U04892,Orta Dogu Teknik University,2014-2017,4,Turkey
+86,17,U01983,Free University of Brussels,2004-2025,14,U07520,University Libre Brussels,2014-2016,3,Belgium
+84,17,U03610,Koszalin University of Technology,2020-2025,12,U09012,Wroclaw University of Technology / Politechnika Wrocławska,2011-2016,5,Poland
+85,17,U04535,National Technical University of Ukraine,2012-2017,5,U04559,National University of Life and Environmental Sciences of Ukraine,2020-2025,12,Ukraine
+86,17,U07704,University of Central Oklahoma,2022-2025,7,U08149,University of Oklahoma - Oklahoma City,2016-2023,10,United States
+84,17,U02603,Hubei Minzu University,2020-2025,7,U02608,Hubei University for Nationalities,2017-2025,10,China
+86,17,U04724,North West Frontier Province University of Engineering and Technology,2020-2025,6,U07799,University of Engineering & Technology Peshawar,2020-2025,11,Pakistan
+97,17,U02650,Hung Kuang University,2010-2025,10,U02657,Hungkuang University,2016-2022,7,Taiwan
+97,17,U02887,Institut d'Etudes Politiques Paris (SciencePo),2015-2019,3,U02888,Institut d'Etudes Politiques Paris (Sciences Po),2020-2025,14,France
+82,17,U04332,Nanjing University of Post and TeleCommunications,2010-2015,4,U09052,Xi'an University of Posts & Telecommunications,2017-2025,13,China
+83,16,U02706,IPB University,2017-2025,11,U04995,Parahyangan Catholic University,2022-2025,5,Indonesia
+85,16,U01622,ESCP Business School,2019-2025,9,U03362,KEDGE Business School,2020-2025,7,France
+82,16,U02596,Huazhong Normal University,2018-2025,8,U04339,Nanning Normal University,2020-2025,8,China
+86,16,U04209,Moscow Polytechnic University,2020-2025,11,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+85,16,U04594,Naval Medical University,2018-2025,10,U05722,Shanghai Medical College of Fudan University,2020-2025,6,China
+85,16,U04594,Naval Medical University,2018-2025,10,U05745,Shantou University Medical College,2020-2025,6,China
+86,16,U02196,Guangdong University of Finance & Economics,2020-2025,12,U05932,South Western University of Finance & Economics - China,2014-2018,4,China
+94,16,U04944,PLA University of Science and Technology,2010-2021,10,U08928,Weifang University of Science and Technology,2022-2025,6,China
+83,16,U03949,Manipal University Jaipur,2020-2025,10,U04939,PES University,2020-2025,6,India
+84,16,U04059,Mepco Schlenk Engineering College,2020-2025,12,U05279,R V College of Engineering,2022-2025,4,India
+83,16,U04813,O.P. Jindal Global University (JGU),2019-2026,10,U04939,PES University,2020-2025,6,India
+87,16,U08389,University of Technology of Belfort-Montbéliard,2019-2025,8,U08391,University of Technology of Troyes,2016-2025,8,France
+87,16,U03515,Kielce University of Technology,2020-2025,11,U09012,Wroclaw University of Technology / Politechnika Wrocławska,2011-2016,5,Poland
+84,16,U01655,Eastern Washington University,2005-2025,5,U08484,University of Washington Bothell,2010-2025,11,United States
+82,16,U04527,National Taitung University,2013-2025,4,U04586,National Yang Ming Chiao Tung University (NYCU Taiwan),2021-2026,12,Taiwan
+86,16,U02026,G B Pant University of Agriculture & Technology,2010-2018,4,U03367,KL University,2020-2025,12,India
+85,16,U05452,"Rutgers, The State University of New Jersey--Newark",2010-2025,8,U08104,University of New Haven,2020-2025,8,United States
+100,16,U06958,Universidad de las Fuerzas Armadas,2020-2025,11,U06960,Universidad de las Fuerzas Armadas ESPE (Ex - Escuela Politécnica del Ejército),2020-2024,5,Ecuador
+87,16,U00385,Anhui Science & Technology University,2021-2025,6,U04944,PLA University of Science and Technology,2010-2021,10,China
+97,16,U00236,Al Baha University,2020-2025,10,U00276,Albaha University,2020-2025,6,Saudi Arabia
+86,16,U00872,CCS Haryana Agricultural University,2010-2025,4,U03367,KL University,2020-2025,12,India
+84,16,U05031,Penza State University,2020-2025,11,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+96,16,U00304,Allameh Tabataba ’i University,2023-2025,3,U00305,Allameh Tabatabai University,2020-2025,13,Iran
+86,16,U00703,Bengal Engineering and Science University,2010-2015,4,U03367,KL University,2020-2025,12,India
+82,16,U05885,Slovak University of Technology in Bratislava / Slovenská technická univerzita v Bratislave,2012-2025,5,U08212,University of Presov in Presov,2020-2025,11,Slovakia
+86,16,U01151,Cheng Shiu University,2010-2025,12,U06190,Taiwan Chung Cheng University,2014-2017,4,Taiwan
+82,16,U08050,University of Minnesota Health and Medicine,2020-2025,6,U08359,University of St Thomas Minnesota,2014-2025,10,United States
+94,16,U02645,"Hunan University of Humanities, Science and Technology",2021-2025,6,U04944,PLA University of Science and Technology,2010-2021,10,China
+90,16,U00965,Capital University of Science and Technology,2023-2025,4,U01916,"Federal Urdu University of Arts, Science and Technology",2020-2025,12,Pakistan
+83,16,U00737,Bilecik Seyh Edebali University,2020-2025,10,U09233,Çağ University,2019-2025,6,Turkey
+97,16,U04035,Mehran University Engineering & Technology,2020-2025,7,U04036,Mehran University of Engineering and Technology Jamshoro,2020-2025,9,Pakistan
+100,16,U05447,Rutgers State University,2004-2017,8,U05448,Rutgers State University Camden,2018-2023,8,United States
+89,16,U08140,University of Nottingham China Campus,2020-2025,6,U08142,University of Nottingham Ningbo China,2017-2025,10,China
+86,15,U00658,Beijing Institute of Civil Engineering and Architecture,2020-2023,4,U00679,Beijing University of Civil Engineering & Architecture,2017-2025,11,China
+83,15,U03190,Izmir University of Economics,2020-2025,9,U09233,Çağ University,2019-2025,6,Turkey
+84,15,U01947,Florida Polytechnic University,2021-2025,6,U05102,Polytechnic Institute of New York University,2004-2013,9,United States
+84,15,U05007,Parul University,2025-2025,3,U06353,Thapar University,2013-2025,12,India
+86,15,U02100,Georgia Health Sciences University,2010-2014,5,U05486,SUNY Downstate Health Sciences University,2020-2025,10,United States
+84,15,U03153,Istanbul Gelisim University,2021-2025,12,U03159,Istanbul Teknik University,2014-2017,3,Turkey
+100,15,U03450,Kavayitri Bahinabai Chaudhari North Maharashtra University,2019-2025,6,U04717,North Maharashtra University,2014-2025,9,India
+82,15,U02333,Hanoi National University of Education,2012-2025,11,U02342,Hanoi University of Science,2020-2023,4,Vietnam
+82,15,U05569,Sang Myung University,2014-2025,9,U05658,Semyung University,2020-2025,6,South Korea
+85,15,U01153,Chengdu Medical College,2020-2025,9,U05768,Shenyang Medical College,2020-2025,6,China
+94,15,U00536,B. S. Abdur Rahman Crescent Institute of Science & Technology,2020-2025,9,U00554,BS Abdur Rahman Crescent Institute of Science and Technology,2020-2025,6,India
+83,15,U06781,Universidad Nacional de General Sarmiento,2022-2025,3,U06803,Universidad Nacional de Tucumà¡n,2011-2024,12,Argentina
+83,15,U00703,Bengal Engineering and Science University,2010-2015,4,U01423,DIT University,2020-2025,11,India
+88,15,U06793,Universidad Nacional de Salta,2010-2025,8,U06800,Universidad Nacional de San Martn (UNSAM),2019-2025,7,Argentina
+82,15,U04392,National Defense University,2020-2025,8,U04478,National Kaohsiung University of Applied Sciences,2012-2017,7,Taiwan
+83,15,U01423,DIT University,2020-2025,11,U02026,G B Pant University of Agriculture & Technology,2010-2018,4,India
+91,15,U05520,Saint Petersburg Electrotechnical University ETU-LETI,2020-2026,7,U06013,St Petersburg Electrotechnical University (LETI),2018-2025,8,Russia
+95,15,U08632,Université Montpellier 1,2004-2016,11,U08674,Université de Montpellier (comUE Languedoc Roussillon Universités),2017-2019,4,France
+83,15,U02034,GITAM University,2017-2025,9,U04939,PES University,2020-2025,6,India
+89,15,U05102,Polytechnic Institute of New York University,2004-2013,9,U05490,SUNY Polytechnic Institute,2017-2022,6,United States
+86,15,U03367,KL University,2020-2025,12,U04165,Mohanlal Sukhadia University,2024-2025,3,India
+86,15,U03367,KL University,2020-2025,12,U05201,Pt. Ravishankar Shukla University,2017-2021,3,India
+89,15,U00549,BOGAZIÇI ÜNIVERSITESI,2011-2014,4,U02066,Gazi Üniversitesi,2016-2026,11,Turkey
+91,15,U05105,Polytechnic University of Cartagena,2019-2025,7,U06250,Technical University of Cartagena,2019-2025,8,Spain
+83,15,U04844,Okan University,2020-2025,9,U09233,Çağ University,2019-2025,6,Turkey
+90,15,U01288,City College of New York CUNY,2011-2025,9,U01296,City University of New York Lehman College,2020-2025,6,United States
+83,15,U05932,South Western University of Finance & Economics - China,2014-2018,4,U06434,Tianjin University of Finance and Economics,2020-2025,11,China
+84,15,U03610,Koszalin University of Technology,2020-2025,12,U06179,Tadeusz Kościuszko Cracow University of Technology / Politechnika Krakowska Tadeusza Kościuszki,2012-2025,3,Poland
+100,15,U07774,University of Economics,2005-2022,4,U07775,University of Economics - Prague,2007-2020,11,Czechia
+85,15,U04229,Mudanjiang Medical University,2020-2025,5,U04594,Naval Medical University,2018-2025,10,China
+83,15,U02706,IPB University,2017-2025,11,U08130,University of North Sumatra,2022-2025,4,Indonesia
+89,15,U00093,ACADEMY OF SCIENCES OF THE CZECH REPUBLIC,2013-2026,11,U04945,POLICE ACADEMY OF THE CZECH REPUBLIC,2005-2009,4,Czechia
+89,15,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U09168,Zanjan University of Medical Sciences,2020-2025,12,Iran
+83,14,U02371,Hasan Kalyoncu University,2020-2025,8,U09233,Çağ University,2019-2025,6,Turkey
+83,14,U07775,University of Economics - Prague,2007-2020,11,U07780,University of Economics and Business,2023-2025,3,Czechia
+90,14,U05126,Pontifical Catholic University of Minas Gerais,2019-2025,7,U05127,Pontifical Catholic University of Paraná,2019-2025,7,Brazil
+86,14,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,U06535,Tula State University,2020-2025,9,Russia
+86,14,U03222,Jaipur National University,2020-2025,4,U03949,Manipal University Jaipur,2020-2025,10,India
+84,14,U08100,University of New England - USA,2016-2018,3,U08958,Western New England University,2020-2025,11,United States
+88,14,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U00753,Birjand University of Medical Sciences,2020-2025,11,Iran
+90,14,U01288,City College of New York CUNY,2011-2025,9,U04630,New York City College of Technology,2020-2025,5,United States
+84,14,U05523,Saint Petersburg State Pediatric Medical University,2020-2025,9,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+85,14,U01622,ESCP Business School,2019-2025,9,U05339,Rennes School of Business,2021-2025,5,France
+92,14,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U02729,Ilam University of Medical Sciences,2020-2025,11,Iran
+84,14,U03679,Kyungnam University,2020-2025,9,U09143,Youngsan University,2021-2025,5,South Korea
+82,14,U07249,Universitas Komputer Indonesia,2020-2022,3,U07278,Universitas Pendidikan Indonesia,2021-2026,11,Indonesia
+89,14,U08503,University of Wisconsin - LaCrosse,2020-2025,6,U08512,University of Wisconsin la Crosse,2005-2025,8,United States
+83,14,U01423,DIT University,2020-2025,11,U05201,Pt. Ravishankar Shukla University,2017-2021,3,India
+87,14,U03515,Kielce University of Technology,2020-2025,11,U06179,Tadeusz Kościuszko Cracow University of Technology / Politechnika Krakowska Tadeusza Kościuszki,2012-2025,3,Poland
+84,14,U02034,GITAM University,2017-2025,9,U08758,VIT-AP University,2023-2025,5,India
+93,14,U05132,Pontifical Javeriana University,2014-2025,8,U05133,Pontifical Xavierian University,2015-2025,6,Colombia
+88,14,U05649,Seconda Universita degli Studi di Napoli,2013-2018,8,U07217,Universita degli Studi di Napoli Parthenope,2020-2025,6,Italy
+83,14,U02030,GGS Indraprastha University,2017-2025,8,U04939,PES University,2020-2025,6,India
+92,14,U00546,BMS College of Engineering,2020-2025,6,U05482,SSN College of Engineering,2019-2025,8,India
+93,14,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U05250,Qom University of Medical Sciences,2020-2025,11,Iran
+83,14,U04902,Osaka Medical and Pharmaceutical University,2022-2025,9,U04906,Osaka University of Pharmaceutical Sciences,2010-2023,5,Japan
+84,14,U01655,Eastern Washington University,2005-2025,5,U08485,University of Washington Tacoma,2017-2025,9,United States
+100,14,U04579,National University of Uzbekistan,2021-2025,9,U04581,National University of Uzbekistan named after Mirzo Ulugbek,2024-2026,5,Uzbekistan
+90,14,U00133,Abylkas Saginov Karaganda Technical University,2018-2026,9,U03417,Karaganda State Technical University,2021-2025,5,Kazakhstan
+85,14,U04168,Molde University College,2022-2025,4,U04907,Oslo & Akershus University College,2005-2020,10,Norway
+91,14,U05482,SSN College of Engineering,2019-2025,8,U05999,Sri Siva Subramania Nadar College of Engineering,2020-2025,6,India
+83,14,U03416,Karadeniz Teknik University,2014-2020,8,U09233,Çağ University,2019-2025,6,Turkey
+83,14,U06785,Universidad Nacional de La Pampa,2020-2025,7,U06800,Universidad Nacional de San Martn (UNSAM),2019-2025,7,Argentina
+84,14,U05279,R V College of Engineering,2022-2025,4,U05299,Rajalakshmi Engineering College,2020-2025,10,India
+84,14,U02603,Hubei Minzu University,2020-2025,7,U04766,Northwest Minzu University,2020-2025,7,China
+82,14,U02033,GIK Institute Engineering Science & Technology,2022-2025,5,U02121,Ghulam Ishaq Khan Institute of Engineering Sciences and Technology,2020-2025,9,Pakistan
+91,14,U05482,SSN College of Engineering,2019-2025,8,U06001,Sri Venkateswara College of Engineering,2020-2025,6,India
+83,14,U00102,AMET University,2020-2025,5,U02034,GITAM University,2017-2025,9,India
+83,14,U03416,Karadeniz Teknik University,2014-2020,8,U06167,TED University,2021-2025,6,Turkey
+83,14,U03574,Konya Technical University,2022-2025,8,U09233,Çağ University,2019-2025,6,Turkey
+82,14,U04339,Nanning Normal University,2020-2025,8,U05742,Shangrao Normal University,2020-2025,6,China
+84,14,U05209,Punjab Engineering College,2020-2025,6,U05482,SSN College of Engineering,2019-2025,8,India
+83,14,U05249,Qom University,2020-2025,10,U05677,Shahid Chamran University of Ahwaz,2020-2023,4,Iran
+83,14,U03164,Istinye University,2022-2025,8,U09233,Çağ University,2019-2025,6,Turkey
+85,14,U04594,Naval Medical University,2018-2025,10,U05698,Shandong Second Medical University,2024-2025,4,China
+83,14,U06789,Universidad Nacional de Misiones,2020-2025,7,U06800,Universidad Nacional de San Martn (UNSAM),2019-2025,7,Argentina
+90,14,U05569,Sang Myung University,2014-2025,9,U09143,Youngsan University,2021-2025,5,South Korea
+85,14,U04594,Naval Medical University,2018-2025,10,U06188,Taishan Medical University,2017-2021,4,China
+82,14,U06791,Universidad Nacional de Rio Negro,2020-2025,7,U06800,Universidad Nacional de San Martn (UNSAM),2019-2025,7,Argentina
+85,14,U04944,PLA University of Science and Technology,2010-2021,10,U09017,Wuchang University of Technology,2023-2025,4,China
+83,14,U02706,IPB University,2017-2025,11,U06117,Surabaya State University,2021-2025,3,Indonesia
+83,14,U04555,National University of Kyiv-Mohyla Academy (NaUKMA),2019-2026,8,U04566,National University of Pharmacy,2020-2025,6,Ukraine
+87,13,U00385,Anhui Science & Technology University,2021-2025,6,U05928,South University of Science and Technology of China / 南方科技大学,2016-2025,7,China
+86,13,U06334,"Texas A&M University, Health Science Center",2013-2025,10,U08132,University of North Texas Health Science Center,2019-2025,3,United States
+97,13,U06602,UNIVERSITÉ MONTPELLIER 2 SCIENCES ET TECHNIQUES,2010-2014,5,U08633,Université Montpellier II Sciences et Techniques du Languedoc,2007-2014,8,France
+88,13,U04035,Mehran University Engineering & Technology,2020-2025,7,U04724,North West Frontier Province University of Engineering and Technology,2020-2025,6,Pakistan
+86,13,U02686,IHE Delft Institute for Water Education,2020-2025,8,U06577,UNESCO-IHE Institute for Water Education,2020-2024,5,Netherlands
+86,13,U04521,National Taipei College of Nursing,2020-2025,6,U04525,National Taipei University of Nursing & Health Science (NTUNHS),2020-2025,7,Taiwan
+88,13,U00212,Aichi Institute of Technology,2020-2022,3,U04422,National Institute of Advanced Industrial Science and Technology (AIST),2016-2026,10,Japan
+85,13,U02705,IPAG Business School,2019-2025,8,U05339,Rennes School of Business,2021-2025,5,France
+83,13,U01578,Dr. Hari Singh Gour University,2019-2025,7,U04939,PES University,2020-2025,6,India
+84,13,U02784,Indian Institute of Space Science and Technology,2021-2025,7,U05600,Sathyabama Institute of Science and Technology (Deemed to be University),2022-2026,6,India
+91,13,U02032,GH Raisoni College of Engineering,2020-2025,5,U05482,SSN College of Engineering,2019-2025,8,India
+83,13,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U05249,Qom University,2020-2025,10,Iran
+85,13,U01622,ESCP Business School,2019-2025,9,U02701,INSEAD Business School / Institut Européen d’Administration des Affaires (comUE Sorbonne Universités),2018-2025,4,France
+86,13,U04087,Mianyang Normal University,2020-2025,5,U04339,Nanning Normal University,2020-2025,8,China
+84,13,U02603,Hubei Minzu University,2020-2025,7,U02613,Hubei University of Education,2021-2025,6,China
+84,13,U05122,Pondicherry Engineering College,2020-2024,5,U05482,SSN College of Engineering,2019-2025,8,India
+83,13,U02322,Hangzhou Medical College,2022-2025,7,U05768,Shenyang Medical College,2020-2025,6,China
+85,13,U00589,Bangabandhu Sheikh Mujibur Rahman Agricultural University,2020-2025,10,U02070,Gazipur Agricultural University,2024-2025,3,Bangladesh
+88,13,U04983,Pandit Deendayal Energy University,2023-2025,5,U04984,Pandit Deendayal Petroleum University,2020-2025,8,India
+83,13,U04939,PES University,2020-2025,6,U06207,Tamil Nadu Dr. M.G.R. Medical University,2019-2025,7,India
+83,13,U04939,PES University,2020-2025,6,U05308,Rajiv Gandhi University of Health Sciences,2019-2025,7,India
+90,13,U04710,North China University of Water Conservancy and Electric Power,2020-2025,6,U04711,North China University of Water Resources and Electric Power,2013-2025,7,China
+83,13,U04611,Netaji Subhas University of Technology,2021-2025,7,U04939,PES University,2020-2025,6,India
+85,13,U01622,ESCP Business School,2019-2025,9,U05471,SKEMA Business School,2022-2025,4,France
+83,13,U03005,Instituto Tecnologico de Aeronautica,2020-2025,6,U06291,Technological Institute of Aeronautics,2019-2025,7,Brazil
+84,13,U03629,Kuban State University,2020-2025,7,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,Russia
+87,13,U03681,Kyungsung University,2020-2025,8,U09143,Youngsan University,2021-2025,5,South Korea
+83,13,U01796,Eskisehir Technical University,2021-2025,7,U09233,Çağ University,2019-2025,6,Turkey
+83,13,U01796,Eskisehir Technical University,2021-2025,7,U06167,TED University,2021-2025,6,Turkey
+86,13,U00385,Anhui Science & Technology University,2021-2025,6,U08942,West Anhui University,2020-2025,7,China
+84,13,U01588,Dubna State University,2020-2025,7,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,Russia
+84,13,U02645,"Hunan University of Humanities, Science and Technology",2021-2025,6,U02649,Hunan University of Technology & Business,2020-2025,7,China
+85,13,U04168,Molde University College,2022-2025,4,U07506,University College of Southeast Norway,2017-2024,9,Norway
+84,12,U04541,National University Kiev-Mohyla Academy,2022-2025,4,U04555,National University of Kyiv-Mohyla Academy (NaUKMA),2019-2026,8,Ukraine
+82,12,U01925,Ferris State University,2005-2025,4,U05448,Rutgers State University Camden,2018-2023,8,United States
+88,12,U07728,University of Colorado Health Science Center,2003-2009,9,U08132,University of North Texas Health Science Center,2019-2025,3,United States
+83,12,U04677,Nisantasi University,2023-2025,6,U09233,Çağ University,2019-2025,6,Turkey
+82,12,U01925,Ferris State University,2005-2025,4,U05452,"Rutgers, The State University of New Jersey--Newark",2010-2025,8,United States
+85,12,U01925,Ferris State University,2005-2025,4,U05447,Rutgers State University,2004-2017,8,United States
+86,12,U00404,Anyang Institute of Technology,2020-2025,8,U02193,Guangdong Technion Israel Institute of Technology,2022-2025,4,China
+83,12,U04239,Munzur University,2020-2025,6,U06167,TED University,2021-2025,6,Turkey
+83,12,U04239,Munzur University,2020-2025,6,U09233,Çağ University,2019-2025,6,Turkey
+91,12,U01301,"City University of New York, John Jay College of Criminal Justice",2020-2025,6,U03329,John Jay College of Criminal Justice (CUNY),2014-2020,6,United States
+82,12,U05447,Rutgers State University,2004-2017,8,U06529,Truman State University,2005-2025,4,United States
+84,12,U03867,Lviv National Medical University Danylo Halycky,2020-2025,6,U03868,Lviv Polytech National University,2017-2022,6,Ukraine
+83,12,U04012,Medical University Varna,2021-2025,5,U06273,Technical University of Varna,2020-2025,7,Bulgaria
+83,12,U04859,Omer Halis Demir University,2017-2022,6,U06167,TED University,2021-2025,6,Turkey
+83,12,U04859,Omer Halis Demir University,2017-2022,6,U09233,Çağ University,2019-2025,6,Turkey
+82,12,U05452,"Rutgers, The State University of New Jersey--Newark",2010-2025,8,U06529,Truman State University,2005-2025,4,United States
+87,12,U00385,Anhui Science & Technology University,2021-2025,6,U02645,"Hunan University of Humanities, Science and Technology",2021-2025,6,China
+88,12,U02920,Institute of Education University of London,2014-2015,3,U08494,University of West London,2020-2025,9,United Kingdom
+82,12,U05448,Rutgers State University Camden,2018-2023,8,U06529,Truman State University,2005-2025,4,United States
+90,12,U02377,Hassiba Benbouali University of Chlef,2023-2025,6,U07349,Universite Hassiba Ben Bouali de Chlef,2020-2025,6,Algeria
+86,12,U01679,Ecole Nationale Superieure de Mecanique et d Aerotechnique,2021-2024,4,U01680,Ecole Nationale Superieure de Mecanique et d'Aerotechnique (ISAE-ENSMA),2019-2025,8,France
+84,12,U01588,Dubna State University,2020-2025,7,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+82,12,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U06205,Tambov State University,2020-2025,6,Russia
+83,12,U03782,Lille 2 University of Health and Law,2010-2017,8,U07668,University of Caen,2014-2025,4,France
+86,12,U00133,Abylkas Saginov Karaganda Technical University,2018-2026,9,U03418,Karaganda State University,2010-2022,3,Kazakhstan
+84,12,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,U05526,Saint Petersburg State University of Architecture and Civil Engineering,2020-2025,7,Russia
+85,12,U02705,IPAG Business School,2019-2025,8,U05471,SKEMA Business School,2022-2025,4,France
+86,12,U04409,National Institute Interdisciplinary Science & Technology - India,2016-2018,3,U04460,National Institute of Technology Patna,2020-2025,9,India
+100,12,U02177,Grenoble INP,2014-2019,3,U02178,Grenoble INP / Institut polytechnique de Grenoble (Communauté Université Grenoble Alpes),2017-2025,9,France
+89,12,U05032,People&#039;s Liberation Army (PLA),2017-2026,7,U05033,People's Liberation Army (PLA),2016-2025,5,China
+86,12,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U04889,Orel State University,2020-2025,6,Russia
+83,12,U01611,EDHEC Business School,2022-2025,8,U02701,INSEAD Business School / Institut Européen d’Administration des Affaires (comUE Sorbonne Universités),2018-2025,4,France
+87,12,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U05396,Rostov State Medical University,2020-2025,6,Russia
+90,12,U01539,Doctor Harisingh Gour University,2020-2024,5,U01578,Dr. Hari Singh Gour University,2019-2025,7,India
+82,12,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U08880,Vyatka State University,2020-2025,6,Russia
+92,12,U02036,GMR Institute of Technology,2024-2025,3,U03394,Kalinga Institute of Industrial Technology (KIIT),2021-2026,9,India
+85,12,U07374,"Universite Pantheon Sorbonne, Paris1",2020-2025,6,U08170,University of Pantheon Sorbonne - Paris I,2013-2020,6,France
+89,12,U04387,National Defence Academy - Japan,2014-2021,5,U04389,National Defense Academy of Japan,2015-2025,7,Japan
+88,12,U03644,Kursk State Medical University,2021-2025,6,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,Russia
+92,12,U02285,Hafr Albatin University,2021-2025,6,U07848,University of Hafr Al-Batin,2022-2025,6,Saudi Arabia
+91,12,U05279,R V College of Engineering,2022-2025,4,U05482,SSN College of Engineering,2019-2025,8,India
+83,12,U02438,Henan Polytech University,2014-2018,4,U02605,Hubei Polytechnic University,2020-2025,8,China
+87,12,U01332,College of Engineering Guindy,2021-2025,5,U01333,"College of Engineering, Pune",2019-2025,7,India
+86,12,U04339,Nanning Normal University,2020-2025,8,U09064,Xianyang Normal University,2022-2025,4,China
+85,12,U03078,Irkutsk State Medical University,2020-2025,6,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,Russia
+88,12,U03627,Kuban State Medical University,2020-2025,6,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,Russia
+87,12,U04339,Nanning Normal University,2020-2025,8,U09160,Yuxi Normal University,2023-2025,4,China
+85,12,U00276,Albaha University,2020-2025,6,U02285,Hafr Albatin University,2021-2025,6,Saudi Arabia
+84,12,U03629,Kuban State University,2020-2025,7,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+99,12,U04437,National Institute of Mental Health and Neuro Sciences,2020-2025,6,U04438,National Institute of Mental Health and Neurosciences,2019-2025,6,India
+86,12,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U06549,Tver State University,2020-2025,6,Russia
+84,11,U05751,Shanxi University of Finance and Economics,2020-2025,7,U05932,South Western University of Finance & Economics - China,2014-2018,4,China
+85,11,U04546,National University of Defence Technology - China,2014-2025,7,U09017,Wuchang University of Technology,2023-2025,4,China
+86,11,U01332,College of Engineering Guindy,2021-2025,5,U05999,Sri Siva Subramania Nadar College of Engineering,2020-2025,6,India
+84,11,U01588,Dubna State University,2020-2025,7,U04837,Ogarev Mordovia State University,2022-2025,4,Russia
+90,11,U04807,Nueva Granada Military University,2022-2025,4,U06762,Universidad Militar Nueva Granada,2020-2025,7,Colombia
+86,11,U01332,College of Engineering Guindy,2021-2025,5,U06001,Sri Venkateswara College of Engineering,2020-2025,6,India
+85,11,U01333,"College of Engineering, Pune",2019-2025,7,U05279,R V College of Engineering,2022-2025,4,India
+84,11,U01332,College of Engineering Guindy,2021-2025,5,U05209,Punjab Engineering College,2020-2025,6,India
+88,11,U02612,Hubei University of Economics,2020-2025,7,U05932,South Western University of Finance & Economics - China,2014-2018,4,China
+83,11,U06250,Technical University of Cartagena,2019-2025,8,U06251,Technical University of Catalonia (UPC),2023-2025,3,Spain
+91,11,U02044,Galgotias College of Engineering & Technology,2024-2025,3,U05482,SSN College of Engineering,2019-2025,8,India
+85,11,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U05298,Rafsanjan University of Medical Sciences,2020-2025,8,Iran
+83,11,U00995,Catholic University of Brasília,2022-2025,4,U05127,Pontifical Catholic University of Paraná,2019-2025,7,Brazil
+91,11,U05482,SSN College of Engineering,2019-2025,8,U06170,TKM College of Engineering,2023-2025,3,India
+91,11,U05482,SSN College of Engineering,2019-2025,8,U07538,University Visvesvaraya College of Engineering,2021-2025,3,India
+82,11,U01925,Ferris State University,2005-2025,4,U04090,Michigan State University College of Human Medicine,2019-2025,7,United States
+86,11,U02070,Gazipur Agricultural University,2024-2025,3,U06151,Sylhet Agricultural University,2022-2025,8,Bangladesh
+83,11,U04939,PES University,2020-2025,6,U08802,Veltech University,2021-2025,5,India
+88,11,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U00425,Ardabil University of Medical Sciences,2020-2025,8,Iran
+88,11,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U02142,Gonabad University of Medical Sciences,2020-2025,8,Iran
+85,11,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U02562,Hormozgan University of Medical Sciences,2020-2025,8,Iran
+82,11,U04090,Michigan State University College of Human Medicine,2019-2025,7,U06529,Truman State University,2005-2025,4,United States
+86,11,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U05498,Sabzevar University of Medical Sciences,2020-2025,8,Iran
+86,11,U03572,Kongu Engineering College,2021-2025,7,U05279,R V College of Engineering,2022-2025,4,India
+83,11,U07668,University of Caen,2014-2025,4,U08446,University of Upper Alsace,2019-2025,7,France
+84,11,U02875,Institut Polytechnique de Bordeaux,2020-2025,8,U06555,Télécom Paris – Institut Polytechnique de Paris,2011-2020,3,France
+84,11,U02861,Institut National Polytechnique de Lorraine,2012-2015,3,U02875,Institut Polytechnique de Bordeaux,2020-2025,8,France
+84,11,U03601,Korea Polytechnic University,2017-2023,8,U06244,Tech University of Korea,2024-2025,3,South Korea
+85,11,U04535,National Technical University of Ukraine,2012-2017,5,U08843,Vinnytsia National Technical University,2020-2025,6,Ukraine
+84,11,U04535,National Technical University of Ukraine,2012-2017,5,U06322,Ternopil Ivan Puluj National Technical University,2021-2025,6,Ukraine
+83,11,U04535,National Technical University of Ukraine,2012-2017,5,U04566,National University of Pharmacy,2020-2025,6,Ukraine
+84,11,U01035,Central University of Haryana,2023-2025,5,U01043,Central University of Tamil Nadu,2021-2025,6,India
+82,11,U06615,UTP University of Science & Technology,2017-2021,5,U08388,University of Technology and Life Sciences,2020-2025,6,Poland
+88,11,U03180,Ivano-Frankivsk National Technical University of Oil and Gas,2021-2025,6,U04535,National Technical University of Ukraine,2012-2017,5,Ukraine
+83,11,U01035,Central University of Haryana,2023-2025,5,U04939,PES University,2020-2025,6,India
+82,11,U00405,Anyang Normal University,2020-2025,8,U00670,Beijing Normal University Zhuhai,2023-2025,3,China
+83,11,U00705,Bengbu Medical University,2024-2025,4,U03770,Liaoning Medical University,2016-2025,7,China
+86,11,U00872,CCS Haryana Agricultural University,2010-2025,4,U03486,Kerala Agricultural University,2020-2025,7,India
+82,11,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U06074,Stavropol State Medical University,2021-2025,5,Russia
+82,11,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,U08880,Vyatka State University,2020-2025,6,Russia
+82,11,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,U06205,Tambov State University,2020-2025,6,Russia
+88,11,U08503,University of Wisconsin - LaCrosse,2020-2025,6,U08510,University of Wisconsin Stout,2005-2025,5,United States
+88,11,U00461,Assam Agricultural University,2020-2025,7,U00872,CCS Haryana Agricultural University,2010-2025,4,India
+82,11,U04478,National Kaohsiung University of Applied Sciences,2012-2017,7,U04527,National Taitung University,2013-2025,4,Taiwan
+85,11,U02193,Guangdong Technion Israel Institute of Technology,2022-2025,4,U02580,Huaihai Institute of Technology,2017-2025,7,China
+83,11,U00768,Bitlis Eren University,2021-2025,5,U09233,Çağ University,2019-2025,6,Turkey
+82,11,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U06618,Udmurt State University,2020-2024,5,Russia
+84,11,U05885,Slovak University of Technology in Bratislava / Slovenská technická univerzita v Bratislave,2012-2025,5,U07784,University of Economics in Bratislava,2020-2025,6,Slovakia
+85,11,U00872,CCS Haryana Agricultural University,2010-2025,4,U01016,Central Agricultural University,2020-2025,7,India
+84,11,U03629,Kuban State University,2020-2025,7,U04837,Ogarev Mordovia State University,2022-2025,4,Russia
+93,11,U00872,CCS Haryana Agricultural University,2010-2025,4,U01145,Chaudhary Charan Singh Haryana Agricultural University,2020-2025,7,India
+86,11,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,U06549,Tver State University,2020-2025,6,Russia
+88,11,U03147,Istanbul Arel University,2020-2025,8,U03159,Istanbul Teknik University,2014-2017,3,Turkey
+91,11,U00546,BMS College of Engineering,2020-2025,6,U01332,College of Engineering Guindy,2021-2025,5,India
+88,11,U01835,FHNW University of Applied Sciences & Arts Northwestern Switzerland,2022-2025,5,U07592,University of Applied Sciences and Arts of Southern Switzerland,2020-2025,6,Switzerland
+83,11,U02193,Guangdong Technion Israel Institute of Technology,2022-2025,4,U04313,Nanchang Institute of Technology,2020-2025,7,China
+85,11,U08100,University of New England - USA,2016-2018,3,U08104,University of New Haven,2020-2025,8,United States
+90,11,U00771,Blekinge Institute of Technology,2010-2025,6,U03697,LUND INSTITUTE OF TECHNOLOGY,2005-2009,5,Sweden
+88,11,U00091,ABES Engineering College,2024-2025,3,U05482,SSN College of Engineering,2019-2025,8,India
+90,11,U03076,Irkutsk National Research Technical University,2022-2025,4,U03079,Irkutsk State Technical University,2020-2025,7,Russia
+83,11,U00319,Altinbas University,2020-2025,5,U09233,Çağ University,2019-2025,6,Turkey
+87,11,U01034,Central University of Gujarat,2020-2025,7,U01036,Central University of Jammu,2023-2025,4,India
+93,11,U05301,Rajamangala University of Technology Isan,2020-2025,7,U05302,Rajamangala University of Technology Thanyaburi,2022-2025,4,Thailand
+100,11,U06223,Tashkent Institute of Irrigation and Agricultural Mechanization Engineers,2017-2025,8,U06224,Tashkent Institute of Irrigation and Agricultural Mechanization Engineers - National Research University (TIIAME-NRU),2024-2026,3,Uzbekistan
+86,11,U04889,Orel State University,2020-2025,6,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+91,10,U00546,BMS College of Engineering,2020-2025,6,U05279,R V College of Engineering,2022-2025,4,India
+82,10,U00385,Anhui Science & Technology University,2021-2025,6,U00391,Anhui Xinhua University,2022-2025,4,China
+82,10,U04837,Ogarev Mordovia State University,2022-2025,4,U08880,Vyatka State University,2020-2025,6,Russia
+87,10,U04695,Normandie Universite,2019-2025,6,U04697,Normandy University,2018-2021,4,France
+95,10,U03687,L. N. Gumilov Eurasian National University,2020-2025,7,U03691,LN Gumilyov Eurasian National University,2014-2017,3,Kazakhstan
+82,10,U00293,Alfred University,2012-2025,4,U08898,Walden University,2020-2025,6,United States
+85,10,U00670,Beijing Normal University Zhuhai,2023-2025,3,U00672,Beijing Sport University,2022-2025,7,China
+90,10,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U09164,Zabol University of Medical Sciences,2020-2025,7,Iran
+93,10,U04985,Pandit Ravishankar Shukla University,2020-2025,7,U05201,Pt. Ravishankar Shukla University,2017-2021,3,India
+91,10,U05279,R V College of Engineering,2022-2025,4,U05999,Sri Siva Subramania Nadar College of Engineering,2020-2025,6,India
+84,10,U05209,Punjab Engineering College,2020-2025,6,U09167,Zakir Husain College Of Engineering & Technology,2022-2025,4,India
+83,10,U00705,Bengbu Medical University,2024-2025,4,U05745,Shantou University Medical College,2020-2025,6,China
+83,10,U00705,Bengbu Medical University,2024-2025,4,U05722,Shanghai Medical College of Fudan University,2020-2025,6,China
+82,10,U01925,Ferris State University,2005-2025,4,U04076,Metropolitan State University,2020-2025,6,United States
+84,10,U05209,Punjab Engineering College,2020-2025,6,U05279,R V College of Engineering,2022-2025,4,India
+92,10,U01259,Chongqing University of Post and Telecommunications,2020-2025,6,U04332,Nanjing University of Post and TeleCommunications,2010-2015,4,China
+82,10,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,U06618,Udmurt State University,2020-2024,5,Russia
+88,10,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U00856,Bushehr University of Medical Sciences,2020-2025,7,Iran
+92,10,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U01881,Fasa University of Medical Sciences,2020-2025,7,Iran
+90,10,U07859,University of Health Science - Pakistan,2021-2023,3,U08459,University of Veterinary & Animal Science - Pakistan,2014-2025,7,Pakistan
+82,10,U04076,Metropolitan State University,2020-2025,6,U06529,Truman State University,2005-2025,4,United States
+84,10,U03856,LungHwa University of Science and Technology,2010-2024,5,U04310,Nan Kai University Technology,2014-2020,5,Taiwan
+84,10,U04128,Ming Hsin University of Science and Technology,2010-2025,5,U04310,Nan Kai University Technology,2014-2020,5,Taiwan
+86,10,U04837,Ogarev Mordovia State University,2022-2025,4,U06549,Tver State University,2020-2025,6,Russia
+91,10,U05279,R V College of Engineering,2022-2025,4,U06001,Sri Venkateswara College of Engineering,2020-2025,6,India
+82,10,U04837,Ogarev Mordovia State University,2022-2025,4,U06205,Tambov State University,2020-2025,6,Russia
+83,10,U03750,Lefke Avrupa University,2022-2025,4,U09233,Çağ University,2019-2025,6,Turkey
+83,10,U03750,Lefke Avrupa University,2022-2025,4,U06167,TED University,2021-2025,6,Turkey
+86,10,U01332,College of Engineering Guindy,2021-2025,5,U02032,GH Raisoni College of Engineering,2020-2025,5,India
+83,10,U01882,Fatih University,2010-2015,4,U09233,Çağ University,2019-2025,6,Turkey
+93,10,U04332,Nanjing University of Post and TeleCommunications,2010-2015,4,U09051,Xi'an University of Post and Telecommunications,2020-2025,6,China
+83,10,U01882,Fatih University,2010-2015,4,U06167,TED University,2021-2025,6,Turkey
+87,10,U04256,N. P. Ogarev's Mordovian State University,2020-2025,6,U04837,Ogarev Mordovia State University,2022-2025,4,Russia
+84,10,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U04756,Northern State Medical University,2022-2025,4,Russia
+90,10,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U04861,Omsk State Medical University,2022-2025,4,Russia
+91,10,U00546,BMS College of Engineering,2020-2025,6,U09167,Zakir Husain College Of Engineering & Technology,2022-2025,4,India
+93,10,U06025,St. Jude Children&#039;s Research Hospital (St. Jude),2017-2026,7,U06026,St. Jude Children's Research Hospital (St. Jude),2016-2025,3,United States
+83,10,U00703,Bengal Engineering and Science University,2010-2015,4,U04939,PES University,2020-2025,6,India
+83,10,U04892,Orta Dogu Teknik University,2014-2017,4,U06167,TED University,2021-2025,6,Turkey
+83,10,U04892,Orta Dogu Teknik University,2014-2017,4,U09233,Çağ University,2019-2025,6,Turkey
+82,10,U00470,Astrakhan State Medical University,2021-2025,4,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,Russia
+83,10,U00872,CCS Haryana Agricultural University,2010-2025,4,U04939,PES University,2020-2025,6,India
+83,10,U02026,G B Pant University of Agriculture & Technology,2010-2018,4,U04939,PES University,2020-2025,6,India
+83,10,U06167,TED University,2021-2025,6,U09133,Yildiz Teknik University,2014-2020,4,Turkey
+86,10,U02463,Hexi University,2020-2025,7,U09028,Wuxi University,2024-2025,3,China
+82,10,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,U06120,Surgut State University,2021-2024,4,Russia
+85,10,U01159,Chennai Institute of Technology,2023-2025,4,U05600,Sathyabama Institute of Science and Technology (Deemed to be University),2022-2026,6,India
+92,10,U02036,GMR Institute of Technology,2024-2025,3,U08796,Vel Tech Rangarajan Dr Sagunthala R&D Institute of Science & Technology,2020-2025,7,India
+83,10,U09133,Yildiz Teknik University,2014-2020,4,U09233,Çağ University,2019-2025,6,Turkey
+83,10,U01036,Central University of Jammu,2023-2025,4,U04939,PES University,2020-2025,6,India
+88,10,U04746,Northern (Arctic) Federal University named after M.V. Lomonosov,2022-2025,4,U04747,Northern Arctic Federal University,2020-2025,6,Russia
+83,10,U06960,Universidad de las Fuerzas Armadas ESPE (Ex - Escuela Politécnica del Ejército),2020-2024,5,U06965,Universidad del Azuay,2022-2025,5,Ecuador
+86,10,U04837,Ogarev Mordovia State University,2022-2025,4,U04889,Orel State University,2020-2025,6,Russia
+87,10,U01036,Central University of Jammu,2023-2025,4,U01043,Central University of Tamil Nadu,2021-2025,6,India
+87,10,U06399,The University of Georgia Griffin Campus,2010-2013,4,U08129,University of North Georgia,2021-2025,6,United States
+85,10,U02203,Guangxi Minzu University,2023-2025,5,U02209,Guangxi University of Finance and Economics,2022-2025,5,China
+84,9,U05122,Pondicherry Engineering College,2020-2024,5,U05279,R V College of Engineering,2022-2025,4,India
+82,9,U01468,Danube University Krems,2019-2021,3,U01551,Donau Universitat Krems,2020-2025,6,Austria
+86,9,U02100,Georgia Health Sciences University,2010-2014,5,U03834,Louisiana State University Health Sciences Center--Shreveport,2021-2025,4,United States
+86,9,U02696,INFORMATION SCIENCE INSTITUTE. UNIVERSITY OF SOUTHERN CALIFORNIA,2005-2007,3,U06339,Texas Southern University,2020-2025,6,United States
+91,9,U01332,College of Engineering Guindy,2021-2025,5,U05279,R V College of Engineering,2022-2025,4,India
+83,9,U04939,PES University,2020-2025,6,U05201,Pt. Ravishankar Shukla University,2017-2021,3,India
+86,9,U02026,G B Pant University of Agriculture & Technology,2010-2018,4,U04891,Orissa University of Agriculture and Technology,2020-2025,5,India
+91,9,U02032,GH Raisoni College of Engineering,2020-2025,5,U05279,R V College of Engineering,2022-2025,4,India
+92,9,U02036,GMR Institute of Technology,2024-2025,3,U05600,Sathyabama Institute of Science and Technology (Deemed to be University),2022-2026,6,India
+83,9,U00472,"Atal Bihari Vajpayee Indian Institute of Information Technology and Management, Gwalior",2021-2025,5,U02790,Indian Institute of Technology (IIT) Jammu,2023-2025,4,India
+87,9,U04164,Mohan Lal Sukhadia University,2020-2025,6,U04165,Mohanlal Sukhadia University,2024-2025,3,India
+83,9,U08697,Université de Tours / Université François Rabelais (ComUE Centre-Val de Loire),2020-2025,6,U08698,Université de Tours / Université François Rabelais (comUE Université confédérale Léonard de Vinci),2017-2019,3,France
+83,9,U04165,Mohanlal Sukhadia University,2024-2025,3,U04939,PES University,2020-2025,6,India
+83,9,U02701,INSEAD Business School / Institut Européen d’Administration des Affaires (comUE Sorbonne Universités),2018-2025,4,U04267,NEOMA Business School,2023-2025,5,France
+83,9,U02318,Hang Seng University of Hong Kong,2022-2025,6,U06388,The Open University of Hong Kong,2020-2022,3,Hong Kong
+83,9,U03159,Istanbul Teknik University,2014-2017,3,U09233,Çağ University,2019-2025,6,Turkey
+94,9,U00859,Bydgoszcz University of Science & Technology,2022-2025,4,U06615,UTP University of Science & Technology,2017-2021,5,Poland
+89,9,U04627,New Valley University,2024-2025,4,U05959,Southern Valley University,2014-2019,5,Egypt
+90,9,U03076,Irkutsk National Research Technical University,2022-2025,4,U03462,Kazan National Research Technical University named after AN Tupolev,2021-2025,5,Russia
+84,9,U03154,Istanbul Kultur University,2020-2025,6,U03159,Istanbul Teknik University,2014-2017,3,Turkey
+84,9,U06877,Universidad UTE,2021-2025,4,U06960,Universidad de las Fuerzas Armadas ESPE (Ex - Escuela Politécnica del Ejército),2020-2024,5,Ecuador
+83,9,U03159,Istanbul Teknik University,2014-2017,3,U06167,TED University,2021-2025,6,Turkey
+86,9,U00367,Amur State University,2021-2023,3,U04729,North-Western State Medical University named after I.I. Mechnikov,2021-2025,6,Russia
+83,9,U06622,Ufuk University,2022-2024,3,U09233,Çağ University,2019-2025,6,Turkey
+83,9,U03143,Isparta University of Applied Sciences,2024-2025,3,U09233,Çağ University,2019-2025,6,Turkey
+83,9,U02209,Guangxi University of Finance and Economics,2022-2025,5,U05932,South Western University of Finance & Economics - China,2014-2018,4,China
+86,9,U02444,Henan University of Finance and Economics,2021-2025,5,U05932,South Western University of Finance & Economics - China,2014-2018,4,China
+83,9,U04229,Mudanjiang Medical University,2020-2025,5,U06188,Taishan Medical University,2017-2021,4,China
+83,9,U03647,Kutahya Health Sciences University,2023-2025,3,U09233,Çağ University,2019-2025,6,Turkey
+83,9,U05533,Sakarya University of Applied Science,2024-2025,3,U09233,Çağ University,2019-2025,6,Turkey
+83,9,U05533,Sakarya University of Applied Science,2024-2025,3,U06167,TED University,2021-2025,6,Turkey
+83,9,U04120,Mimar Sinan Guzel Sanatlar University,2014-2022,3,U06167,TED University,2021-2025,6,Turkey
+95,9,U01420,D. Mendeleev University of Chemical Technology,2020-2025,6,U04053,Mendeleyev University of Chemical Technology,2014-2018,3,Russia
+82,9,U03076,Irkutsk National Research Technical University,2022-2025,4,U04961,Pacific National University,2021-2025,5,Russia
+87,9,U00670,Beijing Normal University Zhuhai,2023-2025,3,U00683,Beijing Wuzi University,2020-2025,6,China
+82,9,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,U06120,Surgut State University,2021-2024,4,Russia
+83,9,U00705,Bengbu Medical University,2024-2025,4,U04229,Mudanjiang Medical University,2020-2025,5,China
+83,9,U01615,EMPORIA STATE UNIVERSITY,2005-2025,3,U04076,Metropolitan State University,2020-2025,6,United States
+83,9,U01350,Colorado School of Public Health,2021-2025,5,U02275,HOPKINS BLOOMBERG SCHOOL OF PUBLIC HEALTH,2005-2009,4,United States
+90,9,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U09114,Yasuj University of Medical Sciences,2020-2025,6,Iran
+87,9,U01446,Dalian Nationalities University,2013-2025,5,U05244,Qinghai University for Nationalities,2021-2024,4,China
+93,9,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U00222,Aja University of Medical Sciences,2020-2025,6,Iran
+82,9,U04837,Ogarev Mordovia State University,2022-2025,4,U06618,Udmurt State University,2020-2024,5,Russia
+83,9,U00178,Afyonkarahisar Health Sciences University,2024-2025,3,U09233,Çağ University,2019-2025,6,Turkey
+83,9,U00392,Ankara Haci Bayram Veli University,2023-2025,3,U09233,Çağ University,2019-2025,6,Turkey
+82,9,U00670,Beijing Normal University Zhuhai,2023-2025,3,U03760,Leshan Normal University,2022-2025,6,China
+83,9,U04120,Mimar Sinan Guzel Sanatlar University,2014-2022,3,U09233,Çağ University,2019-2025,6,Turkey
+84,8,U03157,Istanbul Sabahattin Zaim University,2022-2025,5,U03159,Istanbul Teknik University,2014-2017,3,Turkey
+82,8,U04837,Ogarev Mordovia State University,2022-2025,4,U06120,Surgut State University,2021-2024,4,Russia
+84,8,U01276,Chung Hwa University of Medical Technology,2021-2024,3,U04310,Nan Kai University Technology,2014-2020,5,Taiwan
+88,8,U00372,Anand Agricultural University,2020-2025,4,U00872,CCS Haryana Agricultural University,2010-2025,4,India
+86,8,U01332,College of Engineering Guindy,2021-2025,5,U02044,Galgotias College of Engineering & Technology,2024-2025,3,India
+83,8,U00705,Bengbu Medical University,2024-2025,4,U06188,Taishan Medical University,2017-2021,4,China
+88,8,U00091,ABES Engineering College,2024-2025,3,U01332,College of Engineering Guindy,2021-2025,5,India
+91,8,U01332,College of Engineering Guindy,2021-2025,5,U06170,TKM College of Engineering,2023-2025,3,India
+83,8,U02701,INSEAD Business School / Institut Européen d’Administration des Affaires (comUE Sorbonne Universités),2018-2025,4,U05471,SKEMA Business School,2022-2025,4,France
+86,8,U00367,Amur State University,2021-2023,3,U05524,Saint Petersburg State Polytechnic University,2013-2020,5,Russia
+87,8,U04680,Nizam's Institute of Medical Sciences,2020-2025,4,U05788,Sher-i-Kashmir Institute of Medical Sciences,2022-2025,4,India
+89,8,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U03219,Jahrom University of Medical Sciences,2022-2025,5,Iran
+100,8,U04012,Medical University Varna,2021-2025,5,U04024,Medical University of Varna Pof. Dr. Paraskev Stoyano,2022-2024,3,Bulgaria
+93,8,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U00582,Bam University of Medical Sciences,2021-2025,5,Iran
+82,8,U04409,National Institute Interdisciplinary Science & Technology - India,2016-2018,3,U04465,National Institute of Technology Srinagar,2023-2025,5,India
+86,8,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U04608,Neshabur University of Medical Sciences,2021-2025,5,Iran
+91,8,U05279,R V College of Engineering,2022-2025,4,U09167,Zakir Husain College Of Engineering & Technology,2022-2025,4,India
+86,8,U01332,College of Engineering Guindy,2021-2025,5,U07538,University Visvesvaraya College of Engineering,2021-2025,3,India
+91,7,U06170,TKM College of Engineering,2023-2025,3,U09167,Zakir Husain College Of Engineering & Technology,2022-2025,4,India
+82,7,U07234,Universitas Islam Indonesia (UII),2023-2025,4,U07249,Universitas Komputer Indonesia,2020-2022,3,Indonesia
+88,7,U00091,ABES Engineering College,2024-2025,3,U09167,Zakir Husain College Of Engineering & Technology,2022-2025,4,India
+88,7,U00091,ABES Engineering College,2024-2025,3,U05279,R V College of Engineering,2022-2025,4,India
+87,7,U00670,Beijing Normal University Zhuhai,2023-2025,3,U09160,Yuxi Normal University,2023-2025,4,China
+100,7,U00550,BOKU University,2024-2025,4,U08088,University of Natural Resources and Life Sciences - BOKU,2015-2017,3,Austria
+93,7,U08099,University of New England - Maine,2021-2025,4,U08100,University of New England - USA,2016-2018,3,United States
+91,7,U05279,R V College of Engineering,2022-2025,4,U07538,University Visvesvaraya College of Engineering,2021-2025,3,India
+100,7,U08686,Université de Rennes I,2014-2022,4,U08687,Université de Rennes I (comUE Université Bretagne Loire),2017-2019,3,France
+89,7,U00116,Abadan University of Medical Sciences,2022-2025,4,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,Iran
+82,7,U01925,Ferris State University,2005-2025,4,U06053,State University of New York Brockport,2010-2025,3,United States
+87,7,U05244,Qinghai University for Nationalities,2021-2024,4,U05970,Southwest University for Nationalities - China,2017-2019,3,China
+87,7,U01036,Central University of Jammu,2023-2025,4,U01038,Central University of Karnataka,2024-2025,3,India
+82,7,U06053,State University of New York Brockport,2010-2025,3,U06529,Truman State University,2005-2025,4,United States
+94,7,U04119,Mimar Sinan Guzel Sanatlar Universitesi,2020-2023,4,U04120,Mimar Sinan Guzel Sanatlar University,2014-2022,3,Turkey
+86,7,U02026,G B Pant University of Agriculture & Technology,2010-2018,4,U03913,Maharana Pratap University of Agriculture and Technology,2023-2025,3,India
+86,7,U00367,Amur State University,2021-2023,3,U04837,Ogarev Mordovia State University,2022-2025,4,Russia
+92,7,U02036,GMR Institute of Technology,2024-2025,3,U02789,Indian Institute of Technology (IIT) - Tirupati,2023-2025,4,India
+88,7,U02433,Henan Institute of Engineering,2020-2022,3,U04706,North China Institute of Aerospace Engineering,2024-2025,4,China
+92,7,U02036,GMR Institute of Technology,2024-2025,3,U02790,Indian Institute of Technology (IIT) Jammu,2023-2025,4,India
+100,7,U07774,University of Economics,2005-2022,4,U07780,University of Economics and Business,2023-2025,3,Czechia
+91,7,U02044,Galgotias College of Engineering & Technology,2024-2025,3,U05279,R V College of Engineering,2022-2025,4,India
+87,7,U02044,Galgotias College of Engineering & Technology,2024-2025,3,U09167,Zakir Husain College Of Engineering & Technology,2022-2025,4,India
+89,7,U02929,Institute of Mathematics of the National Academy of Sciences of Ukraine,2023-2025,4,U04259,N.N. Bogolyubov Institute for Theoretical Physics of the National Academy of Sciences of Ukraine,2020-2022,3,Ukraine
+91,7,U05279,R V College of Engineering,2022-2025,4,U06170,TKM College of Engineering,2023-2025,3,India
+86,6,U04409,National Institute Interdisciplinary Science & Technology - India,2016-2018,3,U04451,National Institute of Technology Delhi,2024-2025,3,India
+85,6,U02036,GMR Institute of Technology,2024-2025,3,U04409,National Institute Interdisciplinary Science & Technology - India,2016-2018,3,India
+86,6,U00208,Ahvaz Jondishapur University of Medical Sciences,2024-2026,3,U03957,Maragheh University of Medical Sciences,2020-2024,3,Iran
+89,6,U01413,Czech University of Agriculture,2010-2013,3,U04051,Mendel University of Agriculture and Forestry Brno / Mendelova Univerzita v Brně,2012-2014,3,Czechia

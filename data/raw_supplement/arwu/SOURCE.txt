@@ -1,0 +1,12 @@
+Complete ARWU editions 2023-2025, retrieved 13 August 2026 by direct HTTP
+client (code/00_fetch_shanghai_api.py) from the public ShanghaiRanking API:
+  https://www.shanghairanking.com/api/pub/v1/arwu/rank?version={year}
+1,000 rows per edition: exact ranks 1-100, bands 101-1000, alphabetical within
+band as published. No transcription step involved; values are copied verbatim
+from the JSON payload.
+
+These SUPERSEDE the truncated arwu_{year}_webfetch.csv files described in
+data/SOURCES.txt (those stop inside the 201-300 band, ~231 rows). To use:
+copy into ~/uniranks/raw2/arwu/, delete the *_webfetch.csv files there, and
+re-run the pipeline from 01_ingest.py (column layout already matches the
+arwu_*.csv glob in that script).
