@@ -41,10 +41,11 @@ for (fc, fn), g in sc.groupby(["field_code", "field_name"]):
         gi = gi.set_index("year").reindex(years)
         m = [None if pd.isna(v) else round(float(v), 2) for v in gi.theta_mean]
         s = [None if pd.isna(v) else round(float(v), 2) for v in gi.theta_sd]
+        rk = [None if pd.isna(v) else int(v) for v in gi.rank_in_year]
         nl = [0 if pd.isna(v) else int(v) for v in gi.n_listings]
         row = gi.dropna(subset=["inst_name"]).iloc[-1]
         insts.append(dict(n=row.inst_name, c=None if pd.isna(row.country) else row.country,
-                          m=m, s=s, l=nl))
+                          m=m, s=s, r=rk, l=nl))
     insts.sort(key=lambda r: -(r["m"][-1] if r["m"][-1] is not None else -99))
     sy = it[it.field_code == fc]
     fields.append(dict(
@@ -153,8 +154,16 @@ footer{margin-top:46px;padding-top:26px;border-top:1px solid var(--rule);
 
 <section>
  <h2><span class="num">2</span>Trajectories</h2>
- <p class="note">Top five in the latest year, plus any institution added from the
- table (click a row). The band is the 95% credible interval for the first series.</p>
+ <p class="note" id="trajnote">Top five in the latest year, plus any institution added
+ from the table (click a row). The band is the 95% credible interval for the first
+ series.</p>
+ <div class="ctl">
+  <label>Show
+   <select id="ymode">
+     <option value="theta">latent θ</option>
+     <option value="rank">rank within field</option>
+   </select></label>
+ </div>
  <div class="tags" id="tags"></div>
  <figure><svg id="traj" viewBox="0 0 660 330"></svg></figure>
 </section>
@@ -186,8 +195,11 @@ for(const [k,f] of D.fields.entries()){
   const o=document.createElement('option');o.value=k;o.textContent=f.name;
   fsel.lastChild.appendChild(o);
 }
+// deep link: departments.html#AS0504 opens that field directly
+const wanted=location.hash.replace('#','');
+const byCode=D.fields.findIndex(f=>f.code===wanted);
 const polisci=D.fields.findIndex(f=>/Political/.test(f.name));
-fsel.value=polisci>=0?polisci:0;F=D.fields[+fsel.value];
+fsel.value=byCode>=0?byCode:(polisci>=0?polisci:0);F=D.fields[+fsel.value];
 $('scope').textContent=D.fields.length+' fields · '+
   D.fields.reduce((a,f)=>a+f.insts.length,0).toLocaleString()+' department series';
 function setYears(){
@@ -229,29 +241,48 @@ function series(){
   return base.slice(0,8).map(n=>F.insts.find(r=>r.n===n)).filter(Boolean);
 }
 function draw(){
-  const S=series(),svg=$('traj'),W=660,H=330,P={l:40,r:8,t:12,b:26};
+  const S=series(),svg=$('traj'),W=660,H=330,P={l:44,r:8,t:12,b:26};
   const xs=F.years,X=v=>P.l+(v-xs[0])/(xs[xs.length-1]-xs[0]||1)*(W-P.l-P.r);
-  let vals=[];S.forEach(r=>r.m.forEach((v,i)=>{if(v!=null){vals.push(v+1.96*(r.s[i]||0));vals.push(v-1.96*(r.s[i]||0));}}));
-  const lo=Math.min(...vals),hi=Math.max(...vals);
-  const Y=v=>P.t+(hi-v)/(hi-lo||1)*(H-P.t-P.b);
-  let g='';
-  for(let v=Math.ceil(lo*2)/2;v<=hi;v+=0.5){
-    g+='<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--rule-2)"/>'+
-       '<text x="'+(P.l-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="11" fill="var(--ink-3)">'+v.toFixed(1)+'</text>';
+  const rankMode=$('ymode').value==='rank';
+  $('trajnote').textContent=rankMode
+    ?'Top five in the latest year, plus any institution added from the table (click a '+
+     'row). Rank within the field implied by the model each year; the axis is '+
+     'logarithmic, so movement near the top is visible. Dots mark listed years.'
+    :'Top five in the latest year, plus any institution added from the table (click a '+
+     'row). The band is the 95% credible interval for the first series.';
+  let g='',Y;
+  if(rankMode){
+    let rv=[];S.forEach(r=>r.r.forEach(v=>{if(v!=null)rv.push(v);}));
+    const rlo=Math.max(1,Math.min(...rv)),rhi=Math.max(...rv);
+    const L=v=>Math.log(v),span=L(rhi)-L(rlo)||1;
+    Y=v=>P.t+(L(v)-L(rlo))/span*(H-P.t-P.b);
+    [1,2,5,10,20,50,100,200,500,1000,2000].filter(v=>v>=rlo&&v<=rhi).forEach(v=>{
+      g+='<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--rule-2)"/>'+
+         '<text x="'+(P.l-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="11" fill="var(--ink-3)">'+v+'</text>';
+    });
+  }else{
+    let vals=[];S.forEach(r=>r.m.forEach((v,i)=>{if(v!=null){vals.push(v+1.96*(r.s[i]||0));vals.push(v-1.96*(r.s[i]||0));}}));
+    const lo=Math.min(...vals),hi=Math.max(...vals);
+    Y=v=>P.t+(hi-v)/(hi-lo||1)*(H-P.t-P.b);
+    for(let v=Math.ceil(lo*2)/2;v<=hi;v+=0.5){
+      g+='<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--rule-2)"/>'+
+         '<text x="'+(P.l-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="11" fill="var(--ink-3)">'+v.toFixed(1)+'</text>';
+    }
   }
   xs.forEach(x=>{g+='<text x="'+X(x)+'" y="'+(H-6)+'" text-anchor="middle" font-size="11" fill="var(--ink-3)">'+x+'</text>';});
   S.forEach((r,k)=>{
     const col=cvar(COLS[k%COLS.length]);
-    if(k===0){
+    const vals=rankMode?r.r:r.m;
+    if(!rankMode&&k===0){
       let band='',back='';
       xs.forEach((x,i)=>{if(r.m[i]!=null)band+=(band?'L':'M')+X(x)+' '+Y(r.m[i]+1.96*r.s[i])+' ';});
       for(let i=xs.length-1;i>=0;i--)if(r.m[i]!=null)back+='L'+X(xs[i])+' '+Y(r.m[i]-1.96*r.s[i])+' ';
       if(band)g+='<path d="'+band+back+'Z" fill="'+col+'" opacity="0.12"/>';
     }
     let p='';
-    xs.forEach((x,i)=>{if(r.m[i]!=null)p+=(p?'L':'M')+X(x)+' '+Y(r.m[i])+' ';});
+    xs.forEach((x,i)=>{if(vals[i]!=null)p+=(p?'L':'M')+X(x)+' '+Y(vals[i])+' ';});
     g+='<path d="'+p+'" fill="none" stroke="'+col+'" stroke-width="1.8"/>';
-    xs.forEach((x,i)=>{if(r.l[i]>0&&r.m[i]!=null)g+='<circle cx="'+X(x)+'" cy="'+Y(r.m[i])+'" r="2.4" fill="'+col+'"/>';});
+    xs.forEach((x,i)=>{if(r.l[i]>0&&vals[i]!=null)g+='<circle cx="'+X(x)+'" cy="'+Y(vals[i])+'" r="2.4" fill="'+col+'"/>';});
   });
   svg.innerHTML=g;
   $('tags').innerHTML=S.map((r,k)=>'<span class="tag"><i style="background:'+cvar(COLS[k%COLS.length])+'"></i>'+
@@ -259,9 +290,10 @@ function draw(){
   $('tags').querySelectorAll('button').forEach(b=>b.onclick=()=>{extra=extra.filter(n=>n!==b.dataset.n);draw();});
 }
 function refresh(){note();setYears();table();extra=[];draw();}
-fsel.onchange=()=>{F=D.fields[+fsel.value];refresh();};
+fsel.onchange=()=>{F=D.fields[+fsel.value];history.replaceState(null,'','#'+F.code);refresh();};
 $('ysel').onchange=()=>{table();};
 $('q').oninput=()=>table();
+$('ymode').onchange=()=>draw();
 function setTheme(dark){document.documentElement.setAttribute('data-theme',dark?'dark':'light');
   $('tbtn').textContent=dark?'switch to light':'switch to dark';draw();}
 $('tbtn').onclick=()=>setTheme(document.documentElement.getAttribute('data-theme')!=='dark');
