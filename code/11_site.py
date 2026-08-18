@@ -52,29 +52,38 @@ PAGE = """<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Methods — a latent measure of international university standing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap">
 <style>
-:root{--paper:#fffefb;--ink:#16150f;--ink-2:#4a4841;--ink-3:#807d73;
- --rule:#dcd9cf;--rule-2:#efece3;--link:#2a78d6;color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--paper:#141310;--ink:#f4f2ea;
- --ink-2:#b7b4a8;--ink-3:#84817a;--rule:#3a382f;--rule-2:#26241e;
- --link:#3987e5;color-scheme:dark}}
+:root{--paper:#ffffff;--paper-2:#f4f5fa;--ink:#0c0c12;--ink-2:#24243a;--ink-3:#4c4c63;
+ --rule:#bcbdd0;--rule-2:#e3e4ee;--accent:#143a63;--accent-2:#2f6ba6;
+ --serif:'Cormorant Garamond',Georgia,serif;
+ --sans:'Barlow',system-ui,sans-serif;
+ --mono:'JetBrains Mono','SF Mono',monospace;color-scheme:light}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);
- font:16px/1.68 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+ font:16px/1.68 var(--sans);font-weight:400}
 .page{max-width:760px;margin:0 auto;padding:52px 26px 100px}
-.nav{font-size:13.5px;color:var(--ink-3);margin-bottom:34px}
-h1{font-size:27px;line-height:1.26;font-weight:600;letter-spacing:-.015em;margin:0 0 18px}
-h2{font-size:17px;font-weight:600;margin:44px 0 12px;padding-top:26px;
+.tabs{font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+ text-transform:uppercase;margin:0 0 34px}
+.tabs a{color:var(--ink-3);text-decoration:none;border-bottom:0;padding:3px 0;margin-right:18px}
+.tabs a:hover{color:var(--accent)}
+.tabs b{color:var(--accent);font-weight:600;margin-right:18px;
+ border-bottom:2px solid var(--accent);padding-bottom:3px}
+h1{font-family:var(--serif);font-size:38px;line-height:1.15;font-weight:600;
+ letter-spacing:-.01em;margin:0 0 18px}
+h2{font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.1em;
+ text-transform:uppercase;color:var(--accent);margin:44px 0 12px;padding-top:26px;
  border-top:1px solid var(--rule)}
 h3{font-size:15px;font-weight:600;margin:28px 0 8px}
 p{margin:0 0 15px}
-a{color:var(--link);text-decoration:none;border-bottom:1px solid currentColor}
-a:hover{color:var(--ink)}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(20,58,99,.35)}
+a:hover{color:var(--accent-2)}
 strong{font-weight:600}
-code{font:13.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
- background:var(--rule-2);padding:1px 4px}
-pre{background:var(--rule-2);padding:14px 16px;overflow:auto;font-size:13px;
- line-height:1.55;border-left:2px solid var(--rule)}
+code{font:13px/1.5 var(--mono);background:var(--paper-2);padding:1px 4px}
+pre{background:var(--paper-2);padding:14px 16px;overflow:auto;font-size:12.5px;
+ line-height:1.55;border-left:2px solid var(--accent);font-family:var(--mono)}
 pre code{background:none;padding:0}
 blockquote{margin:0 0 15px;padding-left:16px;border-left:2px solid var(--rule);
  color:var(--ink-2)}
@@ -85,12 +94,14 @@ table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 20px;
  display:block;overflow-x:auto}
 th,td{text-align:left;padding:6px 14px 6px 0;border-bottom:1px solid var(--rule-2);
  vertical-align:baseline}
-thead th{color:var(--ink-3);font-weight:500;font-size:12.5px;
- border-bottom:1px solid var(--rule);white-space:nowrap}
+thead th{font-family:var(--mono);color:var(--ink-3);font-weight:400;font-size:10.5px;
+ letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--rule);
+ white-space:nowrap}
 td:first-child{white-space:nowrap}
 em{color:var(--ink-2)}
 </style></head><body><div class="page">
-<p class="nav"><a href="index.html">← back to the figures</a></p>
+<p class="tabs"><a href="index.html">Universities</a>
+ <a href="departments.html">Departments</a> <b>Methods</b></p>
 __BODY__
 </div></body></html>"""
 open(f"{SITE}/methods.html", "w").write(PAGE.replace("__BODY__", body))

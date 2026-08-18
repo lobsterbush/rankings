@@ -65,6 +65,21 @@ print(f"harmonised: {matched:.1%} of listings resolve to a crosswalk institution
 d = d.sort_values("rank").drop_duplicates(
     ["field_code", "system", "ref_year", "inst_id"], keep="first")
 
+# ---------------------------------------------------- university-level anchor
+# A department's initial state borrows strength from its university's overall
+# standing: theta_dept[i, 1] ~ N(b_f * u_i, tau0^2), where u_i is the
+# university-model theta (standardised within the field's institutions) and
+# b_f is a per-field loading estimated inside the sampler. Institutions with
+# no university-level estimate get the diffuse N(0, 1) prior as before.
+_uni = pd.read_csv(REPO_DATA / "latent_scores.csv")
+_yr = int(d.ref_year.min())
+_u = _uni[_uni.year == _yr].set_index("inst_id").theta_mean
+if _u.empty:
+    _u = _uni[_uni.year == _uni.year.max()].set_index("inst_id").theta_mean
+UNI_THETA = _u.to_dict()
+print(f"anchor: university theta from {(_yr if len(_u) else '?')} for "
+      f"{len(UNI_THETA)} institutions")
+
 
 def zq(r, mpool):
     return norm.ppf(np.clip(1.0 - (np.asarray(r, float) - 0.5) / mpool, 1e-6, 1 - 1e-6))
@@ -89,7 +104,7 @@ def fit_field(p):
     cnt = p.groupby("inst_id").size()
     p = p[p.inst_id.isin(cnt[cnt >= MIN_OBS].index)].copy()
     if p.inst_id.nunique() < 25:
-        return None, None, "too few institutions"
+        return None, None, None, "too few institutions"
     insts = sorted(p.inst_id.unique())
     years = list(range(int(p.ref_year.min()), int(p.ref_year.max()) + 1))
     systems = sorted(p.system.unique())
@@ -124,7 +139,17 @@ def fit_field(p):
     lo, hi, kind = np.array(lo, float), np.array(hi, float), np.array(kind, np.int8)
     cell = oi * T + ot
 
-    keep_theta, keep_par = [], []
+    # university anchor for the initial state, standardised within this field
+    u_raw = np.array([UNI_THETA.get(inst, np.nan) for inst in insts])
+    anch = np.isfinite(u_raw)
+    u = np.zeros(I)
+    if anch.sum() >= 25:
+        u[anch] = (u_raw[anch] - u_raw[anch].mean()) / (u_raw[anch].std() or 1.0)
+    else:
+        anch[:] = False
+    R0 = np.where(anch, 0.6 ** 2, 1.0)      # tighter prior where anchored
+
+    keep_theta, keep_par, keep_b = [], [], []
     for c in range(CHAINS):
         rng = np.random.default_rng(7000 + c)
         theta = rng.normal(0, 0.5, (I, T))
@@ -132,6 +157,7 @@ def fit_field(p):
         beta = rng.normal(0, 0.5, J)
         sig2 = np.full(J, 1.0)
         om2 = 0.05
+        b_anchor = 0.8
         z = np.where(kind == 0, lo, np.where(kind == 1, (lo + hi) / 2, hi - 0.5))
         for it in range(N_ITER):
             a_o, b_o, s_o = alpha[oj], beta[oj], np.sqrt(sig2[oj])
@@ -145,7 +171,7 @@ def fit_field(p):
             Ybar = np.zeros((I, T)); nz = P > 0
             Ybar[nz] = S[nz] / P[nz]
             mflt = np.empty((I, T)); Cflt = np.empty((I, T))
-            a_t = np.zeros(I); R_t = np.full(I, 1.0)
+            a_t = b_anchor * u; R_t = R0.copy()
             for t in range(T):
                 if t > 0:
                     a_t = mflt[:, t - 1]; R_t = Cflt[:, t - 1] + om2
@@ -172,15 +198,30 @@ def fit_field(p):
             dif = np.diff(theta, axis=1)
             om2 = 1.0 / rng.gamma(2.0 + dif.size / 2.0,
                                   1.0 / (0.05 + float(np.sum(dif ** 2)) / 2.0))
+            if anch.any():
+                # b_anchor | theta[:,0], u  (conjugate; prior N(0.8, 0.5^2))
+                uu, th0 = u[anch], theta[anch, 0]
+                prec = 1 / 0.25 + float(np.sum(uu ** 2)) / (0.6 ** 2)
+                mean = (0.8 / 0.25 + float(np.sum(uu * th0)) / (0.6 ** 2)) / prec
+                b_anchor = mean + rng.standard_normal() / np.sqrt(prec)
             if it >= BURN and (it - BURN) % THIN == 0:
                 # standardise scale against the first year within every draw
                 sd0 = theta[:, 0].std()
                 keep_theta.append((theta / sd0).astype(np.float32).copy())
                 keep_par.append(np.concatenate([alpha, beta, np.sqrt(sig2), [np.sqrt(om2)]]))
+                keep_b.append(b_anchor)
 
     TH = np.stack(keep_theta)            # draws x I x T
     th_m, th_s = TH.mean(0), TH.std(0)
     q = np.quantile(TH, [0.025, 0.5, 0.975], axis=0)
+    # rank distribution: rank every institution within each posterior draw
+    order = np.argsort(-TH, axis=1)
+    RK = np.empty_like(order)
+    dr = np.arange(TH.shape[0])[:, None]
+    for t in range(TH.shape[2]):
+        RK[dr, order[:, :, t], t] = np.arange(1, TH.shape[1] + 1)[None, :]
+    rk_lo = np.quantile(RK, 0.025, axis=0).astype(int)
+    rk_hi = np.quantile(RK, 0.975, axis=0).astype(int)
     nlist = p.groupby(["inst_id", "ref_year"]).size()
     meta = p.groupby("inst_id").agg(inst_name=("inst_name", "first"),
                                     country=("country", "first"))
@@ -191,10 +232,12 @@ def fit_field(p):
             tt = t_of[y]
             recs.append((inst, meta.loc[inst, "inst_name"], meta.loc[inst, "country"],
                          y, th_m[ii, tt], th_s[ii, tt], q[0, ii, tt], q[1, ii, tt],
-                         q[2, ii, tt], int(nlist.get((inst, y), 0))))
+                         q[2, ii, tt], rk_lo[ii, tt], rk_hi[ii, tt],
+                         int(nlist.get((inst, y), 0))))
     sc = pd.DataFrame(recs, columns=["inst_id", "inst_name", "country", "year",
                                      "theta_mean", "theta_sd", "theta_q025",
-                                     "theta_median", "theta_q975", "n_listings"])
+                                     "theta_median", "theta_q975", "rank_q025",
+                                     "rank_q975", "n_listings"])
     sc["rank_in_year"] = sc.groupby("year").theta_mean.rank(ascending=False).astype(int)
     PAR = np.stack(keep_par)
     items = []
@@ -205,17 +248,21 @@ def fit_field(p):
                       np.quantile(rel, 0.025), np.quantile(rel, 0.975)))
     it_df = pd.DataFrame(items, columns=["system", "alpha", "beta", "sigma",
                                          "reliability", "rel_lo", "rel_hi"])
-    note = f"I={I} T={T} J={J} obs={len(kind)} ({(kind == 2).sum()} censored)"
-    return sc, it_df, note
+    bb = np.array(keep_b)
+    anchor = dict(b_mean=float(bb.mean()), b_sd=float(bb.std()),
+                  share_anchored=float(anch.mean()))
+    note = (f"I={I} T={T} J={J} obs={len(kind)} ({(kind == 2).sum()} censored) "
+            f"b={bb.mean():.2f} anchored={anch.mean():.0%}")
+    return sc, it_df, anchor, note
 
 
-all_sc, all_it, log = [], [], []
+all_sc, all_it, all_anchor, log = [], [], [], []
 fields = sorted(d.field_code.unique())
 t0 = time.time()
 for k, fc in enumerate(fields):
     p = d[d.field_code == fc]
     fname = p.field_name.iloc[0]
-    sc, it_df, note = fit_field(p)
+    sc, it_df, anchor, note = fit_field(p)
     log.append(f"{fc} {fname}: {note}")
     print(f"[{k+1}/{len(fields)}] {fc} {fname}: {note}  [{time.time()-t0:.0f}s]", flush=True)
     if sc is None:
@@ -223,8 +270,10 @@ for k, fc in enumerate(fields):
     sc.insert(0, "field_code", fc); sc.insert(1, "field_name", fname)
     it_df.insert(0, "field_code", fc); it_df.insert(1, "field_name", fname)
     all_sc.append(sc); all_it.append(it_df)
+    all_anchor.append(dict(field_code=fc, field_name=fname, **anchor))
 
 pd.concat(all_sc, ignore_index=True).to_csv(W / "dept_latent_scores.csv", index=False)
 pd.concat(all_it, ignore_index=True).to_csv(W / "dept_item_parameters.csv", index=False)
+pd.DataFrame(all_anchor).to_csv(W / "dept_anchor.csv", index=False)
 open(W / "dept_fit_log.txt", "w").write("\n".join(log) + "\n")
 print(f"\ndone: {len(all_sc)} fields fitted in {(time.time()-t0)/60:.1f} min")

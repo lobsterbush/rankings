@@ -3,45 +3,41 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>A latent measure of international university standing, 2003–2026</title>
 <meta name="description" content="Fourteen international university rankings pooled with a dynamic Bayesian latent-trait model.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap">
 <style>
 :root{
-  --paper:#fffefb; --ink:#16150f; --ink-2:#4a4841; --ink-3:#807d73;
-  --rule:#dcd9cf; --rule-2:#efece3;
-  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
-  --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948;
-  --q1:#cde2fb; --q2:#9ec5f4; --q3:#6da7ec; --q4:#3987e5;
-  --q5:#2a78d6; --q6:#256abf; --q7:#184f95; --q8:#0d366b;
+  --paper:#ffffff; --paper-2:#f4f5fa; --ink:#0c0c12; --ink-2:#24243a; --ink-3:#4c4c63;
+  --rule:#bcbdd0; --rule-2:#e3e4ee; --accent:#143a63; --accent-2:#2f6ba6;
+  --s1:#143a63; --s2:#c2571f; --s3:#177a55; --s4:#a97b00;
+  --s5:#a04b74; --s6:#4a7a1e; --s7:#5747a7; --s8:#a53434;
+  --q1:#dbe4f0; --q2:#b6c9e0; --q3:#8aa9cb; --q4:#5d88b5;
+  --q5:#2f6ba6; --q6:#245685; --q7:#1a4368; --q8:#0d2b4c;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Barlow',system-ui,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',monospace;
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
-  --paper:#141310; --ink:#f4f2ea; --ink-2:#b7b4a8; --ink-3:#84817a;
-  --rule:#3a382f; --rule-2:#26241e;
-  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
-  --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
-  color-scheme:dark;}}
-:root[data-theme="dark"]{
-  --paper:#141310; --ink:#f4f2ea; --ink-2:#b7b4a8; --ink-3:#84817a;
-  --rule:#3a382f; --rule-2:#26241e;
-  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
-  --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
-  color-scheme:dark;}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);
- font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+ font:16px/1.62 var(--sans);font-weight:400;
  font-feature-settings:"kern" 1;}
 .page{max-width:1040px;margin:0 auto;padding:56px 26px 96px}
-.col{max-width:660px}
-h1{font-size:29px;line-height:1.24;font-weight:600;letter-spacing:-.015em;margin:0 0 14px}
-.byline{color:var(--ink-2);font-size:14.5px;margin:0 0 26px}
+.col{max-width:680px}
+h1{font-family:var(--serif);font-size:44px;line-height:1.12;font-weight:600;
+ letter-spacing:-.01em;margin:0 0 16px}
+.byline{color:var(--ink-2);font-size:14.5px;margin:0 0 8px}
 .byline a{color:inherit}
-.lede{font-size:17px;line-height:1.66;color:var(--ink);margin:0 0 10px}
+.lede{font-size:17.5px;line-height:1.62;color:var(--ink);margin:0 0 10px}
 p{margin:0 0 14px}
-a{color:var(--s1);text-decoration:none;border-bottom:1px solid currentColor;
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(20,58,99,.35);
   padding-bottom:.5px}
-a:hover{color:var(--ink)}
+a:hover{color:var(--accent-2)}
 section{padding-top:38px;margin-top:38px;border-top:1px solid var(--rule)}
-h2{font-size:15px;font-weight:600;letter-spacing:.01em;margin:0 0 6px}
+h2{font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px}
 h2 .num{color:var(--ink-3);font-variant-numeric:tabular-nums;margin-right:10px;
   font-weight:400}
 .note{color:var(--ink-2);font-size:14.5px;margin:0 0 22px;max-width:66ch}
@@ -52,7 +48,7 @@ button,select,input{font:inherit;color:inherit}
 input[type=text],input:not([type]),select{background:transparent;border:0;
   border-bottom:1px solid var(--rule);padding:5px 2px;font-size:14.5px;
   color:var(--ink);border-radius:0}
-input:focus,select:focus{outline:0;border-bottom-color:var(--s1)}
+input:focus,select:focus{outline:0;border-bottom-color:var(--accent)}
 select{border-bottom:1px solid var(--rule);padding-right:14px}
 .ctl{display:flex;gap:22px;flex-wrap:wrap;align-items:baseline;margin-bottom:20px;
   font-size:14px;color:var(--ink-2)}
@@ -71,8 +67,9 @@ caption{caption-side:top;text-align:left;color:var(--ink-3);font-size:13px;
   padding-bottom:8px}
 th,td{text-align:left;padding:6px 12px 6px 0;border-bottom:1px solid var(--rule-2);
   vertical-align:baseline}
-thead th{color:var(--ink-3);font-weight:500;font-size:12.5px;letter-spacing:.03em;
-  border-bottom:1px solid var(--rule)}
+thead th{font-family:var(--mono);color:var(--ink-3);font-weight:400;font-size:10.5px;
+  letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--rule)}
+tbody tr:hover td{background:var(--paper-2)}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;
   padding-right:18px}
 td.n:last-child,th.n:last-child{padding-right:0}
@@ -90,18 +87,20 @@ summary::before{content:"+ ";color:var(--ink-3)}
 details[open] summary::before{content:"– "}
 footer{margin-top:46px;padding-top:26px;border-top:1px solid var(--rule);
   color:var(--ink-3);font-size:13.5px;max-width:72ch}
-.mode{background:none;border:0;cursor:pointer;color:var(--ink-3);font-size:13.5px;
-  padding:0;border-bottom:1px solid var(--rule)}
-.mode:hover{color:var(--ink)}
-@media (max-width:620px){.page{padding:34px 18px 70px}h1{font-size:24px}}
+.tabs{font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;margin:0 0 30px}
+.tabs a{color:var(--ink-3);text-decoration:none;border-bottom:0;padding:3px 0;margin-right:18px}
+.tabs a:hover{color:var(--accent)}
+.tabs b{color:var(--accent);font-weight:600;margin-right:18px;
+  border-bottom:2px solid var(--accent);padding-bottom:3px}
+@media (max-width:620px){.page{padding:34px 18px 70px}h1{font-size:32px}}
 </style></head><body>
 <div class="page">
 
 <header class="col">
- <h1>A latent measure of international university standing, 2003–2026</h1>
+ <h1>A latent measure of international university standing</h1>
  <p class="byline">Charles Crabtree · Monash University · <span id="dateline"></span></p>
- <p class="byline" style="margin-top:-16px"><b>Universities</b> ·
-   <a href="departments.html">Departments</a> ·
+ <p class="tabs"><b>Universities</b> <a href="departments.html">Departments</a>
    <a href="methods.html">Methods</a></p>
  <p class="lede">Fourteen international ranking systems, pooled with a dynamic Bayesian
  latent-trait model. Each ranking is treated as one noisy, censored instrument reading a
@@ -175,7 +174,6 @@ footer{margin-top:46px;padding-top:26px;border-top:1px solid var(--rule);
 
 <footer>
  <p id="foot"></p>
- <p><button class="mode" id="theme">switch to dark</button></p>
 </footer>
 </div>
 <div class="tip" id="tip"></div>
@@ -480,13 +478,6 @@ document.getElementById('foot').innerHTML=
  '<a href="data/rankings_panel_long.csv">rankings_panel_long.csv</a>, and the pipeline '+
  'that produced both is in <code>code/</code>.';
 
-const tbtn=document.getElementById('theme');
-function setTheme(dark){
-  document.documentElement.setAttribute('data-theme',dark?'dark':'light');
-  tbtn.textContent=dark?'switch to light':'switch to dark';
-  CS=SLOTS.map(cvar);redraw();}
-tbtn.onclick=()=>setTheme(document.documentElement.getAttribute('data-theme')!=='dark');
-if(matchMedia('(prefers-color-scheme:dark)').matches)tbtn.textContent='switch to light';
 function redraw(){drawTraj();drawPin();drawCountry();drawRel();drawCov();drawRank()}
 redraw();
 </script></body></html>
