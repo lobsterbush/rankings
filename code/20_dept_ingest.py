@@ -60,6 +60,48 @@ THE_MAP = {
 FIELD_NAMES = dict({c: n for c, (n, _) in SUBJECTS.items()},
                    THEAH="Arts & Humanities (THE only)")
 
+# QS subject slug -> GRAS field codes. QS subjects are narrow, so most map
+# one-to-one; humanities subjects with no GRAS counterpart feed THEAH; broad
+# aggregate slugs (arts-humanities, natural-sciences, engineering-technology,
+# life-sciences-medicine, social-sciences-management) are skipped in favour of
+# their constituent narrow subjects.
+QS_MAP = {
+    "politics": ["AS0504"], "economics-econometrics": ["AS0501"],
+    "law-legal-studies": ["AS0503"], "sociology": ["AS0505"],
+    "psychology": ["AS0508"], "education-training": ["AS0506"],
+    "communication-media-studies": ["AS0507"],
+    "statistics-operational-research": ["AS0502"],
+    "business-management-studies": ["AS0509", "AS0511"],
+    "accounting-finance": ["AS0510"], "marketing": ["AS0509"],
+    "social-policy-administration": ["AS0512"],
+    "hospitality-leisure-management": ["AS0513"],
+    "library-information-management": ["AS0515"],
+    "computer-science-information-systems": ["AS0210"],
+    "data-science-artificial-intelligence": ["AS0229"],
+    "mathematics": ["AS0101"], "physics-astronomy": ["AS0102"],
+    "chemistry": ["AS0103"], "geology": ["AS0104"], "geophysics": ["AS0104"],
+    "earth-marine-sciences": ["AS0104", "AS0107"], "geography": ["AS0105"],
+    "environmental-sciences": ["AS0106", "AS0216"],
+    "biological-sciences": ["AS0301"], "anatomy-physiology": ["AS0302"],
+    "agriculture-forestry": ["AS0303"], "veterinary-science": ["AS0304"],
+    "medicine": ["AS0401"], "dentistry": ["AS0403"], "nursing": ["AS0404"],
+    "pharmacy-pharmacology": ["AS0406"],
+    "engineering-mechanical": ["AS0201"],
+    "engineering-electrical-electronic": ["AS0202"],
+    "engineering-civil-structural": ["AS0211"],
+    "engineering-chemical": ["AS0212"], "materials-sciences": ["AS0213"],
+    "engineering-mineral-mining": ["AS0226"],
+    "engineering-petroleum": ["AS0215"],
+    "architecture-built-environment": ["AS0211"],
+    "anthropology": ["THEAH"], "archaeology": ["THEAH"],
+    "art-design": ["THEAH"], "art-history": ["THEAH"],
+    "classics-ancient-history": ["THEAH"],
+    "english-language-literature": ["THEAH"], "history": ["THEAH"],
+    "linguistics": ["THEAH"], "modern-languages": ["THEAH"], "music": ["THEAH"],
+    "performing-arts": ["THEAH"], "philosophy": ["THEAH"],
+    "theology-divinity-religious-studies": ["THEAH"],
+}
+
 # Leiden main field -> GRAS field codes it plausibly instruments (editions
 # 2015-2023 use these five names; earlier vintages' variant taxonomies are
 # skipped). Same broad-instrument logic and caveats as THE_MAP.
@@ -134,6 +176,31 @@ for f in sorted(glob.glob(str(RAW2 / "the_subjects" / "the_*_*.csv"))):
                          f"timeshighereducation.com subject tables ({slug})"))
         n_the += 1
 print(f"   {n_the} THE subject listings (before field fan-out)")
+
+print("== QS subjects")
+n_qs = 0
+for f in sorted(glob.glob(str(RAW2 / "qs_subjects" / "qs_*_*.csv"))):
+    m = re.search(r"qs_(\d{4})_([a-z0-9-]+)\.csv$", f)
+    if not m:
+        continue
+    year, slug = int(m.group(1)), m.group(2)
+    codes = QS_MAP.get(slug)
+    if codes is None:
+        continue
+    t = pd.read_csv(f)
+    for r in t.itertuples():
+        rk, lo, hi, band = parse_rank(r.rank_display)
+        if np.isnan(rk):
+            continue
+        # QS subject editions are released in the spring of their named year,
+        # so the edition year is the reference year (unlike the overall QS WUR)
+        for code in codes:
+            rows.append((code, FIELD_NAMES.get(code, code), "QS", year, year,
+                         r.institution, r.country, rk, lo, hi, band,
+                         r.score if pd.notna(r.score) else np.nan,
+                         f"topuniversities.com subject tables ({slug})"))
+        n_qs += 1
+print(f"   {n_qs} QS subject listings (before fan-out)")
 
 print("== Leiden main fields")
 n_lei = 0

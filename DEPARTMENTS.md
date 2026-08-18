@@ -31,6 +31,15 @@ edition files (PP top 10%, fractional counting, most recent window,
 100 publications in the window, so a stellar top-10% share on a token output
 does not fabricate a department. Attached via LEIDEN_MAP.
 
+**QS World University Rankings by Subject**: 60 subjects, editions 2011-2026,
+recovered from QS's own JSON endpoints (live and Wayback-archived), the
+official 2026 results file, and archived page tables (569 subject-year files,
+~165k listings; the main remaining gap is 2022-2025 for ~17 social-science
+subjects, documented in the collection's SOURCE.txt). QS subjects are narrow,
+so most map one-to-one onto GRAS fields (QS_MAP in code/20_dept_ingest.py);
+QS's humanities subjects feed the THE-only humanities field. QS extends most
+fields' coverage back to 2011.
+
 Where a broad instrument maps to several narrow fields the same listing is
 reused in each; fields are fit independently, so nothing is double-counted
 within a fit.
@@ -55,12 +64,22 @@ links every department series to its university's overall theta.
   reflects narrow-subject research output. The per-field discrimination
   parameters absorb the mismatch; they do not make the constructs identical.
 
+## The university anchor and rank intervals
+
+Each department's initial state carries an informative prior centred on its
+university's overall theta: theta_dept[i, 1] ~ N(b_f u_i, 0.6^2), with u_i the
+university-model estimate standardised within the field and b_f a per-field
+loading estimated in the sampler (dept_anchor.csv reports it; it ranges from
+~2 in mathematics down to ~0 in a few niche fields). Departments the ranking
+systems barely see borrow strength from what the fourteen university-level
+systems say about their institution; the data overrides the prior wherever
+listings exist. Within-field ranks are reported with 95% credible intervals
+computed by ranking institutions inside every posterior draw.
+
 ## Possible extensions
 
-QS World University Rankings by Subject (2011+, ~55 subjects) is the longest
-subject series and the natural next instrument; collection is heavier
-(paginated endpoint, per-subject node ids that change by year). US News
-subject rankings and NTU/URAP field rankings could follow the same broad- or
-narrow-field attachment logic. A hierarchical coupling of departmental theta
-to university theta (department = university + field offset) would let sparse
-fields borrow strength and is the main modelling extension worth doing.
+US News subject rankings and NTU/URAP field rankings could follow the same
+broad- or narrow-field attachment logic. The QS 2022-2025 social-science gap
+may close if the Wayback rate-limit resets (resumable fetcher parked with the
+collection). A fully joint university-department model (rather than the
+anchored two-stage fit) is the main remaining modelling extension.
