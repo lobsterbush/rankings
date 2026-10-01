@@ -1,77 +1,77 @@
-posterior: 4 chains x 300 draws; I=5789, T=24, J=14
-scale normalisation applied: base-year theta standardised in every draw (mean multiplier 0.998)
+posterior: 4 chains x 300 draws; I=5771, T=24, J=14
+scale normalisation applied: base-year theta standardised in every draw (mean multiplier 0.999)
 
 ================ CONVERGENCE ================
           parameter  mean    sd  q025  q975  rhat      ess
-        alpha[ARWU] 0.592 0.003 0.586 0.599 1.035  121.547
-        alpha[CWUR] 0.608 0.003 0.602 0.614 1.027  200.921
-      alpha[Leiden] 0.510 0.004 0.502 0.518 1.006  607.516
-         alpha[NTU] 0.597 0.003 0.591 0.603 1.033  143.111
- alpha[NatureIndex] 0.557 0.004 0.548 0.566 1.009  662.214
-          alpha[QS] 0.424 0.003 0.418 0.430 1.010  750.931
-   alpha[ReutersEU] 0.355 0.022 0.311 0.399 1.003  866.393
-alpha[ReutersWorld] 0.306 0.018 0.271 0.340 1.004  726.024
-     alpha[SCImago] 0.665 0.003 0.659 0.671 1.034  123.093
-         alpha[THE] 0.522 0.003 0.516 0.528 1.021  274.897
-       alpha[THEQS] 0.373 0.012 0.350 0.395 1.000 1014.660
-        alpha[URAP] 0.630 0.003 0.624 0.636 1.036  108.952
-      alpha[USNews] 0.603 0.003 0.596 0.609 1.027  201.598
- alpha[Webometrics] 0.628 0.003 0.622 0.635 1.035  118.842
-         beta[ARWU] 0.654 0.004 0.646 0.662 1.021  250.301
-         beta[CWUR] 0.605 0.004 0.598 0.612 1.016  242.578
-       beta[Leiden] 0.741 0.006 0.730 0.751 1.002 1101.081
-          beta[NTU] 0.645 0.004 0.637 0.652 1.022  213.005
-  beta[NatureIndex] 0.575 0.007 0.561 0.589 1.005  850.500
-           beta[QS] 0.866 0.004 0.859 0.874 1.008 1058.637
-    beta[ReutersEU] 1.671 0.049 1.569 1.769 1.002  896.183
- beta[ReutersWorld] 1.550 0.049 1.454 1.646 1.004  713.898
-      beta[SCImago] 0.441 0.004 0.433 0.448 1.026  184.337
-          beta[THE] 0.752 0.004 0.745 0.760 1.013  384.367
-        beta[THEQS] 1.228 0.028 1.175 1.286 0.999 1040.093
-         beta[URAP] 0.595 0.003 0.589 0.601 1.028  192.543
-       beta[USNews] 0.620 0.004 0.612 0.628 1.017  309.156
-  beta[Webometrics] 0.523 0.004 0.515 0.531 1.021  229.437
-        sigma[ARWU] 0.137 0.001 0.134 0.139 1.002 1112.469
-        sigma[CWUR] 0.158 0.001 0.156 0.160 0.999 1219.303
-      sigma[Leiden] 0.310 0.002 0.306 0.314 1.001 1194.800
-         sigma[NTU] 0.108 0.001 0.106 0.110 0.999 1202.018
- sigma[NatureIndex] 0.316 0.003 0.311 0.321 0.999 1314.840
-          sigma[QS] 0.349 0.002 0.345 0.353 1.001 1230.041
-   sigma[ReutersEU] 0.287 0.011 0.268 0.310 1.000 1088.676
-sigma[ReutersWorld] 0.300 0.010 0.281 0.322 1.003 1075.827
-     sigma[SCImago] 0.317 0.001 0.314 0.320 1.005  982.527
-         sigma[THE] 0.283 0.001 0.280 0.286 1.000 1224.442
-       sigma[THEQS] 0.321 0.007 0.307 0.335 0.999 1135.674
-        sigma[URAP] 0.162 0.001 0.160 0.163 1.005 1131.914
-      sigma[USNews] 0.176 0.001 0.173 0.178 1.003 1221.924
- sigma[Webometrics] 0.294 0.002 0.291 0.297 1.001 1156.476
-              omega 0.108 0.001 0.106 0.110 1.020  525.584
+        alpha[ARWU] 0.588 0.003 0.582 0.594 1.011  224.697
+        alpha[CWUR] 0.604 0.003 0.598 0.610 1.008  186.446
+      alpha[Leiden] 0.507 0.004 0.499 0.515 1.007  335.057
+         alpha[NTU] 0.594 0.003 0.588 0.600 1.007  197.831
+ alpha[NatureIndex] 0.553 0.004 0.545 0.562 1.004  563.331
+          alpha[QS] 0.421 0.003 0.415 0.427 1.002  599.454
+   alpha[ReutersEU] 0.352 0.022 0.307 0.395 1.001  896.865
+alpha[ReutersWorld] 0.304 0.017 0.269 0.338 0.999  872.420
+     alpha[SCImago] 0.661 0.003 0.654 0.667 1.009  236.832
+         alpha[THE] 0.519 0.003 0.513 0.525 1.007  250.371
+       alpha[THEQS] 0.369 0.012 0.346 0.392 1.004 1031.844
+        alpha[URAP] 0.626 0.003 0.620 0.632 1.011  178.942
+      alpha[USNews] 0.599 0.003 0.593 0.605 1.010  197.423
+ alpha[Webometrics] 0.624 0.004 0.617 0.631 1.018  170.511
+         beta[ARWU] 0.652 0.004 0.644 0.660 1.024  236.225
+         beta[CWUR] 0.602 0.004 0.595 0.609 1.020  196.262
+       beta[Leiden] 0.738 0.006 0.727 0.749 1.011  518.258
+          beta[NTU] 0.641 0.004 0.634 0.648 1.023  194.457
+  beta[NatureIndex] 0.572 0.007 0.559 0.586 1.006  839.585
+           beta[QS] 0.864 0.004 0.857 0.872 1.004  876.522
+    beta[ReutersEU] 1.672 0.050 1.577 1.770 0.999  921.144
+ beta[ReutersWorld] 1.548 0.048 1.458 1.641 1.001  867.736
+      beta[SCImago] 0.437 0.004 0.429 0.444 1.025  211.733
+          beta[THE] 0.750 0.004 0.743 0.757 1.026  196.849
+        beta[THEQS] 1.228 0.028 1.174 1.284 1.004  990.227
+         beta[URAP] 0.592 0.003 0.585 0.598 1.029  157.596
+       beta[USNews] 0.617 0.004 0.609 0.625 1.020  199.044
+  beta[Webometrics] 0.520 0.004 0.512 0.528 1.021  240.192
+        sigma[ARWU] 0.137 0.001 0.135 0.139 1.000 1261.596
+        sigma[CWUR] 0.158 0.001 0.156 0.160 1.000 1167.732
+      sigma[Leiden] 0.310 0.002 0.306 0.314 1.001 1255.754
+         sigma[NTU] 0.108 0.001 0.106 0.110 1.001 1136.093
+ sigma[NatureIndex] 0.316 0.003 0.311 0.321 0.999 1100.406
+          sigma[QS] 0.350 0.002 0.346 0.354 0.999 1290.351
+   sigma[ReutersEU] 0.288 0.011 0.269 0.311 0.999 1350.420
+sigma[ReutersWorld] 0.299 0.010 0.280 0.319 1.003 1219.122
+     sigma[SCImago] 0.317 0.001 0.314 0.320 0.999 1254.206
+         sigma[THE] 0.283 0.001 0.280 0.286 1.003 1364.824
+       sigma[THEQS] 0.322 0.007 0.309 0.337 1.000 1165.788
+        sigma[URAP] 0.161 0.001 0.159 0.163 1.001 1225.029
+      sigma[USNews] 0.176 0.001 0.173 0.178 1.006 1153.157
+ sigma[Webometrics] 0.294 0.001 0.291 0.297 1.006 1168.039
+              omega 0.109 0.001 0.107 0.110 1.004  305.760
 
-theta (600 random institution-years): R-hat max 1.019, 99th pct 1.009, share > 1.01: 0.8%
-theta bulk ESS: min 256, median 1156 (of 1200 draws)
+theta (600 random institution-years): R-hat max 1.017, 99th pct 1.007, share > 1.01: 0.3%
+theta bulk ESS: min 465, median 1160 (of 1200 draws)
 
 ================ RANKING SYSTEMS AS MEASUREMENT INSTRUMENTS ================
       system  editions     years  median_list_length  alpha_discrimination  alpha_sd  beta_location  sigma_noise  reliability  reliability_lo  reliability_hi
-         NTU        20 2007-2026               812.5                 0.597     0.003          0.645        0.108        0.968           0.967           0.970
-        ARWU        23 2003-2025               501.0                 0.592     0.003          0.654        0.137        0.949           0.948           0.951
-        URAP        16 2010-2025              2487.5                 0.630     0.003          0.595        0.162        0.938           0.937           0.940
-        CWUR        14 2012-2025              1493.0                 0.608     0.003          0.605        0.158        0.937           0.935           0.939
-      USNews        12 2014-2025               975.0                 0.603     0.003          0.620        0.176        0.922           0.919           0.924
- Webometrics        22 2004-2025               995.5                 0.628     0.003          0.523        0.294        0.820           0.816           0.824
-     SCImago        17 2009-2025               300.0                 0.665     0.003          0.441        0.317        0.815           0.811           0.819
-         THE        17 2010-2026              1258.0                 0.522     0.003          0.752        0.283        0.773           0.767           0.777
- NatureIndex        11 2016-2026               498.0                 0.557     0.004          0.575        0.316        0.757           0.749           0.764
-      Leiden        12 2012-2023               920.5                 0.510     0.004          0.741        0.310        0.730           0.722           0.738
-   ReutersEU         4 2016-2019                99.5                 0.355     0.022          1.671        0.287        0.603           0.533           0.663
-          QS        16 2011-2026              1023.0                 0.424     0.003          0.866        0.349        0.596           0.587           0.604
-       THEQS         6 2004-2009               199.0                 0.373     0.012          1.228        0.321        0.574           0.535           0.610
-ReutersWorld         5 2015-2019                91.0                 0.306     0.018          1.550        0.300        0.508           0.440           0.570
+         NTU        20 2007-2026               812.5                 0.594     0.003          0.641        0.108        0.968           0.967           0.969
+        ARWU        23 2003-2025               501.0                 0.588     0.003          0.652        0.137        0.949           0.947           0.950
+        URAP        16 2010-2025              2487.5                 0.626     0.003          0.592        0.161        0.938           0.936           0.940
+        CWUR        14 2012-2025              1493.0                 0.604     0.003          0.602        0.158        0.936           0.934           0.938
+      USNews        12 2014-2025               975.0                 0.599     0.003          0.617        0.176        0.921           0.918           0.923
+ Webometrics        22 2004-2025               995.5                 0.624     0.004          0.520        0.294        0.818           0.814           0.823
+     SCImago        17 2009-2025               300.0                 0.661     0.003          0.437        0.317        0.813           0.809           0.817
+         THE        17 2010-2026              1258.0                 0.519     0.003          0.750        0.283        0.770           0.765           0.776
+ NatureIndex        11 2016-2026               498.0                 0.553     0.004          0.572        0.316        0.754           0.746           0.762
+      Leiden        12 2012-2023               920.5                 0.507     0.004          0.738        0.310        0.727           0.720           0.734
+   ReutersEU         4 2016-2019                99.5                 0.352     0.022          1.672        0.288        0.598           0.519           0.660
+          QS        16 2011-2026              1023.0                 0.421     0.003          0.864        0.350        0.592           0.584           0.601
+       THEQS         6 2004-2009               199.0                 0.369     0.012          1.228        0.322        0.568           0.532           0.605
+ReutersWorld         5 2015-2019                91.0                 0.304     0.017          1.548        0.299        0.507           0.439           0.567
 
 reliability = alpha^2/(alpha^2+sigma^2): the share of a system's variation
 that the common latent factor explains. Low values mean the system is
 measuring something the other rankings do not, or measuring it noisily.
 
-wrote latent_scores.csv: 138936 institution-years (63265 directly informed by at least one listing)
+wrote latent_scores.csv: 138504 institution-years (63105 directly informed by at least one listing)
 
 ================ VALIDATION ================
 Spearman correlation between posterior theta and the published rank order,
@@ -80,54 +80,54 @@ dimension reproduces that table well):
                mean    min    max  size
 system                                 
 ARWU          0.937  0.907  0.973    23
-CWUR          0.909  0.682  0.954    14
-Leiden        0.715  0.683  0.739    12
-NTU           0.965  0.933  0.982    20
-NatureIndex   0.743  0.580  0.797    11
-QS            0.768  0.729  0.820    17
-ReutersEU     0.571  0.548  0.594     4
-ReutersWorld  0.538  0.511  0.560     5
-SCImago       0.767  0.633  0.891    17
-THE           0.801  0.620  0.864    17
-THEQS         0.572  0.455  0.667     6
-URAP          0.967  0.945  0.981    16
-USNews        0.905  0.870  0.934    12
+CWUR          0.909  0.683  0.954    14
+Leiden        0.714  0.683  0.738    12
+NTU           0.964  0.933  0.982    20
+NatureIndex   0.741  0.578  0.798    11
+QS            0.767  0.729  0.820    17
+ReutersEU     0.570  0.547  0.593     4
+ReutersWorld  0.533  0.510  0.559     5
+SCImago       0.768  0.634  0.891    17
+THE           0.801  0.621  0.864    17
+THEQS         0.571  0.453  0.666     6
+URAP          0.968  0.945  0.981    16
+USNews        0.905  0.871  0.934    12
 Webometrics   0.825  0.622  0.905    22
   overall mean rho = 0.831
 
 Do the rankings agree with each other more after modelling than before?
   mean pairwise Spearman between raw rank scales: 0.719
-  weakest pairs: ReutersEU~Webometrics (0.4), ReutersEU~SCImago (0.43), THEQS~Webometrics (0.44)
+  weakest pairs: ReutersEU~Webometrics (0.38), ReutersEU~SCImago (0.42), THEQS~Webometrics (0.44)
   strongest pairs: CWUR~NTU (0.92), NTU~USNews (0.92), NTU~URAP (0.94)
 
 Posterior sd of theta by number of systems listing the institution that year:
              mean   size
 n_listings              
-1           0.158  24564
-2           0.120  10944
-3           0.102   6821
-4           0.093   4609
-5           0.086   3115
-6           0.081   2497
-7           0.076   2432
-8           0.072   2110
-9           0.070   2049
-10          0.069   2351
-11          0.068   1463
-12          0.068    257
+1           0.158  24465
+2           0.120  10909
+3           0.102   6803
+4           0.094   4606
+5           0.086   3094
+6           0.081   2485
+7           0.076   2427
+8           0.073   2102
+9           0.070   2027
+10          0.070   2349
+11          0.068   1513
+12          0.068    267
 
 Correlation of theta with a naive mean of normal-scored ranks: 0.953 (Pearson), 0.955 (Spearman)
 The model is not a relabelled average: it differs most exactly where the
 naive average is most misleading -- institutions listed by few systems, or
 listed only in short editions.
 n_listings
-1     0.272
-2     0.225
-3     0.170
+1     0.273
+2     0.226
+3     0.171
 4     0.150
 5     0.111
 6     0.102
-7     0.105
-8     0.106
-9     0.130
-10    0.159
+7     0.106
+8     0.107
+9     0.131
+10    0.161

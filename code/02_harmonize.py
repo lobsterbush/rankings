@@ -24,7 +24,7 @@ Pipeline
 
 Outputs: crosswalk.csv, panel_long.csv, harmonization_report.txt
 """
-import os, re, sys
+import html, os, re, sys
 from collections import defaultdict
 import numpy as np
 import pandas as pd
@@ -170,6 +170,7 @@ ALIAS = {
     "london school economics political science lse": "london school economics political science",
     "eth zurich": "eth zurich",
     "eth zurich swiss federal institute technology": "eth zurich",
+    "swiss federal institute technology eth zurich": "eth zurich",
     "eth zurich swiss federal institute technology zurich": "eth zurich",
     "swiss federal institute technology zurich": "eth zurich",
     "swiss federal institute technology": "eth zurich",
@@ -312,6 +313,21 @@ CURATED_MERGES = [
     ("The Second Military Medical University", "Naval Medical University"),     # 2017
     ("KFUPM", "King Fahd University of Petroleum and Minerals"),  # QS 2016-, THE 2026-
     ("Royal Melbourne Institute of Technology (RMIT)", "RMIT University"),
+    ("University of Washington, Seattle", "University of Washington"),
+    ("Eidgenössische Technische Hochschule ETH Zürich / Swiss Federal Institute of Technology Zurich",
+     "ETH Zurich"),
+    ("EPFL - Swiss Federal lnstitute of Technology Lausanne",
+     "Swiss Federal Institute of Technology - Lausanne"),
+    ("Lunds University", "Lund University"),
+    ("University of Padova", "University of Padua"),
+    ("Université Catholique de Louvain", "Université catholique de Louvain (UCLouvain)"),
+    ("South University of Science and Technology of China / 南方科技大学",
+     "Southern University of Science and Technology"),
+    ("University of Canterbury | Te Whare Wānanga o Waitaha", "University of Canterbury"),
+    ("Julius-Maximilians-Universität Würzburg", "University of Wurzburg"),
+    ("Julius Maximilian University of Würzburg", "University of Wurzburg"),
+    ("Université de Montpellier (comUE Languedoc Roussillon Universités)",
+     "University of Montpellier"),
 ]
 
 # University-SYSTEM aggregates (and similar umbrella bodies) are reported by a few
@@ -370,6 +386,19 @@ def norm_name(s):
     return ALIAS.get(s, s)
 
 
+# Source-specific display names that normalise onto a different institution.
+# "Washington University" is WUSTL in URAP and U.S. News but the University of
+# Washington in THE-QS 2004-06 (which lists "Washington University, St Louis"
+# separately in the same editions); dropping "of" makes it collide with UW.
+RAW_FIX = {
+    ("URAP", "Washington University"): "Washington University in St. Louis",
+    ("URAP", "Washington University (WUSTL)"): "Washington University in St. Louis",
+    ("USNews", "Washington University (WUSTL)"): "Washington University in St. Louis",
+}
+# some sources ship HTML-escaped names ("Xi&#039;an"), which split entities
+long["name_raw"] = long["name_raw"].map(lambda v: html.unescape(v) if isinstance(v, str) else v)
+_fix = [RAW_FIX.get((s, n)) for s, n in zip(long["system"], long["name_raw"])]
+long["name_raw"] = [f or n for f, n in zip(_fix, long["name_raw"])]
 long["nname"] = long["name_raw"].map(norm_name)
 long = long[long.nname.str.len() > 1].copy()
 

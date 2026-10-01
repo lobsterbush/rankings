@@ -1,6 +1,7 @@
 """namenorm.py -- name/country normalisation, extracted verbatim from 02_harmonize.py
 so the department pipeline resolves entities identically. Do not edit here without
 mirroring the change in 02_harmonize.py."""
+import html
 import re
 import numpy as np
 import pandas as pd
@@ -132,6 +133,7 @@ ALIAS = {
     "london school economics political science lse": "london school economics political science",
     "eth zurich": "eth zurich",
     "eth zurich swiss federal institute technology": "eth zurich",
+    "swiss federal institute technology eth zurich": "eth zurich",
     "eth zurich swiss federal institute technology zurich": "eth zurich",
     "swiss federal institute technology zurich": "eth zurich",
     "swiss federal institute technology": "eth zurich",
@@ -305,7 +307,7 @@ def _strip_parens(s):
 
 
 def norm_name(s):
-    s = str(s)
+    s = html.unescape(str(s))
     if CJK.search(s):                    # co-listed CJK/Cyrillic/Arabic form
         stripped = CJK.sub(" ", s)
         if len(re.findall(r"[A-Za-z]{2,}", stripped)) >= 2:
