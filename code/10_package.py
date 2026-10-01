@@ -145,7 +145,7 @@ last captured rank.
                                           is the random-walk prior interpolating between
                                           observed years, with correspondingly wide bands
     theta_z_withinyear                    standardised within year (relative standing)
-    rank_in_year                          rank on theta among all modelled institutions
+    rank_in_year                          rank on theta among institutions listed that year
 
 Higher theta is better. The scale is fixed by theta ~ N(0,1) across institutions in
 the base year (2003); one unit is one base-year standard deviation.

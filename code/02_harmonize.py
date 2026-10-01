@@ -311,6 +311,7 @@ CURATED_MERGES = [
     ("Third Military Medical University", "Army Medical University"),           # 2017
     ("The Second Military Medical University", "Naval Medical University"),     # 2017
     ("KFUPM", "King Fahd University of Petroleum and Minerals"),  # QS 2016-, THE 2026-
+    ("Royal Melbourne Institute of Technology (RMIT)", "RMIT University"),
 ]
 
 # University-SYSTEM aggregates (and similar umbrella bodies) are reported by a few

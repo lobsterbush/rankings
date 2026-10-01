@@ -317,6 +317,13 @@ The censoring is the part that makes the panel work. A system that reveals only 
 fine one. Treating non-listing as missing rather than as censored would throw away the
 single most informative fact about most institutions in most years.
 
+Absence is only censored when dropping off the table is plausible: when the institution's
+nearest-in-time listing in that system sits in the bottom half of the edition's length.
+A university ranked in the top half of one edition and missing from the next has
+withdrawn (Utrecht, Zurich and Sorbonne from THE), been excluded, not submitted data, or
+merged into a new entity, and that cell is treated as missing instead (about 11,000
+of 235,000 unlisted cells).
+
 **Dynamics.** θ follows a random walk, θ*ᵢₜ* = θ*ᵢ,ₜ₋₁* + N(0, ω²), which pools information
 across adjacent editions and lets an institution's estimate in a thin year borrow
 strength from its neighbours. Posterior ω = {grab('             omega').split()[1] if grab('             omega')!='n/a' else '0.16'}.

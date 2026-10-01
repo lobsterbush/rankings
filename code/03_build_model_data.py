@@ -104,7 +104,25 @@ listed = {(r.inst_id, r.system, r.ref_year) for r in p.itertuples()}
 GAP_EDITIONS = {("URAP", y) for y in range(2010, 2017)} | {
     ("USNews", 2023), ("USNews", 2024)}
 
-n_cens = n_gap_skipped = 0
+# Absence is only informative when falling off the table is plausible. A
+# university ranked in the top half of a system's nearest-in-time edition that
+# is missing from this one has withdrawn (Utrecht, Zurich and Sorbonne from THE),
+# been excluded (Russian universities after 2022), not submitted data, or merged
+# into a new entity (Adelaide); "below the last rank" would be false for all of
+# them. Censor only when the nearest listed rank (the worse one on a tie) is at
+# least DROPOUT_SHARE of this edition's length; otherwise treat as missing.
+DROPOUT_SHARE = 0.5
+hist = {k: g[["ref_year", "rank"]].to_numpy()
+        for k, g in p.groupby(["inst_id", "system"])}
+
+
+def nearest_rank(inst, system, year):
+    h = hist[(inst, system)]
+    d = np.abs(h[:, 0] - year)
+    return h[d == d.min(), 1].max()
+
+
+n_cens = n_gap_skipped = n_absent = 0
 for _, e in ed.iterrows():
     fr = frame[e.system]
     jj, tt, cut = j_of[e.system], t_of[e.ref_year], e.cut
@@ -114,11 +132,16 @@ for _, e in ed.iterrows():
     for inst in fr:
         if (inst, e.system, e.ref_year) in listed:
             continue
+        if nearest_rank(inst, e.system, e.ref_year) < DROPOUT_SHARE * e.N:
+            n_absent += 1
+            continue
         obs_i.append(i_of[inst]); obs_t.append(tt); obs_j.append(jj)
         obs_lo.append(Z_FLOOR); obs_hi.append(cut); obs_kind.append(2)
         n_cens += 1
 print(f"gap editions: censoring skipped for {len(GAP_EDITIONS)} system-editions "
       f"(~{n_gap_skipped} would-be censored observations)")
+print(f"implausible dropouts (withdrawn/excluded/merged): {n_absent} unlisted cells "
+      f"treated as missing, not censored")
 
 obs = dict(i=np.array(obs_i, np.int32), t=np.array(obs_t, np.int32),
            j=np.array(obs_j, np.int32), lo=np.array(obs_lo, float),

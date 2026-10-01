@@ -150,7 +150,11 @@ sc["in_sample"] = sc["n_listings"] > 0
 # per-year standardized version (relative standing among the modelled universe)
 g = sc.groupby("year")["theta_mean"]
 sc["theta_z_withinyear"] = (sc["theta_mean"] - g.transform("mean")) / g.transform("std")
-sc["rank_in_year"] = sc.groupby("year")["theta_mean"].rank(ascending=False).astype(int)
+# rank among institutions listed by at least one system that year, as on the
+# site; years with no listing (before entry, after a merger or closure) are
+# random-walk extrapolations and get no rank
+sc["rank_in_year"] = (sc.theta_mean.where(sc.in_sample).groupby(sc.year)
+                      .rank(ascending=False, method="min").astype("Int64"))
 sc.to_csv(f"{W}/latent_scores.csv", index=False)
 say(f"\nwrote latent_scores.csv: {len(sc)} institution-years "
     f"({sc.in_sample.sum()} directly informed by at least one listing)")
