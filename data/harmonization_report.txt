@@ -1,11 +1,11 @@
-11593 distinct normalized names; 87.7% carry a country
-blocks after exact token-key match: 10937
-blocks after transliteration-variant pass: 10918 (19 merged)
-after fuzzy pass: 10917 blocks (1 attached, 0 rejected by the edition-collision check)
-after subset pass: 9888 blocks (1029 attached, 391 rejected)
-after disjoint-footprint nesting pass: 9287 blocks (601 attached)
-after collision split: 9301 entities (14 splits)
-curated merges: 23 applied, 3 refused by the collision check, 17 names not found
+11605 distinct normalized names; 87.7% carry a country
+blocks after exact token-key match: 10942
+blocks after transliteration-variant pass: 10923 (19 merged)
+after fuzzy pass: 10922 blocks (1 attached, 0 rejected by the edition-collision check)
+after subset pass: 9895 blocks (1027 attached, 390 rejected)
+after disjoint-footprint nesting pass: 9303 blocks (592 attached)
+after collision split: 9317 entities (14 splits)
+curated merges: 24 applied, 3 refused by the collision check, 17 names not found
    REFUSED (co-listed in some edition, so genuinely distinct): Northeastern University (Shenyang) | Northeastern University, China
    REFUSED (co-listed in some edition, so genuinely distinct): Tampere University (TUT+UoT) / Tampereen korkeakouluyhteisö | Tampere University
    REFUSED (co-listed in some edition, so genuinely distinct): HSE University | National Research University Higher School of Economics
@@ -28,105 +28,105 @@ curated merges: 23 applied, 3 refused by the collision check, 17 names not found
    NOT FOUND: The Second Military Medical University | Naval Medical University
 dropping 90 observations from 19 university-system aggregates (e.g. CALIFORNIA STATE UNIVERSITY SYSTEM, CONNECTICUT STATE UNIVERSITY SYSTEM, Children's National Health System)
 
-9259 institutions / 213327 observations
-duplicate (institution, system, edition) cells: 147  (0.069%) -- should be ~0
+9274 institutions / 215624 observations
+duplicate (institution, system, edition) cells: 149  (0.069%) -- should be ~0
 institutions by number of ranking systems that ever list them:
-   >=  1:  9259
-   >=  2:  4885
-   >=  3:  3786
-   >=  4:  3018
-   >=  5:  2468
-   >=  6:  2037
-   >=  7:  1711
-   >=  8:  1423
-   >=  9:  1204
+   >=  1:  9274
+   >=  2:  4919
+   >=  3:  3843
+   >=  4:  3052
+   >=  5:  2487
+   >=  6:  2046
+   >=  7:  1717
+   >=  8:  1427
+   >=  9:  1206
    >= 10:   974
 
 Largest entities (obs should not exceed the max possible ~120 editions):
                                                obs  variants  systems
 inst_id inst_name                                                    
-U07687  University of Cambridge                195         3       14
-U08164  University of Oxford                   195         3       14
-U08008  University of Manchester               194         8       14
-U08603  Universität Heidelberg                 193        14       14
-U06257  Technical University of Denmark        192         5       14
-U09090  Yale University                        191         2       13
-U08542  University of Zurich                   191         8       14
-U05190  Princeton University                   191         2       13
-U00792  Boston University                      191         3       13
-U07503  University College London              191         6       14
-U03755  Leiden University                      191         3       14
-U08782  Vanderbilt University                  191         3       13
-U06036  Stanford University                    191         2       13
-U02367  Harvard University                     191         3       13
-U03982  Massachusetts Institute of Technology  191         4       13
+U07694  University of Cambridge                196         3       14
+U08173  University of Oxford                   196         3       14
+U08017  University of Manchester               195         8       14
+U08615  Universität Heidelberg                 194        14       14
+U06265  Technical University of Denmark        193         5       14
+U09104  Yale University                        192         2       13
+U07667  University of British Columbia         192         5       13
+U04780  Northwestern University                192         4       13
+U04643  New York University                    192         6       13
+U02104  Georgia Institute of Technology        192         3       13
+U08484  University of Virginia                 192         5       13
+U03990  Massachusetts Institute of Technology  192         4       13
+U08428  University of Toronto                  192         5       13
+U06043  Stanford University                    192         2       13
+U03337  Johns Hopkins University               192         8       13
 
 Spot checks (each probe should split into the right number of real entities):
   -- Harvard: 6 entities; top 5:
                                                                obs  sys
 inst_id inst_name                                                      
-U02367  Harvard University                                     191   13
-U02369  Harvard-MIT Division of Health Sciences and Tecnology   17    1
-U02365  Harvard Medical School                                  13    1
-U02364  Harvard Business School                                  4    1
-U02366  Harvard Pilgrim Health Care                              1    1
+U02370  Harvard University                                     192   13
+U02372  Harvard-MIT Division of Health Sciences and Tecnology   17    1
+U02368  Harvard Medical School                                  13    1
+U02367  Harvard Business School                                  4    1
+U02369  Harvard Pilgrim Health Care                              1    1
   -- Tokyo: 19 entities; top 5:
                                              obs  sys
 inst_id inst_name                                    
-U08416  University of Tokyo                  190   13
-U06465  Tokyo Institute of Technology        189   13
-U06475  Tokyo University of Science          119   11
-U06470  Tokyo Metropolitan University        109   11
-U06468  Tokyo Medical and Dental University  104   10
+U08426  University of Tokyo                  191   13
+U06475  Tokyo Institute of Technology        190   13
+U06485  Tokyo University of Science          120   11
+U06480  Tokyo Metropolitan University        110   11
+U06478  Tokyo Medical and Dental University  104   10
   -- Oxford: 6 entities; top 5:
                                                   obs  sys
 inst_id inst_name                                         
-U08164  University of Oxford                      195   14
-U04927  Oxford Brookes University                  78    8
-U04929  Oxford University Clinical Research Unit    5    1
-U04085  Miami University--Oxford                    4    1
-U04928  Oxford Health NHS Foundation Trust          1    1
+U08173  University of Oxford                      196   14
+U04933  Oxford Brookes University                  79    8
+U04935  Oxford University Clinical Research Unit    5    1
+U04093  Miami University--Oxford                    4    1
+U04934  Oxford Health NHS Foundation Trust          1    1
   -- Michigan: 11 entities; top 5:
                                            obs  sys
 inst_id inst_name                                  
-U08041  University of Michigan, Ann Arbor  186   12
-U04089  Michigan State University          182   12
-U04092  Michigan Technological University  110   11
-U08957  Western Michigan University         69    9
-U01025  Central Michigan University         58    8
+U08050  University of Michigan, Ann Arbor  187   12
+U04097  Michigan State University          183   12
+U04100  Michigan Technological University  110   11
+U08971  Western Michigan University         69    9
+U01029  Central Michigan University         59    8
   -- Florida: 18 entities; top 5:
                                           obs  sys
 inst_id inst_name                                 
-U07810  University of Florida             184   13
-U01948  Florida State University          160   12
-U08335  University of South Florida       146   11
-U07701  University of Central Florida     144   11
-U01946  Florida International University  126   11
+U07817  University of Florida             185   13
+U01949  Florida State University          161   12
+U08344  University of South Florida       147   11
+U07708  University of Central Florida     145   11
+U01947  Florida International University  127   11
   -- California: 48 entities; top 5:
                                                  obs  sys
 inst_id inst_name                                        
-U08345  University of Southern California        191   13
-U00910  California Institute of Technology       191   13
-U07685  University of California, Santa Barbara  186   12
-U07683  University of California, San Diego      186   12
-U07680  University of California, Los Angeles    186   12
+U08354  University of Southern California        192   13
+U00914  California Institute of Technology       192   13
+U07692  University of California, Santa Barbara  187   12
+U07690  University of California, San Diego      187   12
+U07687  University of California, Los Angeles    187   12
   -- Zurich: 4 entities; top 5:
                                                           obs  sys
 inst_id inst_name                                                 
-U08542  University of Zurich                              191   14
-U01629  ETH Zurich                                        162   13
-U06146  Swiss Federal Institute of Technology ETH Zurich   33    3
-U09222  Zurich University of Applied Sciences              30    6
+U08554  University of Zurich                              191   14
+U01631  ETH Zurich                                        163   13
+U06153  Swiss Federal Institute of Technology ETH Zurich   33    3
+U09237  Zurich University of Applied Sciences              31    6
   -- Seoul: 6 entities; top 5:
                                                              obs  sys
 inst_id inst_name                                                    
-U05659  Seoul National University                            190   13
-U08299  University of Seoul                                   79   10
-U05660  Seoul National University of Science and Technology   54    9
-U05661  Seoul Womens University                               11    3
-U04309  Namseoul University                                    4    1
+U05664  Seoul National University                            191   13
+U08308  University of Seoul                                   80   10
+U05665  Seoul National University of Science and Technology   55    9
+U05666  Seoul Womens University                               11    3
+U04315  Namseoul University                                    4    1
   -- Tsinghua: 2 entities; top 5:
                                                          obs  sys
 inst_id inst_name                                                
-U06533  Tsinghua University                              184   13
-U06532  Tsinghua Shenzhen International Graduate School    2    2
+U06543  Tsinghua University                              185   13
+U06542  Tsinghua Shenzhen International Graduate School    2    2

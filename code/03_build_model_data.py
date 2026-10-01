@@ -13,7 +13,7 @@ Two things happen here that matter substantively.
 
 (2) RANKS -> A COMMON LATENT SCALE, WITH EXPLICIT CENSORING.  A rank only has
     meaning relative to the list it sits in, and the lists grew enormously
-    (THE published 200 institutions in 2011 and 3,118 in 2026). We therefore map
+    (THE published 200 institutions in 2011 and 3,146 in 2027). We therefore map
     rank r to a normal quantile against a FIXED reference pool of M institutions,
 
         z(r) = Phi^{-1}( 1 - (r - 0.5) / M ),
@@ -21,7 +21,7 @@ Two things happen here that matter substantively.
     and treat an institution that a system could have listed but did not as
     LEFT-CENSORED below z(N_jt), where N_jt is that edition's length. This is
     what makes 2011 and 2026 comparable: a system that reveals only its top 200
-    supplies a coarse, heavily censored measurement; one that reveals 3,118
+    supplies a coarse, heavily censored measurement; one that reveals 3,146
     supplies a fine one. Banded ranks ("201-250", "1001+") enter as interval-
     censored observations rather than as their midpoints.
 

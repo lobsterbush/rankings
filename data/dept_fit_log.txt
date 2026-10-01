@@ -1,58 +1,58 @@
-AS0101 Mathematics: I=1898 T=13 J=3 obs=29044 (7835 censored)
-AS0102 Physics: I=2031 T=11 J=3 obs=29408 (7074 censored)
-AS0103 Chemistry: I=1995 T=11 J=3 obs=29418 (7075 censored)
-AS0104 Earth Sciences: I=1927 T=13 J=3 obs=29289 (7496 censored)
-AS0105 Geography: I=1182 T=13 J=2 obs=15140 (4249 censored)
-AS0106 Ecology: I=1252 T=13 J=2 obs=17265 (4680 censored)
-AS0107 Oceanography: I=1912 T=13 J=3 obs=25630 (6525 censored)
-AS0108 Atmospheric Science: I=1923 T=13 J=3 obs=27690 (6985 censored)
-AS0201 Mechanical Engineering: I=2030 T=11 J=3 obs=28438 (7246 censored)
-AS0202 Electrical & Electronic Engineering: I=2059 T=11 J=3 obs=30342 (8052 censored)
-AS0205 Automation & Control: I=2013 T=11 J=3 obs=25976 (6483 censored)
-AS0206 Telecommunication Engineering: I=386 T=9 J=1 obs=3474 (995 censored)
-AS0207 Instruments Science & Technology: I=459 T=9 J=1 obs=4131 (1430 censored)
-AS0208 Biomedical Engineering: I=394 T=9 J=1 obs=3546 (917 censored)
-AS0210 Computer Science & Engineering: I=1538 T=13 J=3 obs=26374 (7431 censored)
-AS0211 Civil Engineering: I=2025 T=11 J=3 obs=27925 (7328 censored)
-AS0212 Chemical Engineering: I=2065 T=11 J=3 obs=30177 (8100 censored)
-AS0213 Materials Science & Engineering: I=2041 T=11 J=3 obs=29921 (7637 censored)
-AS0214 Nanoscience & Nanotechnology: I=521 T=9 J=1 obs=4689 (1255 censored)
-AS0215 Energy Science & Engineering: I=2033 T=11 J=3 obs=29385 (7891 censored)
-AS0216 Environmental Science & Engineering: I=1747 T=9 J=2 obs=17579 (4229 censored)
-AS0217 Water Resources: I=285 T=9 J=1 obs=2565 (742 censored)
-AS0219 Food Science & Technology: I=421 T=9 J=1 obs=3789 (1090 censored)
-AS0220 Biotechnology: I=604 T=9 J=1 obs=5436 (1312 censored)
-AS0221 Aerospace Engineering: I=2000 T=11 J=3 obs=24192 (5891 censored)
-AS0222 Marine/Ocean Engineering: I=82 T=9 J=1 obs=738 (283 censored)
-AS0223 Transportation Science & Technology: I=279 T=9 J=1 obs=2511 (856 censored)
-AS0224 Remote Sensing: I=159 T=9 J=1 obs=1431 (559 censored)
-AS0226 Mining & Mineral Engineering: I=146 T=9 J=1 obs=1314 (513 censored)
-AS0227 Metallurgical Engineering: I=293 T=9 J=1 obs=2637 (830 censored)
-AS0228 Textile Science & Engineering: I=48 T=3 J=1 obs=144 (16 censored)
-AS0229 Artificial Intelligence: I=1476 T=13 J=3 obs=19858 (5026 censored)
+AS0101 Mathematics: I=1932 T=16 J=4 obs=39031 (11980 censored) b=1.17 anchored=99%
+AS0102 Physics: I=2048 T=16 J=4 obs=34545 (9660 censored) b=1.82 anchored=100%
+AS0103 Chemistry: I=2035 T=16 J=4 obs=41118 (12052 censored) b=1.28 anchored=99%
+AS0104 Earth Sciences: I=1941 T=16 J=4 obs=34298 (9363 censored) b=1.52 anchored=100%
+AS0105 Geography: I=1190 T=16 J=3 obs=19547 (6057 censored) b=2.02 anchored=100%
+AS0106 Ecology: I=1291 T=16 J=3 obs=25587 (8297 censored) b=1.09 anchored=99%
+AS0107 Oceanography: I=1921 T=16 J=4 obs=30527 (8363 censored) b=1.97 anchored=100%
+AS0108 Atmospheric Science: I=1921 T=13 J=3 obs=27522 (6815 censored) b=1.88 anchored=100%
+AS0201 Mechanical Engineering: I=2071 T=16 J=4 obs=37603 (11006 censored) b=1.55 anchored=99%
+AS0202 Electrical & Electronic Engineering: I=2096 T=16 J=4 obs=40783 (12530 censored) b=1.37 anchored=99%
+AS0205 Automation & Control: I=2008 T=11 J=3 obs=25857 (6364 censored) b=1.27 anchored=100%
+AS0206 Telecommunication Engineering: I=388 T=9 J=1 obs=3492 (1012 censored) b=0.32 anchored=99%
+AS0207 Instruments Science & Technology: I=460 T=9 J=1 obs=4140 (1440 censored) b=0.35 anchored=100%
+AS0208 Biomedical Engineering: I=395 T=9 J=1 obs=3555 (925 censored) b=0.61 anchored=99%
+AS0210 Computer Science & Engineering: I=1631 T=16 J=4 obs=40805 (13765 censored) b=0.95 anchored=99%
+AS0211 Civil Engineering: I=2051 T=16 J=4 obs=34267 (9815 censored) b=1.90 anchored=99%
+AS0212 Chemical Engineering: I=2089 T=16 J=4 obs=37256 (11213 censored) b=1.82 anchored=99%
+AS0213 Materials Science & Engineering: I=2066 T=16 J=4 obs=36809 (10674 censored) b=1.68 anchored=99%
+AS0214 Nanoscience & Nanotechnology: I=522 T=9 J=1 obs=4698 (1265 censored) b=0.46 anchored=99%
+AS0215 Energy Science & Engineering: I=2058 T=12 J=4 obs=30859 (8378 censored) b=1.32 anchored=100%
+AS0216 Environmental Science & Engineering: I=1815 T=16 J=3 obs=26132 (8077 censored) b=1.15 anchored=100%
+AS0217 Water Resources: I=285 T=9 J=1 obs=2565 (741 censored) b=0.28 anchored=100%
+AS0219 Food Science & Technology: I=422 T=9 J=1 obs=3798 (1098 censored) b=0.34 anchored=100%
+AS0220 Biotechnology: I=605 T=9 J=1 obs=5445 (1322 censored) b=0.71 anchored=100%
+AS0221 Aerospace Engineering: I=1996 T=11 J=3 obs=24073 (5770 censored) b=1.34 anchored=100%
+AS0222 Marine/Ocean Engineering: I=82 T=9 J=1 obs=738 (283 censored) b=0.18 anchored=100%
+AS0223 Transportation Science & Technology: I=279 T=9 J=1 obs=2511 (857 censored) b=0.31 anchored=100%
+AS0224 Remote Sensing: I=159 T=9 J=1 obs=1431 (559 censored) b=0.09 anchored=100%
+AS0226 Mining & Mineral Engineering: I=203 T=11 J=2 obs=2422 (1051 censored) b=0.14 anchored=100%
+AS0227 Metallurgical Engineering: I=293 T=9 J=1 obs=2637 (833 censored) b=0.29 anchored=99%
+AS0228 Textile Science & Engineering: I=48 T=3 J=1 obs=144 (16 censored) b=-0.10 anchored=98%
+AS0229 Artificial Intelligence: I=1476 T=14 J=4 obs=20351 (5142 censored) b=1.46 anchored=100%
 AS0230 Robotic Science & Engineering: too few institutions
-AS0301 Biological Sciences: I=1673 T=13 J=3 obs=27273 (7217 censored)
-AS0302 Human Biological Sciences: I=1726 T=13 J=3 obs=28307 (7569 censored)
-AS0303 Agricultural Sciences: I=1668 T=13 J=3 obs=27741 (7675 censored)
-AS0304 Veterinary Sciences: I=1659 T=13 J=3 obs=25011 (6852 censored)
-AS0401 Clinical Medicine: I=1355 T=13 J=2 obs=18892 (5233 censored)
-AS0402 Public Health: I=1351 T=13 J=2 obs=19144 (5509 censored)
-AS0403 Dentistry & Oral Sciences: I=1311 T=13 J=2 obs=16164 (4401 censored)
-AS0404 Nursing: I=1310 T=13 J=2 obs=16514 (4854 censored)
-AS0405 Medical Technology: I=1284 T=13 J=2 obs=17177 (4791 censored)
-AS0406 Pharmacy & Pharmaceutical Sciences: I=1329 T=13 J=2 obs=19056 (5390 censored)
-AS0501 Economics: I=1350 T=13 J=3 obs=22131 (6117 censored)
-AS0502 Statistics: I=1091 T=13 J=2 obs=13717 (4091 censored)
-AS0503 Law: I=877 T=13 J=3 obs=14336 (4168 censored)
-AS0504 Political Sciences: I=1381 T=13 J=3 obs=21163 (5582 censored)
-AS0505 Sociology: I=1348 T=13 J=3 obs=19675 (5575 censored)
-AS0506 Education: I=1197 T=13 J=3 obs=20337 (5740 censored)
-AS0507 Communication: I=1371 T=13 J=3 obs=20311 (5714 censored)
-AS0508 Psychology: I=1037 T=13 J=3 obs=18878 (4661 censored)
-AS0509 Business Administration: I=1329 T=13 J=3 obs=21100 (5987 censored)
-AS0510 Finance: I=1282 T=13 J=3 obs=18468 (4937 censored)
-AS0511 Management: I=1346 T=13 J=3 obs=22109 (5995 censored)
-AS0512 Public Administration: I=1357 T=13 J=3 obs=19186 (5291 censored)
-AS0513 Hospitality & Tourism Management: I=361 T=9 J=1 obs=3249 (1231 censored)
-AS0515 Library & Information Science: I=146 T=9 J=1 obs=1314 (436 censored)
-THEAH Arts & Humanities (THE only): I=972 T=13 J=2 obs=13596 (3217 censored)
+AS0301 Biological Sciences: I=1721 T=16 J=4 obs=37812 (11574 censored) b=1.57 anchored=99%
+AS0302 Human Biological Sciences: I=1728 T=14 J=4 obs=29876 (8102 censored) b=1.69 anchored=100%
+AS0303 Agricultural Sciences: I=1707 T=14 J=4 obs=36688 (11910 censored) b=1.62 anchored=99%
+AS0304 Veterinary Sciences: I=1660 T=14 J=4 obs=25914 (7151 censored) b=1.68 anchored=99%
+AS0401 Clinical Medicine: I=1494 T=16 J=3 obs=32360 (11203 censored) b=1.15 anchored=99%
+AS0402 Public Health: I=1341 T=13 J=2 obs=19013 (5370 censored) b=1.24 anchored=100%
+AS0403 Dentistry & Oral Sciences: I=1306 T=14 J=3 obs=17372 (4880 censored) b=1.23 anchored=99%
+AS0404 Nursing: I=1307 T=14 J=3 obs=18784 (5682 censored) b=1.25 anchored=99%
+AS0405 Medical Technology: I=1274 T=13 J=2 obs=17017 (4626 censored) b=1.26 anchored=100%
+AS0406 Pharmacy & Pharmaceutical Sciences: I=1365 T=15 J=3 obs=25704 (8209 censored) b=1.88 anchored=99%
+AS0501 Economics: I=1414 T=16 J=4 obs=29378 (9794 censored) b=0.85 anchored=98%
+AS0502 Statistics: I=1091 T=16 J=3 obs=15904 (4810 censored) b=1.77 anchored=100%
+AS0503 Law: I=942 T=16 J=4 obs=19429 (6438 censored) b=0.93 anchored=99%
+AS0504 Political Sciences: I=1406 T=15 J=4 obs=24444 (7075 censored) b=1.20 anchored=100%
+AS0505 Sociology: I=1380 T=16 J=4 obs=24075 (7386 censored) b=1.30 anchored=100%
+AS0506 Education: I=1219 T=15 J=4 obs=25311 (7926 censored) b=0.84 anchored=99%
+AS0507 Communication: I=1391 T=15 J=4 obs=23902 (7168 censored) b=1.41 anchored=100%
+AS0508 Psychology: I=1055 T=16 J=4 obs=24397 (6599 censored) b=1.03 anchored=99%
+AS0509 Business Administration: I=1421 T=14 J=4 obs=27570 (8722 censored) b=0.88 anchored=98%
+AS0510 Finance: I=1312 T=16 J=4 obs=22852 (6918 censored) b=0.92 anchored=99%
+AS0511 Management: I=1440 T=14 J=4 obs=28613 (8761 censored) b=0.83 anchored=98%
+AS0512 Public Administration: I=1366 T=14 J=4 obs=19822 (5458 censored) b=1.56 anchored=100%
+AS0513 Hospitality & Tourism Management: I=402 T=10 J=2 obs=4008 (1633 censored) b=0.15 anchored=93%
+AS0515 Library & Information Science: I=165 T=10 J=2 obs=1733 (571 censored) b=0.30 anchored=100%
+THEAH Arts & Humanities (THE only): I=1258 T=16 J=3 obs=28357 (9529 censored) b=1.07 anchored=90%

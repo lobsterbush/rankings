@@ -313,7 +313,7 @@ reference pool of M = 6,000 institutions, z(r) = Φ⁻¹(1 − (r − ½)/M), an
   z(N*ⱼₜ*), where N*ⱼₜ* is that edition's length.
 
 The censoring is the part that makes the panel work. A system that reveals only its top
-200 supplies a coarse, heavily censored measurement; one that reveals 3,118 supplies a
+200 supplies a coarse, heavily censored measurement; one that reveals 3,146 supplies a
 fine one. Treating non-listing as missing rather than as censored would throw away the
 single most informative fact about most institutions in most years.
 

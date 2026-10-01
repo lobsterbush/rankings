@@ -60,9 +60,9 @@ def expand_open_bands(df):
     return df
 
 
-print("== THE (Times Higher Education) 2011-2026")
+print("== THE (Times Higher Education) 2011-2027")
 the = []
-for f in sorted(glob.glob(f"{RAW}/the/c3nk_THE-World-University-Rankings/csv/THE_*_rankings.csv")):
+for f in sorted(glob.glob(f"{RAW}/the/c3nk_THE-World-University-Rankings/outputs/csv/THE_*_rankings.csv")):
     d = pd.read_csv(f)
     d = d.rename(columns={"Name": "name_raw", "Country": "country_raw", "Overall": "score"})
     pr = d["Rank"].apply(parse_rank)

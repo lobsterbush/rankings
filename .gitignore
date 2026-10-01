@@ -3,3 +3,4 @@ __pycache__/
 .DS_Store
 *.npz
 posterior*.npz
+data/dept_latent_scores.csv
